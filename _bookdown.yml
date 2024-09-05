@@ -1,4 +1,5 @@
 book_filename: "lab-workbook"
+output_dir: "docs"
 language:
   ui:
     chapter_name: "Lab "

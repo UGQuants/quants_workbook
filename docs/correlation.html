@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lab 7 Correlation | UG Quantitative Methods in the Social Sciences lab workbook</title>
+  <meta name="description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lab 7 Correlation | UG Quantitative Methods in the Social Sciences lab workbook" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lab 7 Correlation | UG Quantitative Methods in the Social Sciences lab workbook" />
+  
+  <meta name="twitter:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  
+
+<meta name="author" content="by J Rafael Verudzco Torres and Mark Wong" />
+
+
+<meta name="date" content="2024-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visual-exploratory-analysis.html"/>
+<link rel="next" href="simple-lm.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UG Quantitative Methods in the Social Sciences: Workbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="lab-intro.html"><a href="lab-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lab-intro.html"><a href="lab-intro.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="lab-intro.html"><a href="lab-intro.html#r-a-flexible-tool"><i class="fa fa-check"></i><b>1.1.1</b> R: a flexible tool</a></li>
+<li class="chapter" data-level="1.1.2" data-path="lab-intro.html"><a href="lab-intro.html#advantages-of-using-r"><i class="fa fa-check"></i><b>1.1.2</b> Advantages of using R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="lab-intro.html"><a href="lab-intro.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="lab-intro.html"><a href="lab-intro.html#setting-up-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Setting up RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lab-intro.html"><a href="lab-intro.html#rstudio-environment"><i class="fa fa-check"></i><b>1.2.2</b> RStudio environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lab-intro.html"><a href="lab-intro.html#hands-on-r"><i class="fa fa-check"></i><b>1.3</b> Hands on R</a></li>
+<li class="chapter" data-level="1.4" data-path="lab-intro.html"><a href="lab-intro.html#activity"><i class="fa fa-check"></i><b>1.4</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab2.html"><a href="lab2.html"><i class="fa fa-check"></i><b>2</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab2.html"><a href="lab2.html#welcome-back"><i class="fa fa-check"></i><b>2.1</b> Welcome back!</a></li>
+<li class="chapter" data-level="2.2" data-path="lab2.html"><a href="lab2.html#learn-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lab2.html"><a href="lab2.html#installing-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lab2.html"><a href="lab2.html#activity-1"><i class="fa fa-check"></i><b>2.2.2</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lab2.html"><a href="lab2.html#types-of-variables"><i class="fa fa-check"></i><b>2.3</b> Types of variables</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="lab2.html"><a href="lab2.html#activity-2"><i class="fa fa-check"></i><b>2.3.1</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lab2.html"><a href="lab2.html#more-operators-and-some-essential-symbols"><i class="fa fa-check"></i><b>2.4</b> More operators and some essential symbols</a></li>
+<li class="chapter" data-level="2.5" data-path="lab2.html"><a href="lab2.html#black-lives-matter"><i class="fa fa-check"></i><b>2.5</b> Black lives matter!</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="lab2.html"><a href="lab2.html#downloading-and-reading-the-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading and reading the data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="lab2.html"><a href="lab2.html#examining-the-data"><i class="fa fa-check"></i><b>2.5.2</b> Examining the data</a></li>
+<li class="chapter" data-level="2.5.3" data-path="lab2.html"><a href="lab2.html#data-wrangling"><i class="fa fa-check"></i><b>2.5.3</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="lab2.html"><a href="lab2.html#activity-3"><i class="fa fa-check"></i><b>2.6</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html"><i class="fa fa-check"></i><b>3</b> Data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#importing-and-data-wrangling"><i class="fa fa-check"></i><b>3.1</b> Importing and data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#downloading-and-reading-the-data-1"><i class="fa fa-check"></i><b>3.1.1</b> Downloading and reading the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#data-wrangling-2"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#read-the-clean-dataset"><i class="fa fa-check"></i><b>3.3</b> Read the clean dataset</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-4"><i class="fa fa-check"></i><b>3.3.1</b> Activity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exploratory-analysis"><i class="fa fa-check"></i><b>4.2</b> Exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#data-overview"><i class="fa fa-check"></i><b>4.2.1</b> Data overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-data"><i class="fa fa-check"></i><b>4.2.2</b> Categorical data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-1-1"><i class="fa fa-check"></i><b>4.2.3</b> Activity 1</a></li>
+<li class="chapter" data-level="4.2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#continuous-numeric-data"><i class="fa fa-check"></i><b>4.2.4</b> Continuous (numeric) data</a></li>
+<li class="chapter" data-level="4.2.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#putting-it-all-together"><i class="fa fa-check"></i><b>4.2.5</b> Putting it all together</a></li>
+<li class="chapter" data-level="4.2.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-2-1"><i class="fa fa-check"></i><b>4.2.6</b> Activity 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html"><i class="fa fa-check"></i><b>5</b> Reporting in R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>5.2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#first-r-markdown-document"><i class="fa fa-check"></i><b>5.2.1</b> First R Markdown document</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#activity-5"><i class="fa fa-check"></i><b>5.3</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html"><i class="fa fa-check"></i><b>6</b> Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#data-visualization"><i class="fa fa-check"></i><b>6.2</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#prepare-the-rmd-document-and-data"><i class="fa fa-check"></i><b>6.2.1</b> Prepare the Rmd document and data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#cateogrical-variables"><i class="fa fa-check"></i><b>6.3</b> Cateogrical variables</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-categorical-vs-categorical"><i class="fa fa-check"></i><b>6.3.1</b> Bivariate categorical vs categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#numeric-variables"><i class="fa fa-check"></i><b>6.4</b> Numeric variables</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#univariate-numeric"><i class="fa fa-check"></i><b>6.4.1</b> Univariate numeric</a></li>
+<li class="chapter" data-level="6.4.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-numeric"><i class="fa fa-check"></i><b>6.4.2</b> Bivariate numeric</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#mixed-data"><i class="fa fa-check"></i><b>6.5</b> Mixed data</a></li>
+<li class="chapter" data-level="6.6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#activity-6"><i class="fa fa-check"></i><b>6.6</b> Activity</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#r-cheatsheets"><i class="fa fa-check"></i><b>6.6.1</b> R Cheatsheets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>7</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="correlation.html"><a href="correlation.html#what-is-correlation"><i class="fa fa-check"></i><b>7.1</b> What is correlation?</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="correlation.html"><a href="correlation.html#data-and-r-environment"><i class="fa fa-check"></i><b>7.1.1</b> Data and R environment</a></li>
+<li class="chapter" data-level="7.1.2" data-path="correlation.html"><a href="correlation.html#visualizing-correlation"><i class="fa fa-check"></i><b>7.1.2</b> Visualizing correlation</a></li>
+<li class="chapter" data-level="7.1.3" data-path="correlation.html"><a href="correlation.html#activity-1-2"><i class="fa fa-check"></i><b>7.1.3</b> Activity 1</a></li>
+<li class="chapter" data-level="7.1.4" data-path="correlation.html"><a href="correlation.html#activity-2-2"><i class="fa fa-check"></i><b>7.1.4</b> Activity 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="correlation.html"><a href="correlation.html#measuring-correlation"><i class="fa fa-check"></i><b>7.2</b> Measuring correlation</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="correlation.html"><a href="correlation.html#activity-3-1"><i class="fa fa-check"></i><b>7.2.1</b> Activity 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="simple-lm.html"><a href="simple-lm.html"><i class="fa fa-check"></i><b>8</b> Linear model: Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="simple-lm.html"><a href="simple-lm.html#welcome"><i class="fa fa-check"></i><b>8.1</b> Welcome</a></li>
+<li class="chapter" data-level="8.2" data-path="simple-lm.html"><a href="simple-lm.html#introduction-to-simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Introduction to simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="simple-lm.html"><a href="simple-lm.html#the-idea-behind"><i class="fa fa-check"></i><b>8.2.1</b> The idea behind</a></li>
+<li class="chapter" data-level="8.2.2" data-path="simple-lm.html"><a href="simple-lm.html#formal-specification"><i class="fa fa-check"></i><b>8.2.2</b> Formal specification</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="simple-lm.html"><a href="simple-lm.html#fitting-linear-regression-in-r"><i class="fa fa-check"></i><b>8.3</b> Fitting linear regression in R</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="simple-lm.html"><a href="simple-lm.html#r-syntax"><i class="fa fa-check"></i><b>8.3.1</b> R syntax</a></li>
+<li class="chapter" data-level="8.3.2" data-path="simple-lm.html"><a href="simple-lm.html#running-a-simple-linear-regression"><i class="fa fa-check"></i><b>8.3.2</b> Running a simple linear regression</a></li>
+<li class="chapter" data-level="8.3.3" data-path="simple-lm.html"><a href="simple-lm.html#interpreting-results"><i class="fa fa-check"></i><b>8.3.3</b> Interpreting results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="simple-lm.html"><a href="simple-lm.html#model-evaluation"><i class="fa fa-check"></i><b>8.4</b> Model evaluation</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="simple-lm.html"><a href="simple-lm.html#model-summary"><i class="fa fa-check"></i><b>8.4.1</b> Model summary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="simple-lm.html"><a href="simple-lm.html#further-checks"><i class="fa fa-check"></i><b>8.4.2</b> Further checks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="simple-lm.html"><a href="simple-lm.html#lab-activities"><i class="fa fa-check"></i><b>8.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multi-lm.html"><a href="multi-lm.html"><i class="fa fa-check"></i><b>9</b> Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multi-lm.html"><a href="multi-lm.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model"><i class="fa fa-check"></i><b>9.2</b> Multivariate model</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="multi-lm.html"><a href="multi-lm.html#paralell-slopes"><i class="fa fa-check"></i><b>9.2.1</b> Paralell slopes</a></li>
+<li class="chapter" data-level="9.2.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model-specification"><i class="fa fa-check"></i><b>9.2.2</b> Multivariate model specification</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="multi-lm.html"><a href="multi-lm.html#r-syntax-for-the-multivariate-linear-model"><i class="fa fa-check"></i><b>9.3</b> R syntax for the multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="multi-lm.html"><a href="multi-lm.html#model-evaluation-1"><i class="fa fa-check"></i><b>9.3.1</b> Model evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="multi-lm.html"><a href="multi-lm.html#assumptions"><i class="fa fa-check"></i><b>9.4</b> Assumptions</a></li>
+<li class="chapter" data-level="9.5" data-path="multi-lm.html"><a href="multi-lm.html#lab-activities-1"><i class="fa fa-check"></i><b>9.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><i class="fa fa-check"></i><b>10</b> UG Quants summative assessment: Interpreting Quantitative Findings Report</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#create-your-research-report-template-from-github"><i class="fa fa-check"></i><b>10.2</b> Create your research report template from GitHub</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-cloud-version"><i class="fa fa-check"></i><b>10.2.1</b> RStudio Cloud version</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-desktop-version"><i class="fa fa-check"></i><b>10.2.2</b> RStudio Desktop version</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#about-the-research-report-template"><i class="fa fa-check"></i><b>10.3</b> About the research report template</a></li>
+<li class="chapter" data-level="10.4" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-1-3"><i class="fa fa-check"></i><b>10.4</b> Activity 1</a></li>
+<li class="chapter" data-level="10.5" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-2-3"><i class="fa fa-check"></i><b>10.5</b> Activity 2</a></li>
+<li class="chapter" data-level="10.6" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#conclusion"><i class="fa fa-check"></i><b>10.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i>Workbook suggested answers</a>
+<ul>
+<li class="chapter" data-level="10.7" data-path="answers.html"><a href="answers.html#introduction-4"><i class="fa fa-check"></i><b>10.7</b> Introduction</a></li>
+<li class="chapter" data-level="10.8" data-path="answers.html"><a href="answers.html#lab-3.-data-wrangling"><i class="fa fa-check"></i><b>10.8</b> Lab 3. Data wrangling</a></li>
+<li class="chapter" data-level="10.9" data-path="answers.html"><a href="answers.html#lab-4.-exploratory-data-analysis"><i class="fa fa-check"></i><b>10.9</b> Lab 4. Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="answers.html"><a href="answers.html#activity-1-4"><i class="fa fa-check"></i><b>10.9.1</b> Activity #1</a></li>
+<li class="chapter" data-level="10.9.2" data-path="answers.html"><a href="answers.html#activity-2-4"><i class="fa fa-check"></i><b>10.9.2</b> Activity #2</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="answers.html"><a href="answers.html#lab-6.-visual-exploratory-analysis"><i class="fa fa-check"></i><b>10.10</b> Lab 6. Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="answers.html"><a href="answers.html#excercices"><i class="fa fa-check"></i><b>10.10.1</b> Excercices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="answers.html"><a href="answers.html#lab-7.-correlation"><i class="fa fa-check"></i><b>10.11</b> Lab 7. Correlation</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="answers.html"><a href="answers.html#activity-1-5"><i class="fa fa-check"></i><b>10.11.1</b> Activity 1</a></li>
+</ul></li>
+<li class="chapter" data-level="10.12" data-path="answers.html"><a href="answers.html#lab-8.-linear-model.-simple-linear-regression"><i class="fa fa-check"></i><b>10.12</b> Lab 8. Linear model. Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="10.12.1" data-path="answers.html"><a href="answers.html#lab-activities-2"><i class="fa fa-check"></i><b>10.12.1</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10.13" data-path="answers.html"><a href="answers.html#lab-9.-multivariate-linear-model"><i class="fa fa-check"></i><b>10.13</b> Lab 9. Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="10.13.1" data-path="answers.html"><a href="answers.html#lab-activities-3"><i class="fa fa-check"></i><b>10.13.1</b> Lab activities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UG Quantitative Methods in the Social Sciences lab workbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="correlation" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Lab 7</span> Correlation<a href="correlation.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-correlation" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> What is correlation?<a href="correlation.html#what-is-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When conducting empirical research, we are often interested in associations between two variables, for example, personal income and attitudes towards migrants. In this lab we will focus on visualizing relationship between variables and how to measure it. In quantitative research, the main variable of interest in an analysis is called the <em>dependent</em> or <em>response variable</em>, and the second is known as the <em>independent</em> or <em>explanatory</em>. In the example above, we can think of personal income as the independent variable and attitudes as the dependent.</p>
+<p>The relationship between variables can be positive, negative or non-existent. The figure below shows these type of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.</p>
+<p><br></p>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<img src="lab-workbook_files/figure-html/unnamed-chunk-73-1.png" alt="\label{fig:figs} Types of correlation." width="100%" />
+<p class="caption">
+Figure 7.1:  Types of correlation.
+</p>
+</div>
+<p>The plot in the middle, shows two variables that are not correlated. The location of the points is not following any pattern and the line is flat. By contrast, the last two plots on the right hand-side show a negative relationship. When the values on the X axis increase, the values on the Y axis tend to decrease.</p>
+<div id="data-and-r-environment" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Data and R environment<a href="correlation.html#data-and-r-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will continue working on the same R Studio Cloud project as in the previous session and using the 2012 <a href="https://www.ark.ac.uk/nilt/">Northern Ireland Life and Times Survey (NILT)</a> data. To set the <code>R</code> environment please follow the next steps:</p>
+<ol style="list-style-type: decimal">
+<li>Please go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a> (log in if necessary);</li>
+<li>Open your own copy of the ‘NILT’ project from the ‘Quants lab group’;</li>
+<li>Create a new Rmd file, type ‘Correlation analysis’ in ‘Tile’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>.</li>
+<li>Save the Rmd document under the name ‘Lab7_correlation’.</li>
+<li>Delete all the contents in the Rmd default example with the exception of the first bit which contains the YALM and the first chunk, which contains the default chunk options (that is all from line 12 and on).</li>
+<li>In the setup chunk, change <code>echo</code> from <code>TRUE</code> to <code>FALSE</code> in line 9 (this will hide the code for all chunks in your final document).</li>
+<li>Within the first chunk, copy and paste the following code below line 9 <code>knitr::opts_chunk$set(message = FALSE, warning = FALSE)</code>. This will hide the warnings and messages when you load the packages.</li>
+</ol>
+<p>In the Rmd document insert a new a chunk, copy and paste the following code. Then, run the individual chunk by clicking on the green arrow on the top-right of the chunk.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="correlation.html#cb62-1" tabindex="-1"></a><span class="do">## Load the packages</span></span>
+<span id="cb62-2"><a href="correlation.html#cb62-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb62-3"><a href="correlation.html#cb62-3" tabindex="-1"></a><span class="co"># Load the data from the .rds file we created in lab 3</span></span>
+<span id="cb62-4"><a href="correlation.html#cb62-4" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/nilt_r_object.rds&quot;</span>)</span></code></pre></div>
+<p>This time we will use new variables from the survey. Therefore, we need to coerce them into their appropriate type first. Insert a second chunk, copy and paste the code below. Then, run the individual chunk.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="correlation.html#cb63-1" tabindex="-1"></a><span class="co"># Age of respondent’s spouse/partner</span></span>
+<span id="cb63-2"><a href="correlation.html#cb63-2" tabindex="-1"></a>nilt<span class="sc">$</span>spage <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(nilt<span class="sc">$</span>spage)</span>
+<span id="cb63-3"><a href="correlation.html#cb63-3" tabindex="-1"></a><span class="co"># Migration</span></span>
+<span id="cb63-4"><a href="correlation.html#cb63-4" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">mutate_at</span>(nilt, <span class="fu">vars</span>(mil10yrs, miecono, micultur), as.numeric)</span></code></pre></div>
+<p>Also, we will create a new variable called <code>mig_per</code> by summing the respondent’s opinion in relation to migration using the following variables: <code>mil10yrs</code>, <code>miecono</code> and <code>micultur</code> (see the documentation p. 14 <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">here</a> to know more about these variables). Again, insert a new chunk, copy and paste the code below, and run the individual chunk.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="correlation.html#cb64-1" tabindex="-1"></a><span class="co"># overall perception towards migrants</span></span>
+<span id="cb64-2"><a href="correlation.html#cb64-2" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">rowwise</span>(nilt) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-3"><a href="correlation.html#cb64-3" tabindex="-1"></a>  <span class="co"># sum values</span></span>
+<span id="cb64-4"><a href="correlation.html#cb64-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mig_per =</span> <span class="fu">sum</span>(mil10yrs, miecono, micultur, <span class="at">na.rm =</span> T )) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-5"><a href="correlation.html#cb64-5" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb64-6"><a href="correlation.html#cb64-6" tabindex="-1"></a>  <span class="co"># assign NA to values that sum 0</span></span>
+<span id="cb64-7"><a href="correlation.html#cb64-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mig_per =</span>  <span class="fu">na_if</span>(mig_per, <span class="dv">0</span>))</span></code></pre></div>
+</div>
+<div id="visualizing-correlation" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Visualizing correlation<a href="correlation.html#visualizing-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Visualizing two or more variables can help to uncover or understand the relationship between these variables. As briefly introduced in the previous session, different types of plots are appropriate for different types of variables. Therefore, we split the following sections according to the type of data to be analysed.</p>
+<p>You do not need to run or reproduce the examples shown in the following sections in your R session with the exception of exercises that are under the <em>activity</em> headers.</p>
+<div id="numeric-vs-numeric" class="section level4 hasAnchor" number="7.1.2.1">
+<h4><span class="header-section-number">7.1.2.1</span> Numeric vs numeric<a href="correlation.html#numeric-vs-numeric" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To illustrate this type of correlation, let’s start with a relatively obvious but useful example. Suppose we are interested in how people choose their spouse or partner. The first characteristic that we might look at is age. We might suspect that there is a correlation between the the <code>nilt</code> respondents’ won age and their partner’s age. Since both ages are numeric variables, a scatter plot is appropriate to visualize the correlation. To do this, let’s use the functions <code>ggplot()</code> and <code>geom_point()</code>. In aesthetics <code>aes()</code> let’s define the respondent’s age <code>rage</code> in the X axis and the respondent’s spouse/partner age <code>spage</code> in the Y axis. As a general convention in quantitative research, the response/dependent variable is visualized on the Y axis and the independent on the X axis (you do not need to copy and reproduce the example below).</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="correlation.html#cb65-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt, <span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> spage)) <span class="sc">+</span> </span>
+<span id="cb65-2"><a href="correlation.html#cb65-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb65-3"><a href="correlation.html#cb65-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb65-4"><a href="correlation.html#cb65-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Respondent&#39;s age vs respondent’s spouse/partner age&quot;</span>, </span>
+<span id="cb65-5"><a href="correlation.html#cb65-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Respondent&#39;s age&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Respondent’s spouse/partner age&quot;</span> )</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-77-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>Note that in this plot the function <code>geom_smooth()</code> was used. This is to plot a straight line which describes the best all the points in the graph.</p>
+<p>From the plot above, we see that there is a strong positive correlation between the respondent’s age and their partner’s age. We see that for some individuals their partner’s age is older, whereas others is younger. Also, there are some dots that are far away from the straight line. For example, in one case the respondent is around 60 years old and the age of their partner is around 30 years old (can you find that dot on the plot?). These extreme values are known as <em>outliers</em>.</p>
+<p>We may also suspect that the respondents’ sex is playing a role in this relationship. We can include this as a third variable in the plot by colouring the dots by the respondents’ sex. To do this, let’s specify the <code>colour</code> argument in aesthetics <code>aes()</code> with a categorical variable <code>rsex</code>.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="correlation.html#cb66-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt, <span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> spage, <span class="at">colour =</span> rsex)) <span class="sc">+</span> </span>
+<span id="cb66-2"><a href="correlation.html#cb66-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb66-3"><a href="correlation.html#cb66-3" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">&quot;gray20&quot;</span>) <span class="sc">+</span></span>
+<span id="cb66-4"><a href="correlation.html#cb66-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Respondent&#39;s age vs respondent’s spouse/partner age&quot;</span>, </span>
+<span id="cb66-5"><a href="correlation.html#cb66-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Respondent&#39;s age&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Respondent’s spouse/partner age&quot;</span> )</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-78-1.png" width="100%" style="display: block; margin: auto auto auto 0;" />
+In the previous plot, we included a line which describes what it would look like if the partner’s age were exactly the same as the respondent’s age. We observe a clear pattern in which female participants are on one side of the line and males on the other. As we can see, most female respondents tend to choose/have partners who are older, whereas males younger ones.</p>
+</div>
+</div>
+<div id="activity-1-2" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Activity 1<a href="correlation.html#activity-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the <code>Lab7_correlation</code> file, use the <code>nilt</code> data object to visualize the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you observe from the result as text (outside the code chunks).</p>
+<ul>
+<li>Create a scatter plot to visualize the correlation between the respondent’s overall opinion in relation to migration <code>mig_per</code> and the respondent’s age <code>rage</code>. Remember that we just created the <code>mig_per</code> variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person’s perception is). In <code>aes()</code>, specify <code>rage</code> on the X axis and <code>mig_per</code> on the Y axis. Use <code>ggplot()</code> function and <code>geom_point()</code>. Also, include a straight line describing the points using the <code>geom_smooth()</code> function. Within this function set the <code>method</code> argument to <code>'lm'</code>.</li>
+<li>What type of relationship do you observe? Comment as text in the Rmd the overall result of the plot and whether this is in line with your previous expectation.</li>
+</ul>
+<div id="numeric-vs-categorical" class="section level4 hasAnchor" number="7.1.3.1">
+<h4><span class="header-section-number">7.1.3.1</span> Numeric vs categorical<a href="correlation.html#numeric-vs-categorical" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As briefly introduced in the last lab, correlations often occur between categorical and numeric data. A good way to observe the relationship between these type of variables is using a box plot. Which essentially shows the distribution of the numeric values by category/group.</p>
+<p>Let’s say we are interested in the relationship between education level and perception of migration. The variable <code>highqual</code> contains the respondent’s highest education qualification. Using <code>ggplot()</code>, we can situate <code>mig_per</code> on the X axis and <code>highqual</code> on the Y axis, and plot it with the <code>gem_boxplot()</code> function. Note that before passing the dataset to <code>ggplot</code>, we can filter out two categories of the variable <code>highqual</code> where education level is unknown (i.e. “Other, level unknown” or “Unclassified”).</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="correlation.html#cb67-1" tabindex="-1"></a>nilt <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="correlation.html#cb67-2" tabindex="-1"></a>  <span class="fu">filter</span>(highqual <span class="sc">!=</span> <span class="st">&quot;Other, level unknown&quot;</span> <span class="sc">&amp;</span> highqual <span class="sc">!=</span> <span class="st">&quot;Unclassified&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="correlation.html#cb67-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mig_per, <span class="at">y =</span> highqual )) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="correlation.html#cb67-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-79-1.png" width="100%" style="display: block; margin: auto auto auto 0;" />
+From the plot above, we see that respondents with higher education level (on the bottom) appear to have more positive opinion on migration when compared to respondents with lower education level or no qualifications (on the top). Overall, the data shows a pattern that the lower one’s education level is, the worse their opinion towards migration is likely to be. Since education level is an ordinal variable, we can say this is a positive relationship.</p>
+</div>
+</div>
+<div id="activity-2-2" class="section level3 hasAnchor" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> Activity 2<a href="correlation.html#activity-2-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using the <code>nilt</code> data object, visualize the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you can observe from the results as text in the Rmd file to introduce the plot.</p>
+<ul>
+<li>Create a boxplot to visualize the correlation between the respondent’s overall opinion in relation to migration <code>mig_per</code> and the political party which the respondent identify with <code>uninatid</code>. Use <code>ggplot()</code> in combination with <code>geom_boxplot()</code>. Make sure to specify <code>mig_per</code> on the Y axis and <code>uninatid</code> on the X axis in <code>aes()</code>.</li>
+<li>Do you think the opinion towards migration differs among the groups in the plot? Comment on the overall results in the Rmd document.</li>
+</ul>
+</div>
+</div>
+<div id="measuring-correlation" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Measuring correlation<a href="correlation.html#measuring-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far we have examined correlation by visualizing variables only. A useful practice in quantitative research is to actually measure the magnitude of the relationship between these variables. One common measure is the <em>Pearson</em> correlation coefficient. This measure results in a number that goes from -1 to 1. A coefficient below 0 implies a negative correlation whereas a coefficient over 0 a positive one. When the coefficient is close to positive one (1) or negative one (-1), it implies that the relationship is strong. By contrast, coefficients close to 0 indicate a weak relationship. This technique is appropriate to measure linear numeric relationships, which is when we have numeric variables with a normal distribution, e.g. age in our dataset.</p>
+<p>Let’s start measuring the relationship between the respondent’s age and their partner’s age. To do this in R, we should use the <code>cor()</code> function. In the R syntax, first we specify the variables separated by a comma. We need to be explicit by specifying the object name, the dollar sign, and the name of the variable, as shown below. Also, I set the <code>use</code> argument as <code>'pairwise.complete.obs'</code>. This is because one or both of the variables contain more than one missing value. Therefore, we are telling R to use complete observations only.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="correlation.html#cb68-1" tabindex="-1"></a><span class="fu">cor</span>(nilt<span class="sc">$</span>rage, nilt<span class="sc">$</span>spage, <span class="at">use =</span> <span class="st">&#39;pairwise.complete.obs&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.9481297</code></pre>
+<p>The correlation coefficient between this variables is 0.95. This is close to positive 1. Therefore, it is a strong positive correlation. The result is completely in line with the plot above, since we saw how the dots were close to the straight line.</p>
+<p>What about the relationship between <code>age</code> and <code>mig_per</code> that you plotted earlier?</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="correlation.html#cb70-1" tabindex="-1"></a><span class="fu">cor</span>(nilt<span class="sc">$</span>rage, nilt<span class="sc">$</span>mig_per, <span class="at">use =</span> <span class="st">&#39;pairwise.complete.obs&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] -0.05680918</code></pre>
+<p>The coefficient is very close to 0, which means that the correlation is practically non-existent. The absence of correlation is also interesting in research. For instance, one might expect that younger people would be more open to migration. However, it seems that age does not play a role on people’s opinion about migration in NI according to this data.</p>
+<p>Let’s say that we are interested in the correlation between <code>mig_per</code> and all other numeric variables in the dataset. Instead of continuing computing the correlation one by one, we can run a correlation matrix. The code syntax can be read as follows: from the <code>nilt</code> data select these variables, then compute the correlation coefficient using complete cases, and then round the result to 3 decimals.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="correlation.html#cb72-1" tabindex="-1"></a>nilt <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="correlation.html#cb72-2" tabindex="-1"></a>  <span class="fu">select</span>(mig_per, rage, spage, rhourswk, persinc2) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="correlation.html#cb72-3" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">&#39;pairwise.complete.obs&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-4"><a href="correlation.html#cb72-4" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##          mig_per   rage  spage rhourswk persinc2
+## mig_per    1.000 -0.057 -0.132    0.082    0.228
+## rage      -0.057  1.000  0.948   -0.013   -0.036
+## spage     -0.132  0.948  1.000   -0.182   -0.090
+## rhourswk   0.082 -0.013 -0.182    1.000    0.383
+## persinc2   0.228 -0.036 -0.090    0.383    1.000</code></pre>
+<p>From the result above, we have a correlation matrix that computes the <em>Person</em> correlation coefficient for the selected variables. In the first row we have migration perception. You will notice that the first value is 1.00, this is because it is measuring the correlation against the same variable (i.e. itself). The next value in the first row is age, which is nearly 0. The next variables also result in low coefficients, with the exception of the personal income, where we see a moderate/low positive correlation. This can be interpreted that respondents with high income are associated with more positive opinion towards migration compared to low-income respondents.</p>
+<div id="activity-3-1" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Activity 3<a href="correlation.html#activity-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Insert a new chunk in your Rmd file;</li>
+<li>Using the <code>nilt</code> data object, compute a correlation matrix using the following variables: <code>rage</code>, <code>persinc2</code>, <code>mil10yrs</code>, <code>miecono</code> and <code>micultur</code>, setting the <code>use</code> argument to <code>'pairwise.complete.obs'</code> and rounding the result to 3 decimals;</li>
+<li>Run the chunk individually and comment whether personal income or age is correlated with the perception of migrants in relation to the specific aspects asked in the variables measured (consult the documentation in p. 14 to get a description of these variables);</li>
+<li>Knit the <code>Lab7_correlation</code> Rmd document to <code>.html</code> or <code>.pdf</code>. The output document will automatically be saved in your project.</li>
+<li>Discuss your previous results with your neighbour or tutor.</li>
+</ul>
+<!-- ## Critical Appraisal: Practice -->
+<!-- As a little exercise to prepare you for your first summative assessment of this course, we are going to spare 10 minutes in the lab session this week to talk about the **Critical Appraisal**. You're not required to use R at all for this assessment, unlike the research report, but some of the skills you've been learning in interpreting and designing quantitative analysis will be very useful. -->
+<!-- ### What is a critical appraisal?  -->
+<!-- The critical appraisal is designed to provide you with an opportunity to critically review the overall appropriateness of the research design underpinning a piece of social science research.  -->
+<!-- This will involve assessing the **strengths** and **weaknesses** of the particular methodological approach adopted in the research and commenting on its suitability to address the research questions. -->
+<!-- ### What do you have to do?  -->
+<!-- You have to submit a 1,000-word critical appraisal of a research article from an academic journal (uploaded on Moodle). You will be provided with a choice of articles to appraise, which will be posted on the course Moodle site and further discussed in one of the lecture Moodle books.  -->
+<!-- #### What should you focus it on?  -->
+<!-- Your appraisal should be specifically __methodological__ in focus.  Here are few guiding questions to help you write and focus on reviewing: -->
+<!-- * The research questions the author(s) set out to address. Are they concrete and appropriate?  -->
+<!-- * The combination of methods being employed. Are they appropriate and fully justified? -->
+<!-- * To what extent are the methods chosen suitable to answer the research questions? Are they coherent and well-aligned?  -->
+<!-- * Did the authors describe their methods fully? What are some gaps you identified?  -->
+<!-- * What the data and evidence is. How were they collected/recorded/retrieved, analysed and interpreted?  -->
+<!-- * The methodological and epistemological strengths/weaknesses of the research design. What ontological and epistemological assumptions are made by the author[s]? -->
+<!-- * Ethical and/or political issues concerning the research. Are they apparent and being addressed by the author[s]? -->
+<!-- ### Activity  -->
+<!-- We are going to run a little mock critical appraisal during your lab session this week. It will be a bit more like a "traditional" tutorial, which means you will have a discussion with other students and tutors based on a reading. You should have been asked and read the Pattaro et al. (2020) article this week, particularly its methods section. -->
+<!-- Based on this article, discuss the following point-by-point. n.b. There's no right or wrong answer here, so just share what you think or what your first impression was about this article. The main thing is get the conversation going, and help each other to appreciate and critique the strengths and weaknesses of this article. Remember, you can be critical by saying why the article is good in its approach e.g. in justifying its research question, as well as any weakness you may have identified.  -->
+<!-- **General points to discuss:** -->
+<!-- * Was there anything that striked you as particularly well argued by the authors in this article?  -->
+<!-- * Are there any other issues and confusions you spotted when you read the article?  -->
+<!-- **More specific aspects to discuss and review:** -->
+<!-- * Are the research questions set out by the authors concrete and appropriate? How well are the research questions linked to a gap in the literature they have identified?  -->
+<!-- * How well have the authors demonstrated an awareness of problems and shortcomings of the data and methods of analysis? What are the opportunities and limitations of secondary data analysis identified by the author? -->
+<!-- * How well was the methodological approach articulated by the authors? Are there any gaps in their discussion that you wish you could hear more on? (e.g. research design, ethics, or ontology/epistemology) -->
+<!-- * How reflexive (i.e. reflecting on their own position and assumptions as researchers) are the authors in their comments on the research methods? Was the ethical stance and weaknesses of the authors' approach well discussed? -->
+<!-- * To what extent was the method of data collection, analysis, and interpretation well-defined?  -->
+<!-- Well, that's how you do a critical appraisal. Just imagine you are the a reviwer/marker of this article, what comments and suggestions would you give to the authors or to other students if they were to study this article?  -->
+<!-- Take a few minutes to de-brief how you feel about writing your own critical appraisal too. Ask any questions you have to your tutor in the session, or post them on Teams in your lab group channel.  -->
+<!-- More details about how to address the assessment is available in the course handbook and will be uplaoded to Moodle.  -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visual-exploratory-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simple-lm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-Lab7.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["lab-workbook.pdf", "lab-workbook.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lab 6 Visual exploratory analysis | UG Quantitative Methods in the Social Sciences lab workbook</title>
+  <meta name="description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lab 6 Visual exploratory analysis | UG Quantitative Methods in the Social Sciences lab workbook" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lab 6 Visual exploratory analysis | UG Quantitative Methods in the Social Sciences lab workbook" />
+  
+  <meta name="twitter:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  
+
+<meta name="author" content="by J Rafael Verudzco Torres and Mark Wong" />
+
+
+<meta name="date" content="2024-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="reporting-in-r-markdown.html"/>
+<link rel="next" href="correlation.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UG Quantitative Methods in the Social Sciences: Workbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="lab-intro.html"><a href="lab-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lab-intro.html"><a href="lab-intro.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="lab-intro.html"><a href="lab-intro.html#r-a-flexible-tool"><i class="fa fa-check"></i><b>1.1.1</b> R: a flexible tool</a></li>
+<li class="chapter" data-level="1.1.2" data-path="lab-intro.html"><a href="lab-intro.html#advantages-of-using-r"><i class="fa fa-check"></i><b>1.1.2</b> Advantages of using R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="lab-intro.html"><a href="lab-intro.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="lab-intro.html"><a href="lab-intro.html#setting-up-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Setting up RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lab-intro.html"><a href="lab-intro.html#rstudio-environment"><i class="fa fa-check"></i><b>1.2.2</b> RStudio environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lab-intro.html"><a href="lab-intro.html#hands-on-r"><i class="fa fa-check"></i><b>1.3</b> Hands on R</a></li>
+<li class="chapter" data-level="1.4" data-path="lab-intro.html"><a href="lab-intro.html#activity"><i class="fa fa-check"></i><b>1.4</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab2.html"><a href="lab2.html"><i class="fa fa-check"></i><b>2</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab2.html"><a href="lab2.html#welcome-back"><i class="fa fa-check"></i><b>2.1</b> Welcome back!</a></li>
+<li class="chapter" data-level="2.2" data-path="lab2.html"><a href="lab2.html#learn-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lab2.html"><a href="lab2.html#installing-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lab2.html"><a href="lab2.html#activity-1"><i class="fa fa-check"></i><b>2.2.2</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lab2.html"><a href="lab2.html#types-of-variables"><i class="fa fa-check"></i><b>2.3</b> Types of variables</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="lab2.html"><a href="lab2.html#activity-2"><i class="fa fa-check"></i><b>2.3.1</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lab2.html"><a href="lab2.html#more-operators-and-some-essential-symbols"><i class="fa fa-check"></i><b>2.4</b> More operators and some essential symbols</a></li>
+<li class="chapter" data-level="2.5" data-path="lab2.html"><a href="lab2.html#black-lives-matter"><i class="fa fa-check"></i><b>2.5</b> Black lives matter!</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="lab2.html"><a href="lab2.html#downloading-and-reading-the-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading and reading the data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="lab2.html"><a href="lab2.html#examining-the-data"><i class="fa fa-check"></i><b>2.5.2</b> Examining the data</a></li>
+<li class="chapter" data-level="2.5.3" data-path="lab2.html"><a href="lab2.html#data-wrangling"><i class="fa fa-check"></i><b>2.5.3</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="lab2.html"><a href="lab2.html#activity-3"><i class="fa fa-check"></i><b>2.6</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html"><i class="fa fa-check"></i><b>3</b> Data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#importing-and-data-wrangling"><i class="fa fa-check"></i><b>3.1</b> Importing and data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#downloading-and-reading-the-data-1"><i class="fa fa-check"></i><b>3.1.1</b> Downloading and reading the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#data-wrangling-2"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#read-the-clean-dataset"><i class="fa fa-check"></i><b>3.3</b> Read the clean dataset</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-4"><i class="fa fa-check"></i><b>3.3.1</b> Activity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exploratory-analysis"><i class="fa fa-check"></i><b>4.2</b> Exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#data-overview"><i class="fa fa-check"></i><b>4.2.1</b> Data overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-data"><i class="fa fa-check"></i><b>4.2.2</b> Categorical data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-1-1"><i class="fa fa-check"></i><b>4.2.3</b> Activity 1</a></li>
+<li class="chapter" data-level="4.2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#continuous-numeric-data"><i class="fa fa-check"></i><b>4.2.4</b> Continuous (numeric) data</a></li>
+<li class="chapter" data-level="4.2.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#putting-it-all-together"><i class="fa fa-check"></i><b>4.2.5</b> Putting it all together</a></li>
+<li class="chapter" data-level="4.2.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-2-1"><i class="fa fa-check"></i><b>4.2.6</b> Activity 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html"><i class="fa fa-check"></i><b>5</b> Reporting in R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>5.2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#first-r-markdown-document"><i class="fa fa-check"></i><b>5.2.1</b> First R Markdown document</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#activity-5"><i class="fa fa-check"></i><b>5.3</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html"><i class="fa fa-check"></i><b>6</b> Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#data-visualization"><i class="fa fa-check"></i><b>6.2</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#prepare-the-rmd-document-and-data"><i class="fa fa-check"></i><b>6.2.1</b> Prepare the Rmd document and data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#cateogrical-variables"><i class="fa fa-check"></i><b>6.3</b> Cateogrical variables</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-categorical-vs-categorical"><i class="fa fa-check"></i><b>6.3.1</b> Bivariate categorical vs categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#numeric-variables"><i class="fa fa-check"></i><b>6.4</b> Numeric variables</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#univariate-numeric"><i class="fa fa-check"></i><b>6.4.1</b> Univariate numeric</a></li>
+<li class="chapter" data-level="6.4.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-numeric"><i class="fa fa-check"></i><b>6.4.2</b> Bivariate numeric</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#mixed-data"><i class="fa fa-check"></i><b>6.5</b> Mixed data</a></li>
+<li class="chapter" data-level="6.6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#activity-6"><i class="fa fa-check"></i><b>6.6</b> Activity</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#r-cheatsheets"><i class="fa fa-check"></i><b>6.6.1</b> R Cheatsheets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>7</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="correlation.html"><a href="correlation.html#what-is-correlation"><i class="fa fa-check"></i><b>7.1</b> What is correlation?</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="correlation.html"><a href="correlation.html#data-and-r-environment"><i class="fa fa-check"></i><b>7.1.1</b> Data and R environment</a></li>
+<li class="chapter" data-level="7.1.2" data-path="correlation.html"><a href="correlation.html#visualizing-correlation"><i class="fa fa-check"></i><b>7.1.2</b> Visualizing correlation</a></li>
+<li class="chapter" data-level="7.1.3" data-path="correlation.html"><a href="correlation.html#activity-1-2"><i class="fa fa-check"></i><b>7.1.3</b> Activity 1</a></li>
+<li class="chapter" data-level="7.1.4" data-path="correlation.html"><a href="correlation.html#activity-2-2"><i class="fa fa-check"></i><b>7.1.4</b> Activity 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="correlation.html"><a href="correlation.html#measuring-correlation"><i class="fa fa-check"></i><b>7.2</b> Measuring correlation</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="correlation.html"><a href="correlation.html#activity-3-1"><i class="fa fa-check"></i><b>7.2.1</b> Activity 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="simple-lm.html"><a href="simple-lm.html"><i class="fa fa-check"></i><b>8</b> Linear model: Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="simple-lm.html"><a href="simple-lm.html#welcome"><i class="fa fa-check"></i><b>8.1</b> Welcome</a></li>
+<li class="chapter" data-level="8.2" data-path="simple-lm.html"><a href="simple-lm.html#introduction-to-simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Introduction to simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="simple-lm.html"><a href="simple-lm.html#the-idea-behind"><i class="fa fa-check"></i><b>8.2.1</b> The idea behind</a></li>
+<li class="chapter" data-level="8.2.2" data-path="simple-lm.html"><a href="simple-lm.html#formal-specification"><i class="fa fa-check"></i><b>8.2.2</b> Formal specification</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="simple-lm.html"><a href="simple-lm.html#fitting-linear-regression-in-r"><i class="fa fa-check"></i><b>8.3</b> Fitting linear regression in R</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="simple-lm.html"><a href="simple-lm.html#r-syntax"><i class="fa fa-check"></i><b>8.3.1</b> R syntax</a></li>
+<li class="chapter" data-level="8.3.2" data-path="simple-lm.html"><a href="simple-lm.html#running-a-simple-linear-regression"><i class="fa fa-check"></i><b>8.3.2</b> Running a simple linear regression</a></li>
+<li class="chapter" data-level="8.3.3" data-path="simple-lm.html"><a href="simple-lm.html#interpreting-results"><i class="fa fa-check"></i><b>8.3.3</b> Interpreting results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="simple-lm.html"><a href="simple-lm.html#model-evaluation"><i class="fa fa-check"></i><b>8.4</b> Model evaluation</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="simple-lm.html"><a href="simple-lm.html#model-summary"><i class="fa fa-check"></i><b>8.4.1</b> Model summary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="simple-lm.html"><a href="simple-lm.html#further-checks"><i class="fa fa-check"></i><b>8.4.2</b> Further checks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="simple-lm.html"><a href="simple-lm.html#lab-activities"><i class="fa fa-check"></i><b>8.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multi-lm.html"><a href="multi-lm.html"><i class="fa fa-check"></i><b>9</b> Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multi-lm.html"><a href="multi-lm.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model"><i class="fa fa-check"></i><b>9.2</b> Multivariate model</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="multi-lm.html"><a href="multi-lm.html#paralell-slopes"><i class="fa fa-check"></i><b>9.2.1</b> Paralell slopes</a></li>
+<li class="chapter" data-level="9.2.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model-specification"><i class="fa fa-check"></i><b>9.2.2</b> Multivariate model specification</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="multi-lm.html"><a href="multi-lm.html#r-syntax-for-the-multivariate-linear-model"><i class="fa fa-check"></i><b>9.3</b> R syntax for the multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="multi-lm.html"><a href="multi-lm.html#model-evaluation-1"><i class="fa fa-check"></i><b>9.3.1</b> Model evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="multi-lm.html"><a href="multi-lm.html#assumptions"><i class="fa fa-check"></i><b>9.4</b> Assumptions</a></li>
+<li class="chapter" data-level="9.5" data-path="multi-lm.html"><a href="multi-lm.html#lab-activities-1"><i class="fa fa-check"></i><b>9.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><i class="fa fa-check"></i><b>10</b> UG Quants summative assessment: Interpreting Quantitative Findings Report</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#create-your-research-report-template-from-github"><i class="fa fa-check"></i><b>10.2</b> Create your research report template from GitHub</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-cloud-version"><i class="fa fa-check"></i><b>10.2.1</b> RStudio Cloud version</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-desktop-version"><i class="fa fa-check"></i><b>10.2.2</b> RStudio Desktop version</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#about-the-research-report-template"><i class="fa fa-check"></i><b>10.3</b> About the research report template</a></li>
+<li class="chapter" data-level="10.4" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-1-3"><i class="fa fa-check"></i><b>10.4</b> Activity 1</a></li>
+<li class="chapter" data-level="10.5" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-2-3"><i class="fa fa-check"></i><b>10.5</b> Activity 2</a></li>
+<li class="chapter" data-level="10.6" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#conclusion"><i class="fa fa-check"></i><b>10.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i>Workbook suggested answers</a>
+<ul>
+<li class="chapter" data-level="10.7" data-path="answers.html"><a href="answers.html#introduction-4"><i class="fa fa-check"></i><b>10.7</b> Introduction</a></li>
+<li class="chapter" data-level="10.8" data-path="answers.html"><a href="answers.html#lab-3.-data-wrangling"><i class="fa fa-check"></i><b>10.8</b> Lab 3. Data wrangling</a></li>
+<li class="chapter" data-level="10.9" data-path="answers.html"><a href="answers.html#lab-4.-exploratory-data-analysis"><i class="fa fa-check"></i><b>10.9</b> Lab 4. Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="answers.html"><a href="answers.html#activity-1-4"><i class="fa fa-check"></i><b>10.9.1</b> Activity #1</a></li>
+<li class="chapter" data-level="10.9.2" data-path="answers.html"><a href="answers.html#activity-2-4"><i class="fa fa-check"></i><b>10.9.2</b> Activity #2</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="answers.html"><a href="answers.html#lab-6.-visual-exploratory-analysis"><i class="fa fa-check"></i><b>10.10</b> Lab 6. Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="answers.html"><a href="answers.html#excercices"><i class="fa fa-check"></i><b>10.10.1</b> Excercices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="answers.html"><a href="answers.html#lab-7.-correlation"><i class="fa fa-check"></i><b>10.11</b> Lab 7. Correlation</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="answers.html"><a href="answers.html#activity-1-5"><i class="fa fa-check"></i><b>10.11.1</b> Activity 1</a></li>
+</ul></li>
+<li class="chapter" data-level="10.12" data-path="answers.html"><a href="answers.html#lab-8.-linear-model.-simple-linear-regression"><i class="fa fa-check"></i><b>10.12</b> Lab 8. Linear model. Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="10.12.1" data-path="answers.html"><a href="answers.html#lab-activities-2"><i class="fa fa-check"></i><b>10.12.1</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10.13" data-path="answers.html"><a href="answers.html#lab-9.-multivariate-linear-model"><i class="fa fa-check"></i><b>10.13</b> Lab 9. Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="10.13.1" data-path="answers.html"><a href="answers.html#lab-activities-3"><i class="fa fa-check"></i><b>10.13.1</b> Lab activities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UG Quantitative Methods in the Social Sciences lab workbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visual-exploratory-analysis" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Lab 6</span> Visual exploratory analysis<a href="visual-exploratory-analysis.html#visual-exploratory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction<a href="visual-exploratory-analysis.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this lab, we will extend your skills to explore data by visualizing it…and <code>R</code> is great for this! It is actually a highly-demanded skill in the job market.</p>
+<p>Visualizing data is an important process in at least two stages in quantitative research: First, for your as a researcher to get familiar with the data; and second, to communicate your findings. <code>R</code> includes two important tools to achieve this: First, the <code>ggplot2</code> package (included in <code>tidyverse</code>), a powerful tool to explore and plot data. Second, <a href="https://rmarkdown.rstudio.com/">R Markdown</a> which allows you to create integrated quantitative reports. Combining and mastering the two can create very effective results.</p>
+</div>
+<div id="data-visualization" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Data visualization<a href="visual-exploratory-analysis.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+Visual data exploration with <code>ggplot2</code> (Artwork by @alison_horst).
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<img src="images/lab4_ggplot2_exploratory.jpg" alt="Visual data exploration. Source: @Horst" width="100%" />
+<p class="caption">
+Figure 6.1: Visual data exploration. Source: <span class="citation">Horst (<a href="#ref-Horst">n.d.</a>)</span>
+</p>
+</div>
+<!-- Visualizations are important for any quantitative analysis. These are helpful to identify overall trends, problems, or extreme values in your data at an initial stage. Additionally, visualizations are key to communicate your results at the final stage of the research process. These two stages are known as _exploratory_ and _explanatory_ visualizations, respectively. R includes some functionalities to create basic plots. These are often used to generate quick exploratory visualizations. In addition, `ggplot2`, which is one of the most popular data visualization tools for R, allows you to extend the base R capabilities and create publishable-quality plots. In this lab we will focus on `ggplot2`. -->
+<p>Different plot types serve different types of data. In the last lab, we introduced some functions to summarise your data and to generate summaries for specific types of variable. This will help you to decide what the most suitable plot is for your data or variable. The table below presents a minimal guide to choose the type of plot as a function of the type of data you intend to visualize. In addition, it splits the type of plot by the number of variables included in the visualization, one for <em>univariate</em>, or two for <em>bivariate</em>. Bivariate plots are useful to explore the relationship between variables.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Univariate</strong></th>
+<th><strong>Bivariate</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Categorical</strong></td>
+<td>Bar plot / Pie chart</td>
+<td>Bar plot</td>
+</tr>
+<tr class="even">
+<td><strong>Numeric</strong></td>
+<td>Histogram / boxplot</td>
+<td>Scatter plot</td>
+</tr>
+<tr class="odd">
+<td><strong>Categorical</strong> + <strong>Numeric</strong></td>
+<td>-</td>
+<td>Box plot</td>
+</tr>
+</tbody>
+</table>
+<!-- Note that it is possible to include more than two variables in one plot. Perhaps more than 3 would add complexity and can make the plot difficult to interpret. In the next section we will talk in more detail about these plots using the 2012 NILT survey. -->
+<div id="prepare-the-rmd-document-and-data" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Prepare the Rmd document and data<a href="visual-exploratory-analysis.html#prepare-the-rmd-document-and-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As we did in the last session, let’s learn by doing. We will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">RStudio Cloud</a>. Set up your session as follow:</p>
+<ol style="list-style-type: decimal">
+<li>Go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a> (log in if necessary);</li>
+<li>Open your own copy of the ‘NILT’ project from the ‘Quants lab group’;</li>
+</ol>
+<p>Next, create a new Rmd document following the next steps.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new Rmd file titled ‘Lab 6. Data visualization’, and write your name in the ‘Author’ space.</li>
+<li>Save the Rmd file clicking on <code>File&gt;Save as...</code>, using <code>Lab_6</code> in the ‘File name’ box, and click on the ‘Save’ button.</li>
+<li>Delete all the contents in the default example with the exception of the first bit which contains the YALM and the first code chunk (that is keeping from line 1 to 10 and deleting everything from line 11).</li>
+<li>In the setup chunk (line 8), change <code>echo</code> from <code>TRUE</code> to <code>FALSE</code> (this will hide the code for all chunks in the output).</li>
+</ol>
+<p>Once your Rmd document is ready, insert a new <code>R</code> code chunk. To do this, click on the ‘Insert’ button on pane 1, and then click on ‘R’. This will insert an R code chunk as the ones we explored in ‘Test1’.</p>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
+<img src="images/Lab4_chunk.png" alt="Insert a code chunk." width="100%" />
+<p class="caption">
+Figure 6.2: Insert a code chunk.
+</p>
+</div>
+<p>In the body of the first chunk, load the packages that you will need. For now, it will be only <code>tidyverse</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="visual-exploratory-analysis.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>After the previous, insert a second chunk. In the body of the code copy and paste the lines below. This is to load the data we downloaded and formatted in the last lab in R format using the <code>readRDS()</code> function (note that we are reading the <code>.rds</code> file and not the original <code>.sav</code> file). Also, we will create a subset called <code>nilt_subset</code> selecting only the variables that we are interested in for now, as we did in the previous lab.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="visual-exploratory-analysis.html#cb52-1" tabindex="-1"></a><span class="co"># Load the data from the .rds file we created in the last lab</span></span>
+<span id="cb52-2"><a href="visual-exploratory-analysis.html#cb52-2" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/nilt_r_object.rds&quot;</span>)</span>
+<span id="cb52-3"><a href="visual-exploratory-analysis.html#cb52-3" tabindex="-1"></a><span class="co">#Create subset</span></span>
+<span id="cb52-4"><a href="visual-exploratory-analysis.html#cb52-4" tabindex="-1"></a>nilt_subset <span class="ot">&lt;-</span> <span class="fu">select</span>(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)</span></code></pre></div>
+<p>Run both of the previous chunks individually by clicking on the green arrow located on the top-right of the chunk, as described earlier.</p>
+<!-- Please notice that that we are able to load the NILT survey and we do not have to coerce it again into the correct type because we downloaded and saved the formatted data set in an `.rds` file before. Therefore, the data is stored in your R Studio Cloud project. Also, we did not need to install `tidyverse`, since we also did this in the past lab and we are working in the same project. Remember that if you create a new RStudio Cloud project, you will have to install the packages again. -->
+<p>Now that we read the data in, we are ready to start creating our own own plots using the 2012 NILT survey.</p>
+<p>You do not need to reproduce each of the examples in the following section, but we suggest you to carefully read the description and try to understand the code syntax.</p>
+</div>
+</div>
+<div id="cateogrical-variables" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Cateogrical variables<a href="visual-exploratory-analysis.html#cateogrical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s start using the same variables we summarised in our last lab. We started by computing the total number of respondents by gender in a One-Way contingency table. We can easily visualize this using a bar plot with <code>ggplot</code>. This package always takes at least three layers, namely <em><strong>data</strong></em>, <em><strong>aesthetics</strong></em> and <em><strong>geometry</strong></em>. Here, we define the <em>data</em> as the first argument of the <code>ggplot()</code>function with the <code>nilt_subset</code>. The second argument, <em>aesthetics</em>, is separated by a comma and is introduced using the function <code>aes()</code>. In this case we define the X axis <code>x =</code> of the plot by the categories included in the variable <code>rsex</code>. The geometry is specified with the function <code>geom_bar()</code> without arguments for now. Note that we added the geometry using the plus sign <code>+</code> at the end of the previous line code. As an extra, I included the main title and the name of the x axis using the <code>labs()</code> function (you don’t need to copy or run the following code chunks in your .Rmd. This is only for demonstration purposes).</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="visual-exploratory-analysis.html#cb53-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">x =</span> rsex)) <span class="sc">+</span></span>
+<span id="cb53-2"><a href="visual-exploratory-analysis.html#cb53-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb53-3"><a href="visual-exploratory-analysis.html#cb53-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Gender&#39;</span>, <span class="at">x =</span> <span class="st">&#39;Gender of respondent&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-65-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>From the plot above, we can graphically see what we found out previously: there are more female respondents than males in our sample. The advantage is that we can have a sense of the magnitude of the difference by visualising it.</p>
+<div id="bivariate-categorical-vs-categorical" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Bivariate categorical vs categorical<a href="visual-exploratory-analysis.html#bivariate-categorical-vs-categorical" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Lab 3, we computed a Two-Way contingency table, which included the count of two categorical variables. This summary can be visualized using a stacked bar plot. This is quite similar to the above, with the addition that the area of the vertical plot is coloured by the size of each group.</p>
+<p>If we wanted to know how gender is split by religion, we can add the <code>fill</code> argument with a second variable in aesthetics, as shown below.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="visual-exploratory-analysis.html#cb54-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">x =</span> rsex, <span class="at">fill =</span> religcat)) <span class="sc">+</span></span>
+<span id="cb54-2"><a href="visual-exploratory-analysis.html#cb54-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb54-3"><a href="visual-exploratory-analysis.html#cb54-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Gender by religion&#39;</span>, <span class="at">x =</span> <span class="st">&#39;Gender of respondent&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-66-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents’ sex. A plot can show us the magnitudes and composition by respondents’ sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable <code>religcat</code> on the <code>x</code> axis and <code>fill</code> with gender <code>rsex</code>.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="visual-exploratory-analysis.html#cb55-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">x =</span> religcat, <span class="at">fill =</span> rsex)) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="visual-exploratory-analysis.html#cb55-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb55-3"><a href="visual-exploratory-analysis.html#cb55-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Religion by gender&#39;</span>, <span class="at">x =</span> <span class="st">&#39;Religion&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-67-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>As we can see, catholic and protestant religion are equally popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in the last lab. However, we have the advantage that we can graphically reprsent and inspect the magnitude of these differences.</p>
+</div>
+</div>
+<div id="numeric-variables" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Numeric variables<a href="visual-exploratory-analysis.html#numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="univariate-numeric" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Univariate numeric<a href="visual-exploratory-analysis.html#univariate-numeric" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Last time we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot, the difference is that it splits the numeric range in fix “bins” and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. At this time, we set the the <code>x</code> aesthetic with the numeric variable age <code>rage</code>. Also, the geometry is defined as a histogram, using the <code>geom_histogram()</code> function.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="visual-exploratory-analysis.html#cb56-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">x =</span> rage)) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="visual-exploratory-analysis.html#cb56-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb56-3"><a href="visual-exploratory-analysis.html#cb56-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Age distribution&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-68-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent’s age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group.</p>
+<p>A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this time, <code>rage</code> is defined in the <code>y</code> axis. This is just a personal preference. The geometry is set by the <code>geom_boxplot()</code> function.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="visual-exploratory-analysis.html#cb57-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">y =</span> rage)) <span class="sc">+</span></span>
+<span id="cb57-2"><a href="visual-exploratory-analysis.html#cb57-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb57-3"><a href="visual-exploratory-analysis.html#cb57-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Age boxplot&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-69-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the <code>quantile()</code> function. The lower edge of the box represents the 2nd quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="visual-exploratory-analysis.html#cb58-1" tabindex="-1"></a><span class="fu">quantile</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>##   0%  25%  50%  75% 100% 
+##   18   35   48   64   97</code></pre>
+</div>
+<div id="bivariate-numeric" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Bivariate numeric<a href="visual-exploratory-analysis.html#bivariate-numeric" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A useful plot to explore the relationship between two numeric variables is the scatter plot. This plot locates a dot for each observation according to to their respective numeric values. In the example below, we use age <code>rage</code> on the X axis (horizontal), and personal income <code>persinc2</code> on the Y axis (vertical). This type of plot is useful to explore a relationship between variables.</p>
+<!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
+<p>To generate a scatter plot, we need to define <code>x</code> and <code>y</code> in aesthetics <code>aes()</code>. The geometry is a point, expressed by <code>geom_point()</code>. Note that we are specifying some further optional arguments. First, in <code>aes()</code> <code>alpha</code> regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in <code>geom_point()</code> we defined <code>position</code> as <code>jitter</code>. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands are overlapped. Adding some transparency and <em>noise</em> to their position, can allow to visualize possible patterns easily.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="visual-exploratory-analysis.html#cb60-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> persinc2, <span class="at">alpha =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="visual-exploratory-analysis.html#cb60-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>) <span class="sc">+</span></span>
+<span id="cb60-3"><a href="visual-exploratory-analysis.html#cb60-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Personal income vs age&#39;</span>, <span class="at">x =</span> <span class="st">&#39;Age&#39;</span>, <span class="at">y =</span> <span class="st">&#39;Personal income (£)&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-71-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>There is not a clear pattern in our previous plot. However, it is interesting to note that most of the people younger than 25 years old earn less than £20K a year. Similarly, most of the people older than 75 earn less than £20K. And only very few earn over £60k a year (looking at the top of the plot).</p>
+</div>
+</div>
+<div id="mixed-data" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Mixed data<a href="visual-exploratory-analysis.html#mixed-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Very often we want to summarise central or spread measure by categories or groups. For example, let’s go back to the example of age and respondents’ sex. We can visualize these two variables (which include one numeric and one categorical) using a box plot. To create this, we need to specify the <code>x</code> and <code>y</code> value in <code>aes()</code> and include the <code>geom_boxplot()</code> geometry.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="visual-exploratory-analysis.html#cb61-1" tabindex="-1"></a><span class="fu">ggplot</span>(nilt_subset, <span class="fu">aes</span>(<span class="at">y =</span> rage, <span class="at">x=</span> rsex)) <span class="sc">+</span></span>
+<span id="cb61-2"><a href="visual-exploratory-analysis.html#cb61-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb61-3"><a href="visual-exploratory-analysis.html#cb61-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Age by sex&#39;</span>)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-72-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>From this, we can visualize that female participants are slightly younger than their male counterparts in the sample.</p>
+</div>
+<div id="activity-6" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Activity<a href="visual-exploratory-analysis.html#activity-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the <code>nilt_subset</code> object, complete the tasks below in the Rmd file <code>Lab_6</code>, which you created earlier. Insert a new code chunk for each of these activities and include brief comments as text (outside the chunk) in the Rmd document to introduce or describe the plots. Feel free to copy and adapt the code to create the plots in the examples above.</p>
+<ul>
+<li>Create a first-level header to start a section called “Categorical analysis”;</li>
+<li>Create simple bar plot using the <code>geom_bar()</code> geometry to visualize the political affiliation reported by the respondents using the variable <code>uninatid</code>;</li>
+<li>Based on the plot above, create a ‘stacked bar plot’ to visualize the political affiliation by religion, using the <code>uninatid</code> and <code>religcat</code> variables;</li>
+<li>Create a new first-level header to start a section called “Numeric analysis”;</li>
+<li>Create a scatter plot about the relationship between personal income <code>persinc2</code> on the Y axis and number of hours worked a week <code>rhourswk</code> on the X axis;</li>
+<li>Finally, create a box plot to visualize personal income <code>persinc2</code> on the Y axis and self-reported level of happiness <code>ruhappy</code> on the x axis… Interesting result, Isn’t it? Talk to your lab group-mates and tutors about your results on Zoom (live) or your Lab Group on Teams (online anytime);</li>
+<li>Add your own (brief) comments to each of the plots as text in your Rmd file;</li>
+<li>Knit the .Rmd document as HTML or PDF. The knitted file will be saved automatically in your project. You can come back to the Rmd file to make changes if needed and knit it again as many times as you wish.</li>
+</ul>
+<div id="r-cheatsheets" class="section level3 hasAnchor" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> R Cheatsheets<a href="visual-exploratory-analysis.html#r-cheatsheets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don’t have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">Data Visualization with ggplot2 Cheat Sheet</a>. An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. Another interesting site is the <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a>, which includes a comprehensive showcase of plot types and their respective code.</p>
+
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Horst" class="csl-entry">
+Horst, Alison. n.d. <span>“<span>GitHub</span> - Allisonhorst/Stats-Illustrations: <span>R</span> &amp; Stats Illustrations by @Allison_horst.”</span> Accessed July 11, 2022. <a href="https://github.com/allisonhorst/stats-illustrations">https://github.com/allisonhorst/stats-illustrations</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="reporting-in-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-Lab6.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["lab-workbook.pdf", "lab-workbook.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

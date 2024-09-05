@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lab 4 Exploratory data analysis | UG Quantitative Methods in the Social Sciences lab workbook</title>
+  <meta name="description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lab 4 Exploratory data analysis | UG Quantitative Methods in the Social Sciences lab workbook" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lab 4 Exploratory data analysis | UG Quantitative Methods in the Social Sciences lab workbook" />
+  
+  <meta name="twitter:description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
+  
+
+<meta name="author" content="by J Rafael Verudzco Torres and Mark Wong" />
+
+
+<meta name="date" content="2024-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-wrangling-1.html"/>
+<link rel="next" href="reporting-in-r-markdown.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UG Quantitative Methods in the Social Sciences: Workbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="lab-intro.html"><a href="lab-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lab-intro.html"><a href="lab-intro.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="lab-intro.html"><a href="lab-intro.html#r-a-flexible-tool"><i class="fa fa-check"></i><b>1.1.1</b> R: a flexible tool</a></li>
+<li class="chapter" data-level="1.1.2" data-path="lab-intro.html"><a href="lab-intro.html#advantages-of-using-r"><i class="fa fa-check"></i><b>1.1.2</b> Advantages of using R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="lab-intro.html"><a href="lab-intro.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="lab-intro.html"><a href="lab-intro.html#setting-up-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Setting up RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lab-intro.html"><a href="lab-intro.html#rstudio-environment"><i class="fa fa-check"></i><b>1.2.2</b> RStudio environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lab-intro.html"><a href="lab-intro.html#hands-on-r"><i class="fa fa-check"></i><b>1.3</b> Hands on R</a></li>
+<li class="chapter" data-level="1.4" data-path="lab-intro.html"><a href="lab-intro.html#activity"><i class="fa fa-check"></i><b>1.4</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab2.html"><a href="lab2.html"><i class="fa fa-check"></i><b>2</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab2.html"><a href="lab2.html#welcome-back"><i class="fa fa-check"></i><b>2.1</b> Welcome back!</a></li>
+<li class="chapter" data-level="2.2" data-path="lab2.html"><a href="lab2.html#learn-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lab2.html"><a href="lab2.html#installing-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lab2.html"><a href="lab2.html#activity-1"><i class="fa fa-check"></i><b>2.2.2</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lab2.html"><a href="lab2.html#types-of-variables"><i class="fa fa-check"></i><b>2.3</b> Types of variables</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="lab2.html"><a href="lab2.html#activity-2"><i class="fa fa-check"></i><b>2.3.1</b> Activity:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lab2.html"><a href="lab2.html#more-operators-and-some-essential-symbols"><i class="fa fa-check"></i><b>2.4</b> More operators and some essential symbols</a></li>
+<li class="chapter" data-level="2.5" data-path="lab2.html"><a href="lab2.html#black-lives-matter"><i class="fa fa-check"></i><b>2.5</b> Black lives matter!</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="lab2.html"><a href="lab2.html#downloading-and-reading-the-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading and reading the data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="lab2.html"><a href="lab2.html#examining-the-data"><i class="fa fa-check"></i><b>2.5.2</b> Examining the data</a></li>
+<li class="chapter" data-level="2.5.3" data-path="lab2.html"><a href="lab2.html#data-wrangling"><i class="fa fa-check"></i><b>2.5.3</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="lab2.html"><a href="lab2.html#activity-3"><i class="fa fa-check"></i><b>2.6</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html"><i class="fa fa-check"></i><b>3</b> Data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#importing-and-data-wrangling"><i class="fa fa-check"></i><b>3.1</b> Importing and data wrangling</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#downloading-and-reading-the-data-1"><i class="fa fa-check"></i><b>3.1.1</b> Downloading and reading the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#data-wrangling-2"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#read-the-clean-dataset"><i class="fa fa-check"></i><b>3.3</b> Read the clean dataset</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-4"><i class="fa fa-check"></i><b>3.3.1</b> Activity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exploratory-analysis"><i class="fa fa-check"></i><b>4.2</b> Exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#data-overview"><i class="fa fa-check"></i><b>4.2.1</b> Data overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-data"><i class="fa fa-check"></i><b>4.2.2</b> Categorical data</a></li>
+<li class="chapter" data-level="4.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-1-1"><i class="fa fa-check"></i><b>4.2.3</b> Activity 1</a></li>
+<li class="chapter" data-level="4.2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#continuous-numeric-data"><i class="fa fa-check"></i><b>4.2.4</b> Continuous (numeric) data</a></li>
+<li class="chapter" data-level="4.2.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#putting-it-all-together"><i class="fa fa-check"></i><b>4.2.5</b> Putting it all together</a></li>
+<li class="chapter" data-level="4.2.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#activity-2-1"><i class="fa fa-check"></i><b>4.2.6</b> Activity 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html"><i class="fa fa-check"></i><b>5</b> Reporting in R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>5.2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#first-r-markdown-document"><i class="fa fa-check"></i><b>5.2.1</b> First R Markdown document</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reporting-in-r-markdown.html"><a href="reporting-in-r-markdown.html#activity-5"><i class="fa fa-check"></i><b>5.3</b> Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html"><i class="fa fa-check"></i><b>6</b> Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#data-visualization"><i class="fa fa-check"></i><b>6.2</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#prepare-the-rmd-document-and-data"><i class="fa fa-check"></i><b>6.2.1</b> Prepare the Rmd document and data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#cateogrical-variables"><i class="fa fa-check"></i><b>6.3</b> Cateogrical variables</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-categorical-vs-categorical"><i class="fa fa-check"></i><b>6.3.1</b> Bivariate categorical vs categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#numeric-variables"><i class="fa fa-check"></i><b>6.4</b> Numeric variables</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#univariate-numeric"><i class="fa fa-check"></i><b>6.4.1</b> Univariate numeric</a></li>
+<li class="chapter" data-level="6.4.2" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#bivariate-numeric"><i class="fa fa-check"></i><b>6.4.2</b> Bivariate numeric</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#mixed-data"><i class="fa fa-check"></i><b>6.5</b> Mixed data</a></li>
+<li class="chapter" data-level="6.6" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#activity-6"><i class="fa fa-check"></i><b>6.6</b> Activity</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="visual-exploratory-analysis.html"><a href="visual-exploratory-analysis.html#r-cheatsheets"><i class="fa fa-check"></i><b>6.6.1</b> R Cheatsheets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>7</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="correlation.html"><a href="correlation.html#what-is-correlation"><i class="fa fa-check"></i><b>7.1</b> What is correlation?</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="correlation.html"><a href="correlation.html#data-and-r-environment"><i class="fa fa-check"></i><b>7.1.1</b> Data and R environment</a></li>
+<li class="chapter" data-level="7.1.2" data-path="correlation.html"><a href="correlation.html#visualizing-correlation"><i class="fa fa-check"></i><b>7.1.2</b> Visualizing correlation</a></li>
+<li class="chapter" data-level="7.1.3" data-path="correlation.html"><a href="correlation.html#activity-1-2"><i class="fa fa-check"></i><b>7.1.3</b> Activity 1</a></li>
+<li class="chapter" data-level="7.1.4" data-path="correlation.html"><a href="correlation.html#activity-2-2"><i class="fa fa-check"></i><b>7.1.4</b> Activity 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="correlation.html"><a href="correlation.html#measuring-correlation"><i class="fa fa-check"></i><b>7.2</b> Measuring correlation</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="correlation.html"><a href="correlation.html#activity-3-1"><i class="fa fa-check"></i><b>7.2.1</b> Activity 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="simple-lm.html"><a href="simple-lm.html"><i class="fa fa-check"></i><b>8</b> Linear model: Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="simple-lm.html"><a href="simple-lm.html#welcome"><i class="fa fa-check"></i><b>8.1</b> Welcome</a></li>
+<li class="chapter" data-level="8.2" data-path="simple-lm.html"><a href="simple-lm.html#introduction-to-simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Introduction to simple linear regression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="simple-lm.html"><a href="simple-lm.html#the-idea-behind"><i class="fa fa-check"></i><b>8.2.1</b> The idea behind</a></li>
+<li class="chapter" data-level="8.2.2" data-path="simple-lm.html"><a href="simple-lm.html#formal-specification"><i class="fa fa-check"></i><b>8.2.2</b> Formal specification</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="simple-lm.html"><a href="simple-lm.html#fitting-linear-regression-in-r"><i class="fa fa-check"></i><b>8.3</b> Fitting linear regression in R</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="simple-lm.html"><a href="simple-lm.html#r-syntax"><i class="fa fa-check"></i><b>8.3.1</b> R syntax</a></li>
+<li class="chapter" data-level="8.3.2" data-path="simple-lm.html"><a href="simple-lm.html#running-a-simple-linear-regression"><i class="fa fa-check"></i><b>8.3.2</b> Running a simple linear regression</a></li>
+<li class="chapter" data-level="8.3.3" data-path="simple-lm.html"><a href="simple-lm.html#interpreting-results"><i class="fa fa-check"></i><b>8.3.3</b> Interpreting results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="simple-lm.html"><a href="simple-lm.html#model-evaluation"><i class="fa fa-check"></i><b>8.4</b> Model evaluation</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="simple-lm.html"><a href="simple-lm.html#model-summary"><i class="fa fa-check"></i><b>8.4.1</b> Model summary</a></li>
+<li class="chapter" data-level="8.4.2" data-path="simple-lm.html"><a href="simple-lm.html#further-checks"><i class="fa fa-check"></i><b>8.4.2</b> Further checks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="simple-lm.html"><a href="simple-lm.html#lab-activities"><i class="fa fa-check"></i><b>8.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multi-lm.html"><a href="multi-lm.html"><i class="fa fa-check"></i><b>9</b> Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multi-lm.html"><a href="multi-lm.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model"><i class="fa fa-check"></i><b>9.2</b> Multivariate model</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="multi-lm.html"><a href="multi-lm.html#paralell-slopes"><i class="fa fa-check"></i><b>9.2.1</b> Paralell slopes</a></li>
+<li class="chapter" data-level="9.2.2" data-path="multi-lm.html"><a href="multi-lm.html#multivariate-model-specification"><i class="fa fa-check"></i><b>9.2.2</b> Multivariate model specification</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="multi-lm.html"><a href="multi-lm.html#r-syntax-for-the-multivariate-linear-model"><i class="fa fa-check"></i><b>9.3</b> R syntax for the multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="multi-lm.html"><a href="multi-lm.html#model-evaluation-1"><i class="fa fa-check"></i><b>9.3.1</b> Model evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="multi-lm.html"><a href="multi-lm.html#assumptions"><i class="fa fa-check"></i><b>9.4</b> Assumptions</a></li>
+<li class="chapter" data-level="9.5" data-path="multi-lm.html"><a href="multi-lm.html#lab-activities-1"><i class="fa fa-check"></i><b>9.5</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><i class="fa fa-check"></i><b>10</b> UG Quants summative assessment: Interpreting Quantitative Findings Report</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#create-your-research-report-template-from-github"><i class="fa fa-check"></i><b>10.2</b> Create your research report template from GitHub</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-cloud-version"><i class="fa fa-check"></i><b>10.2.1</b> RStudio Cloud version</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#rstudio-desktop-version"><i class="fa fa-check"></i><b>10.2.2</b> RStudio Desktop version</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#about-the-research-report-template"><i class="fa fa-check"></i><b>10.3</b> About the research report template</a></li>
+<li class="chapter" data-level="10.4" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-1-3"><i class="fa fa-check"></i><b>10.4</b> Activity 1</a></li>
+<li class="chapter" data-level="10.5" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#activity-2-3"><i class="fa fa-check"></i><b>10.5</b> Activity 2</a></li>
+<li class="chapter" data-level="10.6" data-path="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html"><a href="ug-quants-summative-assessment-interpreting-quantitative-findings-report.html#conclusion"><i class="fa fa-check"></i><b>10.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i>Workbook suggested answers</a>
+<ul>
+<li class="chapter" data-level="10.7" data-path="answers.html"><a href="answers.html#introduction-4"><i class="fa fa-check"></i><b>10.7</b> Introduction</a></li>
+<li class="chapter" data-level="10.8" data-path="answers.html"><a href="answers.html#lab-3.-data-wrangling"><i class="fa fa-check"></i><b>10.8</b> Lab 3. Data wrangling</a></li>
+<li class="chapter" data-level="10.9" data-path="answers.html"><a href="answers.html#lab-4.-exploratory-data-analysis"><i class="fa fa-check"></i><b>10.9</b> Lab 4. Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="answers.html"><a href="answers.html#activity-1-4"><i class="fa fa-check"></i><b>10.9.1</b> Activity #1</a></li>
+<li class="chapter" data-level="10.9.2" data-path="answers.html"><a href="answers.html#activity-2-4"><i class="fa fa-check"></i><b>10.9.2</b> Activity #2</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="answers.html"><a href="answers.html#lab-6.-visual-exploratory-analysis"><i class="fa fa-check"></i><b>10.10</b> Lab 6. Visual exploratory analysis</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="answers.html"><a href="answers.html#excercices"><i class="fa fa-check"></i><b>10.10.1</b> Excercices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="answers.html"><a href="answers.html#lab-7.-correlation"><i class="fa fa-check"></i><b>10.11</b> Lab 7. Correlation</a>
+<ul>
+<li class="chapter" data-level="10.11.1" data-path="answers.html"><a href="answers.html#activity-1-5"><i class="fa fa-check"></i><b>10.11.1</b> Activity 1</a></li>
+</ul></li>
+<li class="chapter" data-level="10.12" data-path="answers.html"><a href="answers.html#lab-8.-linear-model.-simple-linear-regression"><i class="fa fa-check"></i><b>10.12</b> Lab 8. Linear model. Simple linear regression</a>
+<ul>
+<li class="chapter" data-level="10.12.1" data-path="answers.html"><a href="answers.html#lab-activities-2"><i class="fa fa-check"></i><b>10.12.1</b> Lab activities</a></li>
+</ul></li>
+<li class="chapter" data-level="10.13" data-path="answers.html"><a href="answers.html#lab-9.-multivariate-linear-model"><i class="fa fa-check"></i><b>10.13</b> Lab 9. Multivariate linear model</a>
+<ul>
+<li class="chapter" data-level="10.13.1" data-path="answers.html"><a href="answers.html#lab-activities-3"><i class="fa fa-check"></i><b>10.13.1</b> Lab activities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UG Quantitative Methods in the Social Sciences lab workbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Lab 4</span> Exploratory data analysis<a href="exploratory-data-analysis.html#exploratory-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In our previous session we learned about wrangling data in <code>R</code> by implementing useful function such as <code>filter()</code>, <code>select()</code>, and <code>mutate()</code>. In this session we will focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
+<div id="getting-started-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Getting started<a href="exploratory-data-analysis.html#getting-started-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will continue working on the same project and dataset that you created in the last lab on R Studio Cloud. Please follow the next steps:</p>
+<ol style="list-style-type: decimal">
+<li>Go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a>.</li>
+<li>Open the project called ‘NILT’ located in your lab group’.</li>
+<li>Continue working at the bottom of the ‘Exploratory analysis’ script that you created in the last lab.</li>
+<li>Load <code>nilt</code> dataset that you created in the last session using the following code:</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="exploratory-data-analysis.html#cb31-1" tabindex="-1"></a><span class="co"># Load the data from the .rds file we created in the last lab</span></span>
+<span id="cb31-2"><a href="exploratory-data-analysis.html#cb31-2" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/nilt_r_object.rds&quot;</span>)</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Create a subset of the <code>nilt</code> data keeping only few variables using the <code>select()</code> function as shown below:</li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" tabindex="-1"></a><span class="co">#Subset</span></span>
+<span id="cb32-2"><a href="exploratory-data-analysis.html#cb32-2" tabindex="-1"></a>nilt_subset <span class="ot">&lt;-</span> <span class="fu">select</span>(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)</span></code></pre></div>
+</div>
+<div id="exploratory-analysis" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Exploratory analysis<a href="exploratory-data-analysis.html#exploratory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-overview" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Data overview<a href="exploratory-data-analysis.html#data-overview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+Are your summary statistics hiding something interesting?
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-47"></span>
+<img src="images/lab_3_summary_stats.jpg" alt="Exploratory analysis." width="100%" />
+<p class="caption">
+Figure 4.1: Exploratory analysis.
+</p>
+</div>
+<!-- There are some basic functions that will allow you to understand and get familiar with the data. You used an important one already, `glimpse()`. But there are other useful ones. For instance, try `names()` to see a list of the variables' names, or have a look at the data using `View()`.  -->
+<p>To start exploring our data it essential to distinguish the adequate tools and measures available for the type of data in question. As you know now, there are two broad types: (1) categorical and (2) numeric.</p>
+<p>There are several ways in which we can summarise our data. Today, we will use a useful package called <code>vtable</code>. Install it in your session running the following line from your console:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;vtable&#39;</span>)</span></code></pre></div>
+<p>Once it is installed, make sure to load it with the next line. This time copy and paste it in your <code>R</code> script, so you can run it every time you restart your session.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" tabindex="-1"></a><span class="fu">library</span>(vtable)</span></code></pre></div>
+</div>
+<div id="categorical-data" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Categorical data<a href="exploratory-data-analysis.html#categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A usual way to explore the categorical data is using contingency and proportion tables. The contingency tables include the count for each category while the proportion tables contain the count divided by the total number of observations.</p>
+<p>Try to focus on the interpretation of the outputs in the following section. At this time, it is just optional to run the code shown.</p>
+<p>Let’s say we are interested in the data’s break down by respondents’ sex (called <code>rsex</code> in the dataset). We will use function <code>sumtable()</code> of the <code>vtable</code> package to produce a contingency table for a single variable (known as One-Way contingency table).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="exploratory-data-analysis.html#cb35-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rsex&#39;</span>))</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-50">Table 4.1: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+rsex
+</td>
+<td style="text-align:left;">
+1204
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Male
+</td>
+<td style="text-align:left;">
+537
+</td>
+<td style="text-align:left;">
+45%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Female
+</td>
+<td style="text-align:left;">
+667
+</td>
+<td style="text-align:left;">
+55%
+</td>
+</tr>
+</tbody>
+</table>
+<p>From the result, we see that there are more female respondents than males.</p>
+<p>Specifically, we see that males respondents represent 44.6% of the total sample, whereas females 55.4%.</p>
+<p>We can do this with any type of categorical variable. Let’s see how the sample is split by religion (<code>religcat</code>). So, we will add it to in the <code>vars</code> argument.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rsex&#39;</span>, <span class="st">&#39;religcat&#39;</span>))</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-51">Table 4.2: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+rsex
+</td>
+<td style="text-align:left;">
+1204
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Male
+</td>
+<td style="text-align:left;">
+537
+</td>
+<td style="text-align:left;">
+45%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Female
+</td>
+<td style="text-align:left;">
+667
+</td>
+<td style="text-align:left;">
+55%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+religcat
+</td>
+<td style="text-align:left;">
+1168
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Catholic
+</td>
+<td style="text-align:left;">
+491
+</td>
+<td style="text-align:left;">
+42%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Protestant
+</td>
+<td style="text-align:left;">
+497
+</td>
+<td style="text-align:left;">
+43%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… No religion
+</td>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+15%
+</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.</p>
+<p>What if we want to know the religious affiliation break-down by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as following:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;religcat&#39;</span>), <span class="at">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-52">Table 4.3: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+rsex
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Male
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Female
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Percent
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+religcat
+</td>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+648
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Catholic
+</td>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:left;">
+40%
+</td>
+<td style="text-align:left;">
+282
+</td>
+<td style="text-align:left;">
+44%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Protestant
+</td>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:left;">
+41%
+</td>
+<td style="text-align:left;">
+286
+</td>
+<td style="text-align:left;">
+44%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… No religion
+</td>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:left;">
+19%
+</td>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+12%
+</td>
+</tr>
+</tbody>
+</table>
+<p>There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 43.5% vs 40.2% and 44.1% vs 40.6%, respectively. We also see that there are almost 20% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.</p>
+</div>
+<div id="activity-1-1" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Activity 1<a href="exploratory-data-analysis.html#activity-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From your R Studio Cloud script, do the following activities using the data in the <code>nilt_subset</code> object (feel free to copy and adapt the code shown above):</p>
+<ul>
+<li>Create a One-Way contingency table for <code>uninatid</code> in the <code>nilt_subset</code> dataset using the <code>sumtable()</code> function;</li>
+<li>Using the variables <code>religcat</code> and <code>uninatid</code>, generate a Two-Way contingency table;</li>
+<li>Are your summary statistics hiding something interesting? Discuss your results with your neighbour or your tutor.</li>
+</ul>
+</div>
+<div id="continuous-numeric-data" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Continuous (numeric) data<a href="exploratory-data-analysis.html#continuous-numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous section we’ve learnt how to summarise categorical data. But very often we want to work with continuous numeric variables or a combination of both. To summarise and understand numeric data there are two main types: <em>measures of centrality</em> and <em>measures of spread</em>.</p>
+<p>As before, try to focus on the interpretation of the outputs in the following section. At this time, it is just optional to run the code shown.</p>
+<div id="measures-of-centrality" class="section level4 hasAnchor" number="4.2.4.1">
+<h4><span class="header-section-number">4.2.4.1</span> Measures of centrality<a href="exploratory-data-analysis.html#measures-of-centrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In quantitative research, we usually have access to many observations in a sample which contains different attributes for each of them. It would be difficult (and probably not very useful) to talk about each of the NILT respondents one by one. Instead, to describe this sample we need measures that roughly represent all participants.</p>
+<p>This is actually an important step in quantitative research, since it allows us to characterise the people that we are studying. For example, in the previous section we only talked about the respondents’ sex and political affiliation, but who are the people we are talking about? Probably a place to start digging deeper is to know their age. The first tool that we will use to understand numeric values is a histogram. Let’s see how the age of NILT respondents is distributed.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" tabindex="-1"></a><span class="fu">hist</span>(nilt_subset<span class="sc">$</span>rage)</span></code></pre></div>
+<p><img src="lab-workbook_files/figure-html/unnamed-chunk-53-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>This plot show us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side), tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old, that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
+<p>The <em>median</em> is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called… You guessed it - <code>median()</code>.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" tabindex="-1"></a><span class="fu">median</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 48</code></pre>
+<p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows:
+<span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span>
+The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g. a very very old person). To compute the mean you need the <code>mean()</code> function.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" tabindex="-1"></a><span class="fu">mean</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>## [1] 49.61532</code></pre>
+<p>As you can see, the above measures try to approximate values that fall somewhere in the centre of the histogram plot, and represent all observations in the sample. They tell different things and are sometimes more (or less) suitable in a specific situation.</p>
+</div>
+<div id="measures-of-spread" class="section level4 hasAnchor" number="4.2.4.2">
+<h4><span class="header-section-number">4.2.4.2</span> Measures of spread<a href="exploratory-data-analysis.html#measures-of-spread" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>By contrast, there are measures that helps us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
+<p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it in four equal parts. The first quartile includes the lowest 25% values, the second the other 25%, the third other other 25%, and the fourth the highest 25%. To compute quartiles we can use the <code>quantile</code> function.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exploratory-data-analysis.html#cb43-1" tabindex="-1"></a><span class="fu">quantile</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>##   0%  25%  50%  75% 100% 
+##   18   35   48   64   97</code></pre>
+<p>In our sample, the youngest quarter of the respondents is between 18 and 35 years old. The second quarter is between 35 and 48 years old. The next quartile is between 48 and 64. The oldest 25% of the respondents is between 64 and 97.</p>
+<p>The <em>variance</em> is useful to obtain a singe measure of spread (instead of four values, as the above) taking the mean as a reference. This is given by the following formula:</p>
+<p><span class="math display">\[ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } \]</span></p>
+<p>To decipher the formula above, the <span class="math inline">\(\bar{x}\)</span> represents the mean, the <span class="math inline">\(x\)</span> represents each of the values in the numeric series. The formula takes each of the <span class="math inline">\(x\)</span> values and subtract it from the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. Later, it squares the result of the subtraction (that is multiply it by itself). This is done to obtain a positive value, since some numbers in the series will be lower than the mean (resulting in negative values). Then, we sum all of them and divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1. To estimate the variance in R we only need the <code>var()</code> function.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exploratory-data-analysis.html#cb45-1" tabindex="-1"></a><span class="fu">var</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>## [1] 343.3486</code></pre>
+<p>As you can see, the result is not very intuitive. That is because we squared the subtraction. Luckily, there is a measure that put it in <em>readable</em> scale. This is the <em>standard deviation</em>. In essence this takes the square root of the variance (the reversed operation of squaring it):
+<span class="math display">\[sd=\sqrt{var}\]</span></p>
+<p>To compute it in <code>R</code>, use the <code>sd()</code> function.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exploratory-data-analysis.html#cb47-1" tabindex="-1"></a><span class="fu">sd</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>## [1] 18.52967</code></pre>
+<p>This measure is more <em>human readable</em> than the variance. Don’t worry too much about the formula. An important thing to remember is what the measure represents. An informal definition of the standard deviation is <em>the average distance from the mean</em>. In essence, it tell us how far the values in our data are from the mean.</p>
+</div>
+</div>
+<div id="putting-it-all-together" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Putting it all together<a href="exploratory-data-analysis.html#putting-it-all-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Phew, that was a lot!…</p>
+<p>… Luckily we can use the <code>sumtable</code> function to compute all these measures at the same time!</p>
+<p>It is very simple. You can compute a quick summary for age as following:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="exploratory-data-analysis.html#cb49-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rage&#39;</span>))</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-59">Table 4.4: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+Std. Dev.
+</th>
+<th style="text-align:left;">
+Min
+</th>
+<th style="text-align:left;">
+Pctl. 25
+</th>
+<th style="text-align:left;">
+Pctl. 75
+</th>
+<th style="text-align:left;">
+Max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+rage
+</td>
+<td style="text-align:left;">
+1201
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:left;">
+97
+</td>
+</tr>
+</tbody>
+</table>
+<p>The result displays the number of observations used (N), the mean, the standard deviation, minimum, the 1st (same as ‘Pctl. 25’) and 3rd quartile (same as ‘Pctl. 75’), as well as the maximum (i.e., eldest respondent).</p>
+<div id="categorical-and-numeric-data" class="section level4 hasAnchor" number="4.2.5.1">
+<h4><span class="header-section-number">4.2.5.1</span> Categorical and numeric data<a href="exploratory-data-analysis.html#categorical-and-numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="exploratory-data-analysis.html#cb50-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rage&#39;</span>), <span class="at">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-60">Table 4.5: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+rsex
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Male
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Female
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+SD
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+rage
+</td>
+<td style="text-align:left;">
+535
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+666
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+19
+</td>
+</tr>
+</tbody>
+</table>
+<p>In the code above, we are simple specifying the variable <code>rage</code> and grouping the summary by <code>rsex</code>. This produces a small summary included the number of observations in each category an the main measure of centrality and spread, namely the mean and the std. dev.</p>
+</div>
+</div>
+<div id="activity-2-1" class="section level3 hasAnchor" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> Activity 2<a href="exploratory-data-analysis.html#activity-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Can money buy happiness?</p>
+<p>Using the data in the <code>nilt_subset</code> dataset, complete the following activities. This will be a good practice run for doing the research report when you run your own analysis on the NILT teaching dataset. Handy!</p>
+<ul>
+<li>Using the <code>hist()</code> function plot a histogram of personal income <code>persinc2</code>. From the NILT documentation this variable refers to annual personal income in £ before taxes and other deductions (use the <code>$</code> symbol after the name of the dataset and then the name of the variable inside the function);</li>
+<li>Create a summary of the personal income <code>persinc2</code> variable, using the <code>sumtable()</code> function;</li>
+<li>Finally, compute the mean and standard deviation of the personal income <code>persinc2</code>, grouped by happiness <code>ruhappy</code>. What do you observe?</li>
+<li>Discuss the results with your neighbour or your tutor.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>Note that the argument <code>na.rm</code> equal <code>TRUE</code> is used in the function. The ‘na’ bit refers to missing values, and the ‘rm’ refers to remove. So we are telling R to remove the missing values when computing the median. This is because we do not know the age of 3 of the respondents in the sample.<a href="exploratory-data-analysis.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-wrangling-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reporting-in-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-Lab4.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["lab-workbook.pdf", "lab-workbook.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
