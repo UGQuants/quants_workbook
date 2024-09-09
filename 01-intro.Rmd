@@ -46,7 +46,7 @@ Some of the advantages of using R are the following:
 ## Getting started
 ### Setting up RStudio
 
-At this point you need to know that there are at least two alternatives to start using RStudio. One, and by far the most common, is to download both `R` and RStudio and install the applications in your local drive. The other option is RStudio Cloud. This is an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g. GoogleChrome, Safari, Firefox, etc). For now, we will use the cloud version. 
+At this point, you need to know that there are at least two alternatives to start using RStudio. One, and by far the most common, is to download both `R` and RStudio and install the applications in your local drive. The other option is RStudio Cloud. This is an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g. GoogleChrome, Safari, Firefox, etc). For now, we will use the cloud version. 
 
 To get started, follow the next steps:
 
@@ -94,7 +94,7 @@ knitr::include_graphics("./images/rstudio_cloud_startproject.png")
 ### RStudio environment
 #### RStudio screen
 
-Once you have started 'Lab 1' you will see the screen below.
+Once you have started 'Lab 1' you will see the screen below:
 
 <br>
 ```{r fig.cap="Project name.", echo=FALSE}

@@ -4,7 +4,7 @@
 
 In this lab, we will extend your skills to explore data by visualizing it...and `R` is great for this! It is actually a highly-demanded skill in the job market.
 
-Visualizing data is an important process in at least two stages in quantitative research: First, for your as a researcher to get familiar with the data; and second, to communicate your findings. `R` includes two important tools to achieve this: First, the `ggplot2` package (included in `tidyverse`), a powerful tool to explore and plot data. Second, [R Markdown](https://rmarkdown.rstudio.com/) which allows you to create integrated quantitative reports. Combining and mastering the two can create  very effective results. 
+Visualizing data is an important process in at least two stages in quantitative research: First, for you as a researcher to get familiar with the data; and second, to communicate your findings. `R` includes two important tools to achieve this: First, the `ggplot2` package (included in `tidyverse`), a powerful tool to explore and plot data. Second, [R Markdown](https://rmarkdown.rstudio.com/) which allows you to create integrated quantitative reports. Combining and mastering the two can create  very effective results. 
 
 
 ## Data visualization
@@ -28,7 +28,7 @@ Different plot types serve different types of data. In the last lab, we introduc
 
 ### Prepare the Rmd document and data
 
-As we did in the last session, let's learn by doing. We will continue working in the same project called _NILT_ in [RStudio Cloud](https://rstudio.cloud/). Set up your session as follow:
+As we did in the last session, let's learn by doing. We will continue working in the same project called _NILT_ in [RStudio Cloud](https://rstudio.cloud/). Set up your session as follows:
 
 1. Go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/) (log in if necessary);
 2. Open your own copy of the 'NILT' project from the 'Quants lab group';
@@ -69,7 +69,7 @@ Now that we read the data in, we are ready to start creating our own own plots u
 
 You do not need to reproduce each of the examples in the following section, but we suggest you to carefully read the description and try to understand the code syntax.
 
-## Cateogrical variables
+## Categorical variables
 
 Let's start using the same variables we summarised in our last lab. We started by computing the total number of respondents by gender in a One-Way contingency table. We can easily visualize this using a bar plot with `ggplot`. This package always takes at least three layers, namely _**data**_, _**aesthetics**_ and _**geometry**_. Here, we define the _data_ as the first argument of the `ggplot()`function with the `nilt_subset`. The second argument, _aesthetics_, is separated by a comma and is introduced using the function `aes()`. In this case we define the X axis `x = ` of the plot by the categories included in the variable `rsex`. The geometry is specified with the function `geom_bar()` without arguments for now. Note that we added the geometry using the plus sign `+` at the end of the previous line code. As an extra, I included the main title and the name of the x axis using the `labs()` function (you don't need to copy or run the following code chunks in your .Rmd. This is only for demonstration purposes).
 ```{r}
