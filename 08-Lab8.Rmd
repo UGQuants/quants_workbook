@@ -199,6 +199,7 @@ summary(m2)
 There are a lot of numbers from the result. Let's break down the information into different pieces: first the call, second the residuals, third the coefficients, and fourth the goodness-of-fit measures, as shown below:
 
 ![Model summary](./images/r_studio_lab6_model_summary.png)
+
 The first part, **Call**, is simply printing the variables that were used to produce the models.
 
 The second part, the **Residuals**, provides a small summary of the residuals by quartile, including minimum and maximum residual values. Remember the second part of the formal specification of the model? Well, this is where we can see in practice the distribution of the residuals. If we look at the first and third quartile, we can see that that 50% of the predicted values by the model are $\pm$ 2.5 years old away form the observed partner's age...not that bad. 

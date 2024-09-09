@@ -23,14 +23,14 @@ If you wish to write your project using RStudio Cloud, please follow the next st
 ```{r fig.cap="New project from GitHub.", echo=FALSE}
 knitr::include_graphics("./images/research_rep_2.PNG")
 ```
-4. Paste the following URL in the box and click 'OK': https://github.com/rafavdz/UGQuant-assignment2.
+4. Paste the following URL in the box and click 'OK': https://github.com/UGQuants/UGQuant-assignment2.
 5. You are all set! Just click on the project to access the contents.
 
 ### RStudio Desktop version
 
 If alternately you decide to write your assessment using the RStudio Desktop version, consider the following steps:
 
-1. Access the following GitHub repository copying and pasting the following URL in your browser: <https://github.com/rafavdz/UGQuant-assignment2>.
+1. Access the following GitHub repository copying and pasting the following URL in your browser: <https://github.com/UGQuants/UGQuant-assignment2>.
 2. Click on the 'Code' button and select the 'Download ZIP' option, as shown below.
 ```{r fig.cap="Downlowad ZIP from GitHub.", echo=FALSE}
 knitr::include_graphics("./images/research_rep_4.PNG")
