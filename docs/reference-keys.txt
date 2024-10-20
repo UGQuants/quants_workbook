@@ -18,7 +18,7 @@ tab:unnamed-chunk-52
 tab:unnamed-chunk-59
 tab:unnamed-chunk-60
 fig:rmd-file
-fig:yalm-chunk
+fig:yaml-chunk
 fig:unnamed-chunk-61
 fig:unnamed-chunk-62
 fig:unnamed-chunk-73

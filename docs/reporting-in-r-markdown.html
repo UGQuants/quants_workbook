@@ -397,14 +397,14 @@ Figure 5.1: Rmd file.
 </p>
 </div>
 <p>Note that now you have two files open in Pane 1, one tab includes the <code>R</code> script that we created in the last lab (called <code>Lab_3.R</code>), and the other is the <code>Rmd</code> document that you just created.</p>
-<p>The Rmd document <code>Test1</code> contains an example by default. The first bit on the top enclosed by the dashes <code>---</code>, contains the general metadata to format the output, as shown in the Figure <a href="reporting-in-r-markdown.html#fig:yalm-chunk">5.2</a>. This bit is called YALM. In the default example, it contains the title, name of the author, data and the type of output (html). You can adjust this information directly by typing the relevant info (e.g. date or name).</p>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:yalm-chunk"></span>
-<img src="images/lab4_rmd_view_2.png" alt="YALM and code chunk." width="100%" />
+<p>The Rmd document <code>Test1</code> contains an example by default. The first bit on the top enclosed by the dashes <code>---</code>, contains the general metadata to format the output, as shown in the Figure <a href="reporting-in-r-markdown.html#fig:yaml-chunk">5.2</a>. This bit is called YAML. In the default example, it contains the title, name of the author, data and the type of output (html). You can adjust this information directly by typing the relevant info (e.g. date or name).</p>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:yaml-chunk"></span>
+<img src="images/lab4_rmd_view_2.png" alt="YAML and code chunk." width="100%" />
 <p class="caption">
-Figure 5.2: YALM and code chunk.
+Figure 5.2: YAML and code chunk.
 </p>
 </div>
-<p>Below the YALM shown in Figure <a href="reporting-in-r-markdown.html#fig:yalm-chunk">5.2</a>, there is another box. This is an <code>R</code> code ‘chunk’. To run a chunk of code individually (that is to visualize a partial result of an <code>Rmd</code> document), you can click on the green arrow pointed on the top-left of the first chunk.</p>
+<p>Below the YAML shown in Figure <a href="reporting-in-r-markdown.html#fig:yaml-chunk">5.2</a>, there is another box. This is an <code>R</code> code ‘chunk’. To run a chunk of code individually (that is to visualize a partial result of an <code>Rmd</code> document), you can click on the green arrow pointed on the top-left of the first chunk.</p>
 <p>In line 12, you have a second-level header, which contains the name of a section in the document. As you can see this is preceded by double hash tag <code>##</code>. If you want a first-level header section, you would require only one hash tag like this <code>#</code>, and three for a third-level header. Finally the ‘Knit’ word is enclosed by double asterisk <code>**</code>. This is to format the characters enclosed in bold.</p>
 <p>In line 26, you will see a chunk including a basic plot. Let’s check the results that this example in ‘Test1’ produce.</p>
 <p>To render the document from Rmd to HTML, we need to <em>Knit</em> it by clicking on the icon shown below. Try it!</p>
@@ -413,7 +413,7 @@ Figure 5.2: YALM and code chunk.
 <div class="figcaption">Knit button</div>
 </div>
 <p>RStudio may ask you if you want to update some packages, click ‘Yes’.</p>
-<p>After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YALM. After, there is a second-level header which includes the first section of this example document. Also the the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>.</p>
+<p>After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. After, there is a second-level header which includes the first section of this example document. Also the the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>.</p>
 <p>An interesting thing is that we can integrate the result of our code in the output as we did with the second chunk (which starts in line 18). Here, we can use a summary of the data set <code>cars</code> (which is an in-built data set in <code>R</code> that contains only two variables).</p>
 <!-- Next, there is a second header, called 'Including Plots'. Under this section you can see a plot, but this time the code is not shown since `echo` was set to `FALSE`. You can close the pop-window when you finish exploring the output. -->
 <p>Similarly, you can create a <code>.pdf</code> file. To do this, instead of clicking on on the <em>Knit</em> icon directly, click on the black arrow next to it. Then click ‘Knit to PDF’. Try it and see the result.</p>
@@ -427,7 +427,7 @@ Figure 5.2: YALM and code chunk.
 <h2><span class="header-section-number">5.3</span> Activity<a href="reporting-in-r-markdown.html#activity-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the <code>Test1.Rmd</code> file that you just created, do the following:</p>
 <ul>
-<li>Change the title of the document in the YALM to ‘My first R Markdown document’.</li>
+<li>Change the title of the document in the YAML to ‘My first R Markdown document’.</li>
 <li>In the code chunk in line 21, replace the existing line (<code>summary(car)</code>) with the following: <code>glimpse(iris)</code>.</li>
 <li>In the code chunk called ‘pressure’, change <code>echo=FALSE</code> to <code>echo=TRUE</code>.</li>
 <li>At the very bottom of the script, create a new paragraph and write one or two lines briefly describing how you think quantitative methods are improving your discipline (e.g. politics, sociology, social and public policy, or central and eastern European studies).</li>

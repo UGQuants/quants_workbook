@@ -1410,16 +1410,16 @@ After completing the previous steps, your screen should look like this (You can 
 
 Note that now you have two files open in Pane 1, one tab includes the \texttt{R} script that we created in the last lab (called \texttt{Lab\_3.R}), and the other is the \texttt{Rmd} document that you just created.
 
-The Rmd document \texttt{Test1} contains an example by default. The first bit on the top enclosed by the dashes \texttt{-\/-\/-}, contains the general metadata to format the output, as shown in the Figure \ref{fig:yalm-chunk}. This bit is called YALM. In the default example, it contains the title, name of the author, data and the type of output (html). You can adjust this information directly by typing the relevant info (e.g.~date or name).
+The Rmd document \texttt{Test1} contains an example by default. The first bit on the top enclosed by the dashes \texttt{-\/-\/-}, contains the general metadata to format the output, as shown in the Figure \ref{fig:yaml-chunk}. This bit is called YAML. In the default example, it contains the title, name of the author, data and the type of output (html). You can adjust this information directly by typing the relevant info (e.g.~date or name).
 
 \begin{figure}
 
 \includegraphics[width=1\linewidth]{./images/lab4_rmd_view_2} \hfill{}
 
-\caption{YALM and code chunk.}\label{fig:yalm-chunk}
+\caption{YAML and code chunk.}\label{fig:yaml-chunk}
 \end{figure}
 
-Below the YALM shown in Figure \ref{fig:yalm-chunk}, there is another box. This is an \texttt{R} code `chunk'. To run a chunk of code individually (that is to visualize a partial result of an \texttt{Rmd} document), you can click on the green arrow pointed on the top-left of the first chunk.
+Below the YAML shown in Figure \ref{fig:yaml-chunk}, there is another box. This is an \texttt{R} code `chunk'. To run a chunk of code individually (that is to visualize a partial result of an \texttt{Rmd} document), you can click on the green arrow pointed on the top-left of the first chunk.
 
 In line 12, you have a second-level header, which contains the name of a section in the document. As you can see this is preceded by double hash tag \texttt{\#\#}. If you want a first-level header section, you would require only one hash tag like this \texttt{\#}, and three for a third-level header. Finally the `Knit' word is enclosed by double asterisk \texttt{**}. This is to format the characters enclosed in bold.
 
@@ -1435,7 +1435,7 @@ To render the document from Rmd to HTML, we need to \emph{Knit} it by clicking o
 
 RStudio may ask you if you want to update some packages, click `Yes'.
 
-After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YALM. After, there is a second-level header which includes the first section of this example document. Also the the word `Knit' is shown in bold, as it was wrapped by double asterisk \texttt{**}.
+After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. After, there is a second-level header which includes the first section of this example document. Also the the word `Knit' is shown in bold, as it was wrapped by double asterisk \texttt{**}.
 
 An interesting thing is that we can integrate the result of our code in the output as we did with the second chunk (which starts in line 18). Here, we can use a summary of the data set \texttt{cars} (which is an in-built data set in \texttt{R} that contains only two variables).
 
@@ -1453,7 +1453,7 @@ In the \texttt{Test1.Rmd} file that you just created, do the following:
 \begin{itemize}
 \tightlist
 \item
-  Change the title of the document in the YALM to `My first R Markdown document'.
+  Change the title of the document in the YAML to `My first R Markdown document'.
 \item
   In the code chunk in line 21, replace the existing line (\texttt{summary(car)}) with the following: \texttt{glimpse(iris)}.
 \item
@@ -1530,7 +1530,7 @@ Next, create a new Rmd document following the next steps.
 \item
   Save the Rmd file clicking on \texttt{File\textgreater{}Save\ as...}, using \texttt{Lab\_6} in the `File name' box, and click on the `Save' button.
 \item
-  Delete all the contents in the default example with the exception of the first bit which contains the YALM and the first code chunk (that is keeping from line 1 to 10 and deleting everything from line 11).
+  Delete all the contents in the default example with the exception of the first bit which contains the YAML and the first code chunk (that is keeping from line 1 to 10 and deleting everything from line 11).
 \item
   In the setup chunk (line 8), change \texttt{echo} from \texttt{TRUE} to \texttt{FALSE} (this will hide the code for all chunks in the output).
 \end{enumerate}
@@ -1764,7 +1764,7 @@ We will continue working on the same R Studio Cloud project as in the previous s
 \item
   Save the Rmd document under the name `Lab7\_correlation'.
 \item
-  Delete all the contents in the Rmd default example with the exception of the first bit which contains the YALM and the first chunk, which contains the default chunk options (that is all from line 12 and on).
+  Delete all the contents in the Rmd default example with the exception of the first bit which contains the YAML and the first chunk, which contains the default chunk options (that is all from line 12 and on).
 \item
   In the setup chunk, change \texttt{echo} from \texttt{TRUE} to \texttt{FALSE} in line 9 (this will hide the code for all chunks in your final document).
 \item
@@ -2762,7 +2762,7 @@ Set an R Markdown document in your `NILT2' project as following:
 \item
   Save the Rmd document as `Multivariate\_lab'.
 \item
-  Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YALM) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
+  Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YAML) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
 \end{enumerate}
 
 Using the \texttt{nilt} object do the following by inserting a new chunk for each bullet points below (remember to write the comments and observations for the results as simple text outside the chunks):
@@ -2903,7 +2903,7 @@ In essence, this is the basic structure to start writing your assignment. Of cou
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  In the template, fill in the `author' and `date' space in the YALM at the top of the file with your student number and appropriate information using quotation marks.
+  In the template, fill in the `author' and `date' space in the YAML at the top of the file with your student number and appropriate information using quotation marks.
 \item
   Knit the \texttt{Rmd} file as \texttt{html} (RStudio will ask to install some packages, click `Yes').
 \item
