@@ -202,7 +202,7 @@ Set an R Markdown document in your 'NILT2' project as following:
 
 1. Create a new `Rmd` file, type 'Multivariate linear model' in 'Tile' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
 2. Save the Rmd document as 'Multivariate_lab'.
-3. Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YALM) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
+3. Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YAML) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
 
 Using the `nilt` object do the following by inserting a new chunk for each bullet points below (remember to write the comments and observations for the results as simple text outside the chunks):
 

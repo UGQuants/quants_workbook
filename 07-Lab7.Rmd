@@ -72,7 +72,7 @@ We will continue working on the same R Studio Cloud project as in the previous s
 2. Open your own copy of the 'NILT' project from the 'Quants lab group';
 3. Create a new Rmd file, type 'Correlation analysis' in 'Tile' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
 4. Save the Rmd document under the name 'Lab7_correlation'.
-5. Delete all the contents in the Rmd default example with the exception of the first bit which contains the YALM and the first chunk, which contains the default chunk options (that is all from line 12 and on).
+5. Delete all the contents in the Rmd default example with the exception of the first bit which contains the YAML and the first chunk, which contains the default chunk options (that is all from line 12 and on).
 6. In the setup chunk, change `echo` from `TRUE` to `FALSE` in line 9 (this will hide the code for all chunks in your final document).
 7. Within the first chunk, copy and paste the following code below line 9 `knitr::opts_chunk$set(message = FALSE, warning = FALSE)`. This will hide the warnings and messages when you load the packages.
 
