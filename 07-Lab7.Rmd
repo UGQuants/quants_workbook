@@ -78,8 +78,9 @@ We will continue working on the same R Studio Cloud project as in the previous s
 
 In the Rmd document insert a new a chunk, copy and paste the following code. Then, run the individual chunk by clicking on the green arrow on the top-right of the chunk.
 ```{r }
-## Load the packages
+# Load the packages
 library(tidyverse)
+library(haven)
 # Load the data from the .rds file we created in lab 3
 nilt <- readRDS("data/nilt_r_object.rds")
 ```
