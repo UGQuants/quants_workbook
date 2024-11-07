@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lab 4 Exploratory data analysis | UG Quantitative Methods in the Social Sciences lab workbook</title>
   <meta name="description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lab 4 Exploratory data analysis | UG Quantitative Methods in the Social Sciences lab workbook" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="by J Rafael Verudzco Torres and Mark Wong" />
 
 
-<meta name="date" content="2024-09-09" />
+<meta name="date" content="2024-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -60,9 +61,8 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -96,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -126,28 +126,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -381,13 +359,13 @@ div.csl-indent {
 <li>Continue working at the bottom of the ‘Exploratory analysis’ script that you created in the last lab.</li>
 <li>Load <code>nilt</code> dataset that you created in the last session using the following code:</li>
 </ol>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="exploratory-data-analysis.html#cb31-1" tabindex="-1"></a><span class="co"># Load the data from the .rds file we created in the last lab</span></span>
-<span id="cb31-2"><a href="exploratory-data-analysis.html#cb31-2" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/nilt_r_object.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="exploratory-data-analysis.html#cb31-1" aria-hidden="true"></a><span class="co"># Load the data from the .rds file we created in the last lab</span></span>
+<span id="cb31-2"><a href="exploratory-data-analysis.html#cb31-2" aria-hidden="true"></a>nilt &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/nilt_r_object.rds&quot;</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Create a subset of the <code>nilt</code> data keeping only few variables using the <code>select()</code> function as shown below:</li>
 </ol>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" tabindex="-1"></a><span class="co">#Subset</span></span>
-<span id="cb32-2"><a href="exploratory-data-analysis.html#cb32-2" tabindex="-1"></a>nilt_subset <span class="ot">&lt;-</span> <span class="fu">select</span>(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" aria-hidden="true"></a><span class="co">#Subset</span></span>
+<span id="cb32-2"><a href="exploratory-data-analysis.html#cb32-2" aria-hidden="true"></a>nilt_subset &lt;-<span class="st"> </span><span class="kw">select</span>(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)</span></code></pre></div>
 </div>
 <div id="exploratory-analysis" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Exploratory analysis<a href="exploratory-data-analysis.html#exploratory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -403,16 +381,16 @@ Figure 4.1: Exploratory analysis.
 <!-- There are some basic functions that will allow you to understand and get familiar with the data. You used an important one already, `glimpse()`. But there are other useful ones. For instance, try `names()` to see a list of the variables' names, or have a look at the data using `View()`.  -->
 <p>To start exploring our data it essential to distinguish the adequate tools and measures available for the type of data in question. As you know now, there are two broad types: (1) categorical and (2) numeric.</p>
 <p>There are several ways in which we can summarise our data. Today, we will use a useful package called <code>vtable</code>. Install it in your session running the following line from your console:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;vtable&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&#39;vtable&#39;</span>)</span></code></pre></div>
 <p>Once it is installed, make sure to load it with the next line. This time copy and paste it in your <code>R</code> script, so you can run it every time you restart your session.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" tabindex="-1"></a><span class="fu">library</span>(vtable)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" aria-hidden="true"></a><span class="kw">library</span>(vtable)</span></code></pre></div>
 </div>
 <div id="categorical-data" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Categorical data<a href="exploratory-data-analysis.html#categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A usual way to explore the categorical data is using contingency and proportion tables. The contingency tables include the count for each category while the proportion tables contain the count divided by the total number of observations.</p>
 <p>Try to focus on the interpretation of the outputs in the following section. At this time, it is just optional to run the code shown.</p>
 <p>Let’s say we are interested in the data’s break down by respondents’ sex (called <code>rsex</code> in the dataset). We will use function <code>sumtable()</code> of the <code>vtable</code> package to produce a contingency table for a single variable (known as One-Way contingency table).</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="exploratory-data-analysis.html#cb35-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rsex&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="exploratory-data-analysis.html#cb35-1" aria-hidden="true"></a><span class="kw">sumtable</span>(nilt_subset, <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&#39;rsex&#39;</span>))</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-50">Table 4.1: </span>Summary Statistics
@@ -468,7 +446,7 @@ rsex
 <p>From the result, we see that there are more female respondents than males.</p>
 <p>Specifically, we see that males respondents represent 44.6% of the total sample, whereas females 55.4%.</p>
 <p>We can do this with any type of categorical variable. Let’s see how the sample is split by religion (<code>religcat</code>). So, we will add it to in the <code>vars</code> argument.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rsex&#39;</span>, <span class="st">&#39;religcat&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" aria-hidden="true"></a><span class="kw">sumtable</span>(nilt_subset, <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&#39;rsex&#39;</span>, <span class="st">&#39;religcat&#39;</span>))</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-51">Table 4.2: </span>Summary Statistics
@@ -566,7 +544,7 @@ religcat
 </table>
 <p>As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.</p>
 <p>What if we want to know the religious affiliation break-down by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as following:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;religcat&#39;</span>), <span class="at">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" aria-hidden="true"></a><span class="kw">sumtable</span>(nilt_subset, <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&#39;religcat&#39;</span>), <span class="dt">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-52">Table 4.3: </span>Summary Statistics
@@ -695,17 +673,17 @@ religcat
 <h4><span class="header-section-number">4.2.4.1</span> Measures of centrality<a href="exploratory-data-analysis.html#measures-of-centrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In quantitative research, we usually have access to many observations in a sample which contains different attributes for each of them. It would be difficult (and probably not very useful) to talk about each of the NILT respondents one by one. Instead, to describe this sample we need measures that roughly represent all participants.</p>
 <p>This is actually an important step in quantitative research, since it allows us to characterise the people that we are studying. For example, in the previous section we only talked about the respondents’ sex and political affiliation, but who are the people we are talking about? Probably a place to start digging deeper is to know their age. The first tool that we will use to understand numeric values is a histogram. Let’s see how the age of NILT respondents is distributed.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" tabindex="-1"></a><span class="fu">hist</span>(nilt_subset<span class="sc">$</span>rage)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" aria-hidden="true"></a><span class="kw">hist</span>(nilt_subset<span class="op">$</span>rage)</span></code></pre></div>
 <p><img src="lab-workbook_files/figure-html/unnamed-chunk-53-1.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 <p>This plot show us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side), tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old, that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
 <p>The <em>median</em> is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called… You guessed it - <code>median()</code>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" tabindex="-1"></a><span class="fu">median</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" aria-hidden="true"></a><span class="kw">median</span>(nilt_subset<span class="op">$</span>rage, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 48</code></pre>
 <p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows:
 <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span>
 The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g. a very very old person). To compute the mean you need the <code>mean()</code> function.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" tabindex="-1"></a><span class="fu">mean</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" aria-hidden="true"></a><span class="kw">mean</span>(nilt_subset<span class="op">$</span>rage, <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] 49.61532</code></pre>
 <p>As you can see, the above measures try to approximate values that fall somewhere in the centre of the histogram plot, and represent all observations in the sample. They tell different things and are sometimes more (or less) suitable in a specific situation.</p>
 </div>
@@ -713,19 +691,19 @@ The formula above is for you to know that this measure considers the magnitude o
 <h4><span class="header-section-number">4.2.4.2</span> Measures of spread<a href="exploratory-data-analysis.html#measures-of-spread" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>By contrast, there are measures that helps us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
 <p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it in four equal parts. The first quartile includes the lowest 25% values, the second the other 25%, the third other other 25%, and the fourth the highest 25%. To compute quartiles we can use the <code>quantile</code> function.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exploratory-data-analysis.html#cb43-1" tabindex="-1"></a><span class="fu">quantile</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exploratory-data-analysis.html#cb43-1" aria-hidden="true"></a><span class="kw">quantile</span>(nilt_subset<span class="op">$</span>rage, <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##   18   35   48   64   97</code></pre>
 <p>In our sample, the youngest quarter of the respondents is between 18 and 35 years old. The second quarter is between 35 and 48 years old. The next quartile is between 48 and 64. The oldest 25% of the respondents is between 64 and 97.</p>
 <p>The <em>variance</em> is useful to obtain a singe measure of spread (instead of four values, as the above) taking the mean as a reference. This is given by the following formula:</p>
 <p><span class="math display">\[ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } \]</span></p>
 <p>To decipher the formula above, the <span class="math inline">\(\bar{x}\)</span> represents the mean, the <span class="math inline">\(x\)</span> represents each of the values in the numeric series. The formula takes each of the <span class="math inline">\(x\)</span> values and subtract it from the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. Later, it squares the result of the subtraction (that is multiply it by itself). This is done to obtain a positive value, since some numbers in the series will be lower than the mean (resulting in negative values). Then, we sum all of them and divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1. To estimate the variance in R we only need the <code>var()</code> function.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exploratory-data-analysis.html#cb45-1" tabindex="-1"></a><span class="fu">var</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exploratory-data-analysis.html#cb45-1" aria-hidden="true"></a><span class="kw">var</span>(nilt_subset<span class="op">$</span>rage, <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] 343.3486</code></pre>
 <p>As you can see, the result is not very intuitive. That is because we squared the subtraction. Luckily, there is a measure that put it in <em>readable</em> scale. This is the <em>standard deviation</em>. In essence this takes the square root of the variance (the reversed operation of squaring it):
 <span class="math display">\[sd=\sqrt{var}\]</span></p>
 <p>To compute it in <code>R</code>, use the <code>sd()</code> function.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exploratory-data-analysis.html#cb47-1" tabindex="-1"></a><span class="fu">sd</span>(nilt_subset<span class="sc">$</span>rage, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exploratory-data-analysis.html#cb47-1" aria-hidden="true"></a><span class="kw">sd</span>(nilt_subset<span class="op">$</span>rage, <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] 18.52967</code></pre>
 <p>This measure is more <em>human readable</em> than the variance. Don’t worry too much about the formula. An important thing to remember is what the measure represents. An informal definition of the standard deviation is <em>the average distance from the mean</em>. In essence, it tell us how far the values in our data are from the mean.</p>
 </div>
@@ -735,7 +713,7 @@ The formula above is for you to know that this measure considers the magnitude o
 <p>Phew, that was a lot!…</p>
 <p>… Luckily we can use the <code>sumtable</code> function to compute all these measures at the same time!</p>
 <p>It is very simple. You can compute a quick summary for age as following:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="exploratory-data-analysis.html#cb49-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rage&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="exploratory-data-analysis.html#cb49-1" aria-hidden="true"></a><span class="kw">sumtable</span>(nilt_subset, <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&#39;rage&#39;</span>))</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-59">Table 4.4: </span>Summary Statistics
@@ -801,7 +779,7 @@ rage
 <div id="categorical-and-numeric-data" class="section level4 hasAnchor" number="4.2.5.1">
 <h4><span class="header-section-number">4.2.5.1</span> Categorical and numeric data<a href="exploratory-data-analysis.html#categorical-and-numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="exploratory-data-analysis.html#cb50-1" tabindex="-1"></a><span class="fu">sumtable</span>(nilt_subset, <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;rage&#39;</span>), <span class="at">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="exploratory-data-analysis.html#cb50-1" aria-hidden="true"></a><span class="kw">sumtable</span>(nilt_subset, <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&#39;rage&#39;</span>), <span class="dt">group =</span> <span class="st">&#39;rsex&#39;</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-60">Table 4.5: </span>Summary Statistics

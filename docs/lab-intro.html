@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lab 1 Introduction to R | UG Quantitative Methods in the Social Sciences lab workbook</title>
   <meta name="description" content="This is the workbook you will use for the Quantitative Methods in the Social Sciences lab sessions." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lab 1 Introduction to R | UG Quantitative Methods in the Social Sciences lab workbook" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="by J Rafael Verudzco Torres and Mark Wong" />
 
 
-<meta name="date" content="2024-09-09" />
+<meta name="date" content="2024-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -60,9 +61,8 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -96,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -126,28 +126,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -371,7 +349,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="lab-intro" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Lab 1</span> Introduction to R<a href="lab-intro.html#lab-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>For this course we will be using <a href="https://www.r-project.org/">R</a> <span class="citation">(<a href="#ref-R-base">R Core Team 2021</a>)</span> and <a href="https://rstudio.com/">R Studio</a> as the main tools for conducting quantitative analysis. <code>R</code> and the basic versions of <code>R Studio</code> are open-source and thus free software. Even though <code>R</code> appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.</p>
+<p>For this course we will be using <a href="https://www.r-project.org/">R</a> <span class="citation">(R Core Team <a href="#ref-R-base" role="doc-biblioref">2021</a>)</span> and <a href="https://rstudio.com/">R Studio</a> as the main tools for conducting quantitative analysis. <code>R</code> and the basic versions of <code>R Studio</code> are open-source and thus free software. Even though <code>R</code> appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.</p>
 <p><code>R</code> and <code>R Studio</code> are two separate things. <code>R</code> is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities in a friendly and interactive interface. In short, for this course (and most of the times in practice) you chiefly RStudio whilst <code>R</code> is silently doing all the work in the background. Thereafter, we will refer to <code>R</code>, as the integrated interface.</p>
 <p><code>R</code> works in a command-based line environment. This means that you need to call the commands (or <em><strong>functions</strong></em>, as called in R) through text. This can look intimidating at first glance. But do not worry, we will guide you step by step.</p>
 <p>At this point you may be wondering why you need to bother learning these tools. In the next section you will see some of the advantages and examples that can be achieved using <code>R</code>.</p>
@@ -534,13 +512,13 @@ Try different operations such as <code>50 / 20</code> or <code>3 * 5</code>.</p>
 <h4><span class="header-section-number">1.3.0.3</span> Assigning values to ‘objects’<a href="lab-intro.html#assigning-values-to-objects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In <code>R</code>, it is very common (and practical) to store values or data as ‘objects’. These are temporally stored in your current session. Let’s try it!</p>
 <p>Now, we will work in the <code>R</code> script file (<strong>Pane 1</strong>, top-left pane), write the following and run it by clicking the green arrow or using <code>alt + enter</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lab-intro.html#cb1-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-2"><a href="lab-intro.html#cb1-2" tabindex="-1"></a>a <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lab-intro.html#cb1-1" aria-hidden="true"></a>a &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb1-2"><a href="lab-intro.html#cb1-2" aria-hidden="true"></a>a <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <p>What do you observe?…</p>
 <p>…That’s right! The operator <code>&lt;-</code> assigned the numeric value <code>10</code> to the object <code>a</code> (on the left hand-side of the arrow). Later, you used the object (<code>a</code>) to compute a sum (i.e, <code>a + 5</code>).</p>
 <p>Now, write and run the following in your <code>R</code> script (Pane 1)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lab-intro.html#cb2-1" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb2-2"><a href="lab-intro.html#cb2-2" tabindex="-1"></a>a  <span class="sc">*</span>  c</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lab-intro.html#cb2-1" aria-hidden="true"></a>c &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb2-2"><a href="lab-intro.html#cb2-2" aria-hidden="true"></a>a  <span class="op">*</span><span class="st">  </span>c</span></code></pre></div>
 <p>As you can see, you stored the numeric value <code>3</code> in the variable <code>c</code>. Then, you called the previously created object <code>a</code> in a multiplication.</p>
 <p>In the same way as you assigned these simple variables, you will store other types of objects later, e.g. vectors, data frames or lists. This is useful because those objects will be ready in your session to do some computations.</p>
 <p>There are a few things to note when assigning objects to variables. If you use a different value to the same variable, e.g. by typing <code>a &lt;- 5</code>, you will replace the old value with the new. So, instead of having <code>a</code> representing the value 10, you will have <code>5</code>. You can see the objects available in your session on the Global Environment (‘Environment’ tab in Pane 2) as shown below.</p>
@@ -591,15 +569,15 @@ Figure 1.9: ‘Environment’ tab.
 <li>What are the main differences between working on a <code>R</code> script file (pane 1) and directly on the console (pane 3)?</li>
 <li>Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lab-intro.html#cb3-1" tabindex="-1"></a>object1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb3-2"><a href="lab-intro.html#cb3-2" tabindex="-1"></a>object1 <span class="ot">&lt;-</span> <span class="dv">30</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lab-intro.html#cb3-1" aria-hidden="true"></a>object1 &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb3-2"><a href="lab-intro.html#cb3-2" aria-hidden="true"></a>object1 &lt;-<span class="st"> </span><span class="dv">30</span></span></code></pre></div>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-base" class="csl-entry">
-R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+<div id="refs" class="references hanging-indent">
+<div id="ref-R-base">
+<p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
 </div>
 </div>
             </section>
