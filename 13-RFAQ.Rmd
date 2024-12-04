@@ -4,7 +4,7 @@
 
 This appendix contains information for solving common issues reported when working on their interpretive findings report.
 
-Updates will continue being added to this appendix with information for any new issues being reported. So, if you experience an issue, this post will be a good first port of call to check for any existing solution.
+Updates will continue being added to this appendix with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.
 
 ## Reporting R Issues {.unnumbered}
 
