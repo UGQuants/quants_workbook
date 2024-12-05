@@ -1,8 +1,8 @@
-# Appendix: R Issues FAQ {#RFAQ .unnumbered}
+# Appendix 2: R Issues FAQ {#RFAQ .unnumbered}
 
 ## Introduction {.unnumbered}
 
-This appendix contains information for solving common issues reported when working on their interpretive findings report.
+This appendix contains information for solving common issues students have reported when working on their interpretive findings report.
 
 Updates will continue being added to this appendix with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.
 
@@ -54,11 +54,15 @@ knitr::include_graphics("./images/removelines2.png")
 
 The above code replaces the original nilt data frame with a version that only includes the 5 variables listed within the selection function. Again, resulting in variables disappearing from the regression results table.
 
+The `select()` function keeps variables passed to it and drops the others. The first argument is always the dataframe being selected from, `select(dataframe, ...)`, with variables to keep from it listed after, `select(dataframe, variable1, variable2, ...)`. Assigning, `<-`, select() to the same dataframe, `dataframe <- select(dataframe, ..)`, is effectively saying, 'from this dataframe keep these variables and permanently remove the others'. Unless your whole analysis is only going to use that selection, always assign it to a new dataframe instead, `dataframe_subset <- select(dataframe, ...)`.
+
 If you need to create a subset of the data, ensure to assign it to a new data frame:
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/subsetcorrect.png")
 ```
+
+**Note**, always consider whether you actually need to create a subset. Most functions have arguments for defining which variables to use, so you do not necessarily need to provide a subset to them.
 
 ## Object 'nilt_subset' Not Found {.unnumbered}
 
@@ -77,6 +81,8 @@ knitr::include_graphics("./images/subsetexamples.png")
 If you already have code assigning data to the object and do so before the code that is producing the error message, try running the lines of code where you assigning the data again, or 'Run All'. If you still receive an error message, double-check for typos and capitalisation, `nilt_subset`, `NILT_subset`, and `ni1t_subset` will be treated as different objects.
 
 If the code was previously working, it may be the case that you have accidentally deleted code blocks / lines that assigned data to the object, added new code above the lines where you assigned data, or moved code where the lines assigning data to the object and calling it within a function are now in the wrong order.
+
+**Note**, always consider whether you actually need to create a subset. Most functions have arguments for defining which variables to use, so you do not necessarily need to provide a subset to them.
 
 ## Wrong Word Count {.unnumbered}
 
@@ -99,7 +105,8 @@ However, the code to calculate the word count refers to a specific file "Assignm
 ```{r echo=FALSE}
 knitr::include_graphics("./images/wordcountchange.png")
 ```
-Note, the '- 10' in the code is so "Word count: " and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to "wordcountaddin::word_count("Assignmet2-template.Rmd") - 193".
+
+Note, the '- 10' in the code is so "Word count:" and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to "wordcountaddin::word_count("Assignmet2-template.Rmd") - 193".
 
 ## Unable to Knit {.unnumbered}
 
@@ -122,6 +129,7 @@ But, will probably have the something like the following if receiving the error 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/outputhtmlpdf.png")
 ```
+
 This can happen unintentionally as RStudio can automatically add a line for PDF outline, such as if accidentally clicked 'Knit to PDF':
 
 ```{r echo=FALSE}
@@ -160,31 +168,31 @@ To avoid such potential issues, please ensure to submit an exported version of y
 
 If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g. right-clicking and 'Save as...') rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but creates issues for Turnitin.
 
-To export your knitted HTML file -
-1. Check the box next to your knitted HTML file in the 'Files' panel. By default, the Files panel is on the bottom right of the screen.
+To export your knitted HTML file - 1. Check the box next to your knitted HTML file in the 'Files' panel. By default, the Files panel is on the bottom right of the screen.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/exporthtml1.png")
 ```
-2. Click 'More' from the toolbar at the top of the Files panel.
+
+2.  Click 'More' from the toolbar at the top of the Files panel.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/exporthtml2.png")
 ```
 
-3. Click 'Export' from the menu options that pop-up.
+3.  Click 'Export' from the menu options that pop-up.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/exporthtml3.png")
 ```
 
-4. This will pop open an 'Export Files' dialogue. Here, you can rename the file to include your student number. Just make sure the ".html" at the end remains included.
+4.  This will pop open an 'Export Files' dialogue. Here, you can rename the file to include your student number. Just make sure the ".html" at the end remains included.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/exporthtml4.png")
 ```
 
-5. After naming the file, click 'Download'. This will open a dialogue to select which location to save the file.
+5.  After naming the file, click 'Download'. This will open a dialogue to select which location to save the file.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/exporthtml5.png")

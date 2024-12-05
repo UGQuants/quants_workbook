@@ -1,0 +1,175 @@
+# Appendix 1: RMarkdown & the Interpretive Report Template {#InterpretiveReportTemplate .unnumbered}
+
+## Introduction {.unnumbered}
+
+
+review:
+- session on rmarkdown
+- session for interpretive report
+
+
+## RMarkdown {.unnumbered}
+
+and [Code Chunks]
+
+### Formatting
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/markdownraw.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/markdownknitted.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/headingsraw.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/headingsknitted.png")
+```
+
+### Line spacing
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/linespacingraw.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/linespacingknitted.png")
+```
+
+### Code Chunks
+
+There are three main ways to create code chunk:
+
+-   Click the 'Insert Code Chunk' button and from the drop-down select 'R' at the top. (See gif below)
+-   Press `Ctrl + Alt + I` (Windows & Linux) or `Cmd + Option + I` (macOS)
+-   Manually typing three back-ticks, "\`\`\`{r}", before your code and adding three back-ticks after, "\`\`\`".
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/insertcodechunk.gif")
+```
+
+Curly brackets at the start of a code chunk are used to specify `{programming-language optional name, options = values}`. Since we are using R, all our code chunks have `{r ...}`. Within code chunks, the pound sign / hash, `#`, at the start of a line is used to add any comments:
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/codechunk.png")
+```
+
+#### Code Chunks Labels
+
+Adding a label is useful as a quick way to remind yourself what the purpose of each code chunk. The quick outline (button at bottom of Source panel) can be used to jump to specific sections of your document. If you provide a label for your code chunk it will also appear here:
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/chunkaddingname.gif")
+```
+
+#### Code Chunk Options
+
+Options are used to specify how code chunks are handled when run/knitted. Two key ones we have used in the labs and in the project template:
+
+-   **echo** - whether the code chunk is displayed in knitted outputs.
+-   **include** - whether the code chunk *and* its output is displayed in knitted outputs.
+
+By default the output *and* the code chunk are displayed in knitted outputs. For the interpretive report, you do not want to display the code chunks in your knitted HTML file, so ensure to add `echo=FALSE` to the options for new code chunks you create. Also, see [Setup Code Chunk] section for information on how to set `echo=FALSE` as a 'global option'.
+
+Examples when working in RMarkdown document:
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/echoincluderaw.png")
+```
+
+And when knitted:
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/echoincludeknitted.png")
+```
+
+### Running Code Chunks
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/runchunk.png")
+```
+
+1.  Run Current Chunk -
+2.  Run All Chunks Above -
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/runoptions.png")
+```
+
+### Knitting RMarkdown Documents
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/knitting.png")
+```
+
+### RMarkdown Cheat Sheet
+
+It is possible to access an RMarkdown cheat sheet (as well as ones for ggplot2 and dplyr!) from within RStudio:
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/markdowncheetsheet.gif")
+```
+
+## YAML Block {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templateyaml.png")
+```
+
+To save having to remember to update the date before knitting and submitting your final version, you can use the following in the YAML block:
+
+```         
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+```
+
+When knitted that code will add the current date in dd/mm/yy format (e.g. 04/12/24):
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/knitteddate.png")
+```
+
+## Setup Code Chunk {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templatesetup.png")
+```
+
+```         
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, echo=FALSE)
+```
+
+## Preamble Code Chunk {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templatepreamble.png")
+```
+
+## Word Count Code {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/wordcountinline.png")
+```
+
+Note, surrounding code with single back-ticks, (/\`), creates an "inline code chunk", enabling you to add short snippets of code.
+
+## Template Outline {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templateoutline.png")
+```
+
+## Regression Results Code Chunk {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templateresults.png")
+```
+
+## Knitted Regression Results Table {.unnumbered}
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/knittedtemplate.png")
+```
