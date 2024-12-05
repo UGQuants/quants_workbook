@@ -8,6 +8,8 @@ review:
 - session for interpretive report
 
 
+In particular, please see the [Preamble Code Chunk] section for best practice on how to install and load any additional packages that you need.
+
 ## RMarkdown {.unnumbered}
 
 and [Code Chunks]
@@ -141,6 +143,11 @@ knitr::include_graphics("./images/templatesetup.png")
 ```         
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, echo=FALSE)
 ```
+
+```{r echo=FALSE}
+knitr::include_graphics("./images/templatesetupechofalse.png")
+```
+
 
 ## Preamble Code Chunk {.unnumbered}
 
