@@ -140,10 +140,6 @@ knitr::include_graphics("./images/knitteddate.png")
 knitr::include_graphics("./images/templatesetup.png")
 ```
 
-```         
-knitr::opts_chunk$set(message=FALSE, warning=FALSE, echo=FALSE)
-```
-
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatesetupechofalse.png")
 ```
