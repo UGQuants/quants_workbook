@@ -1,4 +1,4 @@
-# Reporting in R Markdown
+# Reporting in R Markdown{#rmarkdown}
 
 ## Introduction
 

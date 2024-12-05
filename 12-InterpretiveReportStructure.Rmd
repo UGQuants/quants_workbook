@@ -2,17 +2,23 @@
 
 ## Introduction {.unnumbered}
 
+This appendix provides additional information on using RMarkdown and the structure of RMarkdown document provided with the interpretive report project template.
 
-review:
-- session on rmarkdown
-- session for interpretive report
+Please ensure to review the relevant lab materials:
 
-
-In particular, please see the [Preamble Code Chunk] section for best practice on how to install and load any additional packages that you need.
+- [Lab 5 session on RMarkdown](#rmarkdown) for an intro to RMarkdown.
+- [Lab 10 Session for Interpreting Quantitative Findings Report summative assessment](#interpretivereport) for instructions on how to create a project on RStudio Cloud for your interpretive report using the provided template.
+ 
+The first half of this page provides an overview of [RMarkdown] and the second half covers the [Interpretive Report Template] in more detail. 
 
 ## RMarkdown {.unnumbered}
 
-and [Code Chunks]
+RMarkdown enables you to write in plain-text with [Code Chunks] by combining the power of R, markdown, and pandoc.
+
+Markdown is a lightweight 'markup language', that uses simple easy to read syntax for formatting (see [Formatting] section below). Pandoc is a tool for converting documents from one format into another, such as markdown to PDF or HTML. RMarkdown builds on-top of this, when you 'knit' a document, all the code chunks are run, with any tables, graphs, etc created by them passed alongside the markdown text to pandoc to convert into a HTML or similar output file. The three combined, means you can focus on your text and analysis, using 'knit' to convert them into a consistently and neatly formatted output file. 
+
+This lets you focus on the text, which pandoc will convert into consistently formatted output files. If you have ever been working on a large complexly formatted 
+
 
 ### Formatting
 
@@ -116,7 +122,9 @@ It is possible to access an RMarkdown cheat sheet (as well as ones for ggplot2 a
 knitr::include_graphics("./images/markdowncheetsheet.gif")
 ```
 
-## YAML Block {.unnumbered}
+## Interpretive Report Template {.unnumbered}
+
+### YAML Block {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templateyaml.png")
@@ -134,7 +142,7 @@ When knitted that code will add the current date in dd/mm/yy format (e.g. 04/12/
 knitr::include_graphics("./images/knitteddate.png")
 ```
 
-## Setup Code Chunk {.unnumbered}
+### Setup Code Chunk {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatesetup.png")
@@ -145,7 +153,7 @@ knitr::include_graphics("./images/templatesetupechofalse.png")
 ```
 
 
-## Preamble Code Chunk {.unnumbered}
+### Preamble Code Chunk {.unnumbered}
 
 It is best practice to install and load any required packages at the top of the RMarkdown file. This keeps all package management in a single location and only done once.
 
@@ -170,7 +178,7 @@ IMAGE HERE
 **Note**, moving all code for installing and loading of packages into this preamble code chunk means you do not need, and can safely remove, any other install.package() and library() lines from the rest of your code chunks.
 
 
-## Word Count Code {.unnumbered}
+### Word Count Code {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/wordcountinline.png")
@@ -178,19 +186,19 @@ knitr::include_graphics("./images/wordcountinline.png")
 
 Note, surrounding code with single back-ticks, (/\`), creates an "inline code chunk", enabling you to add short snippets of code.
 
-## Template Outline {.unnumbered}
+### Template Outline {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templateoutline.png")
 ```
 
-## Regression Results Code Chunk {.unnumbered}
+### Regression Results Code Chunk {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templateresults.png")
 ```
 
-## Knitted Regression Results Table {.unnumbered}
+### Knitted Regression Results Table {.unnumbered}
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/knittedtemplate.png")
