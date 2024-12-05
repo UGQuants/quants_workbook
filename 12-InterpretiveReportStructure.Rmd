@@ -144,9 +144,28 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, echo=FALSE)
 
 ## Preamble Code Chunk {.unnumbered}
 
+It is best practice to install and load any required packages at the top of the RMarkdown file. This keeps all package management in a single location and only done once.
+
+Recent versions of R have significantly improved handling of potential conflicts between packages. However, where packages depend on others or there are conflicts, such as both using the same names for different functions, loading the packages multiple times and in different places across your code can still create issues.
+
+The preamble code block within the template provides a structure you can add additional packages to as needed.
+
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatepreamble.png")
 ```
+
+WILL NEED TO UPDATE
+
+Outlined in blue, is a line that assigns to a vector object, 'list.of.packages', a list of packages used within the RMarkdown file. The two lines following it create another vector object, 'new.packages', with only the packages listed in 'list.of.packages' that are not already installed, then installs all packages listed in the 'new.packages' vector object.
+
+Outlined in red, is the section that loads the tidyverse and stargazer packages.
+
+If you require additional packages, the best way to add these would be adding them to the list assigned to 'list.of.packages' and adding a new library() line under the existing ones in the preamble. For example, if needing to install and load 'vtable':
+
+IMAGE HERE
+
+**Note**, moving all code for installing and loading of packages into this preamble code chunk means you do not need, and can safely remove, any other install.package() and library() lines from the rest of your code chunks.
+
 
 ## Word Count Code {.unnumbered}
 
