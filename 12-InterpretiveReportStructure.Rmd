@@ -13,13 +13,32 @@ Similarly, if you encounter any errors, please ensure to check the [R Issues FAQ
 
 The first half of this page provides an overview of [RMarkdown](#rmarkdown) and the second half covers the [Interpretive Report Template] in more detail. **Importantly**, please ensure to at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.
 
+Outline:
+
+- [RMarkdown]
+  - [Formatting]
+  - [Line spacing]
+  - [Code Chunks]
+    - [Code Chunk Labels]
+    - [Code Chunk Options]
+  - [Running Code Chunks]
+  - [Knitting RMarkdown Documents]
+  - [RMarkdown Cheat Sheet]
+- [Interpretive Report Template]
+  - [YAML Block]
+  - [Setup Code Chunk]
+  - [Preamble Code Chunk]
+  - [Word Count Code]
+  - [Template Outline]
+  - [Regression Results Code Chunk]
+
 ## RMarkdown {#rmarkdown .unnumbered}
 
 RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with [Code Chunks] that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.
 
 RMarkdown achieves this by combining the power of R, Markdown, and Pandoc. Markdown is a lightweight markup language with simple, human-readable syntax for formatting text (see the [Formatting] section below). Pandoc is a tool for converting files from one format to another, such as Markdown to PDF or HTML. RMarkdown builds on these tools. When you 'knit' a document, the code chunks are executed to run your analysis and generate your tables and graphs using R. The output from these are then integrated with the Markdown text and passed to Pandoc to convert into a neat and consistently formatted HTML, PDF, or other specified file format.
 
-### Formatting
+### Formatting {.unnumbered}
 
 RMarkdown uses simple, human-readable syntax for basic formatting. Whilst different to how you would write text in a Word document, it is easy to learn. This simple transparent formatting also helps avoid the hidden complexities of Word document, where formatting issues often arise from inconsistent syntax that is hidden from the user.
 
@@ -47,7 +66,7 @@ And, how it appears when knitted:
 knitr::include_graphics("./images/headingsknitted.png")
 ```
 
-### Line spacing
+### Line spacing {.unnumbered}
 
 The main thing in RMarkdown's syntax that often trips up new users is the need to ensure there are empty line spaces between:
 
@@ -69,7 +88,7 @@ knitr::include_graphics("./images/linespacingknitted.png")
 
 Side-note, this practice of using empty line spaces originates from traditional coding conventions. A common coding style includes placing a specified limit on the number of characters per line, with any overflow placed on a new line. To distinguish these lines breaks to keep a limit on the number of characters per line and those used to designate new paragraphs, lists, and headers, an empty line is used. Using empty lines also helps add visual clarity when writing in RMarkdown.
 
-### Code Chunks
+### Code Chunks {.unnumbered}
 
 There are three main ways to create a code chunk:
 
@@ -89,7 +108,7 @@ knitr::include_graphics("./images/codechunk.png")
 
 Side-note, this may seem confusing given hash signs are used for headers in the main text. However, inside of a code chunk, all text is treated as code for the language specified in the curly brackets. In R, hash signs are used for comments, so they are treated as comments within the code chunk rather than as Markdown headers.
 
-#### Code Chunks Labels
+#### Code Chunk Labels {.unnumbered}
 
 Adding a label is useful as a quick way to remind yourself the purpose of each code chunk. The quick outline (button at bottom of Source panel) can be used to jump to specific sections and code chunks in your document. If you provide a label for your code chunk it will also appear here:
 
@@ -97,7 +116,7 @@ Adding a label is useful as a quick way to remind yourself the purpose of each c
 knitr::include_graphics("./images/chunkaddingname.gif")
 ```
 
-#### Code Chunk Options
+#### Code Chunk Options {.unnumbered}
 
 Options are used to specify how code chunks are handled when run/knitted. Two key ones we have used in the labs and in the project template:
 
@@ -118,7 +137,7 @@ And when knitted:
 knitr::include_graphics("./images/echoincludeknitted.png")
 ```
 
-### Running Code Chunks
+### Running Code Chunks {.unnumbered}
 
 There are multiple ways to run your R code.
 
@@ -158,7 +177,7 @@ Assuming you have YAML specifying which file format(s) to convert to, all you th
 knitr::include_graphics("./images/knitting.png")
 ```
 
-### RMarkdown Cheat Sheet
+### RMarkdown Cheat Sheet {.unnumbered}
 
 It is possible to access an RMarkdown cheat sheet (as well as ones for ggplot2 and dplyr!) from within RStudio:
 
@@ -182,7 +201,7 @@ knitr::include_graphics("./images/templateyaml.png")
 
 To save having to remember to update the date before knitting and submitting your final version, you can use the following in the YAML block:
 
-```         
+```{YAML, eval=FALSE}
 date: "`r format(Sys.time(), '%d/%m/%y')`"
 ```
 

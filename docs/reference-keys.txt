@@ -137,11 +137,4 @@ excercices
 activity-1-5
 lab-activities-2
 lab-activities-3
-formatting
-line-spacing
-code-chunks
-code-chunks-labels
-code-chunk-options
-running-code-chunks
 knitting-rmarkdown-documents
-rmarkdown-cheat-sheet
