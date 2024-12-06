@@ -357,7 +357,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#line-spacing"><i class="fa fa-check"></i>Line spacing</a></li>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#code-chunks"><i class="fa fa-check"></i>Code Chunks</a></li>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#running-code-chunks"><i class="fa fa-check"></i>Running Code Chunks</a></li>
-<li class="chapter" data-level="10.6.7" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#knitting-rmarkdown-documents"><i class="fa fa-check"></i><b>10.6.7</b> Knitting RMarkdown Documents</a></li>
+<li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#knitting-rmarkdown-documents"><i class="fa fa-check"></i>Knitting RMarkdown Documents</a></li>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#rmarkdown-cheat-sheet"><i class="fa fa-check"></i>RMarkdown Cheat Sheet</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#interpretive-report-template"><i class="fa fa-check"></i>Interpretive Report Template</a>
@@ -523,8 +523,8 @@ div.csl-indent {
 </ul>
 <p>Note as well that many of these options have keyboard shortcuts listed. Learning these pays off long-term as you will be able to write and run your code without needing to move your hands from the keyboard.</p>
 </div>
-<div id="knitting-rmarkdown-documents" class="section level3 hasAnchor" number="10.6.7">
-<h3><span class="header-section-number">10.6.7</span> Knitting RMarkdown Documents<a href="InterpretiveReportTemplate.html#knitting-rmarkdown-documents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knitting-rmarkdown-documents" class="section level3 unnumbered hasAnchor">
+<h3>Knitting RMarkdown Documents<a href="InterpretiveReportTemplate.html#knitting-rmarkdown-documents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to, see the <a href="InterpretiveReportTemplate.html#yaml-block">YAML Block</a> section for information on how this is setup within the project template.</p>
 <p><strong>Importantly</strong>, when you knit an RMarkdown document, all code is run sequentially from top to bottom in a clean R environment. This ensures the document is reproducible. Anyone with a copy can knit it and produce the same results. This requires though that code to load any required packages are included within a code chunk in the document. Simply loading a package via the Console adds it to your current R environment and manually run code chunks will be able to access the package. However, when knitting, the clean R environment won’t have access to the package, and you’ll receive an error message when the knit process tries to run a function that requires the package. This is why it is important to include a code chunk at the top of your document that loads all required packages. See the <a href="InterpretiveReportTemplate.html#preamble-code-chunk">Preamble Code Chunk</a> for how to do this in the RMarkdown file provided in the interpretive report project template.</p>
 <p>Assuming you have YAML specifying which file format(s) to convert to, all you then need to do each time is simply click the ‘Knit’ button:</p>
@@ -550,7 +550,13 @@ div.csl-indent {
 </div>
 <div id="setup-code-chunk" class="section level3 unnumbered hasAnchor">
 <h3>Setup Code Chunk<a href="InterpretiveReportTemplate.html#setup-code-chunk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="images/templatesetup.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>After the <a href="InterpretiveReportTemplate.html#yaml-block">YAML Block</a>, there is a ‘setup’ code chunk that sets global options for knitr. The <code>include=FALSE</code> in its options means that this chunk and its output are not displayed in your knitted files:</p>
+<p><img src="images/templatesetup.png" width="100%" style="display: block; margin: auto auto auto 0;" />
+Global options apply to all code chunks in the document. This means anything set in the global options does not have to be individually added to each code chunk. Note, you can set a global option and still set a different one for a specific code chunk where needed. For example, if you set <code>option=FALSE</code> globally, but needed it to be <code>TRUE</code> for a specific code chunk, all you need to do is add <code>option=TRUE</code> to its options to override the global default.</p>
+<p>The global options set in the setup code chunk are:</p>
+<p>-<code>message=FALSE</code>, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
+- <code>warning=FALSE</code>, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.</p>
+<p><strong>Importantly</strong>, you do not want to display your code chunks in your knitted file, only the tables and graphs they generate. To achieve this you could add <code>echo=FALSE</code> to the options for each individual code chunk. Or – you can simply add it as a global option in the setup code chunk!</p>
 <p><img src="images/templatesetupechofalse.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
 <div id="preamble-code-chunk" class="section level3 unnumbered hasAnchor">

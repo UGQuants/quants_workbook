@@ -137,4 +137,3 @@ excercices
 activity-1-5
 lab-activities-2
 lab-activities-3
-knitting-rmarkdown-documents

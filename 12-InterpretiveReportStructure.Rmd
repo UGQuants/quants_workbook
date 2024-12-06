@@ -165,7 +165,7 @@ Useful additional ones here are:
 
 Note as well that many of these options have keyboard shortcuts listed. Learning these pays off long-term as you will be able to write and run your code without needing to move your hands from the keyboard.
 
-### Knitting RMarkdown Documents
+### Knitting RMarkdown Documents {.unnumbered}
 
 Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to, see the [YAML Block] section for information on how this is setup within the project template.
 
@@ -213,9 +213,19 @@ knitr::include_graphics("./images/knitteddate.png")
 
 ### Setup Code Chunk {.unnumbered}
 
+After the [YAML Block], there is a 'setup' code chunk that sets global options for knitr. The `include=FALSE` in its options means that this chunk and its output are not displayed in your knitted files:
+
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatesetup.png")
 ```
+Global options apply to all code chunks in the document. This means anything set in the global options does not have to be individually added to each code chunk. Note, you can set a global option and still set a different one for a specific code chunk where needed. For example, if you set `option=FALSE` globally, but needed it to be `TRUE` for a specific code chunk, all you need to do is add `option=TRUE` to its options to override the global default.
+
+The global options set in the setup code chunk are:
+
+-`message=FALSE`, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
+- `warning=FALSE`, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.
+
+**Importantly**, you do not want to display your code chunks in your knitted file, only the tables and graphs they generate. To achieve this you could add `echo=FALSE` to the options for each individual code chunk. Or -- you can simply add it as a global option in the setup code chunk!
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatesetupechofalse.png")
