@@ -73,7 +73,7 @@ measures-of-spread
 putting-it-all-together
 categorical-and-numeric-data
 activity-2-1
-reporting-in-r-markdown
+rmarkdown
 introduction
 r-markdown
 first-r-markdown-document
@@ -122,7 +122,7 @@ r-syntax-for-the-multivariate-linear-model
 model-evaluation-1
 assumptions
 lab-activities-1
-ug-quants-summative-assessment-interpreting-quantitative-findings-report
+interpretivereport
 introduction-3
 create-your-research-report-template-from-github
 rstudio-cloud-version
@@ -137,3 +137,11 @@ excercices
 activity-1-5
 lab-activities-2
 lab-activities-3
+formatting
+line-spacing
+code-chunks
+code-chunks-labels
+code-chunk-options
+running-code-chunks
+knitting-rmarkdown-documents
+rmarkdown-cheat-sheet
