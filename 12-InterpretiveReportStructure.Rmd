@@ -268,7 +268,7 @@ As a gif:
 knitr::include_graphics("./images/addingpackages.gif")
 ```
 
-**Note**, moving all code for installing and loading of packages into this preamble code chunk means you do not need, and can safely remove, any other install.package() and library() lines from the rest of your code chunks. This will reduce risk of encountering error messages and make it easier to bug them if any do occur.
+**Note**, moving all code for installing and loading of packages into this preamble code chunk means you do not need, and can safely remove, any other install.package() and library() lines from the rest of your code chunks. This will reduce risk of encountering error messages and make it easier to debug them if any do occur.
 
 ### Word Count Code {.unnumbered}
 
