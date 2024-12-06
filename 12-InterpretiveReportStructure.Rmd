@@ -32,7 +32,7 @@ Outline:
   - [Template Outline]
   - [Regression Results Code Chunk]
 
-## RMarkdown {#rmarkdown .unnumbered}
+## RMarkdown {.unnumbered}
 
 RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with [Code Chunks] that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.
 
@@ -94,7 +94,7 @@ There are three main ways to create a code chunk:
 
 -   Click the 'Insert Code Chunk' button and from the drop-down select 'R' at the top. (See gif below)
 -   Press `Ctrl + Alt + I` (Windows & Linux) or `Cmd + Option + I` (macOS)
--   Manually typing three back-ticks with 'r' in curly brackets, "\`\`\`{r}", before your code and adding three back-ticks after, "\`\`\`".
+-   Manually typing three back-ticks with 'r' in curly brackets before your code and adding three back-ticks after.
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/insertcodechunk.gif")
@@ -195,9 +195,12 @@ knitr::include_graphics("./images/keyboard-shortcuts.gif")
 
 ### YAML Block {.unnumbered}
 
+The top of the RMarkdown document includes a YAML block. YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:
+
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templateyaml.png")
 ```
+Please remember to add your student number - and not your name - to line 3.
 
 To save having to remember to update the date before knitting and submitting your final version, you can use the following in the YAML block:
 
@@ -205,7 +208,7 @@ To save having to remember to update the date before knitting and submitting you
 date: "`r format(Sys.time(), '%d/%m/%y')`"
 ```
 
-When knitted that code will add the current date in dd/mm/yy format (e.g. 04/12/24):
+When knitted that code will automatically add the current date in dd/mm/yy format (e.g. 04/12/24):
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/knitteddate.png")
@@ -222,7 +225,7 @@ Global options apply to all code chunks in the document. This means anything set
 
 The global options set in the setup code chunk are:
 
--`message=FALSE`, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
+- `message=FALSE`, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
 - `warning=FALSE`, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.
 
 **Importantly**, you do not want to display your code chunks in your knitted file, only the tables and graphs they generate. To achieve this you could add `echo=FALSE` to the options for each individual code chunk. Or -- you can simply add it as a global option in the setup code chunk!
@@ -277,7 +280,7 @@ This is how the code to calculate the word count looks within the RMarkdown file
 knitr::include_graphics("./images/wordcountinline.png")
 ```
 
-Side-note, surrounding code with single back-ticks, (/\`), creates an "inline code chunk", enabling you to add short snippets of code. The `r` at the start specifies that the code is R, similar to adding r in curly brackets for code chunks.
+Side-note, surrounding code with single back-ticks, (\`), creates an "inline code chunk", enabling you to add short snippets of code. The `r` at the start specifies that the code is R, similar to adding r in curly brackets for code chunks.
 
 This is then how it looks when knitting the project template (assuming you haven't added any additional text yet):
 

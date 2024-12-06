@@ -351,7 +351,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html"><i class="fa fa-check"></i>Appendix 1: RMarkdown &amp; the Interpretive Report Template</a>
 <ul>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#introduction-5"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown"><i class="fa fa-check"></i>RMarkdown</a>
+<li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#rmarkdown-1"><i class="fa fa-check"></i>RMarkdown</a>
 <ul>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
 <li class="chapter" data-level="" data-path="InterpretiveReportTemplate.html"><a href="InterpretiveReportTemplate.html#line-spacing"><i class="fa fa-check"></i>Line spacing</a></li>
@@ -419,7 +419,7 @@ div.csl-indent {
 <p>The first half of this page provides an overview of <a href="rmarkdown.html#rmarkdown">RMarkdown</a> and the second half covers the <a href="InterpretiveReportTemplate.html#interpretive-report-template">Interpretive Report Template</a> in more detail. <strong>Importantly</strong>, please ensure to at least read the <a href="InterpretiveReportTemplate.html#preamble-code-chunk">Preamble Code Chunk</a> section for information on best practice for installing and loading any additional packages.</p>
 <p>Outline:</p>
 <ul>
-<li><a href="rmarkdown.html#rmarkdown">RMarkdown</a>
+<li><a href="InterpretiveReportTemplate.html#rmarkdown-1">RMarkdown</a>
 <ul>
 <li><a href="InterpretiveReportTemplate.html#formatting">Formatting</a></li>
 <li><a href="InterpretiveReportTemplate.html#line-spacing">Line spacing</a></li>
@@ -443,8 +443,8 @@ div.csl-indent {
 </ul></li>
 </ul>
 </div>
-<div id="rmarkdown" class="section level2 unnumbered hasAnchor">
-<h2>RMarkdown<a href="rmarkdown.html#rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rmarkdown-1" class="section level2 unnumbered hasAnchor">
+<h2>RMarkdown<a href="InterpretiveReportTemplate.html#rmarkdown-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with <a href="InterpretiveReportTemplate.html#code-chunks">Code Chunks</a> that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.</p>
 <p>RMarkdown achieves this by combining the power of R, Markdown, and Pandoc. Markdown is a lightweight markup language with simple, human-readable syntax for formatting text (see the <a href="InterpretiveReportTemplate.html#formatting">Formatting</a> section below). Pandoc is a tool for converting files from one format to another, such as Markdown to PDF or HTML. RMarkdown builds on these tools. When you ‘knit’ a document, the code chunks are executed to run your analysis and generate your tables and graphs using R. The output from these are then integrated with the Markdown text and passed to Pandoc to convert into a neat and consistently formatted HTML, PDF, or other specified file format.</p>
 <div id="formatting" class="section level3 unnumbered hasAnchor">
@@ -479,7 +479,7 @@ div.csl-indent {
 <ul>
 <li>Click the ‘Insert Code Chunk’ button and from the drop-down select ‘R’ at the top. (See gif below)</li>
 <li>Press <code>Ctrl + Alt + I</code> (Windows &amp; Linux) or <code>Cmd + Option + I</code> (macOS)</li>
-<li>Manually typing three back-ticks with ‘r’ in curly brackets, “```{r}”, before your code and adding three back-ticks after, “```”.</li>
+<li>Manually typing three back-ticks with ‘r’ in curly brackets before your code and adding three back-ticks after.</li>
 </ul>
 <p><img src="images/insertcodechunk.gif" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 <p>Curly brackets at the start of a code chunk are used to specify <code>{programming-language optional name, options = values}</code>. Since we are using R, all our code chunks have <code>{r ...}</code>. Within code chunks, the pound sign / hash, <code>#</code>, at the start of a line is used to add any comments:</p>
@@ -542,10 +542,12 @@ div.csl-indent {
 <h2>Interpretive Report Template<a href="InterpretiveReportTemplate.html#interpretive-report-template" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="yaml-block" class="section level3 unnumbered hasAnchor">
 <h3>YAML Block<a href="InterpretiveReportTemplate.html#yaml-block" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="images/templateyaml.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
+<p>The top of the RMarkdown document includes a YAML block. YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:</p>
+<p><img src="images/templateyaml.png" width="100%" style="display: block; margin: auto auto auto 0;" />
+Please remember to add your student number - and not your name - to line 3.</p>
 <p>To save having to remember to update the date before knitting and submitting your final version, you can use the following in the YAML block:</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb153-1"><a href="InterpretiveReportTemplate.html#cb153-1" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d/%m/%y&#39;)`&quot;</span></span></code></pre></div>
-<p>When knitted that code will add the current date in dd/mm/yy format (e.g. 04/12/24):</p>
+<p>When knitted that code will automatically add the current date in dd/mm/yy format (e.g. 04/12/24):</p>
 <p><img src="images/knitteddate.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
 <div id="setup-code-chunk" class="section level3 unnumbered hasAnchor">
@@ -554,8 +556,10 @@ div.csl-indent {
 <p><img src="images/templatesetup.png" width="100%" style="display: block; margin: auto auto auto 0;" />
 Global options apply to all code chunks in the document. This means anything set in the global options does not have to be individually added to each code chunk. Note, you can set a global option and still set a different one for a specific code chunk where needed. For example, if you set <code>option=FALSE</code> globally, but needed it to be <code>TRUE</code> for a specific code chunk, all you need to do is add <code>option=TRUE</code> to its options to override the global default.</p>
 <p>The global options set in the setup code chunk are:</p>
-<p>-<code>message=FALSE</code>, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
-- <code>warning=FALSE</code>, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.</p>
+<ul>
+<li><code>message=FALSE</code>, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.</li>
+<li><code>warning=FALSE</code>, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.</li>
+</ul>
 <p><strong>Importantly</strong>, you do not want to display your code chunks in your knitted file, only the tables and graphs they generate. To achieve this you could add <code>echo=FALSE</code> to the options for each individual code chunk. Or – you can simply add it as a global option in the setup code chunk!</p>
 <p><img src="images/templatesetupechofalse.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
@@ -587,7 +591,7 @@ Global options apply to all code chunks in the document. This means anything set
 <p>Tables, figures, and code are not included in the word count. The project template is setup with a “word count add-in”, that will add a word count for you at the top of your knitted document. Note, you will need to knit your document each time you want to check the updated word count.</p>
 <p>This is how the code to calculate the word count looks within the RMarkdown file:</p>
 <p><img src="images/wordcountinline.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
-<p>Side-note, surrounding code with single back-ticks, (/`), creates an “inline code chunk”, enabling you to add short snippets of code. The <code>r</code> at the start specifies that the code is R, similar to adding r in curly brackets for code chunks.</p>
+<p>Side-note, surrounding code with single back-ticks, (`), creates an “inline code chunk”, enabling you to add short snippets of code. The <code>r</code> at the start specifies that the code is R, similar to adding r in curly brackets for code chunks.</p>
 <p>This is then how it looks when knitting the project template (assuming you haven’t added any additional text yet):</p>
 <p><img src="images/knittedwordcount.png" width="100%" style="display: block; margin: auto auto auto 0;" /></p>
 <p>We use this addin as the built-in RStudio word count, accessed via the ‘Edit’ menu at the top of the screen, includes all code and comments. So, despite the addin calculating ‘0’, RStudio will provide:</p>
