@@ -32,6 +32,23 @@ Outline:
   - [Template Outline]
   - [Regression Results Code Chunk]
 
+## R Basics {.unnumbered}
+
+### short summary
+
+
+### assignment
+
+
+### objects and data frames
+
+
+### functions
+
+
+### tidyverse
+
+
 ## RMarkdown {.unnumbered}
 
 RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with [Code Chunks] that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.
@@ -195,7 +212,9 @@ knitr::include_graphics("./images/keyboard-shortcuts.gif")
 
 ### YAML Block {.unnumbered}
 
-The top of the RMarkdown document includes a YAML block. YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:
+The top of the RMarkdown document includes a YAML block, enclosed with three dashes, `---`, at the start and end. The YAML block must be at the very start of the document, so do not add any new lines before it.
+
+YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:
 
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templateyaml.png")
@@ -221,6 +240,7 @@ After the [YAML Block], there is a 'setup' code chunk that sets global options f
 ```{r echo=FALSE}
 knitr::include_graphics("./images/templatesetup.png")
 ```
+
 Global options apply to all code chunks in the document. This means anything set in the global options does not have to be individually added to each code chunk. Note, you can set a global option and still set a different one for a specific code chunk where needed. For example, if you set `option=FALSE` globally, but needed it to be `TRUE` for a specific code chunk, all you need to do is add `option=TRUE` to its options to override the global default.
 
 The global options set in the setup code chunk are:
