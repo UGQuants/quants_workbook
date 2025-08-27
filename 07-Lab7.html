@@ -293,7 +293,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-correlation" class="level2"><h2 class="anchored" data-anchor-id="what-is-correlation">What is correlation?</h2>
 <p>When conducting empirical research, we are often interested in associations between two variables, for example, personal income and attitudes towards migrants. In this lab we will focus on visualizing relationship between variables and how to measure it. In quantitative research, the main variable of interest in an analysis is called the <em>dependent</em> or <em>response variable</em>, and the second is known as the <em>independent</em> or <em>explanatory</em>. In the example above, we can think of personal income as the independent variable and attitudes as the dependent.</p>
 <p>The relationship between variables can be positive, negative or non-existent. The figure below shows these type of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.</p>
-<p><br></p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -350,17 +349,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>, </span>
 <span>       x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 613 rows containing non-finite outside the scale range
-(`stat_smooth()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 613 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="07-Lab7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
@@ -372,15 +360,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>From the plot above, we see that there is a strong positive correlation between the respondent’s age and their partner’s age. We see that for some individuals their partner’s age is older, whereas others is younger. Also, there are some dots that are far away from the straight line. For example, in one case the respondent is around 60 years old and the age of their partner is around 30 years old (can you find that dot on the plot?). These extreme values are known as <em>outliers</em>.</p>
 <p>We may also suspect that the respondents’ sex is playing a role in this relationship. We can include this as a third variable in the plot by colouring the dots by the respondents’ sex. To do this, let’s specify the <code>colour</code> argument in aesthetics <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> with a categorical variable <code>rsex</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">nilt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, colour <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">nilt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, colour <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, intercept <span class="op">=</span> <span class="fl">0</span>, colour <span class="op">=</span> <span class="st">"gray20"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>, </span>
 <span>       x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 613 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="07-Lab7_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -399,14 +383,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As briefly introduced in the last lab, correlations often occur between categorical and numeric data. A good way to observe the relationship between these type of variables is using a box plot. Which essentially shows the distribution of the numeric values by category/group.</p>
 <p>Let’s say we are interested in the relationship between education level and perception of migration. The variable <code>highqual</code> contains the respondent’s highest education qualification. Using <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, we can situate <code>mig_per</code> on the X axis and <code>highqual</code> on the Y axis, and plot it with the <code>gem_boxplot()</code> function. Note that before passing the dataset to <code>ggplot</code>, we can filter out two categories of the variable <code>highqual</code> where education level is unknown (i.e.&nbsp;“Other, level unknown” or “Unclassified”).</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">highqual</span> <span class="op">!=</span> <span class="st">"Other, level unknown"</span> <span class="op">&amp;</span> <span class="va">highqual</span> <span class="op">!=</span> <span class="st">"Unclassified"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mig_per</span>, y <span class="op">=</span> <span class="va">highqual</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 29 rows containing non-finite outside the scale range
-(`stat_boxplot()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="07-Lab7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
@@ -424,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>So far we have examined correlation by visualizing variables only. A useful practice in quantitative research is to actually measure the magnitude of the relationship between these variables. One common measure is the <em>Pearson</em> correlation coefficient. This measure results in a number that goes from -1 to 1. A coefficient below 0 implies a negative correlation whereas a coefficient over 0 a positive one. When the coefficient is close to positive one (1) or negative one (-1), it implies that the relationship is strong. By contrast, coefficients close to 0 indicate a weak relationship. This technique is appropriate to measure linear numeric relationships, which is when we have numeric variables with a normal distribution, e.g.&nbsp;age in our dataset.</p>
 <p>Let’s start measuring the relationship between the respondent’s age and their partner’s age. To do this in R, we should use the <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code> function. In the R syntax, first we specify the variables separated by a comma. We need to be explicit by specifying the object name, the dollar sign, and the name of the variable, as shown below. Also, I set the <code>use</code> argument as <code>'pairwise.complete.obs'</code>. This is because one or both of the variables contain more than one missing value. Therefore, we are telling R to use complete observations only.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">rage</span>, <span class="va">nilt</span><span class="op">$</span><span class="va">spage</span>, use <span class="op">=</span> <span class="st">'pairwise.complete.obs'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">rage</span>, <span class="va">nilt</span><span class="op">$</span><span class="va">spage</span>, use <span class="op">=</span> <span class="st">'pairwise.complete.obs'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9481297</code></pre>
 </div>
@@ -432,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The correlation coefficient between this variables is 0.95. This is close to positive 1. Therefore, it is a strong positive correlation. The result is completely in line with the plot above, since we saw how the dots were close to the straight line.</p>
 <p>What about the relationship between <code>age</code> and <code>mig_per</code> that you plotted earlier?</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">rage</span>, <span class="va">nilt</span><span class="op">$</span><span class="va">mig_per</span>, use <span class="op">=</span> <span class="st">'pairwise.complete.obs'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">rage</span>, <span class="va">nilt</span><span class="op">$</span><span class="va">mig_per</span>, use <span class="op">=</span> <span class="st">'pairwise.complete.obs'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.05680918</code></pre>
 </div>
@@ -440,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The coefficient is very close to 0, which means that the correlation is practically non-existent. The absence of correlation is also interesting in research. For instance, one might expect that younger people would be more open to migration. However, it seems that age does not play a role on people’s opinion about migration in NI according to this data.</p>
 <p>Let’s say that we are interested in the correlation between <code>mig_per</code> and all other numeric variables in the dataset. Instead of continuing computing the correlation one by one, we can run a correlation matrix. The code syntax can be read as follows: from the <code>nilt</code> data select these variables, then compute the correlation coefficient using complete cases, and then round the result to 3 decimals.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mig_per</span>, <span class="va">rage</span>, <span class="va">spage</span>, <span class="va">rhourswk</span>, <span class="va">persinc2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span>use <span class="op">=</span> <span class="st">'pairwise.complete.obs'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

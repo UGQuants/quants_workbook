@@ -353,25 +353,13 @@ window.Quarto = {
 <p>Once it is installed, make sure to load it with the next line. This time copy and paste it in your <code>R</code> script, so you can run it every time you restart your session.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: kableExtra</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'kableExtra'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:dplyr':
-
-    group_rows</code></pre>
-</div>
 </div>
 </section><section id="categorical-data" class="level3"><h3 class="anchored" data-anchor-id="categorical-data">Categorical data</h3>
 <p>A usual way to explore the categorical data is using contingency and proportion tables. The contingency tables include the count for each category while the proportion tables contain the count divided by the total number of observations.</p>
 <p>Try to focus on the interpretation of the outputs in the following section. At this time, it is just optional to run the code shown.</p>
 <p>Let’s say we are interested in the data’s break down by respondents’ sex (called <code>rsex</code> in the dataset). We will use function <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> of the <code>vtable</code> package to produce a contingency table for a single variable (known as One-Way contingency table).</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -404,7 +392,7 @@ Attaching package: 'kableExtra'</code></pre>
 <p>Specifically, we see that males respondents represent 44.6% of the total sample, whereas females 55.4%.</p>
 <p>We can do this with any type of categorical variable. Let’s see how the sample is split by religion (<code>religcat</code>). So, we will add it to in the <code>vars</code> argument.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span>, <span class="st">"religcat"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span>, <span class="st">"religcat"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -456,7 +444,7 @@ Attaching package: 'kableExtra'</code></pre>
 <p>As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.</p>
 <p>What if we want to know the religious affiliation break-down by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"religcat"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"religcat"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -534,7 +522,7 @@ Female
 <p>In quantitative research, we usually have access to many observations in a sample which contains different attributes for each of them. It would be difficult (and probably not very useful) to talk about each of the NILT respondents one by one. Instead, to describe this sample we need measures that roughly represent all participants.</p>
 <p>This is actually an important step in quantitative research, since it allows us to characterise the people that we are studying. For example, in the previous section we only talked about the respondents’ sex and political affiliation, but who are the people we are talking about? Probably a place to start digging deeper is to know their age. The first tool that we will use to understand numeric values is a histogram. Let’s see how the age of NILT respondents is distributed.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="04-Lab4_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
@@ -545,7 +533,7 @@ Female
 <p>This plot show us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side), tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old, that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
 <p>The <em>median</em> is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called… You guessed it - <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48</code></pre>
 </div>
@@ -553,7 +541,7 @@ Female
 <p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows: <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span> The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g.&nbsp;a very very old person). To compute the mean you need the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 49.61532</code></pre>
 </div>
@@ -563,7 +551,7 @@ Female
 <p>By contrast, there are measures that helps us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
 <p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it in four equal parts. The first quartile includes the lowest 25% values, the second the other 25%, the third other other 25%, and the fourth the highest 25%. To compute quartiles we can use the <code>quantile</code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
   18   35   48   64   97 </code></pre>
@@ -574,7 +562,7 @@ Female
 <p><span class="math display">\[ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } \]</span></p>
 <p>To decipher the formula above, the <span class="math inline">\(\bar{x}\)</span> represents the mean, the <span class="math inline">\(x\)</span> represents each of the values in the numeric series. The formula takes each of the <span class="math inline">\(x\)</span> values and subtract it from the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. Later, it squares the result of the subtraction (that is multiply it by itself). This is done to obtain a positive value, since some numbers in the series will be lower than the mean (resulting in negative values). Then, we sum all of them and divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1. To estimate the variance in R we only need the <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 343.3486</code></pre>
 </div>
@@ -582,7 +570,7 @@ Female
 <p>As you can see, the result is not very intuitive. That is because we squared the subtraction. Luckily, there is a measure that put it in <em>readable</em> scale. This is the <em>standard deviation</em>. In essence this takes the square root of the variance (the reversed operation of squaring it): <span class="math display">\[sd=\sqrt{var}\]</span></p>
 <p>To compute it in <code>R</code>, use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.52967</code></pre>
 </div>
@@ -593,7 +581,7 @@ Female
 <p>… Luckily we can use the <code>sumtable</code> function to compute all these measures at the same time!</p>
 <p>It is very simple. You can compute a quick summary for age as following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -624,7 +612,7 @@ Female
 <section id="categorical-and-numeric-data" class="level4"><h4 class="anchored" data-anchor-id="categorical-and-numeric-data">Categorical and numeric data</h4>
 <p>Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
