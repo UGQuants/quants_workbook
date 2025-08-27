@@ -13,53 +13,59 @@ When conducting empirical research, we are often interested in associations betw
 The relationship between variables can be positive, negative or non-existent. The figure below shows these type of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.
 
 ```{r fig.width=12, fig.height=3, echo = FALSE, fig.cap="\\label{fig:figs} Types of correlation."}
-#library(MASS)
+# library(MASS)
 
 # Create fake data set
 set.seed(3)
-samples = 100
-mu = 40
-cor_fake = as.data.frame(
+samples <- 100
+mu <- 40
+cor_fake <- as.data.frame(
   cbind(
     # positive strong
     MASS::mvrnorm(
-      n=samples, mu=c(mu, mu), Sigma=matrix(c(1, .9, .9, 1), nrow=2), 
-      empirical=TRUE),
+      n = samples, mu = c(mu, mu), Sigma = matrix(c(1, .9, .9, 1), nrow = 2),
+      empirical = TRUE
+    ),
     # positive moderate
     MASS::mvrnorm(
-      n=samples, mu=c(mu, mu), Sigma=matrix(c(1, .55, .55, 1), nrow=2), 
-      empirical=TRUE),
+      n = samples, mu = c(mu, mu), Sigma = matrix(c(1, .55, .55, 1), nrow = 2),
+      empirical = TRUE
+    ),
     # no correlation
     MASS::mvrnorm(
-      n=samples, mu=c(mu, mu), Sigma=matrix(c(1, 0, 0, 1), nrow=2), 
-      empirical=TRUE),
+      n = samples, mu = c(mu, mu), Sigma = matrix(c(1, 0, 0, 1), nrow = 2),
+      empirical = TRUE
+    ),
     # negative moderate
     MASS::mvrnorm(
-      n=samples, mu=c(mu, mu), Sigma=matrix(c(1, -.55, -.55, 1), nrow=2), 
-      empirical=TRUE),
+      n = samples, mu = c(mu, mu), Sigma = matrix(c(1, -.55, -.55, 1), nrow = 2),
+      empirical = TRUE
+    ),
     # negative strong
     MASS::mvrnorm(
-      n=samples, mu=c(mu, mu), Sigma=matrix(c(1, -.90, -.90, 1), nrow=2), 
-      empirical=TRUE)
+      n = samples, mu = c(mu, mu), Sigma = matrix(c(1, -.90, -.90, 1), nrow = 2),
+      empirical = TRUE
     )
   )
+)
 # set variables df
 variables <- matrix(noquote(names(cor_fake)), ncol = 2, byrow = TRUE)
-variables <- data.frame(title = c("Strong \npositive", "Moderate \npossitive", "No \ncorrelation", "Moderate \nnegative", "Strong \nnegative"),
-            as.data.frame(variables))
+variables <- data.frame(
+  title = c("Strong \npositive", "Moderate \npositive", "No \ncorrelation", "Moderate \nnegative", "Strong \nnegative"),
+  as.data.frame(variables)
+)
 # function to plot x-y correlation
-xy_plot <- function(x_var, y_var, title){
-  ggplot(cor_fake, aes_string(x=x_var, y=y_var), inherit.aes = FALSE) +
+xy_plot <- function(x_var, y_var, title) {
+  ggplot(cor_fake, aes_string(x = x_var, y = y_var), inherit.aes = FALSE) +
     geom_point() +
-    geom_smooth(method = "lm", se = FALSE, colour="red") +
+    geom_smooth(method = "lm", se = FALSE, colour = "red") +
     labs(x = "X", y = "Y") +
     scale_y_continuous(limits = c(37, 43)) +
     scale_x_continuous(limits = c(37, 43)) +
     theme_classic() +
     ggtitle(title) +
-    theme(plot.title = element_text(size=14)
-          )
-  }
+    theme(plot.title = element_text(size = 14))
+}
 # plot grid
 xy_plots <- lapply(1:nrow(variables), function(i) xy_plot(variables[i, 2], variables[i, 3], variables[i, 1]))
 cowplot::plot_grid(plotlist = xy_plots, nrow = 1)
@@ -69,11 +75,11 @@ The plot in the middle, shows two variables that are not correlated. The locatio
 
 ### Data and R environment
 
-We will continue working on the same R Studio Cloud project as in the previous session and using the 2012 [Northern Ireland Life and Times Survey (NILT)](https://www.ark.ac.uk/nilt/) data. To set the `R` environment please follow the next steps:
+We will continue working on the same RStudio Cloud project as in the previous session and using the 2012 [Northern Ireland Life and Times Survey (NILT)](https://www.ark.ac.uk/nilt/) data. To set the `R` environment please follow the next steps:
 
 1. Please go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/) (log in if necessary);
 2. Open your own copy of the 'NILT' project from the 'Quants lab group';
-3. Create a new Rmd file, type 'Correlation analysis' in 'Tile' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
+3. Create a new Rmd file, type 'Correlation analysis' in the 'Title' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
 4. Save the Rmd document under the name 'Lab7_correlation'.
 5. Delete all the contents in the Rmd default example with the exception of the first bit which contains the YAML and the first chunk, which contains the default chunk options (that is all from line 12 and on).
 6. In the setup chunk, change `echo` from `TRUE` to `FALSE` in line 9 (this will hide the code for all chunks in your final document).
@@ -102,15 +108,15 @@ Also, we will create a new variable called `mig_per` by summing the respondent's
 
 ```{r}
 # overall perception towards migrants
-nilt <- rowwise(nilt) %>% 
+nilt <- rowwise(nilt) %>%
   # sum values
-  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T )) %>% 
-  ungroup() %>% 
+  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T)) %>%
+  ungroup() %>%
   # assign NA to values that sum 0
-  mutate(mig_per =  na_if(mig_per, 0))
+  mutate(mig_per = na_if(mig_per, 0))
 ```
 
-### Visualizing correlation
+### Visualising correlation
 
 Visualizing two or more variables can help to uncover or understand the relationship between these variables. As briefly introduced in the previous session, different types of plots are appropriate for different types of variables. Therefore, we split the following sections according to the type of data to be analysed.
 
@@ -118,14 +124,16 @@ You do not need to run or reproduce the examples shown in the following sections
 
 #### Numeric vs numeric 
 
-To illustrate this type of correlation, let's start with a relatively obvious but useful example. Suppose we are interested in how people choose their spouse or partner. The first characteristic that we might look at is age. We might suspect that there is a correlation between the the `nilt` respondents' won age and their partner's age. Since both ages are numeric variables, a scatter plot is appropriate to visualize the correlation. To do this, let's use the functions `ggplot()` and `geom_point()`. In aesthetics `aes()` let's define the respondent's age `rage` in the X axis and the respondent's spouse/partner age `spage` in the Y axis. As a general convention in quantitative research, the response/dependent variable is visualized on the Y axis and the independent on the X axis (you do not need to copy and reproduce the example below).
+To illustrate this type of correlation, let's start with a relatively obvious but useful example. Suppose we are interested in how people choose their spouse or partner. The first characteristic that we might look at is age. We might suspect that there is a correlation between the `nilt` respondents' own age and their partner's age. Since both ages are numeric variables, a scatter plot is appropriate to visualise the correlation. To do this, let's use the functions `ggplot()` and `geom_point()`. In aesthetics `aes()`, define the respondent's age `rage` on the X axis and the respondent's spouse/partner age `spage` on the Y axis. As a general convention in quantitative research, the response/dependent variable is visualised on the Y axis and the independent on the X axis (you do not need to copy and reproduce the example below).
 
 ```{r}
-ggplot(nilt, aes(x = rage, y = spage)) + 
+ggplot(nilt, aes(x = rage, y = spage)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Respondent's age vs respondent’s spouse/partner age", 
-       x = "Respondent's age", y = "Respondent’s spouse/partner age" )
+  labs(
+    title = "Respondent's age vs respondent’s spouse/partner age",
+    x = "Respondent's age", y = "Respondent’s spouse/partner age"
+  )
 ```
 
 Note that in this plot the function `geom_smooth()` was used. This is to plot a straight line which describes the best all the points in the graph. 
@@ -135,18 +143,20 @@ From the plot above, we see that there is a strong positive correlation between 
 We may also suspect that the respondents' sex is playing a role in this relationship. We can include this as a third variable in the plot by colouring the dots by the respondents' sex. To do this, let's specify the `colour` argument in aesthetics `aes()` with a categorical variable `rsex`.
 
 ```{r}
-ggplot(nilt, aes(x = rage, y = spage, colour = rsex)) + 
+ggplot(nilt, aes(x = rage, y = spage, colour = rsex)) +
   geom_point() +
   geom_abline(slope = 1, intercept = 0, colour = "gray20") +
-  labs(title = "Respondent's age vs respondent’s spouse/partner age", 
-       x = "Respondent's age", y = "Respondent’s spouse/partner age" )
+  labs(
+    title = "Respondent's age vs respondent’s spouse/partner age",
+    x = "Respondent's age", y = "Respondent’s spouse/partner age"
+  )
 ```
 
-In the previous plot, we included a line which describes what it would look like if the partner's age were exactly the same as the respondent's age. We observe a clear pattern in which female participants are on one side of the line and males on the other. As we can see, most female respondents tend to choose/have partners who are older, whereas males younger ones.
+In the previous plot, we included a line that describes what it would look like if the partner's age were exactly the same as the respondent's age. We observe a clear pattern in which female participants are on one side of the line and males on the other. As we can see, most female respondents tend to choose/have partners who are older, whereas males choose/have younger partners.
 
 ### Activity 1
 
-In the `Lab7_correlation` file, use the `nilt` data object to visualize the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you observe from the result as text (outside the code chunks).
+In the `Lab7_correlation` file, use the `nilt` data object to visualise the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you observe from the result as text (outside the code chunks).
 
 * Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function set the `method` argument to `'lm'`.
 * What type of relationship do you observe? Comment as text in the Rmd the overall result of the plot and whether this is in line with your previous expectation.
@@ -155,12 +165,12 @@ In the `Lab7_correlation` file, use the `nilt` data object to visualize the rela
 
 As briefly introduced in the last lab, correlations often occur between categorical and numeric data. A good way to observe the relationship between these type of variables is using a box plot. Which essentially shows the distribution of the numeric values by category/group.
 
-Let's say we are interested in the relationship between education level and perception of migration. The variable `highqual` contains the respondent's highest education qualification. Using `ggplot()`, we can situate `mig_per` on the X axis and `highqual` on the Y axis, and plot it with the `gem_boxplot()` function. Note that before passing the dataset to `ggplot`, we can filter out two categories of the variable `highqual` where education level is unknown (i.e. "Other, level unknown" or "Unclassified").
+Let's say we are interested in the relationship between education level and perception of migration. The variable `highqual` contains the respondent's highest education qualification. Using `ggplot()`, we can situate `mig_per` on the X axis and `highqual` on the Y axis, and plot it with the `geom_boxplot()` function. Note that before passing the dataset to `ggplot`, we can filter out two categories of the variable `highqual` where education level is unknown (i.e. "Other, level unknown" or "Unclassified").
 
 ```{r}
-nilt %>% 
-  filter(highqual != "Other, level unknown" & highqual != "Unclassified") %>% 
-  ggplot(aes(x = mig_per, y = highqual )) +
+nilt %>%
+  filter(highqual != "Other, level unknown" & highqual != "Unclassified") %>%
+  ggplot(aes(x = mig_per, y = highqual)) +
   geom_boxplot()
 ```
 
@@ -180,7 +190,7 @@ So far we have examined correlation by visualizing variables only. A useful prac
 Let's start measuring the relationship between the respondent's age and their partner's age. To do this in R, we should use the `cor()` function. In the R syntax, first we specify the variables separated by a comma. We need to be explicit by specifying the object name, the dollar sign, and the name of the variable, as shown below. Also, I set the `use` argument as `'pairwise.complete.obs'`. This is because one or both of the variables contain more than one missing value. Therefore, we are telling R to use complete observations only.
 
 ```{r}
-cor(nilt$rage, nilt$spage, use = 'pairwise.complete.obs')
+cor(nilt$rage, nilt$spage, use = "pairwise.complete.obs")
 ```
 
 The correlation coefficient between this variables is 0.95. This is close to positive 1. Therefore, it is a strong positive correlation. The result is completely in line with the plot above, since we saw how the dots were close to the straight line.
@@ -188,7 +198,7 @@ The correlation coefficient between this variables is 0.95. This is close to pos
 What about the relationship between `age` and `mig_per` that you plotted earlier?
 
 ```{r}
-cor(nilt$rage, nilt$mig_per, use = 'pairwise.complete.obs')
+cor(nilt$rage, nilt$mig_per, use = "pairwise.complete.obs")
 ```
 
 The coefficient is very close to 0, which means that the correlation is practically non-existent. The absence of correlation is also interesting in research. For instance, one might expect that younger people would be more open to migration. However, it seems that age does not play a role on people's opinion about migration in NI according to this data.
@@ -196,9 +206,9 @@ The coefficient is very close to 0, which means that the correlation is practica
 Let's say that we are interested in the correlation between `mig_per` and all other numeric variables in the dataset. Instead of continuing computing the correlation one by one, we can run a correlation matrix. The code syntax can be read as follows: from the `nilt` data select these variables, then compute the correlation coefficient using complete cases, and then round the result to 3 decimals.
 
 ```{r}
-nilt %>% 
-  select(mig_per, rage, spage, rhourswk, persinc2) %>% 
-  cor(use = 'pairwise.complete.obs') %>% 
+nilt %>%
+  select(mig_per, rage, spage, rhourswk, persinc2) %>%
+  cor(use = "pairwise.complete.obs") %>%
   round(3)
 ```
 
@@ -262,4 +272,3 @@ From the result above, we have a correlation matrix that computes the _Person_ c
 <!-- Take a few minutes to de-brief how you feel about writing your own critical appraisal too. Ask any questions you have to your tutor in the session, or post them on Teams in your lab group channel.  -->
 
 <!-- More details about how to address the assessment is available in the course handbook and will be uplaoded to Moodle.  -->
-

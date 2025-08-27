@@ -65,13 +65,13 @@ After the previous, insert a second chunk. In the body of the code copy and past
 ```{r}
 # Load the data from the .rds file we created in the last lab
 nilt <- readRDS("data/nilt_r_object.rds")
-#Create subset
-nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)
+# Create subset
+nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
 Run both of the previous chunks individually by clicking on the green arrow located on the top-right of the chunk, as described earlier.
 
-<!-- Please notice that that we are able to load the NILT survey and we do not have to coerce it again into the correct type because we downloaded and saved the formatted data set in an `.rds` file before. Therefore, the data is stored in your R Studio Cloud project. Also, we did not need to install `tidyverse`, since we also did this in the past lab and we are working in the same project. Remember that if you create a new RStudio Cloud project, you will have to install the packages again. -->
+<!-- Please notice that we are able to load the NILT survey and we do not have to coerce it again into the correct type because we downloaded and saved the formatted data set in an `.rds` file before. Therefore, the data is stored in your RStudio Cloud project. Also, we did not need to install `tidyverse`, since we also did this in the past lab and we are working in the same project. Remember that if you create a new RStudio Cloud project, you will have to install the packages again. -->
 
 Now that we read the data in, we are ready to start creating our own own plots using the 2012 NILT survey. 
 
@@ -84,7 +84,7 @@ Let's start using the same variables we summarised in our last lab. We started b
 ```{r}
 ggplot(nilt_subset, aes(x = rsex)) +
   geom_bar() +
-  labs(title = 'Gender', x = 'Gender of respondent')
+  labs(title = "Gender", x = "Gender of respondent")
 ```
 
 From the plot above, we can graphically see what we found out previously: there are more female respondents than males in our sample. The advantage is that we can have a sense of the magnitude of the difference by visualising it.
@@ -98,7 +98,7 @@ If we wanted to know how gender is split by religion, we can add the `fill` argu
 ```{r}
 ggplot(nilt_subset, aes(x = rsex, fill = religcat)) +
   geom_bar() +
-  labs(title = 'Gender by religion', x = 'Gender of respondent')
+  labs(title = "Gender by religion", x = "Gender of respondent")
 ```
 
 This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents' sex. A plot can show us the magnitudes and composition by respondents' sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable `religcat` on the `x` axis and `fill` with gender `rsex`.
@@ -106,7 +106,7 @@ This plot is not very informative, since the total size of female and male respo
 ```{r}
 ggplot(nilt_subset, aes(x = religcat, fill = rsex)) +
   geom_bar() +
-  labs(title = 'Religion by gender', x = 'Religion')
+  labs(title = "Religion by gender", x = "Religion")
 ```
 
 As we can see, catholic and protestant religion are equally popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in the last lab. However, we have the advantage that we can graphically reprsent and inspect the magnitude of these differences.  
@@ -115,12 +115,12 @@ As we can see, catholic and protestant religion are equally popular among the re
 
 ### Univariate numeric
 
-Last time we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot, the difference is that it splits the numeric range in fix "bins" and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. At this time, we set the the `x` aesthetic with the numeric variable age `rage`. Also, the geometry is defined as a histogram, using the `geom_histogram()` function.
+Last time we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot; the difference is that it splits the numeric range into fixed "bins" and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. At this time, we set the `x` aesthetic with the numeric variable age `rage`. Also, the geometry is defined as a histogram using the `geom_histogram()` function.
 
 ```{r}
 ggplot(nilt_subset, aes(x = rage)) +
   geom_histogram() +
-  labs(title = 'Age distribution')
+  labs(title = "Age distribution")
 ```
 
 From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent's age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group. 
@@ -130,7 +130,7 @@ A second option to visualize numeric variables is the box plot. Essentially this
 ```{r}
 ggplot(nilt_subset, aes(y = rage)) +
   geom_boxplot() +
-  labs(title = 'Age boxplot')
+  labs(title = "Age boxplot")
 ```
 
 What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the `quantile()` function. The lower edge of the box represents the 2nd quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.
@@ -141,7 +141,7 @@ quantile(nilt_subset$rage, na.rm = T)
 
 ### Bivariate numeric
 
-A useful plot to explore the relationship between two numeric variables is the scatter plot. This plot locates a dot for each observation according to to their respective numeric values. In the example below, we use age `rage` on the X axis (horizontal), and personal income `persinc2` on the Y axis (vertical). This type of plot is useful to explore a relationship between variables. 
+A useful plot to explore the relationship between two numeric variables is the scatter plot. This plot locates a dot for each observation according to their respective numeric values. In the example below, we use age `rage` on the X axis (horizontal), and personal income `persinc2` on the Y axis (vertical). This type of plot is useful to explore a relationship between variables. 
 
 <!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
 
@@ -150,7 +150,7 @@ To generate a scatter plot, we need to define `x` and `y` in aesthetics `aes()`.
 ```{r}
 ggplot(nilt_subset, aes(x = rage, y = persinc2, alpha = 0.8)) +
   geom_point(position = "jitter") +
-  labs(title = 'Personal income vs age', x = 'Age', y = 'Personal income (£)')
+  labs(title = "Personal income vs age", x = "Age", y = "Personal income (£)")
 ```
 
 There is not a clear pattern in our previous plot. However, it is interesting to note that most of the people younger than 25 years old earn less than £20K a year. Similarly, most of the people older than 75 earn less than £20K. And only very few earn over £60k a year (looking at the top of the plot).
@@ -160,9 +160,9 @@ There is not a clear pattern in our previous plot. However, it is interesting to
 Very often we want to summarise central or spread measure by categories or groups. For example, let's go back to the example of age and respondents' sex. We can visualize these two variables (which include one numeric and one categorical) using a box plot. To create this, we need to specify the `x` and `y` value in `aes()` and include the `geom_boxplot()` geometry.
 
 ```{r}
-ggplot(nilt_subset, aes(y = rage, x= rsex)) +
+ggplot(nilt_subset, aes(y = rage, x = rsex)) +
   geom_boxplot() +
-  ggtitle('Age by sex')
+  ggtitle("Age by sex")
 ```
 
 From this, we can visualize that female participants are slightly younger than their male counterparts in the sample. 

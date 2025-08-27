@@ -63,7 +63,7 @@ In essence, this is the basic structure to start writing your assignment. Of cou
 ## Activity 1
 
 1. In the template, fill in the 'author' and 'date' space in the YAML at the top of the file with your student number and appropriate information using quotation marks.
-2. Knit the `Rmd` file as `html` (RStudio will ask to install some packages, click 'Yes').
+2. Knit the `Rmd` file as `html` (RStudio may ask to install some packages; click 'Yes').
 3. In the output, look at the results of the table under the 'Results' section and identify the *dependent* and the *independent* variables. You can learn about the meaning of these variables in the NILT documentation ([click here to access the documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf)).
 4. Identify the variables that are significant in this model and the direction of the relationship.
 5. Discuss your interpretations with your neighbour or tutor. You can refer back to [Lab 8](08-Lab8.qmd) and [Lab 9](09-Lab9.qmd) to refresh your memory.

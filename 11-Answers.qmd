@@ -38,13 +38,13 @@ nilt <- readRDS("data/nilt_r_object.rds")
 ```
 
 ```{r}
-#Subset
-nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)
+# Subset
+nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
 ### Activity #1
 
-From your R Studio Cloud script, do the following activities using the data stored in the `nilt_subset` object:
+From your RStudio Cloud script, do the following activities using the data stored in the `nilt_subset` object:
 
 -   Create a One-Way contingency table for `uninatid` in the `nilt_subset` dataset using the `sumtable()` function;
 
@@ -52,13 +52,13 @@ From your R Studio Cloud script, do the following activities using the data stor
 # Load the vtable package to create summary tables
 library(vtable)
 # Create table
-sumtable(nilt_subset, vars = c('uninatid'))
+sumtable(nilt_subset, vars = c("uninatid"))
 ```
 
 -   Using the variables `religcat` and `uninatid`, generate a Two-Way contingency table;
 
 ```{r}
-sumtable(nilt_subset, vars = c('religcat'), group = 'uninatid')
+sumtable(nilt_subset, vars = c("religcat"), group = "uninatid")
 ```
 
 ### Activity #2
@@ -74,13 +74,13 @@ hist(nilt_subset$persinc2)
 -   Create a summary of the personal income `persinc2` variable, using the `sumtable()` function.
 
 ```{r}
-sumtable(nilt_subset, vars = c('persinc2'))
+sumtable(nilt_subset, vars = c("persinc2"))
 ```
 
 -   Compute the mean and standard deviation of the personal income `persinc2`, grouped by happiness `ruhappy`.
 
 ```{r}
-sumtable(nilt_subset, vars = c('persinc2'), group = 'ruhappy')
+sumtable(nilt_subset, vars = c("persinc2"), group = "ruhappy")
 ```
 
 ## Lab 6. Visual exploratory analysis {.unnumbered}
@@ -93,8 +93,8 @@ library(tidyverse)
 
 # Load the data from the .rds file we created in the last lab
 nilt <- readRDS("data/nilt_r_object.rds")
-#Create subset
-nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid,  ruhappy, rhourswk, persinc2)
+# Create subset
+nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
 ### Excercices
@@ -110,18 +110,20 @@ Using the `nilt_subset` object, complete the tasks below in the Rmd file 'Lab_4'
 -   Create a simple bar plot using the `geom_bar()` geometry to visualize the political affiliation reported by the respondents using the variable `uninatid`;
 
 ```{r}
-ggplot(nilt_subset, aes(x=uninatid)) +
+ggplot(nilt_subset, aes(x = uninatid)) +
   geom_bar() +
-  labs(title = "Political afiliation", x= "Party")
+  labs(title = "Political afiliation", x = "Party")
 ```
 
 -   Based on the plot above, create a 'stacked bar plot' to visualize the political affiliation by religion, using the `uninatid` and `religcat` variables;
 
 ```{r}
-ggplot(nilt_subset, aes(x=uninatid, fill = religcat)) +
+ggplot(nilt_subset, aes(x = uninatid, fill = religcat)) +
   geom_bar() +
-  labs(title = "Political afiliation by religion", 
-       x= "Party", fill = "Religion")
+  labs(
+    title = "Political affiliation by religion",
+    x = "Party", fill = "Religion"
+  )
 ```
 
 -   Create a new first-level header to start a section called "Numeric analysis";
@@ -133,19 +135,23 @@ ggplot(nilt_subset, aes(x=uninatid, fill = religcat)) +
 -   Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
 
 ```{r}
-ggplot(nilt_subset, aes(x= rhourswk, y=persinc2)) +
+ggplot(nilt_subset, aes(x = rhourswk, y = persinc2)) +
   geom_point() +
-  labs(title= 'Income and number of hours worked a week',
-       x = 'Number of hours worked a week', y= 'Personal income (£ a year)' )
+  labs(
+    title = "Income and number of hours worked a week",
+    x = "Number of hours worked a week", y = "Personal income (£ a year)"
+  )
 ```
 
 -   Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results on Zoom (live) or your Lab Group on Teams (online anytime);
 
 ```{r}
-ggplot(nilt_subset, aes(x= ruhappy, y=persinc2)) +
+ggplot(nilt_subset, aes(x = ruhappy, y = persinc2)) +
   geom_boxplot() +
-  labs(title= 'Personal income and happiness', 
-       x='Hapiness level', y='Personal income (£ a year)')
+  labs(
+    title = "Personal income and happiness",
+    x = "Happiness level", y = "Personal income (£ a year)"
+  )
 ```
 
 -   Briefly comment each of the plots as text in your Rmd file;
@@ -170,12 +176,12 @@ nilt <- mutate_at(nilt, vars(mil10yrs, miecono, micultur), as.numeric)
 
 ```{r}
 # overall perception towards migrants
-nilt <- rowwise(nilt) %>% 
+nilt <- rowwise(nilt) %>%
   # sum values
-  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T )) %>% 
-  ungroup() %>% 
+  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T)) %>%
+  ungroup() %>%
   # assign NA to values that sum 0
-  mutate(mig_per =  na_if(mig_per, 0))
+  mutate(mig_per = na_if(mig_per, 0))
 ```
 
 ### Activity 1
@@ -185,11 +191,13 @@ Using the `nilt` data object, visualize the relationship of the following variab
 -   Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use the `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function, set the `method` argument to `'lm'`.
 
 ```{r}
-ggplot(nilt, aes(x=rage, mig_per)) +
+ggplot(nilt, aes(x = rage, mig_per)) +
   geom_point() +
-  geom_smooth(method = 'lm') +
-  labs(title = 'Perception of migration vs age',
-       x= 'Respondent age', y= 'Perception of migration (0-30)')
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Perception of migration vs age",
+    x = "Respondent age", y = "Perception of migration (0-30)"
+  )
 ```
 
 -   What type of relationship do you observe? Comment the overall result of the plot and whether this is in line with your previous expectation.
@@ -214,9 +222,9 @@ Use the `nilt` data set object in your `linear_model_intro` file to:
 1.  Plot a scatter plot using `ggplot`. In the aesthetics, locate `rhourswk` in the X axis, and `persinc2` in the Y axis. In the `geom_point()`, jitter the points by specifying the `position = 'jitter'`. Also, include the best fit line using the `geom_smooth()` function, and specify the `method = 'lm'` inside.
 
 ```{r}
-ggplot(nilt, aes(x= rhourswk, y= persinc2)) +
-  geom_point(position = 'jitter') +
-  geom_smooth(method = 'lm')
+ggplot(nilt, aes(x = rhourswk, y = persinc2)) +
+  geom_point(position = "jitter") +
+  geom_smooth(method = "lm")
 ```
 
 2.  Print the summary of `m3` using the `summary()` function.
@@ -225,7 +233,7 @@ ggplot(nilt, aes(x= rhourswk, y= persinc2)) +
 summary(m3)
 ```
 
-3.  Is the the relationship of hours worked a week significant? Re: Yes. The p-value (fourth column of the 'Coefficients' table) is lower than 0.05.
+3.  Is the relationship of hours worked a week significant? Re: Yes. The p-value (fourth column of the 'Coefficients' table) is lower than 0.05.
 4.  What is the adjusted r-squared? How would you interpret it? Re: the adjusted R-squared is 0.14. This can be interpreted in terms of percentage, e.g. 14% of the variance in personal income can be explained by the number of hours worked a week.
 5.  What is the sample size to fit the model? Re: The total number of observations in the data set is 1,204 and the model summary says that 747 observations were deleted due to missingness. Therefore, the sample size is 457 (1204-747).
 6.  What is the expected income in pounds a year for a respondent who works 30 hours a week according to coefficients of this model?
@@ -265,16 +273,18 @@ table(nilt$highqual)
 3.  Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
 
 ```{r}
-ggplot(nilt, aes(x = rhourswk, y= persinc2, color = highqual)) +
-  geom_point(position = 'jitter') +
+ggplot(nilt, aes(x = rhourswk, y = persinc2, color = highqual)) +
+  geom_point(position = "jitter") +
   moderndive::geom_parallel_slopes(se = FALSE) +
-  labs(title = "Personal income",
-       subtitle = 'Personal income and number of hours worked a week by education level',
-       x= 'Number of hours worked a week', y= 'Personal income (£ a year)', 
-       color = 'Highest education level')
+  labs(
+    title = "Personal income",
+    subtitle = "Personal income and number of hours worked a week by education level",
+    x = "Number of hours worked a week", y = "Personal income (£ a year)",
+    color = "Highest education level"
+  )
 ```
 
-4.  Fit a linear model model using the `lm()` function to analyse the personal income `persinc2` using the number of works worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary.
+4.  Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary.
 
 ```{r}
 m4 <- lm(persinc2 ~ rhourswk + rage + highqual, nilt)

@@ -64,7 +64,7 @@ ggplot(nilt_sample, aes(x = rage, y = spage)) +
   )
 ```
 
-As you can see, even with this minimal example using 40 observations, there is a clear trend. From the plot, it seems intuitive to draw a line that describes this general trend. Imagine a friend will draw this line for you. You will have to tell them some basic references on how to do it. You can, for example, specify a start point and and end point in the plot. Alternatively, which is what we will do below, you can specify a start point and a value that describes the slope of the line.  For now, our friend is `ggplot`. You have to pass these two values (start point and slope) in the `geom_abline()` function to draw a line which describes these points.
+As you can see, even with this minimal example using 40 observations, there is a clear trend. From the plot, it seems intuitive to draw a line that describes this general trend. Imagine a friend will draw this line for you. You will have to tell them some basic references on how to do it. You can, for example, specify a start point and an end point in the plot. Alternatively, which is what we will do below, you can specify a start point and a value that describes the slope of the line. For now, our friend is `ggplot`. You have to pass these two values (start point and slope) in the `geom_abline()` function to draw a line that describes these points.
 
 ```{r}
 ggplot(nilt_sample, aes(x = rage, y = spage)) +
@@ -159,7 +159,7 @@ The blue is the optimal solution, whereas the red was just an arbitrary guess. W
 
 ### Formal specification
 
-Now you are ready for the the formal specification of the linear model. After the introduction above, it is easy to take the pieces apart. In essence, the simple linear model is telling us that the dependent value $y$ is defined by a line that intersects the vertical axis at $\beta_0$, plus the multiplication of the slope $\beta_1$ by the value of $x_1$, plus some residual $\epsilon$. The second part of the equation is just telling us that the residuals are normally distributed (that is when a histogram of the residuals follows a bell-shaped curve).
+Now you are ready for the formal specification of the linear model. After the introduction above, it is easy to take the pieces apart. In essence, the simple linear model is telling us that the dependent value $y$ is defined by a line that intersects the vertical axis at $\beta_0$, plus the multiplication of the slope $\beta_1$ by the value of $x_1$, plus some residual $\epsilon$. The second part of the equation is just telling us that the residuals are normally distributed (that is when a histogram of the residuals follows a bell-shaped curve).
 
 $$
 \begin{align}
@@ -253,7 +253,7 @@ In the `linear_model_intro.R` script, use the `nilt` dataset in to:
 
 1. Plot a scatter plot using `ggplot`. In the aesthetics, locate `rhourswk` in the X axis, and `persinc2` in the Y axis. In the `geom_point()` jitter the points by specifying the `position = 'jitter'`. Also, include the best fit line using the `geom_smooth()` function, and specify the `method = 'lm'` inside.
 2. Print the summary of `m3` using the `summary()` function. 
-3. Is the the relationship of hours worked a week significant?
+3. Is the relationship of hours worked a week significant?
 4. What is the adjusted r-squared? How would you interpret it?
 5. What is the sample size to fit the model?
 6. What is the expected income in pounds a year for a respondent who works 30 hours a week according to coefficients of this model?

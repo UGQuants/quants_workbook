@@ -11,7 +11,7 @@ website:
   title: "Lab Workbook"
   announcement:
     icon: info-circle
-    dismissable: true
+    dismissible: true
     content: "**Reminder** - a link to join your RStudio Cloud group is available in the lab group forums on Moodle"
     type: info
     position: below-navbar
@@ -31,7 +31,7 @@ website:
     tools:
       - icon: github
         href: https://github.com/UGQuants/quants_workbook
-        text: Workbook GibHub
+        text: Workbook GitHub
     right:
       - text: "Help!"
       - text: "Reference"

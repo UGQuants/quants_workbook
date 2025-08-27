@@ -6,7 +6,7 @@ In the previous labs you were exploring the 2012 [Northern Ireland Life and Time
 
 ## R Markdown
 
-R Markdown (Rmd) is a **different** type of file included in R Studio (and it is actually a different programming language). This allows you to generate reports in common file types, such as `.html` (the same one used for this lab workbook you're reading right now), `.pdf` or word (`.doc`). The interesting thing is that the Rmd file allows you to integrate text, code, and plots directly into your report (so you do not have to copy and paste tables or graphs into a Word document, for example, which is often very messy and time-consuming). You have already seen how well this works in the lab workbooks so far, which are written entirely in R Markdown. 
+R Markdown (Rmd) is a different type of file included in RStudio (and it is actually a different markup language). This allows you to generate reports in common file types, such as `.html` (the same one used for this lab workbook you're reading right now), `.pdf`, or Word (`.doc`). The interesting thing is that the Rmd file allows you to integrate text, code, and plots directly into your report (so you do not have to copy and paste tables or graphs into a Word document, for example, which is often very messy and time-consuming). You have already seen how well this works in the lab workbooks so far, which are written entirely in R Markdown. 
 
 The basic components of an Rmd file are: the **_code_**, **_text_** and **_metadata_**. The code is integrated by blocks called 'chunks', and the metadata contains information to format the report. We believe the best way to learn is by doing it. So, let's create your first Rmd document!
 
@@ -17,7 +17,7 @@ We will continue working in the same project called _NILT_ in [RStudio Cloud](ht
 1. Please go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/) (log in if necessary);
 2. Open your own copy of the 'NILT' project from the 'Quants lab group';
 3. Create a new Rmd file, this is similar as creating and `R Script`, from the 'File' tab on the top-left: `File>New File>R Markdown...` (Rstudio may ask to install some packages, click 'Yes');
-4. Type 'Test1' in 'Tile' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`. Then, click 'OK'.
+4. Type 'Test1' in the 'Title' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`. Then, click 'OK'.
 5. Save the Rmd file clicking on `File>Save as...`, type `Test1` in the 'File name' box, and click on the Save button.
 
 After completing the previous steps, your screen should look like this (You can minimize the console to expand pane 1):
@@ -46,15 +46,15 @@ To render the document from Rmd to HTML, we need to *Knit* it by clicking on the
 
 RStudio may ask you if you want to update some packages, click 'Yes'.
 
-After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. After, there is a second-level header which includes the first section of this example document. Also the the word 'Knit' is shown in bold, as it was wrapped by double asterisk `**`. 
+After you knit the document, a window with the output will pop up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. Afterwards, there is a second-level header which includes the first section of this example document. Also, the word 'Knit' is shown in bold, as it was wrapped by double asterisk `**`. 
 
 An interesting thing is that we can integrate the result of our code in the output as we did with the second chunk (which starts in line 18). Here, we can use a summary of the data set `cars` (which is an in-built data set in `R` that contains only two variables).
 
 <!-- Next, there is a second header, called 'Including Plots'. Under this section you can see a plot, but this time the code is not shown since `echo` was set to `FALSE`. You can close the pop-window when you finish exploring the output. -->
 
-Similarly, you can create a `.pdf` file. To do this, instead of clicking on on the _Knit_ icon directly, click on the black arrow next to it. Then click 'Knit to PDF'. Try it and see the result.
+Similarly, you can create a `.pdf` file. To do this, instead of clicking on the _Knit_ icon directly, click on the black arrow next to it. Then click 'Knit to PDF'. Try it and see the result.
 
-When you knitted the document, R Studio actually created a new `.html` or `.pdf` file named as same as your Rmd document. You can confirm this in the 'File' tab in Pane 4. You can to download this file from the cloud to your local drive by clicking on the box of the output file. Then, click `More>Export...` in the same pane (or clicking on the gear icon in pane 4).
+When you knitted the document, RStudio actually created a new `.html` or `.pdf` file with the same name as your Rmd document. You can confirm this in the 'Files' tab in Pane 4. You can download this file from the cloud to your local drive by clicking on the box of the output file. Then, click `More > Export...` in the same pane (or click on the gear icon in Pane 4).
 
 <!-- You can find more text styles and their respective syntax [here](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html). -->
 
@@ -78,4 +78,3 @@ In the `Test1.Rmd` file that you just created, do the following:
 <br>
 
 Make sure you've got the basics of R Markdown, since this is the tool which you will use to write your final assignment (i.e. research report). If there is something not very clear, or you are curious about, feel free to ask your tutor. They will be happy to answer your questions.
-

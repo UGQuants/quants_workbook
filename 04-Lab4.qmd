@@ -11,7 +11,7 @@ In our previous session we learned about wrangling data in `R` by implementing u
 
 ## Getting started
 
-We will continue working on the same project and dataset that you created in the last lab on R Studio Cloud. Please follow the next steps:
+We will continue working on the same project and dataset that you created in the last lab on RStudio Cloud. Please follow the next steps:
 
 1. Go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/).
 2. Open the project called 'NILT' located in your lab group'.
@@ -80,7 +80,7 @@ sumtable(nilt_subset, vars = c("rsex", "religcat"))
 
 As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.
 
-What if we want to know the religious affiliation break-down by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the `sumtable` function as following:
+What if we want to know the religious affiliation breakdown by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the `sumtable` function as follows:
 
 ```{r}
 sumtable(nilt_subset, vars = c("religcat"), group = "rsex")
@@ -91,7 +91,7 @@ There are some interesting results from this table. You can see that there are p
 
 ### Activity 1
 
-From your R Studio Cloud script, do the following activities using the data in the `nilt_subset` object (feel free to copy and adapt the code shown above):
+From your RStudio Cloud script, do the following activities using the data in the `nilt_subset` object (feel free to copy and adapt the code shown above):
 
 * Create a One-Way contingency table for `uninatid` in the `nilt_subset` dataset using the `sumtable()` function;
 * Using the variables `religcat` and `uninatid`, generate a Two-Way contingency table;
@@ -114,7 +114,7 @@ This is actually an important step in quantitative research, since it allows us 
 hist(nilt_subset$rage)
 ```
 
-This plot show us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side), tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old, that seems to be the most _popular_/frequent age in our sample. Now, we can represent these central values with actual measures, typically _mean_ or _median_.
+This plot shows us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side) tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old; that seems to be the most _popular_/frequent age in our sample. Now, we can represent these central values with actual measures, typically _mean_ or _median_.
 
 The _median_ is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called... You guessed it - `median()`.
 
@@ -126,7 +126,7 @@ The median age is 48, that means that 50% (or half) of the respondents are equal
 
 To compute the _mean_ manually, we need to sum all our values and divide it by the total number of the observations as follows:
 $$ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} $$
-The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g. a very very old person). To compute the mean you need the `mean()` function.
+The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g. a very, very old person). To compute the mean you need the `mean()` function.
 
 ```{r}
 mean(nilt_subset$rage, na.rm = T)
@@ -136,9 +136,9 @@ As you can see, the above measures try to approximate values that fall somewhere
 
 #### Measures of spread
 
-By contrast, there are measures that helps us to describe how far away a series of numeric values are from the centre. The common measures of spread are _quartiles_, _variance_ and _standard deviation_.
+By contrast, there are measures that help us to describe how far away a series of numeric values are from the centre. The common measures of spread are _quartiles_, _variance_ and _standard deviation_.
 
-The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it in four equal parts. The first quartile includes the lowest 25% values, the second the other 25%, the third other other 25%, and the fourth the highest 25%. To compute quartiles we can use the `quantile` function.
+The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it into four equal parts. The first quartile includes the lowest 25% of values, the second the next 25%, the third another 25%, and the fourth the highest 25%. To compute quartiles, we can use the `quantile` function.
 
 ```{r}
 quantile(nilt_subset$rage, na.rm = T)
@@ -201,4 +201,3 @@ Using the data in the `nilt_subset` dataset, complete the following activities. 
 * Create a summary of the personal income `persinc2` variable, using the `sumtable()` function;
 * Finally, compute the mean and standard deviation of the personal income `persinc2`, grouped by happiness `ruhappy`. What do you observe?
 * Discuss the results with your neighbour or your tutor.
-

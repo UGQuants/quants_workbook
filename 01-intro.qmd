@@ -2,13 +2,13 @@
 
 # Introduction to R {#lab-intro}
 
-For this course we will be using [R](https://www.r-project.org/) [@R-base] and [R Studio](https://rstudio.com/) as the main tools for conducting quantitative analysis. `R` and the basic versions of `R Studio` are open-source and thus free software. Even though `R` appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.
+For this course we will be using [R](https://www.r-project.org/) [@R-base] and [RStudio](https://rstudio.com/) as the main tools for conducting quantitative analysis. `R` and the basic versions of `RStudio` are open-source and thus free software. Even though `R` appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.
 
 ```{r fig.cap="Source: www.https://tiobe.com/.", include=FALSE}
 knitr::include_graphics("images/r-lang-popularity-increase.png")
 ```
 
-`R` and `R Studio` are two separate things. `R` is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities in a friendly and interactive interface. In short, for this course (and most of the times in practice) you chiefly RStudio whilst `R` is silently doing all the work in the background. Thereafter, we will refer to `R`, as the integrated interface.
+`R` and `RStudio` are two separate things. `R` is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities in a friendly and interactive interface. In short, for this course (and most of the time in practice) you chiefly use RStudio whilst `R` is silently doing all the work in the background. Thereafter, we will refer to `R`, as the integrated interface.
 
 `R` works in a command-based line environment. This means that you need to call the commands (or _**functions**_, as called in R) through text. This can look intimidating at first glance. But do not worry, we will guide you step by step.
 
@@ -26,7 +26,7 @@ The broad application of R is due to its flexibility which allows to perform a r
 
 Some of the advantages of using R are the following:
 
-* It is free and open source. You do not need to pay for a license. Thus you can use it anywhere at anytime even if you do not have an affiliation to an institution or organization (e.g. University or workplace);
+* It is free and open source. You do not need to pay for a licence. Thus you can use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g. University or workplace);
 * It is a collaborative project. This means that it is the users who maintain, extend and update its applications;
 * It is reproducible. Research can be more transparent since you will get the same results every time you run your analysis through a specific pathway (i.e. through scripts);
 * High compatibility. You can read and produce most types of file extensions;
@@ -45,6 +45,7 @@ Some of the advantages of using R are the following:
 <!-- Of course the examples above are meant for you to have a sense of the flexibility and potential to process and communicate quantitative analyses in `R`. This course covers the basics to process data and conduct quantitative analyses in social sciences. -->
 
 ## Getting started
+
 ### Setting up RStudio
 
 At this point, you need to know that there are at least two alternatives to start using RStudio. One, and by far the most common, is to download both `R` and RStudio and install the applications in your local drive. The other option is RStudio Cloud. This is an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g. GoogleChrome, Safari, Firefox, etc). For now, we will use the cloud version. 
@@ -116,7 +117,7 @@ Once you have created your first R Script, save it by clicking on File > Save as
 
 After this, your RStudio screen will be split in four **important** windows or panes as shown below:
 
-```{r fig.cap="R Studio panes.", echo=FALSE}
+```{r fig.cap="RStudio panes.", echo=FALSE}
 knitr::include_graphics("./images/rstudio_cloud_panels.png")
 ```
 
@@ -188,7 +189,7 @@ Now, write and run the following in your `R` script (Pane 1)
 
 ```{r eval = FALSE}
 c <- 3
-a  *  c
+a * c
 ```
 
 As you can see, you stored the numeric value `3` in the variable `c`. Then, you called the previously created object `a` in a multiplication. 

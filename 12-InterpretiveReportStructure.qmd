@@ -2,16 +2,16 @@
 
 ## Introduction {.unnumbered}
 
-This appendix provides additional information on using RMarkdown and an overview of the structure of the RMarkdown document provided with the interpretive report project template.
+This appendix provides additional information on using R Markdown and an overview of the structure of the R Markdown document provided with the interpretive report project template.
 
 Please ensure to review the relevant lab materials:
 
--   [Lab 5 session on RMarkdown](05-Lab5.qmd) for an intro to RMarkdown.
+-   [Lab 5 session on R Markdown](05-Lab5.qmd) for an intro to R Markdown.
 -   [Lab 10 Session for Interpreting Quantitative Findings Report summative assessment](10-Lab10.qmd) for instructions on how to create a project on RStudio Cloud for your interpretive report using the provided template.
 
 Similarly, if you encounter any errors, please ensure to check the [R Issues FAQ](13-RFAQ.qmd) first for any existing solutions.
 
-The first half of this page provides an overview of RMarkdown and the second half covers the [Interpretive Report Template](12-InterpretiveReportStructure.qmd#interpretive-report-template) in more detail. **Importantly**, please ensure to at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.
+The first half of this page provides an overview of R Markdown and the second half covers the [Interpretive Report Template](12-InterpretiveReportStructure.qmd#interpretive-report-template) in more detail. **Importantly**, please ensure you at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.
 
 ## R Basics {.unnumbered}
 
@@ -171,7 +171,7 @@ Options are used to specify how code chunks are handled when run/knitted. Two ke
 -   **echo** - whether the code chunk is displayed in knitted files.
 -   **include** - whether the code chunk *and* its output - such as tables and graphs - are displayed in knitted files.
 
-By default the code chunk and the output are displayed in knitted files. For the interpretive report, you do not want to display the code chunks in your knitted HTML file, so ensure to add `echo=FALSE` to the options for new code chunk you create. Alternatively, see [Setup Code Chunk] section for information on how to set `echo=FALSE` as a 'global option'.
+By default, the code chunk and the output are displayed in knitted files. For the interpretive report, you do not want to display the code chunks in your knitted HTML file, so ensure you add `echo=FALSE` to the options for any new code chunk you create. Alternatively, see the [Setup Code Chunk] section for information on how to set `echo=FALSE` as a 'global option'.
 
 Examples when working in RMarkdown document:
 
@@ -215,7 +215,7 @@ Note as well that many of these options have keyboard shortcuts listed. Learning
 
 ### Knitting RMarkdown Documents {.unnumbered}
 
-Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to, see the [YAML Block] section for information on how this is setup within the project template.
+Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to; see the [YAML Block] section for information on how this is set up within the project template.
 
 **Importantly**, when you knit an RMarkdown document, all code is run sequentially from top to bottom in a clean R environment. This ensures the document is reproducible. Anyone with a copy can knit it and produce the same results. This requires though that code to load any required packages are included within a code chunk in the document. Simply loading a package via the Console adds it to your current R environment and manually run code chunks will be able to access the package. However, when knitting, the clean R environment won't have access to the package, and you'll receive an error message when the knit process tries to run a function that requires the package. This is why it is important to include a code chunk at the top of your document that loads all required packages. See the [Preamble Code Chunk] for how to do this in the RMarkdown file provided in the interpretive report project template.
 
@@ -297,7 +297,7 @@ knitr::include_graphics("./images/templatepreamble.png")
 ```
 
 1.  **Install packages if missing**, outlined in pink. This code may look complex, but all it does is create a list of packages that are going to be used, assigning it to the object `list.of.packages`. This list is checked against packages already installed, creating a new list `new.packages` containing only the names of packages not already installed. The final line then basically says "if the length of `new.packages` is 1 or more, then install all packages in the `new.packages` list".
-2.  **Wordcount addin if missing**, outlined in blue. There is not a R package for calculating wordcounts, but there is what is known as an 'addin' for RStudio. The code here checks if the addin is already installed and if not it downloads a copy of the addin from GitHub. Please see [Word Count Code] section for further information on how this addin is used in the document.
+2.  **Word count addin if missing**, outlined in blue. There is not an R package for calculating word counts, but there is what is known as an 'addin' for RStudio. The code here checks if the addin is already installed and if not it downloads a copy of the addin from GitHub. Please see the [Word Count Code] section for further information on how this addin is used in the document.
 3.  **Load packages**, outlined in yellow. This is where all packages used in the analysis are loaded.
 4.  **Read data**, outlined in red. The dataset used for the assignment in read in and assigned to the `nilt` dataframe object.
 

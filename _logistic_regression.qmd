@@ -128,11 +128,11 @@ m7
 
 When we print our `m7` model, R will return the estimated coefficients for the intercept and the slope for the independent variable and some other basic information, e.g. the number of observations deleted to fit this model. 
 
-The interpretation of the coefficients is not as straightforward as in a linear model. In the next section we will discuss how to interpret the output of the logit model.
+The interpretation of the coefficients is not as straightforward as in a linear model. In the next section, we will discuss how to interpret the output of the logit model.
 
 ### Formal specification
 
-As we discussed above, we are interested in modelling the probability of an event to occur. However, probabilities are non-linear. This make it a bit tricky to interpret its relationship with the independent variables. Fortunately, the _link_ function helps us to establish a linear relationship between the dependent $p$ and the independent variable $\beta$. The logit model can be expressed as follows:
+As we discussed above, we are interested in modelling the probability of an event occurring. However, probabilities are non-linear. This makes it a bit tricky to interpret their relationship with the independent variables. Fortunately, the link function helps us to establish a linear relationship between the dependent $p$ and the independent variable $\beta$. The logit model can be expressed as follows:
 
 $$ logit(p)=\beta_0 + \beta_1 x + \epsilon   $$
 
@@ -144,7 +144,7 @@ The above means that the outcome of the logit model is in the log odds $\text{lo
 
 ## Interpreting logistic regression
 
-As a generic interpretation, we can say that the coefficients estimated increase/decrease the chance of the outcome happens.
+As a generic interpretation, we can say that the estimated coefficients increase or decrease the chance of the outcome happening.
 
 The scale of the output, the log odds, is an unusual concept and difficult to communicate and understand. This is why many researchers opt to report their findings as the odds ratio. That means, we want to take away the $\text{log}$ from the output and leave only the probability that something will happen over the probability that it will not, like this: $\frac{p}{1-p}$. This form of the result is called the odds ratio (OR) and can be understood as the ratio of success to non-success. 
 
@@ -160,7 +160,7 @@ Now our estimate coefficients are in the odd ratio (OR) scale, which makes it ea
 * OR < 1, decreases the odds
 * OR > 1, increases the odds.
 
-By exponentiating the coefficients our results will not change, they will only be expressed in a different scale.
+By exponentiating the coefficients, our results will not change; they will only be expressed on a different scale.
 
 From the example above, the estimate coefficient for age is 0.97. This is slightly smaller than 1, which means that the odds of someone preferring NI as an independent state are expected to decrease for every additional year older a respondent is. 
 
@@ -168,7 +168,7 @@ Being more specific, we can interpret these changes as percentage using 1 as the
 
 The other columns (2.5%,  97.5%, z val.,  p) tell us how confident we can be about the estimate. A quite often reported result is the p-value ('p' in the output table). To be able to say that there is a significant relationship between the dependant and independent variable the cut-off value is generally agreed to be equal or less than 0.05. In our example, this is far smaller than 0.05. This is why the p-value is rounded to 0.00. Therefore, we can say there is a significant relationship between the respondent age and the preference for NI to be independent.
 
-## Multivariete logit model
+## Multivariate logit model
 
 (You don't need to reproduce the code of this section in your script).
 
@@ -232,5 +232,4 @@ nilt$marr_mix <- ifelse(nilt$smarrrlg == 'Would mind a lot' | nilt$smarrrlg == '
 7. Which of the independent variables is/are significant? 
 8. Do you think personal income is playing a role? 
 9. How do you interpret the coefficient for protestant respondents?
-
 

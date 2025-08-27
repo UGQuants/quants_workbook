@@ -222,7 +222,7 @@ For the moment, we will leave it here. The important thing is to be aware of the
 
 Set an R Markdown document in your 'NILT2' project as following:
 
-1. Create a new `Rmd` file, type 'Multivariate linear model' in 'Tile' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
+1. Create a new `Rmd` file, type 'Multivariate linear model' in the 'Title' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
 2. Save the Rmd document as 'Multivariate_lab'.
 3. Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YAML) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
 
@@ -240,7 +240,7 @@ nilt <- readRDS("data/nilt_r_object.rds")
 
 2. Print a table for the highest level of qualification `highqual` using the `table()` function.
 3. Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
-4. Fit a linear model model using the `lm()` function to analyse the personal income `persinc2` using the number of works worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary. 
+4. Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary. 
 5. Comment on the results of the model by mentioning which of the variables is significant and their respective p-value, the adjusted r-squared of the model, and the number of observations used to fit the model.
 6. Plot a histogram of the residuals for model `m4`. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?
 7. Discuss your answers with your neighbour or tutor.

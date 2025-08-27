@@ -4,11 +4,14 @@ A step-by-step guide for conducting quantitative research in R by [Rafael Verudz
 
 The online book is available: <https://ugquants.github.io/quants_workbook/>.
 
-It is targeted to University of Glasgow students enrolled in the Undergraduate Quantitative Research Methods course of the School of Social & Political Sciences. The activities are designed for [RStudio Cloud](https://rstudio.cloud/).
+This workbook is for University of Glasgow students enrolled in the undergraduate Quantitative Methods in the Social Sciences course within the School of Social and Political Sciences. The activities are designed for [RStudio Cloud](https://rstudio.cloud/).
 
-The book was written using `R` [bookdown](https://github.com/rstudio/bookdown) package. 
+Made with R and Quarto.
 
-To render the book locally, open the R Markdown file `index.Rmd` and click the Build tab of RStudio and select the bookdown::gitbook option. For more information see <https://bookdown.org/yihui/bookdown/>.
+- Clone the repo: `git clone https://github.com/UGQuants/quants_workbook.git && cd quants_workbook`
+- Install Quarto: https://quarto.org/docs/get-started/
+- R packages used: `install.packages(c("knitr", "rmarkdown", "tidyverse", "cowplot", "vtable", "moderndive", "downlit"))`
 
-This book was written using the following GitHub repository:
-<https://github.com/rstudio/bookdown-demo>.
+## Linting and styling
+
+- Install: `install.packages(c("lintr", "styler"))`

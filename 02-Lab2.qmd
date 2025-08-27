@@ -21,7 +21,7 @@ Let's put hands-on to install and load some useful packages. We will start with 
 
 ### Activity: 
 
-**Part 1**. Access your lab group in R Studio Cloud
+**Part 1**. Access your lab group in RStudio Cloud
 
 1. Make sure you have a free, institutional-subscription [RStudio Cloud](https://rstudio.cloud/) account (in case you have not created one yet, please follow the guidance provided in [Lab 1](01-intro.qmd#setting-up-rstudio));
 2. You will receive a link from your tutor to join your lab group in a shared space. Copy and paste it in your web browser (log in if necessary). If you already joined your lab group in RStudio Cloud, simply access the 'Lab 2' project and omit steps 3 to 5. Otherwise, continue with steps 3, 4 and 5.
@@ -44,7 +44,7 @@ knitr::include_graphics("./images/rstudio_cloud_startproject_lab2.png")
 1. Once you have accessed the 'Lab 2' project, write or copy the following line in your **script** (pane 1) and run it:
 
 ```{r eval = FALSE}
-install.packages('tidyverse')
+install.packages("tidyverse")
 ```
 
 2. Wait until you get the message 'The downloaded source packages are in...'. The installing process can take up to a couple of minutes to finish.
@@ -90,9 +90,9 @@ glimpse(iris)
 levels(iris$Species)
 ```
 
-4. As you can see, there are three categories, which are three types of flower species. In `R` the categories in factor vectors are are called _levels_.
+4. As you can see, there are three categories, which are three types of flower species. In `R` the categories in factor vectors are called _levels_.
 
-Note the syntax above. Inside the function, we used the name of the dataset followed by the dollar sign (\$) which is  is needed to access the specific column/variable `Species`.
+Note the syntax above. Inside the function, we used the name of the data set followed by the dollar sign (\$), which is needed to access the specific column/variable `Species`.
 
 <!-- Let's move to a different data set. This time we will use another classic example called `diamonds`. This data set contains some characteristics of more than 50K pieces of diamonds (to get more information type `?diamonds` in your console). -->
 
@@ -116,7 +116,7 @@ The `starwars` data set from the `dplyr` package contains information about the 
 1. First, we will run the next couple of lines to reduce the data set, and then we will glimpse the Star Wars characters:
 
 ```{r eval=FALSE}
-starwars2 <- starwars[ ,1:11]
+starwars2 <- starwars[, 1:11]
 glimpse(starwars2)
 ```
 
@@ -146,7 +146,7 @@ levels(starwars2$species)
 
 The glimpse result now is telling us that `species` is a `<fct>`, as expected. Furthermore, the `levels()` function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.
 
-Hopefully, these examples will help you to identify the the main vector types and more importantly to coerce them in an appropriate type. Be aware that many data sets represent categories with numeric values, for example, using '0' for males and '1' for females. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values of the numeric code and their respective meaning. It's important to read the code book/documentation of every dataset as the conventions and meanings can vary.
+Hopefully, these examples will help you to identify the main vector types and, more importantly, to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values, for example, using '0' for males and '1' for females. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values of the numeric code and their respective meaning. It's important to read the code book/documentation of every data set as the conventions and meanings can vary.
 
 ## More operators and some essential symbols
 
@@ -157,8 +157,8 @@ Hopefully, these examples will help you to identify the the main vector types an
 A useful operator is the pipe `%>%`. This is part of the `tidyverse` package. So, it is ready for you to use. This operator passes the result of one operation to the next. Check the results of the following operations in your **console**:
 
 ```{r eval = FALSE}
-1 %>% + 1
-1 %>% + 1 %>% + 5
+1 %>% +1
+1 %>% +1 %>% +5
 ```
 
 Observe what happened...The result from the first line was 2. This is because this line can be read as: 'take 1, THEN sum 1'. Therefore, the result is 2. 
@@ -184,8 +184,10 @@ Note that in the 'Files' tab of Pane 4, there is a new folder called `data`.
 Now, download the data from the GitHub repository using the function `download.file()`. This function takes two arguments separated by a comma: (1) the URL and (2) the destination (including the directory, file name, and file extension), as shown below. Also, since the file we downloaded is wrapped in a `.zip` file, we will need to unzip it using `unzip()`. Copy, paste in your script, the following lines: 
 
 ```{r eval = FALSE}
-download.file("https://projects.fivethirtyeight.com/data-webpage-data/datasets/police-killings.zip",
-              "data/police-killings.zip")
+download.file(
+  "https://projects.fivethirtyeight.com/data-webpage-data/datasets/police-killings.zip",
+  "data/police-killings.zip"
+)
 unzip("data/police-killings.zip", exdir = "data")
 ```
 
@@ -247,7 +249,7 @@ There are some interesting figures coming out from the summary. For instance, in
 Let's suppose that we only want observations in which race/ethnicity is not unknown. To 'remove' _undesired_ observation we can use the `filter()` function. We will assign the result of `filter` in a variable called `police_2`.
 
 ```{r eval = FALSE}
-police_2 <- police_2 %>% filter(raceethnicity != 'Unknown')
+police_2 <- police_2 %>% filter(raceethnicity != "Unknown")
 ```
 
 So, what just happened in the code above? First, the pipe operator, `%>%`: What we are doing verbally is _take the object `police_2`, THEN filter raceethnicity based on a condition_. Later, what is happening inside `filter`? Lets have a look at what `R` does in the background for us (Artwork by \@alison_horst):
@@ -288,4 +290,4 @@ Extra activities:
 1. Why did you have to use quotes in the following: `filter(police, raceethnicity==”White” & raceethnicity==”firearm”)`?
 2. What do you have to repeat the variable `raceethnicity` twice?
 
-This is the end of Lab 2. Again, the changes in your script should be saved automatically in R Studio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!
+This is the end of Lab 2. Again, the changes in your script should be saved automatically in RStudio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!
