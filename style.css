@@ -1,0 +1,15 @@
+.navbar-logo {
+  max-height: 50px;
+  padding-right: 20px;
+}
+
+/* Bold the left navigation items */
+.navbar-nav.me-auto .nav-link,
+.navbar-nav.me-auto .menu-text {
+  font-weight: bold;
+}
+
+/* Bold the navigation bar title */
+.navbar-title {
+  font-weight: bold;
+}
