@@ -6,3 +6,10 @@ _bookdown_files
 rsconnect
 lab-workbook.log
 lab-workbook.tex
+/_site/
+/docs/
+/.quarto/
+cache/
+.utf8
+.DS_Store
+

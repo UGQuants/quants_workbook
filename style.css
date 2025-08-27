@@ -1,17 +1,15 @@
-p.caption {
-  margin-top: 10px;
-}
-p code {
-  white-space: inherit;
-}
-pre {
-  word-break: normal;
-  word-wrap: normal;
-}
-pre code {
-  white-space: inherit;
+.navbar-logo {
+  max-height: 50px;
+  padding-right: 20px;
 }
 
-.book .book-body .page-wrapper .page-inner {
-  max-width: 1000px;
+/* Bold the left navigation items */
+.navbar-nav.me-auto .nav-link,
+.navbar-nav.me-auto .menu-text {
+  font-weight: bold;
+}
+
+/* Bold the navigation bar title */
+.navbar-title {
+  font-weight: bold;
 }
