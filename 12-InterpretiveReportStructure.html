@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -311,16 +311,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content"><section id="InterpretiveReportTemplate" class="level1 unnumbered"><h1 class="unnumbered">Appendix 1: RMarkdown &amp; the Interpretive Report Template</h1>
 <section id="introduction" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This appendix provides additional information on using RMarkdown and an overview of the structure of the RMarkdown document provided with the interpretive report project template.</p>
+<p>This appendix provides additional information on using R Markdown and an overview of the structure of the R Markdown document provided with the interpretive report project template.</p>
 <p>Please ensure to review the relevant lab materials:</p>
 <ul>
 <li>
-<a href="./05-Lab5.html">Lab 5 session on RMarkdown</a> for an intro to RMarkdown.</li>
+<a href="./05-Lab5.html">Lab 5 session on R Markdown</a> for an intro to R Markdown.</li>
 <li>
 <a href="./10-Lab10.html">Lab 10 Session for Interpreting Quantitative Findings Report summative assessment</a> for instructions on how to create a project on RStudio Cloud for your interpretive report using the provided template.</li>
 </ul>
 <p>Similarly, if you encounter any errors, please ensure to check the <a href="./13-RFAQ.html">R Issues FAQ</a> first for any existing solutions.</p>
-<p>The first half of this page provides an overview of RMarkdown and the second half covers the <a href="./12-InterpretiveReportStructure.html#interpretive-report-template">Interpretive Report Template</a> in more detail. <strong>Importantly</strong>, please ensure to at least read the <a href="#preamble-code-chunk">Preamble Code Chunk</a> section for information on best practice for installing and loading any additional packages.</p>
+<p>The first half of this page provides an overview of R Markdown and the second half covers the <a href="./12-InterpretiveReportStructure.html#interpretive-report-template">Interpretive Report Template</a> in more detail. <strong>Importantly</strong>, please ensure you at least read the <a href="#preamble-code-chunk">Preamble Code Chunk</a> section for information on best practice for installing and loading any additional packages.</p>
 </section><section id="r-basics" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="r-basics">R Basics</h2>
 <p>R is a programming language used for data analysis and visualisation. A large community has built up around R through the combination of it being free and open-source software and a full featured programming language. This makes it possible for the community to contribute to and extend upon what it is possible to do with R. The Comprehensive R Archive Network, where packages are downloaded from when you <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>, helps illustrate the power that comes from an open-source community. It now lists <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">21,810 packages</a> created by the R community.</p>
 <p>These benefits are behind the rapid adoption of R within the social sciences, and academia and data analysis more broadly. However, compared to expensive closed source software where most analysis could be done through menus and mouse-clicks, using R requires learning the programming language. This is not the disadvantage it may at first seem. It does add an additional hurdle at the very start, but it also provides a far more powerful and flexible way to do data analysis. Menus are also not as simple and accessible as may first seem. A graph that can be created with a few lines of code in R may require going through multiple menus with 20+ mouse-clicks and entering text into multiple fields.</p>
@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <strong>include</strong> - whether the code chunk <em>and</em> its output - such as tables and graphs - are displayed in knitted files.</li>
 </ul>
-<p>By default the code chunk and the output are displayed in knitted files. For the interpretive report, you do not want to display the code chunks in your knitted HTML file, so ensure to add <code>echo=FALSE</code> to the options for new code chunk you create. Alternatively, see <a href="#setup-code-chunk">Setup Code Chunk</a> section for information on how to set <code>echo=FALSE</code> as a ‘global option’.</p>
+<p>By default, the code chunk and the output are displayed in knitted files. For the interpretive report, you do not want to display the code chunks in your knitted HTML file, so ensure you add <code>echo=FALSE</code> to the options for any new code chunk you create. Alternatively, see the <a href="#setup-code-chunk">Setup Code Chunk</a> section for information on how to set <code>echo=FALSE</code> as a ‘global option’.</p>
 <p>Examples when working in RMarkdown document:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -527,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Note as well that many of these options have keyboard shortcuts listed. Learning these pays off long-term as you will be able to write and run your code without needing to move your hands from the keyboard.</p>
 </section><section id="knitting-rmarkdown-documents" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="knitting-rmarkdown-documents">Knitting RMarkdown Documents</h3>
-<p>Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to, see the <a href="#yaml-block">YAML Block</a> section for information on how this is setup within the project template.</p>
+<p>Knitting a document runs all your R code from top to bottom, then combines the results from this with the Markdown text to convert these into different file formats. YAML is used to specify which file formats to convert to; see the <a href="#yaml-block">YAML Block</a> section for information on how this is set up within the project template.</p>
 <p><strong>Importantly</strong>, when you knit an RMarkdown document, all code is run sequentially from top to bottom in a clean R environment. This ensures the document is reproducible. Anyone with a copy can knit it and produce the same results. This requires though that code to load any required packages are included within a code chunk in the document. Simply loading a package via the Console adds it to your current R environment and manually run code chunks will be able to access the package. However, when knitting, the clean R environment won’t have access to the package, and you’ll receive an error message when the knit process tries to run a function that requires the package. This is why it is important to include a code chunk at the top of your document that loads all required packages. See the <a href="#preamble-code-chunk">Preamble Code Chunk</a> for how to do this in the RMarkdown file provided in the interpretive report project template.</p>
 <p>Assuming you have YAML specifying which file format(s) to convert to, all you then need to do each time is simply click the ‘Knit’ button:</p>
 <div class="cell">
@@ -625,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <strong>Install packages if missing</strong>, outlined in pink. This code may look complex, but all it does is create a list of packages that are going to be used, assigning it to the object <code>list.of.packages</code>. This list is checked against packages already installed, creating a new list <code>new.packages</code> containing only the names of packages not already installed. The final line then basically says “if the length of <code>new.packages</code> is 1 or more, then install all packages in the <code>new.packages</code> list”.</li>
 <li>
-<strong>Wordcount addin if missing</strong>, outlined in blue. There is not a R package for calculating wordcounts, but there is what is known as an ‘addin’ for RStudio. The code here checks if the addin is already installed and if not it downloads a copy of the addin from GitHub. Please see <a href="#word-count-code">Word Count Code</a> section for further information on how this addin is used in the document.</li>
+<strong>Word count addin if missing</strong>, outlined in blue. There is not an R package for calculating word counts, but there is what is known as an ‘addin’ for RStudio. The code here checks if the addin is already installed and if not it downloads a copy of the addin from GitHub. Please see the <a href="#word-count-code">Word Count Code</a> section for further information on how this addin is used in the document.</li>
 <li>
 <strong>Load packages</strong>, outlined in yellow. This is where all packages used in the analysis are loaded.</li>
 <li>

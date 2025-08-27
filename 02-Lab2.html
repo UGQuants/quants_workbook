@@ -161,7 +161,7 @@ div.csl-indent {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -327,7 +327,7 @@ div.csl-indent {
 <section id="installing-packages" class="level3"><h3 class="anchored" data-anchor-id="installing-packages">Installing packages</h3>
 <p>Let’s put hands-on to install and load some useful packages. We will start with <code>tidyverse</code> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021</a>)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section><section id="activity" class="level3"><h3 class="anchored" data-anchor-id="activity">Activity:</h3>
-<p><strong>Part 1</strong>. Access your lab group in R Studio Cloud</p>
+<p><strong>Part 1</strong>. Access your lab group in RStudio Cloud</p>
 <ol type="1">
 <li>Make sure you have a free, institutional-subscription <a href="https://rstudio.cloud/">RStudio Cloud</a> account (in case you have not created one yet, please follow the guidance provided in <a href="./01-intro.html#setting-up-rstudio">Lab 1</a>);</li>
 <li>You will receive a link from your tutor to join your lab group in a shared space. Copy and paste it in your web browser (log in if necessary). If you already joined your lab group in RStudio Cloud, simply access the ‘Lab 2’ project and omit steps 3 to 5. Otherwise, continue with steps 3, 4 and 5.</li>
@@ -358,7 +358,7 @@ div.csl-indent {
 <li>Once you have accessed the ‘Lab 2’ project, write or copy the following line in your <strong>script</strong> (pane 1) and run it:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tidyverse'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>Wait until you get the message ‘The downloaded source packages are in…’. The installing process can take up to a couple of minutes to finish.</li>
@@ -397,9 +397,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="1">
-<li>As you can see, there are three categories, which are three types of flower species. In <code>R</code> the categories in factor vectors are are called <em>levels</em>.</li>
+<li>As you can see, there are three categories, which are three types of flower species. In <code>R</code> the categories in factor vectors are called <em>levels</em>.</li>
 </ol>
-<p>Note the syntax above. Inside the function, we used the name of the dataset followed by the dollar sign ($) which is is needed to access the specific column/variable <code>Species</code>.</p>
+<p>Note the syntax above. Inside the function, we used the name of the data set followed by the dollar sign ($), which is needed to access the specific column/variable <code>Species</code>.</p>
 <!-- Let's move to a different data set. This time we will use another classic example called `diamonds`. This data set contains some characteristics of more than 50K pieces of diamonds (to get more information type `?diamonds` in your console). -->
 <!-- 1. Let's glimpse at the `diamonds` data by running this line in your console. -->
 <!-- ```{r eval=FALSE} -->
@@ -419,7 +419,7 @@ div.csl-indent {
 <li>First, we will run the next couple of lines to reduce the data set, and then we will glimpse the Star Wars characters:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span> <span class="op">&lt;-</span> <span class="va">starwars</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span> <span class="op">&lt;-</span> <span class="va">starwars</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
@@ -439,14 +439,14 @@ div.csl-indent {
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The glimpse result now is telling us that <code>species</code> is a <code>&lt;fct&gt;</code>, as expected. Furthermore, the <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.</p>
-<p>Hopefully, these examples will help you to identify the the main vector types and more importantly to coerce them in an appropriate type. Be aware that many data sets represent categories with numeric values, for example, using ‘0’ for males and ‘1’ for females. Usually, large data sets are accompanied by extra information in a <em>code book</em> or <em>documentation</em> file, which specifies the values of the numeric code and their respective meaning. It’s important to read the code book/documentation of every dataset as the conventions and meanings can vary.</p>
+<p>Hopefully, these examples will help you to identify the main vector types and, more importantly, to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values, for example, using ‘0’ for males and ‘1’ for females. Usually, large data sets are accompanied by extra information in a <em>code book</em> or <em>documentation</em> file, which specifies the values of the numeric code and their respective meaning. It’s important to read the code book/documentation of every data set as the conventions and meanings can vary.</p>
 </section></section><section id="more-operators-and-some-essential-symbols" class="level2"><h2 class="anchored" data-anchor-id="more-operators-and-some-essential-symbols">More operators and some essential symbols</h2>
 <!-- More operators and symbols...Let's start with the hashtag `#`. Even though this is not an operator in R, this symbol allow us to include a comment or ´mute´ the whole line in your script. In fact, it is important that you add comments on your own code, so when you come back later to your code, you can have a quicker idea of what it is going in each line of the script. -->
 <!-- The dollar sign `$` is frequently used and it is part of base R. Actually, we used it a couple of times in the previous section. This is used to access or extract information from an object (e.g. a data set). For instance, earlier we selected only one variable from the `starwars` data set by writing `starwars2$species`. A practical tip to quickly access or find variables in a data set is to write the name of your object followed by the dollar sign only, like this: `starwars2$` (without specifying the variable to be accessed yet). After, type `tab` in your keyboard. Then, R will display a list with the variables available. Try it yourself! -->
 <p>A useful operator is the pipe <code>%&gt;%</code>. This is part of the <code>tidyverse</code> package. So, it is ready for you to use. This operator passes the result of one operation to the next. Check the results of the following operations in your <strong>console</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span> <span class="fl">1</span></span>
-<span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span> <span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">1</span></span>
+<span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Observe what happened…The result from the first line was 2. This is because this line can be read as: ‘take 1, THEN sum 1’. Therefore, the result is 2.</p>
 <p>Similarly, the second line follows this process: ‘take 1, THEN sum 1, take the result of this (which is ’2’) and THEN sum 5’. Therefore, the result is 7. This can sound a bit abstract at this point, but we will practice with some data in the next section.</p>
@@ -461,8 +461,10 @@ div.csl-indent {
 <p>Note that in the ‘Files’ tab of Pane 4, there is a new folder called <code>data</code>.</p>
 <p>Now, download the data from the GitHub repository using the function <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code>. This function takes two arguments separated by a comma: (1) the URL and (2) the destination (including the directory, file name, and file extension), as shown below. Also, since the file we downloaded is wrapped in a <code>.zip</code> file, we will need to unzip it using <code><a href="https://rdrr.io/r/utils/unzip.html">unzip()</a></code>. Copy, paste in your script, the following lines:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://projects.fivethirtyeight.com/data-webpage-data/datasets/police-killings.zip"</span>,</span>
-<span>              <span class="st">"data/police-killings.zip"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://projects.fivethirtyeight.com/data-webpage-data/datasets/police-killings.zip"</span>,</span>
+<span>  <span class="st">"data/police-killings.zip"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span><span class="st">"data/police-killings.zip"</span>, exdir <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After following the previous steps, we are ready to read the data. As you can see in the ‘File’ tab, the data comes as a <code>.csv</code> file. Thus, we can use the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function included in the <code>tidyverse</code> package (make sure you the package is loaded in your session as explained in a <a href="#installing-packages">previous section</a>). We will assign the data in an object called <code>police</code>.</p>
@@ -502,7 +504,7 @@ div.csl-indent {
 <p>There are some interesting figures coming out from the summary. For instance, in age you can see that the youngest is… 16 years old(?!), and the oldest 87 years old. Also, the vast majority are male individuals (445 vs 22). In relation to race/ethnicity, roughly half of them is ‘White’, whereas ‘Black’ individuals represent an important share. One may question about the proportion of people killed in terms of race/ethnicity compared to the composition of the total population (considering Black is a minority group in the US).</p>
 <p>Let’s suppose that we only want observations in which race/ethnicity is not unknown. To ‘remove’ <em>undesired</em> observation we can use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function. We will assign the result of <code>filter</code> in a variable called <code>police_2</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">'Unknown'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">"Unknown"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So, what just happened in the code above? First, the pipe operator, <code>%&gt;%</code>: What we are doing verbally is <em>take the object <code>police_2</code>, THEN filter raceethnicity based on a condition</em>. Later, what is happening inside <code>filter</code>? Lets have a look at what <code>R</code> does in the background for us (Artwork by @alison_horst):</p>
 <div class="cell">
@@ -537,7 +539,7 @@ div.csl-indent {
 <li>What about ‘White’ and ‘firearm’?</li>
 </ol>
 <p>Extra activities: 1. Why did you have to use quotes in the following: <code>filter(police, raceethnicity==”White” &amp; raceethnicity==”firearm”)</code>? 2. What do you have to repeat the variable <code>raceethnicity</code> twice?</p>
-<p>This is the end of Lab 2. Again, the changes in your script should be saved automatically in R Studio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!</p>
+<p>This is the end of Lab 2. Again, the changes in your script should be saved automatically in RStudio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!</p>
 
 
 

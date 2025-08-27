@@ -166,7 +166,7 @@ window.Quarto = {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -373,7 +373,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>As you can see, even with this minimal example using 40 observations, there is a clear trend. From the plot, it seems intuitive to draw a line that describes this general trend. Imagine a friend will draw this line for you. You will have to tell them some basic references on how to do it. You can, for example, specify a start point and and end point in the plot. Alternatively, which is what we will do below, you can specify a start point and a value that describes the slope of the line. For now, our friend is <code>ggplot</code>. You have to pass these two values (start point and slope) in the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline()</a></code> function to draw a line which describes these points.</p>
+<p>As you can see, even with this minimal example using 40 observations, there is a clear trend. From the plot, it seems intuitive to draw a line that describes this general trend. Imagine a friend will draw this line for you. You will have to tell them some basic references on how to do it. You can, for example, specify a start point and an end point in the plot. Alternatively, which is what we will do below, you can specify a start point and a value that describes the slope of the line. For now, our friend is <code>ggplot</code>. You have to pass these two values (start point and slope) in the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline()</a></code> function to draw a line that describes these points.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">nilt_sample</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -498,7 +498,7 @@ Coefficients:
 </div>
 <p>The blue is the optimal solution, whereas the red was just an arbitrary guess. We can see that the optimal is more balanced than the red in relation to the observed data points.</p>
 </section><section id="formal-specification" class="level3"><h3 class="anchored" data-anchor-id="formal-specification">Formal specification</h3>
-<p>Now you are ready for the the formal specification of the linear model. After the introduction above, it is easy to take the pieces apart. In essence, the simple linear model is telling us that the dependent value <span class="math inline">\(y\)</span> is defined by a line that intersects the vertical axis at <span class="math inline">\(\beta_0\)</span>, plus the multiplication of the slope <span class="math inline">\(\beta_1\)</span> by the value of <span class="math inline">\(x_1\)</span>, plus some residual <span class="math inline">\(\epsilon\)</span>. The second part of the equation is just telling us that the residuals are normally distributed (that is when a histogram of the residuals follows a bell-shaped curve).</p>
+<p>Now you are ready for the formal specification of the linear model. After the introduction above, it is easy to take the pieces apart. In essence, the simple linear model is telling us that the dependent value <span class="math inline">\(y\)</span> is defined by a line that intersects the vertical axis at <span class="math inline">\(\beta_0\)</span>, plus the multiplication of the slope <span class="math inline">\(\beta_1\)</span> by the value of <span class="math inline">\(x_1\)</span>, plus some residual <span class="math inline">\(\epsilon\)</span>. The second part of the equation is just telling us that the residuals are normally distributed (that is when a histogram of the residuals follows a bell-shaped curve).</p>
 <p><span class="math display">\[
 \begin{align}
 y = \beta_0 + \beta_1 * x_1 + \epsilon, &amp;&amp; \epsilon ~ N(0, \sigma)  
@@ -603,7 +603,7 @@ F-statistic:  5240 on 1 and 589 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ol type="1">
 <li>Plot a scatter plot using <code>ggplot</code>. In the aesthetics, locate <code>rhourswk</code> in the X axis, and <code>persinc2</code> in the Y axis. In the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> jitter the points by specifying the <code>position = 'jitter'</code>. Also, include the best fit line using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function, and specify the <code>method = 'lm'</code> inside.</li>
 <li>Print the summary of <code>m3</code> using the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</li>
-<li>Is the the relationship of hours worked a week significant?</li>
+<li>Is the relationship of hours worked a week significant?</li>
 <li>What is the adjusted r-squared? How would you interpret it?</li>
 <li>What is the sample size to fit the model?</li>
 <li>What is the expected income in pounds a year for a respondent who works 30 hours a week according to coefficients of this model?</li>

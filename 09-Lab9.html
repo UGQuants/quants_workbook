@@ -166,7 +166,7 @@ window.Quarto = {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -578,7 +578,7 @@ F-statistic:  1037 on 6 and 583 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section><section id="lab-activities" class="level2"><h2 class="anchored" data-anchor-id="lab-activities">Lab activities</h2>
 <p>Set an R Markdown document in your ‘NILT2’ project as following:</p>
 <ol type="1">
-<li>Create a new <code>Rmd</code> file, type ‘Multivariate linear model’ in ‘Tile’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>.</li>
+<li>Create a new <code>Rmd</code> file, type ‘Multivariate linear model’ in the ‘Title’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>.</li>
 <li>Save the Rmd document as ‘Multivariate_lab’.</li>
 <li>Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YAML) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.</li>
 </ol>
@@ -596,7 +596,7 @@ F-statistic:  1037 on 6 and 583 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ol start="2" type="1">
 <li>Print a table for the highest level of qualification <code>highqual</code> using the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function.</li>
 <li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
-<li>Fit a linear model model using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to analyse the personal income <code>persinc2</code> using the number of works worked a week <code>rhourswk</code>, the highest level of qualification <code>highqual</code>, and the age of the respondent <code>rage</code> as independent variables. Store the model in an object called <code>m4</code> and print the summary.</li>
+<li>Fit a linear model using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to analyse the personal income <code>persinc2</code> using the number of hours worked a week <code>rhourswk</code>, the highest level of qualification <code>highqual</code>, and the age of the respondent <code>rage</code> as independent variables. Store the model in an object called <code>m4</code> and print the summary.</li>
 <li>Comment on the results of the model by mentioning which of the variables is significant and their respective p-value, the adjusted r-squared of the model, and the number of observations used to fit the model.</li>
 <li>Plot a histogram of the residuals for model <code>m4</code>. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?</li>
 <li>Discuss your answers with your neighbour or tutor.</li>

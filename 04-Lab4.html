@@ -167,7 +167,7 @@ window.Quarto = {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -315,7 +315,7 @@ window.Quarto = {
 <main class="content" id="quarto-document-content"><section id="exploratory-data-analysis" class="level1"><h1>Exploratory data analysis</h1>
 <p>In our previous session we learned about wrangling data in <code>R</code> by implementing useful function such as <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>select()</code>, and <code>mutate()</code>. In this session we will focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
 <section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>We will continue working on the same project and dataset that you created in the last lab on R Studio Cloud. Please follow the next steps:</p>
+<p>We will continue working on the same project and dataset that you created in the last lab on RStudio Cloud. Please follow the next steps:</p>
 <ol type="1">
 <li>Go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a>.</li>
 <li>Open the project called ‘NILT’ located in your lab group’.</li>
@@ -442,7 +442,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.</p>
-<p>What if we want to know the religious affiliation break-down by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as following:</p>
+<p>What if we want to know the religious affiliation breakdown by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as follows:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"religcat"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -510,7 +510,7 @@ Female
 </div>
 <p>There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 43.5% vs 40.2% and 44.1% vs 40.6%, respectively. We also see that there are almost 20% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.</p>
 </section><section id="activity-1" class="level3"><h3 class="anchored" data-anchor-id="activity-1">Activity 1</h3>
-<p>From your R Studio Cloud script, do the following activities using the data in the <code>nilt_subset</code> object (feel free to copy and adapt the code shown above):</p>
+<p>From your RStudio Cloud script, do the following activities using the data in the <code>nilt_subset</code> object (feel free to copy and adapt the code shown above):</p>
 <ul>
 <li>Create a One-Way contingency table for <code>uninatid</code> in the <code>nilt_subset</code> dataset using the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function;</li>
 <li>Using the variables <code>religcat</code> and <code>uninatid</code>, generate a Two-Way contingency table;</li>
@@ -530,7 +530,7 @@ Female
 </div>
 </div>
 </div>
-<p>This plot show us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side), tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old, that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
+<p>This plot shows us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side) tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old; that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
 <p>The <em>median</em> is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called… You guessed it - <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -539,7 +539,7 @@ Female
 </div>
 </div>
 <p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows: <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span> The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g.&nbsp;a very very old person). To compute the mean you need the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
+<p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows: <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span> The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g.&nbsp;a very, very old person). To compute the mean you need the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -548,8 +548,8 @@ Female
 </div>
 <p>As you can see, the above measures try to approximate values that fall somewhere in the centre of the histogram plot, and represent all observations in the sample. They tell different things and are sometimes more (or less) suitable in a specific situation.</p>
 </section><section id="measures-of-spread" class="level4"><h4 class="anchored" data-anchor-id="measures-of-spread">Measures of spread</h4>
-<p>By contrast, there are measures that helps us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
-<p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it in four equal parts. The first quartile includes the lowest 25% values, the second the other 25%, the third other other 25%, and the fourth the highest 25%. To compute quartiles we can use the <code>quantile</code> function.</p>
+<p>By contrast, there are measures that help us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
+<p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it into four equal parts. The first quartile includes the lowest 25% of values, the second the next 25%, the third another 25%, and the fourth the highest 25%. To compute quartiles, we can use the <code>quantile</code> function.</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GibHub" class="quarto-navigation-tool px-1" aria-label="Workbook GibHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -252,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In the previous labs you were exploring the 2012 <a href="https://www.ark.ac.uk/nilt/">Northern Ireland Life and Times Survey (NILT)</a>. You’ve learnt how to download, read and format the data. Also, you’ve learnt how to explore categorical and numeric data and a mix of them. In this lab, you will learn about how to efficiently report quantitative results directly from R, using R Markdown, which is used by many academics and professionals in a workplace setting to communicate quantitative findings to a wider audience. R Markdown is also what you will use to write your research report assignment for this course. So, Let’s dive in and learn more!</p>
 </section><section id="r-markdown" class="level2"><h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
-<p>R Markdown (Rmd) is a <strong>different</strong> type of file included in R Studio (and it is actually a different programming language). This allows you to generate reports in common file types, such as <code>.html</code> (the same one used for this lab workbook you’re reading right now), <code>.pdf</code> or word (<code>.doc</code>). The interesting thing is that the Rmd file allows you to integrate text, code, and plots directly into your report (so you do not have to copy and paste tables or graphs into a Word document, for example, which is often very messy and time-consuming). You have already seen how well this works in the lab workbooks so far, which are written entirely in R Markdown.</p>
+<p>R Markdown (Rmd) is a different type of file included in RStudio (and it is actually a different markup language). This allows you to generate reports in common file types, such as <code>.html</code> (the same one used for this lab workbook you’re reading right now), <code>.pdf</code>, or Word (<code>.doc</code>). The interesting thing is that the Rmd file allows you to integrate text, code, and plots directly into your report (so you do not have to copy and paste tables or graphs into a Word document, for example, which is often very messy and time-consuming). You have already seen how well this works in the lab workbooks so far, which are written entirely in R Markdown.</p>
 <p>The basic components of an Rmd file are: the <strong><em>code</em></strong>, <strong><em>text</em></strong> and <strong><em>metadata</em></strong>. The code is integrated by blocks called ‘chunks’, and the metadata contains information to format the report. We believe the best way to learn is by doing it. So, let’s create your first Rmd document!</p>
 <section id="first-r-markdown-document" class="level3"><h3 class="anchored" data-anchor-id="first-r-markdown-document">First R Markdown document</h3>
 <p>We will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">RStudio Cloud</a>.</p>
@@ -260,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Please go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a> (log in if necessary);</li>
 <li>Open your own copy of the ‘NILT’ project from the ‘Quants lab group’;</li>
 <li>Create a new Rmd file, this is similar as creating and <code>R Script</code>, from the ‘File’ tab on the top-left: <code>File&gt;New File&gt;R Markdown...</code> (Rstudio may ask to install some packages, click ‘Yes’);</li>
-<li>Type ‘Test1’ in ‘Tile’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>. Then, click ‘OK’.</li>
+<li>Type ‘Test1’ in the ‘Title’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>. Then, click ‘OK’.</li>
 <li>Save the Rmd file clicking on <code>File&gt;Save as...</code>, type <code>Test1</code> in the ‘File name’ box, and click on the Save button.</li>
 </ol>
 <p>After completing the previous steps, your screen should look like this (You can minimize the console to expand pane 1):</p>
@@ -291,11 +291,11 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Knit button</figcaption></figure>
 </div>
 <p>RStudio may ask you if you want to update some packages, click ‘Yes’.</p>
-<p>After you knit the document, a window with the output will pop-up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. After, there is a second-level header which includes the first section of this example document. Also the the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>.</p>
+<p>After you knit the document, a window with the output will pop up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. Afterwards, there is a second-level header which includes the first section of this example document. Also, the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>.</p>
 <p>An interesting thing is that we can integrate the result of our code in the output as we did with the second chunk (which starts in line 18). Here, we can use a summary of the data set <code>cars</code> (which is an in-built data set in <code>R</code> that contains only two variables).</p>
 <!-- Next, there is a second header, called 'Including Plots'. Under this section you can see a plot, but this time the code is not shown since `echo` was set to `FALSE`. You can close the pop-window when you finish exploring the output. -->
-<p>Similarly, you can create a <code>.pdf</code> file. To do this, instead of clicking on on the <em>Knit</em> icon directly, click on the black arrow next to it. Then click ‘Knit to PDF’. Try it and see the result.</p>
-<p>When you knitted the document, R Studio actually created a new <code>.html</code> or <code>.pdf</code> file named as same as your Rmd document. You can confirm this in the ‘File’ tab in Pane 4. You can to download this file from the cloud to your local drive by clicking on the box of the output file. Then, click <code>More&gt;Export...</code> in the same pane (or clicking on the gear icon in pane 4).</p>
+<p>Similarly, you can create a <code>.pdf</code> file. To do this, instead of clicking on the <em>Knit</em> icon directly, click on the black arrow next to it. Then click ‘Knit to PDF’. Try it and see the result.</p>
+<p>When you knitted the document, RStudio actually created a new <code>.html</code> or <code>.pdf</code> file with the same name as your Rmd document. You can confirm this in the ‘Files’ tab in Pane 4. You can download this file from the cloud to your local drive by clicking on the box of the output file. Then, click <code>More &gt; Export...</code> in the same pane (or click on the gear icon in Pane 4).</p>
 <!-- You can find more text styles and their respective syntax [here](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html). -->
 <!-- For a comprehensive list of chunk code options click [here](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html). -->
 <p><strong>IMPORTANT</strong>: Rmd files are different from simple R scripts. While everything you write in an R script is interpreted as code, only the bits within the code chunks will be interpreted as code in Rmd files. Everything else not within chunks in an Rmd file is interpreted as text.</p>
