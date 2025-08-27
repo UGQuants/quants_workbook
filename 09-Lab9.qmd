@@ -1,5 +1,10 @@
 # Multivariate linear model {#multi-lm}
 
+```{r}
+#| include: false
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 ## Introduction
 
 In the last lab we mentioned that one of the advantages of linear regression is that we can include more than one independent (explanatory) variable to evaluate their relationship with the dependent variable. This technique is known as multivariate linear regression. In practice, few studies in quantitative social research rely only on simple linear models. This is because often in reality there is more than one variable associated to a social phenomenon. This is why it is important to familiarise yourself with the multivariate linear model.
@@ -28,7 +33,6 @@ install.packages("moderndive")
 Load the `tidyverse` and `moderndive` libraries (`tidyverse` was pre-installed for you before, you do not need to re-install it in this project) and read the `nilt_r_object.rds` file which is stored in the 'data' folder and contains the NILT survey.
 
 ```{r}
-#| warning: false
 ## Load the packages
 library(tidyverse)
 library(haven)

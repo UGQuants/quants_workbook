@@ -1,10 +1,11 @@
 
+# Exploratory data analysis
+
 ```{r}
 #| include: false
 library(tidyverse)
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
-
-# Exploratory data analysis
 
 In our previous session we learned about wrangling data in `R` by implementing useful function such as `filter()`, `select()`, and `mutate()`. In this session we will focus on descriptive statistics. This includes the exploration and description of quantitative data.
 

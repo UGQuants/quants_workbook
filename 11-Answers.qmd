@@ -1,5 +1,10 @@
 # Workbook suggested answers {#answers .unnumbered}
 
+```{r}
+#| include: false
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 ## Introduction {.unnumbered}
 
 This chapter presents the suggested `R` code to answer the workbook activities and exercises throughout the course labs in Quantitative Research Methods for Social Sciences. This covers from Lab 3 to Lab 9.
@@ -26,7 +31,6 @@ glimpse(nilt)
 Preamble code
 
 ```{r}
-#| warning: false
 ## Load the packages
 library(tidyverse)
 # Read the data from the .rds file
@@ -129,7 +133,6 @@ ggplot(nilt_subset, aes(x=uninatid, fill = religcat)) +
 -   Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
 
 ```{r}
-#| warning: false
 ggplot(nilt_subset, aes(x= rhourswk, y=persinc2)) +
   geom_point() +
   labs(title= 'Income and number of hours worked a week',
@@ -139,7 +142,6 @@ ggplot(nilt_subset, aes(x= rhourswk, y=persinc2)) +
 -   Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results on Zoom (live) or your Lab Group on Teams (online anytime);
 
 ```{r}
-#| warning: false
 ggplot(nilt_subset, aes(x= ruhappy, y=persinc2)) +
   geom_boxplot() +
   labs(title= 'Personal income and happiness', 
@@ -183,7 +185,6 @@ Using the `nilt` data object, visualize the relationship of the following variab
 -   Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use the `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function, set the `method` argument to `'lm'`.
 
 ```{r}
-#| warning: false
 ggplot(nilt, aes(x=rage, mig_per)) +
   geom_point() +
   geom_smooth(method = 'lm') +
@@ -213,7 +214,6 @@ Use the `nilt` data set object in your `linear_model_intro` file to:
 1.  Plot a scatter plot using `ggplot`. In the aesthetics, locate `rhourswk` in the X axis, and `persinc2` in the Y axis. In the `geom_point()`, jitter the points by specifying the `position = 'jitter'`. Also, include the best fit line using the `geom_smooth()` function, and specify the `method = 'lm'` inside.
 
 ```{r}
-#| warning: false
 ggplot(nilt, aes(x= rhourswk, y= persinc2)) +
   geom_point(position = 'jitter') +
   geom_smooth(method = 'lm')
@@ -265,7 +265,6 @@ table(nilt$highqual)
 3.  Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
 
 ```{r}
-#| warning: false
 ggplot(nilt, aes(x = rhourswk, y= persinc2, color = highqual)) +
   geom_point(position = 'jitter') +
   moderndive::geom_parallel_slopes(se = FALSE) +

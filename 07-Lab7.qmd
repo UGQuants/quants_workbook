@@ -1,20 +1,18 @@
 # Correlation
 
+```{r}
+#| include: false
+library(tidyverse)
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 ## What is correlation?
 
 When conducting empirical research, we are often interested in associations between two variables, for example, personal income and attitudes towards migrants. In this lab we will focus on visualizing relationship between variables and how to measure it. In quantitative research, the main variable of interest in an analysis is called the _dependent_ or _response variable_, and the second is known as the _independent_ or _explanatory_. In the example above, we can think of personal income as the independent variable and attitudes as the dependent.
 
 The relationship between variables can be positive, negative or non-existent. The figure below shows these type of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.
 
-<br>
-
-```{r}
-#| include: false
-library(tidyverse)
-```
-
 ```{r fig.width=12, fig.height=3, echo = FALSE, fig.cap="\\label{fig:figs} Types of correlation."}
-#| warning: false
 #library(MASS)
 
 # Create fake data set

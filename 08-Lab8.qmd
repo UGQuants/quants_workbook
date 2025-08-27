@@ -1,5 +1,10 @@
 # Linear model: Simple linear regression {#simple-lm}
 
+```{r}
+#| include: false
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 ## Welcome
 
 In the previous lab we learned about correlation. We visualised the relationship of different types of variables. Also, we computed one correlation measure for two numeric variables, _Pearson_ correlation. This measure is useful to compute the strength and the direction of the association. However, it presents some limitations, e.g. it can only be used for numeric variables, it allows only one variable at a time, and it is appropriate to describe a linear relationship.
@@ -27,7 +32,6 @@ Reproduce the code below, by copying, pasting and running it from your new scrip
 First, load the `tidyverse` library and read the `nilt_r_object.rds` file which is stored in the folder called 'data' and contains the NILT survey (`tidyverse` was installed in your session already).
 
 ```{r}
-#| warning: false
 ## Load the packages
 library(tidyverse)
 library(haven)

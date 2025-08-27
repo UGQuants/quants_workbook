@@ -1,5 +1,10 @@
 # Data wrangling
 
+```{r}
+#| include: false
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 Welcome to Lab 3!
 
 In our previous session we learned about `R` packages, including how to install and load them. We talked about the main types of data used in social science research and how to represent them in `R`. Also, we played around with some datasets using some key functions, such as: `filter()`, `select()`, and `mutate()`. In this session we will learn how to import data in `R`, clean and format the data using a real-world dataset. These is a common and important phase in quantitative research.
@@ -18,7 +23,6 @@ We will continue using R Studio Cloud, as we did in our previous labs. Please fo
 3. Load the `tidyverse` and `haven` packages. This last package is useful to import data from SPSS (the `tidyverse` package was pre-installed in your session). You can copy, paste, and run the following functions from your script:
 
 ```{r}
-#| warning: false
 library(tidyverse)
 library(haven)
 ```
