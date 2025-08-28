@@ -15,3 +15,9 @@ Made with R and Quarto.
 ## Linting and styling
 
 - Install: `install.packages(c("lintr", "styler"))`
+
+## Prose linting
+
+- Tools: Vale and LTeX check prose.
+- Config: `.vale.ini` with rules in `styles/`.
+- Editors: Install extensions for nvim or VSCode/Positron to enable them.

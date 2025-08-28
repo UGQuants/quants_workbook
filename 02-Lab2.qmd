@@ -252,7 +252,7 @@ Let's suppose that we only want observations in which race/ethnicity is not unkn
 police_2 <- police_2 %>% filter(raceethnicity != "Unknown")
 ```
 
-So, what just happened in the code above? First, the pipe operator, `%>%`: What we are doing verbally is _take the object `police_2`, THEN filter raceethnicity based on a condition_. Later, what is happening inside `filter`? Lets have a look at what `R` does in the background for us (Artwork by \@alison_horst):
+So, what just happened in the code above? First, the pipe operator, `%>%`: What we are doing verbally is _take the object `police_2`, THEN filter raceethnicity based on a condition_. Later, what is happening inside `filter`? Let's have a look at what `R` does in the background for us (Artwork by \@alison_horst):
 
 ```{r fig.cap="Filter. Source: Artwork by @Horst.", echo=FALSE}
 knitr::include_graphics("./images/lab_2_filter.jpg")
