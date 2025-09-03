@@ -2,35 +2,92 @@
 
 # Introduction to R {#lab-intro}
 
-For this course we will be using [R](https://www.r-project.org/) [@R-base] and [RStudio](https://rstudio.com/) as the main tools for conducting quantitative analysis. `R` and the basic versions of `RStudio` are open-source and thus free software. Even though `R` appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.
+::: {.callout-note title="Overview"}
+By the end of this lab you will:
+
+- log into Posit Cloud and join your lab space
+- create an R Markdown file
+- learn basic R syntax and use R as a calculator
+- create a neatly formatted HTML file by knitting an R Markdown file 
+:::
+
+::: {.callout-caution title="select()"}
+Choose which columns of a data table to keep, optionally renaming them or changing their order.
+
+**Usage**
+
+```{r}
+#| eval: false
+select(.data, ...)
+```
+
+**Arguments**
+
+- `.data` - the data frame you want to choose columns from.
+- `...` - one or more column selectors. You can list column names (`col1, col2`), rename while selecting (`name_name = old_name`), or use simple helpers (e.g. `where(is.numeric)` to select all numeric columns)
+
+**Returns**
+
+A data frame containing only the selected columns, in the orer given. The original `.data` is unchanged ...
+:::
+
+## Tools We Are Using
+
+For this course we will be using [R](https://www.r-project.org/) [@R-base] and [RStudio](https://rstudio.com/) as the main tools for conducting quantitative analysis.
+
+`R` and the basic versions of `RStudio` are free and open-source software. There are 'free' as in cost, but - more importantly - they are free software that guarantee users four foundamental freedoms. As explained on the FSFE's [What is Free Software?](https://fsfe.org/freesoftware/index.en.html) page, these are:
+
+> - **Use**: Free Software can be used for any purpose and is free of restrictions such as licence expiry or geographic limitations.
+> - **Study**: Free Software and its code can be studied by anyone, without non‐disclosure agreements or similar restrictions.
+> - **Share**: Free Software can be shared and copied at virtually no cost.
+> - **Improve**: Free Software can be modified by anyone, and these improvements can be shared publicly. 
+
+Even though `R` appeared in the early 90s, it has been gaining a lot of popularity in recent years. A main contributor to its success is being free software, with a large community of people contributing improvements to `R` directly as well as extending it with further additional software packages. In fact, it is now one of the most common software for doing statistics in academia.
 
 ```{r fig.cap="Source: www.https://tiobe.com/.", include=FALSE}
 knitr::include_graphics("images/r-lang-popularity-increase.png")
 ```
 
-`R` and `RStudio` are two separate things. `R` is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities in a friendly and interactive interface. In short, for this course (and most of the time in practice) you chiefly use RStudio whilst `R` is silently doing all the work in the background. Thereafter, we will refer to `R`, as the integrated interface.
+![Source: https://tiobe.com](images/r-lang-popularity-increase.png){fig-alt="Line chart showing the dramatic increase in R's popularity over time."}
 
-`R` works in a command-based line environment. This means that you need to call the commands (or _**functions**_, as called in R) through text. This can look intimidating at first glance. But do not worry, we will guide you step by step.
+`R` and `RStudio` are two separate things. `R` is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities into a (relatively) friendly and interactive interface. In short, for this course (and most of the time in practice) you chiefly use RStudio whilst `R` is doing all the work in the background. Thereafter, we will refer to `R`, as the integrated interface.
 
-At this point you may be wondering why you need to bother learning these tools. In the next section you will see some of the advantages and examples that can be achieved using `R`.
+::: {.callout-tip title="New terms"}
+- `R`: a programming language and environment for data analysis.
+- `RStudio`: a user-interface for working with R.
+:::
 
 ## Why R?
 
+At this point you may be wondering why you need to bother learning these tools. In the following sections you will see some of the advantages and examples that can be achieved using `R`.
+
 ### R: a flexible tool
 
-R can be applied in a wide variety of fields and subjects, including not only those in the social sciences (e.g. sociology, politics or policy research), but also in humanities (e.g. history, digital humanities), natural and physical sciences (e.g. biology, chemistry or geography), health (e.g. medical studies, public health, epidemiology), business and management (e.g. finance, economics, marketing), among many others. 
+R can be applied in a wide variety of fields and subjects, including not only those in the social sciences (e.g. sociology, politics, or policy research), but also in the humanities (e.g. history, digital humanities), natural and physical sciences (e.g. biology, chemistry, or geography), health (e.g. medical studies, public health, epidemiology), business and management (e.g. finance, economics, marketing), among many others. 
 
-The broad application of R is due to its flexibility which allows to perform a range of tasks related to data. These cover tasks at initial stages, such as downloading, mining, or importing data. But it is also useful to manipulate, edit, transform, and organize information. Furthermore and most important for us, there are a set of tools that allow us to analyse data using a range of statistical techniques. These are useful to understand, summarize and draw conclusions about samples, e.g. people. Lastly, `R` is powerful to communicate and share information and documents. There are several extensions (called _**packages**_ in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.
+The broad application of R is due to its flexibility which allows it to perform a range of tasks related to data. These cover tasks at initial stages, such as downloading, mining, or importing data. But it is also useful to manipulate, edit, transform, and organise information. Furthermore, and most important for us, there are a set of tools that allow us to analyse data using a range of statistical techniques. These are useful to understand, summarize, and draw conclusions about samples, e.g. people.
+
+Lastly, `R` is powerful to communicate and share information and documents. There are several extensions (called _**packages**_ in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.
+
+`R` works in a command-based `Console` environment. This means that you need to call the commands (or _**functions**_, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexible. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.
+
+::: {.callout-tip title="New terms"}
+We will cover these in more detail in future weeks, but as initial short definitions:
+
+- `Package`: a collection of ready-made R tools - such as functions with help pages, and sometimes example data - that you can install (and later load) to add features to R.
+- `Function`: a named reusable set of instructions that can take inputs (referred to as `arguments`), run some steps, and return a result.
+- `Argument`: input provided to a function that tell the function what to use and how to behave.
+:::
 
 ### Advantages of using R
 
-Some of the advantages of using R are the following:
+Some advantages of using R are the following:
 
-* It is free and open source. You do not need to pay for a licence. Thus you can use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g. University or workplace);
-* It is a collaborative project. This means that it is the users who maintain, extend and update its applications;
-* It is reproducible. Research can be more transparent since you will get the same results every time you run your analysis through a specific pathway (i.e. through scripts);
-* High compatibility. You can read and produce most types of file extensions;
-* There are a number of easy-access web resources to support you in the learning process.
+- It is free and open source software. You do not need to pay for a licence. You can then use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g. University or workplace);
+- It is a collaborative project. This means that it is the users who maintain, extend, and update its applications;
+- It is reproducible. Research can be more transparent since you will get the same results every time you run your analysis through a specific pathway (i.e. through R Markdown files);
+- High compatibility. You can read and produce most types of file extensions;
+- Online community. There are a number of easy-access web resources to support you in the learning process.
 
 <!-- ### Activity. Examples -->
 
@@ -48,11 +105,13 @@ Some of the advantages of using R are the following:
 
 ### Setting up RStudio
 
-At this point, you need to know that there are at least two alternatives to start using RStudio. One, and by far the most common, is to download both `R` and RStudio and install the applications in your local drive. The other option is RStudio Cloud. This is an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g. GoogleChrome, Safari, Firefox, etc). For now, we will use the cloud version. 
+There are multiple ways to work with R. One, and by far the most common, is to download both `R` and RStudio Desktop and install the applications on your local device.[^Positron]
 
-To get started, follow the next steps:
+On this course, we use Posit Cloud instead. Posit Cloud provides an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g. Chrome, Firefox, Safari, etc), including if using a Chromebook or tablet. This makes it easier to access your RStudio projects and files within the labs and when using your own devices.
 
-#### **Part 1** Create an RStudio Cloud account
+To get started with Posit Cloud, follow the next steps:
+
+#### **Part 1** Create a Posit Cloud account
 
 <!-- The following instructions are without SSO: -->
 <!-- 1. Click on this link [RStudio Cloud](https://rstudio.cloud/), which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: https://rstudio.cloud/; -->
@@ -62,16 +121,13 @@ To get started, follow the next steps:
 
 <!-- The following instructions are according to the SSO -->
 
-1. Click on this link [RStudio Cloud - SSO](https://sso.rstudio.cloud/glasgow), which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: <https://sso.rstudio.cloud/glasgow>;
-2. Enter your University of Glasgow email address in the login page as normal;
-3. Then it gets linked to the SSO sign-in page, which you input your GUID and password (same page as if you're logging into the library portal/e-reading list);
+1. Click on this link [Posit Cloud - SSO](https://sso.posit.cloud/glasgow), which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: <https://sso.posit.cloud/glasgow>;
+2. Click 'Log In Via University of Glasgow' which will take you to the usual University of Glasgow login pages;
+3. Enter your University of Glasgow email address and password in the login page as normal;
 
-```{r fig.cap="SSO Login", echo=FALSE}
-knitr::include_graphics("./images/sso_login.png")
-```
+![Posit SSO Login Page](images/sso_login.png){fig-alt="Screenshot of the Posit SSO log in page for University of Glasgow"}
 
-4. Done! You will be taken you into your own Rstudio Cloud work space. 
-
+4. Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;
 
 #### **Part 2** Join your lab group
 
@@ -265,3 +321,5 @@ Discuss the following questions with your neighbour or tutor:
 object1 <- 10
 object1 <- 30
 ```
+
+[^Positron]: If you have prior experience working with coding environments, such as Visual Studio Code, you may want to take a look at [Positron](https://positron.posit.co/). It is based on Visual Studio Code and setup to have a similar panel layout as within RStudio. One of the benefits of open-source software is having this diversity of tools can pick from. It is advised though for this course to stick with Posit Cloud and RStudio.

@@ -1,0 +1,14 @@
+extends: substitution
+message: Use '%s' instead of '%s'.
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  Nvivo: NVivo
+  NVIVO: NVivo
+  Rmarkdown: R Markdown
+  RMarkdown: R Markdown
+  R-Markdown: R Markdown
+  R Studio: RStudio
+  Rstudio: RStudio
