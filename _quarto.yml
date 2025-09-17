@@ -63,8 +63,8 @@ website:
         href: 08-Lab8.qmd
       - text: "**Lab 9** Multivariate Linear Regression"
         href: 09-Lab9.qmd
-      - text: "**Lab 10** Interpretive Report Assessment"
-        href: 10-Lab10.qmd
+      - text: "**Lab 11** Interpretive Report Assessment"
+        href: 11-Lab11.qmd
       - 11-Answers.qmd
       - 12-InterpretiveReportStructure.qmd
       - 13-RFAQ.qmd
