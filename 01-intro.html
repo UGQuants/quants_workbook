@@ -250,8 +250,8 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-Lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 10</strong> Interpretive Report Assessment</span></a>
+  <a href="./11-Lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Lab 11</strong> Interpretive Report Assessment</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -289,7 +289,8 @@ div.csl-indent {
 <li>
 <a href="#lab-intro" id="toc-lab-intro" class="nav-link active" data-scroll-target="#lab-intro">Introduction to R</a>
   <ul class="collapse">
-<li>
+<li><a href="#tools-we-are-using" id="toc-tools-we-are-using" class="nav-link" data-scroll-target="#tools-we-are-using">Tools We Are Using</a></li>
+  <li>
 <a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a>
   <ul class="collapse">
 <li><a href="#r-a-flexible-tool" id="toc-r-a-flexible-tool" class="nav-link" data-scroll-target="#r-a-flexible-tool">R: a flexible tool</a></li>
@@ -311,29 +312,134 @@ div.csl-indent {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><section id="lab-intro" class="level1"><h1>Introduction to R</h1>
-<p>For this course we will be using <a href="https://www.r-project.org/">R</a> <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span> and <a href="https://rstudio.com/">RStudio</a> as the main tools for conducting quantitative analysis. <code>R</code> and the basic versions of <code>RStudio</code> are open-source and thus free software. Even though <code>R</code> appeared in the early 90s, it has been gaining a lot of popularity in recent years. In fact, it is now one of the most common software for doing statistics in academia.</p>
-<p><code>R</code> and <code>RStudio</code> are two separate things. <code>R</code> is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities in a friendly and interactive interface. In short, for this course (and most of the time in practice) you chiefly use RStudio whilst <code>R</code> is silently doing all the work in the background. Thereafter, we will refer to <code>R</code>, as the integrated interface.</p>
-<p><code>R</code> works in a command-based line environment. This means that you need to call the commands (or <em><strong>functions</strong></em>, as called in R) through text. This can look intimidating at first glance. But do not worry, we will guide you step by step.</p>
-<p>At this point you may be wondering why you need to bother learning these tools. In the next section you will see some of the advantages and examples that can be achieved using <code>R</code>.</p>
-<section id="why-r" class="level2"><h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
-<section id="r-a-flexible-tool" class="level3"><h3 class="anchored" data-anchor-id="r-a-flexible-tool">R: a flexible tool</h3>
-<p>R can be applied in a wide variety of fields and subjects, including not only those in the social sciences (e.g.&nbsp;sociology, politics or policy research), but also in humanities (e.g.&nbsp;history, digital humanities), natural and physical sciences (e.g.&nbsp;biology, chemistry or geography), health (e.g.&nbsp;medical studies, public health, epidemiology), business and management (e.g.&nbsp;finance, economics, marketing), among many others.</p>
-<p>The broad application of R is due to its flexibility which allows to perform a range of tasks related to data. These cover tasks at initial stages, such as downloading, mining, or importing data. But it is also useful to manipulate, edit, transform, and organize information. Furthermore and most important for us, there are a set of tools that allow us to analyse data using a range of statistical techniques. These are useful to understand, summarize and draw conclusions about samples, e.g.&nbsp;people. Lastly, <code>R</code> is powerful to communicate and share information and documents. There are several extensions (called <em><strong>packages</strong></em> in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.</p>
-</section><section id="advantages-of-using-r" class="level3"><h3 class="anchored" data-anchor-id="advantages-of-using-r">Advantages of using R</h3>
-<p>Some of the advantages of using R are the following:</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Overview">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of this lab you will:</p>
 <ul>
-<li>It is free and open source. You do not need to pay for a licence. Thus you can use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g.&nbsp;University or workplace);</li>
-<li>It is a collaborative project. This means that it is the users who maintain, extend and update its applications;</li>
-<li>It is reproducible. Research can be more transparent since you will get the same results every time you run your analysis through a specific pathway (i.e.&nbsp;through scripts);</li>
+<li>log into Posit Cloud and join your lab space</li>
+<li>create an R Markdown file</li>
+<li>learn basic R syntax and use R as a calculator</li>
+<li>create a neatly formatted HTML file by knitting an R Markdown file</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="select()">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+select()
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Choose which columns of a data table to keep, optionally renaming them or changing their order.</p>
+<p><strong>Usage</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">select</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>
+<code>.data</code> - the data frame you want to choose columns from.</li>
+<li>
+<code>...</code> - one or more column selectors. You can list column names (<code>col1, col2</code>), rename while selecting (<code>name_name = old_name</code>), or use simple helpers (e.g.&nbsp;<code>where(is.numeric)</code> to select all numeric columns)</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A data frame containing only the selected columns, in the orer given. The original <code>.data</code> is unchanged …</p>
+</div>
+</div>
+<section id="tools-we-are-using" class="level2"><h2 class="anchored" data-anchor-id="tools-we-are-using">Tools We Are Using</h2>
+<p>For this course we will be using <a href="https://www.r-project.org/">R</a> <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span> and <a href="https://rstudio.com/">RStudio</a> as the main tools for conducting quantitative analysis.</p>
+<p><code>R</code> and the basic versions of <code>RStudio</code> are free and open-source software. There are ‘free’ as in cost, but - more importantly - they are free software that guarantee users four foundamental freedoms. As explained on the FSFE’s <a href="https://fsfe.org/freesoftware/index.en.html">What is Free Software?</a> page, these are:</p>
+<blockquote class="blockquote">
+<ul>
+<li>
+<strong>Use</strong>: Free Software can be used for any purpose and is free of restrictions such as licence expiry or geographic limitations.</li>
+<li>
+<strong>Study</strong>: Free Software and its code can be studied by anyone, without non‐disclosure agreements or similar restrictions.</li>
+<li>
+<strong>Share</strong>: Free Software can be shared and copied at virtually no cost.</li>
+<li>
+<strong>Improve</strong>: Free Software can be modified by anyone, and these improvements can be shared publicly.</li>
+</ul>
+</blockquote>
+<p>Even though <code>R</code> appeared in the early 90s, it has been gaining a lot of popularity in recent years. A main contributor to its success is being free software, with a large community of people contributing improvements to <code>R</code> directly as well as extending it with further additional software packages. In fact, it is now one of the most common software for doing statistics in academia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/r-lang-popularity-increase.png" class="img-fluid figure-img" alt="Line chart showing the dramatic increase in R's popularity over time."></p>
+<figcaption>Source: https://tiobe.com</figcaption></figure>
+</div>
+<p><code>R</code> and <code>RStudio</code> are two separate things. <code>R</code> is the actual programming language and the main processing tool which does the computations in the background, whereas RStudio integrates all functionalities into a (relatively) friendly and interactive interface. In short, for this course (and most of the time in practice) you chiefly use RStudio whilst <code>R</code> is doing all the work in the background. Thereafter, we will refer to <code>R</code>, as the integrated interface.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New terms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+New terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<code>R</code>: a programming language and environment for data analysis.</li>
+<li>
+<code>RStudio</code>: a user-interface for working with R.</li>
+</ul>
+</div>
+</div>
+</section><section id="why-r" class="level2"><h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
+<p>At this point you may be wondering why you need to bother learning these tools. In the following sections you will see some of the advantages and examples that can be achieved using <code>R</code>.</p>
+<section id="r-a-flexible-tool" class="level3"><h3 class="anchored" data-anchor-id="r-a-flexible-tool">R: a flexible tool</h3>
+<p>R can be applied in a wide variety of fields and subjects, including not only those in the social sciences (e.g.&nbsp;sociology, politics, or policy research), but also in the humanities (e.g.&nbsp;history, digital humanities), natural and physical sciences (e.g.&nbsp;biology, chemistry, or geography), health (e.g.&nbsp;medical studies, public health, epidemiology), business and management (e.g.&nbsp;finance, economics, marketing), among many others.</p>
+<p>The broad application of R is due to its flexibility which allows it to perform a range of tasks related to data. These cover tasks at initial stages, such as downloading, mining, or importing data. But it is also useful to manipulate, edit, transform, and organise information. Furthermore, and most important for us, there are a set of tools that allow us to analyse data using a range of statistical techniques. These are useful to understand, summarize, and draw conclusions about samples, e.g.&nbsp;people.</p>
+<p>Lastly, <code>R</code> is powerful to communicate and share information and documents. There are several extensions (called <em><strong>packages</strong></em> in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.</p>
+<p><code>R</code> works in a command-based <code>Console</code> environment. This means that you need to call the commands (or <em><strong>functions</strong></em>, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexible. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New terms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+New terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We will cover these in more detail in future weeks, but as initial short definitions:</p>
+<ul>
+<li>
+<code>Package</code>: a collection of ready-made R tools - such as functions with help pages, and sometimes example data - that you can install (and later load) to add features to R.</li>
+<li>
+<code>Function</code>: a named reusable set of instructions that can take inputs (referred to as <code>arguments</code>), run some steps, and return a result.</li>
+<li>
+<code>Argument</code>: input provided to a function that tell the function what to use and how to behave.</li>
+</ul>
+</div>
+</div>
+</section><section id="advantages-of-using-r" class="level3"><h3 class="anchored" data-anchor-id="advantages-of-using-r">Advantages of using R</h3>
+<p>Some advantages of using R are the following:</p>
+<ul>
+<li>It is free and open source software. You do not need to pay for a licence. You can then use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g.&nbsp;University or workplace);</li>
+<li>It is a collaborative project. This means that it is the users who maintain, extend, and update its applications;</li>
+<li>It is reproducible. Research can be more transparent since you will get the same results every time you run your analysis through a specific pathway (i.e.&nbsp;through R Markdown files);</li>
 <li>High compatibility. You can read and produce most types of file extensions;</li>
-<li>There are a number of easy-access web resources to support you in the learning process.</li>
+<li>Online community. There are a number of easy-access web resources to support you in the learning process.</li>
 </ul>
 <!-- ### Activity. Examples --><!-- So far we have talked about some properties of R, but it is worthwhile having a look your-self and discover some of the potential through some examples using _real-life_ data sets. Please take a few minutes to explore the following links that were completely developed using R. --><!-- * [COVID-19 tracker](https://vac-lshtm.shinyapps.io/ncov_tracker/?_ga=2.140661819.883107759.1598267087-903949304.1571305449) --><!-- * [69 Love Songs: A Lyrical Analysis](https://committedtotape.shinyapps.io/sixtyninelovesongs/) --><!-- * [ScotPHO's profiles tool](https://scotland.shinyapps.io/ScotPHO_profiles_tool/) --><!-- What do you think about them? Which one did you enjoy the most? --><!-- Of course the examples above are meant for you to have a sense of the flexibility and potential to process and communicate quantitative analyses in `R`. This course covers the basics to process data and conduct quantitative analyses in social sciences. --></section></section><section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
 <section id="setting-up-rstudio" class="level3"><h3 class="anchored" data-anchor-id="setting-up-rstudio">Setting up RStudio</h3>
-<p>At this point, you need to know that there are at least two alternatives to start using RStudio. One, and by far the most common, is to download both <code>R</code> and RStudio and install the applications in your local drive. The other option is RStudio Cloud. This is an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g.&nbsp;GoogleChrome, Safari, Firefox, etc). For now, we will use the cloud version.</p>
-<p>To get started, follow the next steps:</p>
-<section id="part-1-create-an-rstudio-cloud-account" class="level4"><h4 class="anchored" data-anchor-id="part-1-create-an-rstudio-cloud-account">
-<strong>Part 1</strong> Create an RStudio Cloud account</h4>
+<p>There are multiple ways to work with R. One, and by far the most common, is to download both <code>R</code> and RStudio Desktop and install the applications on your local device.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>On this course, we use Posit Cloud instead. Posit Cloud provides an on-line version of RStudio that does not require installing any additional software. You can run it directly from your browser (e.g.&nbsp;Chrome, Firefox, Safari, etc), including if using a Chromebook or tablet. This makes it easier to access your RStudio projects and files within the labs and when using your own devices.</p>
+<p>To get started with Posit Cloud, follow the next steps:</p>
+<section id="part-1-create-a-posit-cloud-account" class="level4"><h4 class="anchored" data-anchor-id="part-1-create-a-posit-cloud-account">
+<strong>Part 1</strong> Create a Posit Cloud account</h4>
 <!-- The following instructions are without SSO: -->
 <!-- 1. Click on this link [RStudio Cloud](https://rstudio.cloud/), which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: https://rstudio.cloud/; -->
 <!-- 2. Click on the "Get started for free" option. Click on the "Sign up" button (ignore the 'Plus' option); -->
@@ -341,20 +447,16 @@ div.csl-indent {
 <!-- 4. If required by the platform, access your UoG email and verify your address by following the instructions you received in an email. -->
 <!-- The following instructions are according to the SSO -->
 <ol type="1">
-<li>Click on this link <a href="https://sso.rstudio.cloud/glasgow">RStudio Cloud - SSO</a>, which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: <a href="https://sso.rstudio.cloud/glasgow" class="uri">https://sso.rstudio.cloud/glasgow</a>;</li>
-<li>Enter your University of Glasgow email address in the login page as normal;</li>
-<li>Then it gets linked to the SSO sign-in page, which you input your GUID and password (same page as if you’re logging into the library portal/e-reading list);</li>
+<li>Click on this link <a href="https://sso.posit.cloud/glasgow">Posit Cloud - SSO</a>, which should automatically open a new tab in your web browser or go directly to the browser and copy this URL: <a href="https://sso.posit.cloud/glasgow" class="uri">https://sso.posit.cloud/glasgow</a>;</li>
+<li>Click ‘Log In Via University of Glasgow’ which will take you to the usual University of Glasgow login pages;</li>
+<li>Enter your University of Glasgow email address and password in the login page as normal;</li>
 </ol>
-<div class="cell">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/sso_login.png" class="img-fluid figure-img"></p>
-<figcaption>SSO Login</figcaption></figure>
-</div>
-</div>
+<figure class="figure"><p><img src="images/sso_login.png" class="img-fluid figure-img" alt="Screenshot of the Posit SSO log in page for University of Glasgow"></p>
+<figcaption>Posit SSO Login Page</figcaption></figure>
 </div>
 <ol start="4" type="1">
-<li>Done! You will be taken you into your own Rstudio Cloud work space.</li>
+<li>Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;</li>
 </ol></section><section id="part-2-join-your-lab-group" class="level4"><h4 class="anchored" data-anchor-id="part-2-join-your-lab-group">
 <strong>Part 2</strong> Join your lab group</h4>
 <ol type="1">
@@ -468,14 +570,14 @@ div.csl-indent {
 <p>In <code>R</code>, it is very common (and practical) to store values or data as ‘objects’. These are temporally stored in your current session. Let’s try it!</p>
 <p>Now, we will work in the <code>R</code> script file (<strong>Pane 1</strong>, top-left pane), write the following and run it by clicking the green arrow or using <code>alt + enter</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">a</span> <span class="op">+</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What do you observe?…</p>
 <p>…That’s right! The operator <code>&lt;-</code> assigned the numeric value <code>10</code> to the object <code>a</code> (on the left hand-side of the arrow). Later, you used the object (<code>a</code>) to compute a sum (i.e, <code>a + 5</code>).</p>
 <p>Now, write and run the following in your <code>R</code> script (Pane 1)</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">a</span> <span class="op">*</span> <span class="va">c</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As you can see, you stored the numeric value <code>3</code> in the variable <code>c</code>. Then, you called the previously created object <code>a</code> in a multiplication.</p>
@@ -528,7 +630,7 @@ div.csl-indent {
 <li>Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
@@ -538,7 +640,10 @@ div.csl-indent {
 <div id="ref-R-base" class="csl-entry" role="listitem">
 R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
-</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>If you have prior experience working with coding environments, such as Visual Studio Code, you may want to take a look at <a href="https://positron.posit.co/">Positron</a>. It is based on Visual Studio Code and setup to have a similar panel layout as within RStudio. One of the benefits of open-source software is having this diversity of tools can pick from. It is advised though for this course to stick with Posit Cloud and RStudio.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
