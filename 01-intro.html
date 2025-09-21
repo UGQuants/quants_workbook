@@ -91,7 +91,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-42cc806643f66bac1a4d3b89392713e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1efbf008e2baeeb4cb205a51dd9b7791.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
@@ -139,24 +139,8 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Help!</span>
-    </span>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Reference</span>
-    </span>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Additional</span>
-    </span>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Assessments</span>
-    </span>
+    <a class="nav-link" href="./assessments/assessments.html"> 
+<span class="menu-text">Assessments</span></a>
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
@@ -178,9 +162,9 @@ div.csl-indent {
           <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
-  </nav><div id="quarto-announcement" data-announcement-id="d529eddb0664eabf899534f6c6953add" class="alert alert-info hidden">
+  </nav><div id="quarto-announcement" data-announcement-id="2d92ee72f5f7cb3880c08507c300d9e0" class="alert alert-info hidden">
 <i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Reminder</strong> - a link to join your RStudio Cloud group is available in the lab group forums on Moodle</p>
+<p><strong>Reminder</strong> - check your email for your Posit Cloud group join link, links are also available in the lab group forums on Moodle.</p>
 </div>
 <i class="bi bi-x-lg quarto-announcement-action"></i>
 </div>
@@ -245,7 +229,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-Lab9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 9</strong> Multivariate Linear Regression</span></a>
+ <span class="menu-text"><strong>Lab 9</strong> Multiple Linear Regression (part 1)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-Lab10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Lab 10</strong> Multiple Linear Regression (part 2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -256,25 +246,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Answers.html" class="sidebar-item-text sidebar-link">
+  <a href="./Answers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workbook suggested answers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-InterpretiveReportStructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix 1: RMarkdown &amp; the Interpretive Report Template</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13-RFAQ.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix 2: R Issues FAQ</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -304,7 +282,15 @@ div.csl-indent {
   <li><a href="#rstudio-environment" id="toc-rstudio-environment" class="nav-link" data-scroll-target="#rstudio-environment">RStudio environment</a></li>
   </ul>
 </li>
-  <li><a href="#hands-on-r" id="toc-hands-on-r" class="nav-link" data-scroll-target="#hands-on-r">Hands on R</a></li>
+  <li>
+<a href="#hands-on-r" id="toc-hands-on-r" class="nav-link" data-scroll-target="#hands-on-r">Hands on R</a>
+  <ul class="collapse">
+<li><a href="#r-as-calculator" id="toc-r-as-calculator" class="nav-link" data-scroll-target="#r-as-calculator">R as calculator</a></li>
+  <li><a href="#testing-logical-operators" id="toc-testing-logical-operators" class="nav-link" data-scroll-target="#testing-logical-operators">Testing logical operators</a></li>
+  <li><a href="#assigning-values-to-objects" id="toc-assigning-values-to-objects" class="nav-link" data-scroll-target="#assigning-values-to-objects">Assigning values to ‘objects’</a></li>
+  <li><a href="#code-order" id="toc-code-order" class="nav-link" data-scroll-target="#code-order">Code Order</a></li>
+  </ul>
+</li>
   <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
   </ul>
 </li>
@@ -324,37 +310,11 @@ Overview
 <div class="callout-body-container callout-body">
 <p>By the end of this lab you will:</p>
 <ul>
-<li>log into Posit Cloud and join your lab space</li>
-<li>create an R Markdown file</li>
+<li>log into Posit Cloud and join your lab group space</li>
 <li>learn basic R syntax and use R as a calculator</li>
+<li>discover the importance of the order code is run in</li>
 <li>create a neatly formatted HTML file by knitting an R Markdown file</li>
 </ul>
-</div>
-</div>
-<div class="callout callout-style-simple callout-caution callout-titled" title="select()">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-select()
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Choose which columns of a data table to keep, optionally renaming them or changing their order.</p>
-<p><strong>Usage</strong></p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">select</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Arguments</strong></p>
-<ul>
-<li>
-<code>.data</code> - the data frame you want to choose columns from.</li>
-<li>
-<code>...</code> - one or more column selectors. You can list column names (<code>col1, col2</code>), rename while selecting (<code>name_name = old_name</code>), or use simple helpers (e.g.&nbsp;<code>where(is.numeric)</code> to select all numeric columns)</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>A data frame containing only the selected columns, in the orer given. The original <code>.data</code> is unchanged …</p>
 </div>
 </div>
 <section id="tools-we-are-using" class="level2"><h2 class="anchored" data-anchor-id="tools-we-are-using">Tools We Are Using</h2>
@@ -393,6 +353,8 @@ New terms
 <code>R</code>: a programming language and environment for data analysis.</li>
 <li>
 <code>RStudio</code>: a user-interface for working with R.</li>
+<li>
+<code>Posit Cloud</code>: website for running RStudio in a browser.</li>
 </ul>
 </div>
 </div>
@@ -425,7 +387,7 @@ New terms
 </div>
 </div>
 </section><section id="advantages-of-using-r" class="level3"><h3 class="anchored" data-anchor-id="advantages-of-using-r">Advantages of using R</h3>
-<p>Some advantages of using R are the following:</p>
+<p>Some advantages of using R:</p>
 <ul>
 <li>It is free and open source software. You do not need to pay for a licence. You can then use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g.&nbsp;University or workplace);</li>
 <li>It is a collaborative project. This means that it is the users who maintain, extend, and update its applications;</li>
@@ -452,35 +414,44 @@ New terms
 <li>Enter your University of Glasgow email address and password in the login page as normal;</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/sso_login.png" class="img-fluid figure-img" alt="Screenshot of the Posit SSO log in page for University of Glasgow"></p>
+<figure class="figure"><p><img src="images/sso_login.png" class="img-fluid figure-img"></p>
 <figcaption>Posit SSO Login Page</figcaption></figure>
 </div>
 <ol start="4" type="1">
 <li>Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;</li>
 </ol></section><section id="part-2-join-your-lab-group" class="level4"><h4 class="anchored" data-anchor-id="part-2-join-your-lab-group">
 <strong>Part 2</strong> Join your lab group</h4>
+<p>You will have received a link via email to join your lab group on Posit Cloud (the link will be available within your Lab Group forum on Moodle too). Note, you must use this specific link to join and access your lab group workspace, as each link is unique to your group. So, only use your group’s specific link.</p>
 <ol type="1">
-<li>You will receive a link from your tutor to join your lab group on RStudio Cloud (the link will be posted on Moodle too). N.b. you must use this specific link to join and access your lab group workspace, as each link is unique to your group. So only use your group’s specific link. Copy and paste the link in your web browser. You should see the following window:</li>
+<li>Copy and paste the link in your web browser. You should see the following window:</li>
 </ol>
-<div class="cell">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_joinspace.png" class="img-fluid figure-img"></p>
-<figcaption>Join Space.</figcaption></figure>
-</div>
-</div>
+<figure class="figure"><p><img src="images/posit_cloud_joinspace.png" class="img-fluid figure-img"></p>
+<figcaption>Join Lab Group Space</figcaption></figure>
 </div>
 <ol start="2" type="1">
-<li>Join your lab by clicking on the ‘Join space’ button shown above.</li>
-<li>Open the shared space form the left-hand side pane called ‘Quants Lab Group..’ and start the Lab 1 project by clicking on the ‘Start’ button as shown below:</li>
+<li>Join your lab by clicking the ‘Yes’ button shown above.</li>
+</ol></section><section id="part-3-create-a-new-project" class="level4"><h4 class="anchored" data-anchor-id="part-3-create-a-new-project">
+<strong>Part 3</strong> Create a New Project</h4>
+<ol type="1">
+<li>Open the shared space form the left-hand side pane called ‘Lab Group …’ (where … is your Lab Group number).</li>
+<li>Click the blue ‘New Project’ button on the right of the screen.</li>
+<li>From the menu list that opens select ‘New Project from Git Repository’.</li>
 </ol>
-<div class="cell">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_startproject.png" class="img-fluid figure-img"></p>
-<figcaption>Start project.</figcaption></figure>
+<figure class="figure"><p><img src="images/posit_cloud_new_project_git.png" class="img-fluid figure-img"></p>
+<figcaption>New Project, New Project from Git Repository</figcaption></figure>
 </div>
-</div>
+<ol start="4" type="1">
+<li>Within the dialogue box that opens, copy and paste the link below into the ‘URL of your Git Repository’ field.</li>
+</ol>
+<pre class="text"><code>https://github.com/UGQuants/Labs-1-2</code></pre>
+<ol start="5" type="1">
+<li>Click ‘OK’ to create the new project.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/posit_cloud_new_project_git_dialogue.png" class="img-fluid figure-img"></p>
+<figcaption>New Project from Git Repository dialogue</figcaption></figure>
 </div>
 <!-- <br> -->
 <!-- In addition and only optionally you can download and install the Desktop versions by following these links: -->
@@ -488,110 +459,199 @@ New terms
 <!-- * RStudio https://rstudio.com/products/rstudio/ (Choose the RStudio Desktop free version). -->
 <!-- For detailed instructions on how to set up R and RStudio Desktop version, watch [Video 2, Chapter 2](https://study.sagepub.com/fogarty/student-resources/r-screencast-tutorials/chapter-2-introduction-to-r-and-r-studio) [@Fogarty2019]. Remember this is only optional for now. -->
 </section></section><section id="rstudio-environment" class="level3"><h3 class="anchored" data-anchor-id="rstudio-environment">RStudio environment</h3>
-<section id="rstudio-screen" class="level4"><h4 class="anchored" data-anchor-id="rstudio-screen">RStudio screen</h4>
-<p>Once you have started ‘Lab 1’ you will see the screen below:</p>
-<div class="cell">
-<div class="cell-output-display">
+<section id="getting-started-1" class="level4"><h4 class="anchored" data-anchor-id="getting-started-1">Getting started</h4>
+<p>After your new ‘Labs 1-2’ project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_lab1_empty.png" class="img-fluid figure-img"></p>
-<figcaption>Project name.</figcaption></figure>
+<figure class="figure"><p><img src="images/posit_cloud_lab1_start.png" class="img-fluid figure-img"></p>
+<figcaption>Screen after creating ‘Labs 1-2’ project</figcaption></figure>
 </div>
-</div>
-</div>
-<p>Now, go to the “File” tab and create a R Script as follows <code>File &gt; New file &gt; R Script</code></p>
-<div class="cell">
-<div class="cell-output-display">
+<ol type="1">
+<li>In the bottom-right ‘Files’ pane, click “Lab-01.Rmd”.</li>
+<li>That will open a new pane in the top-left, within the yellow banner in it click ‘Install’.</li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_new_script.png" class="img-fluid figure-img"></p>
-<figcaption>New R Script.</figcaption></figure>
+<figure class="figure"><p><img src="images/posit_cloud_lab1_install.png" class="img-fluid figure-img"></p>
+<figcaption>Open the Lab-01.Rmd file and ‘Install’ rmarkdown package</figcaption></figure>
+</div>
+<p>The bottom-left pane will now switch to the “Background Jobs” tab and you will see a lot of red text. Despite the colour, this is expected behaviour. RStudio is now installing the <code>rmarkdown</code> package that makes it possible to work with <code>R Markdown</code> files in RStudio (more on this later). Once it finishes installing, the tab will automatically switch back to “Console”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/posit_cloud_lab1_background.png" class="img-fluid figure-img"></p>
+<figcaption>Red text in Background Jobs tab during install of ‘rmarkdown’ package</figcaption></figure>
+</div>
+<p>R Markdown is a file format (<code>.Rmd</code>) that lets you write text and run code in the same document. You write your narrative text and add your code within <code>code chunks</code>. When you <code>Knit</code> (render) a R Markdown file, R runs the code chunks from top to bottom and weaves their outputs (numbers, tables, plots) into a finished ‘knitted’ report (such as HTML or PDF). This makes your analysis transparent and reproducible, whereby anyone can see what code produced each result. When learning R, it also makes it great for making notes alongside the code.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New terms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+New terms
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>We will cover R Markdown in more detail across the next few weeks, but some initial short definitions:</p>
+<ul>
+<li>
+<code>R Markdown</code>: a file format that mixes narrative text and code; when <code>knit</code>, the results from the code are woven into the ‘knitted’ document.</li>
+<li>
+<code>code chunk</code>: a fenced block in an R Markdown file for adding R code; as well as running when you knit the file, each code chunk can be run on its own within RStudio.</li>
+<li>
+<code>knit</code>: render an R Markdown file into a specified format (e.g.&nbsp;HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the code results.</li>
+</ul>
 </div>
-<p>Once you have created your first R Script, save it by clicking on File &gt; Save as.. &gt; <code>[write the name of your file]</code>.</p>
+</div>
+</section><section id="rstudio-screen" class="level4"><h4 class="anchored" data-anchor-id="rstudio-screen">RStudio screen</h4>
 <p>After this, your RStudio screen will be split in four <strong>important</strong> windows or panes as shown below:</p>
-<div class="cell">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_panels.png" class="img-fluid figure-img"></p>
-<figcaption>RStudio panes.</figcaption></figure>
-</div>
-</div>
+<figure class="figure"><p><img src="images/posit_cloud_panels.png" class="img-fluid figure-img"></p>
+<figcaption>RStudio’s four main panels</figcaption></figure>
 </div>
 <ul>
-<li>In <strong>Pane 1</strong>, you have your newly created <code>R</code> script. This is the area where you will be working most of the time. From here, you will write functions. To run an <code>R</code> script line, you can click on the <code>Run</code> green arrow situated on the top of pane 1 or more commonly you can run a code line by typing <code>alt + enter</code>. The things you write in this section will be saved in your R script file.</li>
+<li>In <strong>Pane 1</strong> (purple), you have the Lab-01 <code>R Markdown</code> file.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_run_button.png" class="img-fluid figure-img"></p>
-<figcaption>Run button</figcaption></figure>
-</div>
+<p>This is the area where you will be working most of the time. From here, you will write text and code. <code>Code chunks</code> are shaded grey, with each starting with <code>```{r optional-name}</code> and ending with <code>```</code>. (The <code>`</code> is called a <code>back-tick</code>, and on UK keyboards is the key to the left of 1.)</p>
 <ul>
-<li>In <strong>Pane 2</strong>, you have the “Global Environment”, this is one of the most useful tabs in this pane. It shows you the active ‘objects’ that you have available/loaded in your current session (this will probably make more sense in the coming sections).</li>
-<li>In <strong>Pane 3</strong>, you have the R Console, this is where you will see most of the results of the functions you run from your script (pane 1). You can also write and run functions from here, by typing the function and hitting enter. NOTE that what you do here will NOT be saved, this is usually used to quickly call functions that you do not want to save in your script.</li>
+<li>In <strong>Pane 2</strong> (blue), you have the “Global Environment”.</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_console.png" class="img-fluid figure-img"></p>
-<figcaption>Console.</figcaption></figure>
-</div>
-</div>
-</div>
+<p>This is one of the most useful tabs in this pane. It shows you the active ‘objects’ that you have available/loaded in your current R session (this will make more sense in the coming sections).</p>
 <ul>
-<li>Finally, in <strong>Pane 4</strong> you have multiple useful tabs. In the <code>File</code> tab you can see the files and directories that you have in your R project. In the <code>Plot</code> tab you will see a preview of the static plots/charts you will be producing from your script. In <code>Packages</code>, you have a list of the extensions or plug-ins (called ‘packages’ in R) that are installed in your working environment. The <code>Help</code> contains some resources that clarify or expand what each of the functions does. Again, probably this will make more sense once you get started. We will come back to this later. Finally, the <code>Viewer</code> displays interactive outputs.</li>
-</ul></section></section></section><section id="hands-on-r" class="level2"><h2 class="anchored" data-anchor-id="hands-on-r">Hands on R</h2>
+<li>In <strong>Pane 3</strong> (green), you have the R Console.</li>
+</ul>
+<p>This is where you will see most of the results of the code you run (pane 1). You can also write and run code from here, by typing the code and hitting enter. <strong>Note</strong>, it is best practice to have code necessary for your analysis saved in your R Markdown file. The Console is usually used instead to quickly run code that you do not want to save in your file.</p>
+<ul>
+<li>Finally, in <strong>Pane 4</strong> (yellow) you have multiple useful tabs.</li>
+</ul>
+<p>In the <code>File</code> tab you can see the files and directories that you have in your R project.</p>
+<p>In the <code>Plot</code> tab you will see a preview of the static plots/charts you will be producing from your script.</p>
+<p>In <code>Packages</code>, you have a list of the extensions or plug-ins (called ‘packages’ in R) that are installed in your working environment.</p>
+<p>The <code>Help</code> contains some resources that clarify or expand what each of the functions does. Again, probably this will make more sense once you get started. We will come back to this later.</p>
+<p>Finally, the <code>Viewer</code> displays interactive outputs.</p>
+</section></section></section><section id="hands-on-r" class="level2"><h2 class="anchored" data-anchor-id="hands-on-r">Hands on R</h2>
 <p>Now you are ready! It is your turn to start exploring and getting familiar with R by completing the following activities.</p>
-<section id="r-as-calculator" class="level4"><h4 class="anchored" data-anchor-id="r-as-calculator">R as calculator</h4>
-<p>Go to your <strong>console</strong> (pane 3, bottom-left pane), write some simple calculations and run them by typing ‘enter’ after each of them, as shown below.</p>
-<div class="cell">
-<div class="cell-output-display">
+<section id="r-as-calculator" class="level3"><h3 class="anchored" data-anchor-id="r-as-calculator">R as calculator</h3>
+<p>In your ‘Lab-01’ R Markdown file, look at the code chunk named “sum-1” containing <code>2 + 2</code>. Let’s run it!</p>
+<p>To run a code chunk, you can click on the <code>Run</code> green arrow situated on the top right corner of it. Alternatively, if your text cursor is inside the code chunk you can press <code>Ctrl+Shift+Enter</code> on your keyboard.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_r_as_calculator.png" class="img-fluid figure-img"></p>
-<figcaption>R Console as calculator.</figcaption></figure>
+<figure class="figure"><p><img src="./images/rstudio_chunk_run.png" class="img-fluid figure-img"></p>
+<figcaption>Run current code chunk button</figcaption></figure>
 </div>
+<p>What you will see after running the chunk is:</p>
+<ol type="1">
+<li>In the R Markdown file, <code>[1] 4</code> underneath the code chunk.</li>
+<li>In the Console, both <code>&gt; 2 + 2</code> and <code>[1] 4</code>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_chunk_ran.png" class="img-fluid figure-img"></p>
+<figcaption>Output in R Markdown file and Console after running a code chunk</figcaption></figure>
 </div>
+<p>Why do we see this? When you run a chunk, RStudio sends the code to the Console for R to run it, so you see the code echoed and its raw output there. RStudio also shows the results inline under the chunk so you can see the output in context. (This also becomes important later with graphs and formatted tables that cannot be viewed in the Console.)</p>
+<p>What does the <code>[1]</code> mean? It’s a label R adds to printed results, where <code>[1]</code> just means “this line starts at item 1”. If there were lots of items, the next line might start <code>[7]</code> or <code>[15]</code>.</p>
+<p>Of course, you can also go to the <strong>Console</strong>, write a simple calculation, and run it by typing ‘Enter’, as shown below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_console_calc.png" class="img-fluid figure-img"></p>
+<figcaption>Running simple calculations in the Console</figcaption></figure>
 </div>
-<p><br> Try different operations such as <code>50 / 20</code> or <code>3 * 5</code>.</p>
-<p>Fairly simple, right? And don’t forget, it is entirely normal to copy/paste and tweak any existing codes. Unlike writing an essay or an exam, you don’t actually need to know and write codes “off the cuff” or recite/memorise any syntax. You are only expected to know how to run the codes and tweak them as you go along, there is a huge amount of trial and error when you work in R. So don’t worry if you feel like you are just making minor changes to the codes, that’s how it’s supposed to work, and the first few weeks is all about getting comfortable in using R, then the level of challenge will go up. Let’s continue with the next activities!</p>
-</section><section id="testing-logical-operators" class="level4"><h4 class="anchored" data-anchor-id="testing-logical-operators">Testing logical operators</h4>
-<p>Now, write and run the following lines in your <strong>console</strong> (pane 3) and take some time to observe the result in detail for each of them:</p>
+<p>It’s also possible to run multiple calculations in a single chunk. Add a line for <code>5 * 5</code> and <code>21 -4</code> in the empty “sum-2” chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_sum-2.png" class="img-fluid figure-img"></p>
+<figcaption>Adding simple calculations to sum-2 code chunk</figcaption></figure>
+</div>
+<p>Try different operations such as <code>50 / 20</code> or <code>3 * 5</code>, whether adding to the code chunk or directly in the Console.</p>
+<p>Fairly simple, right? And don’t forget, it is normal to copy and tweak existing code. A lot of learning to code involves going through working examples and tweaking it to work with what you are trying to achieve. Unlike writing an essay or an exam, you don’t actually need to know and write code “off the cuff” or have all necessary code syntax and functions memorised. So, don’t worry if you feel like you are just making minor changes to existing code, that’s how it’s supposed to work. The crucial thing is learning how the code works, so you know what to tweak for your analysis. And, the first few weeks is all about getting comfortable in using R, then the level of challenge will go up.</p>
+<p>Let’s continue with the next activities!</p>
+</section><section id="testing-logical-operators" class="level3"><h3 class="anchored" data-anchor-id="testing-logical-operators">Testing logical operators</h3>
+<p>Now, run the “logical-1” code chunk in the R Markdown file.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_logical.png" class="img-fluid figure-img"></p>
+<figcaption>logical-1 code chunk and results from running it</figcaption></figure>
+</div>
+<p>Now, in the “logical-2” code chunk, add the following and then run it:</p>
 <ul>
-<li><code>10 == 10</code></li>
-<li><code>10 != 10</code></li>
 <li><code>1 == 5</code></li>
 <li><code>1 &gt; 5</code></li>
-<li><code>'a' == 'a'</code></li>
-<li><code>'a' == 'b'</code></li>
+<li><code>5 &lt; 10</code></li>
+<li><code>'this' == 'this'</code></li>
+<li><code>'this' == 'that'</code></li>
+<li><code>'this' != 'that'</code></li>
 </ul>
-<p>What do you see? …</p>
-<p>…That’s it! When you use the double equal sign <code>==</code> you are <em>asking</em> R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark <code>!</code> with other operator, you get the reversed result. In the past exercises you used <code>!=</code>, this was interpreted as “is not equal to”, that is why <code>10 != 10</code> returns <code>FALSE</code>, but <code>10 == 10</code> returns <code>TRUE</code>.</p>
-<p><code>R</code> can process different classes of inputs. In this case we used letters and we <em>asked</em> R whether ‘a’ was equal to ‘a’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <em>character</em> values in R), you need quotation marks <code>'</code>. If you want to enter numeric values, you simply input the raw number. These are different ‘class’ values.</p>
+<p>(Note, if you receive an “Error: object ‘this’ not found’” message, check you are using single quotes and have <code>'this'</code> rather than <code>this</code>.)</p>
+<p>What do you see running the code chunks? Why is R outputting these results? …</p>
+<p>…That’s it! When you use the double equal sign <code>==</code> you are <em>asking</em> R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark <code>!</code> with another operator, you get the reversed result. For example, <code>!=</code> is interpreted as “is not equal to”, that is why <code>10 != 10</code> returns <code>FALSE</code>, but <code>10 == 10</code> returns <code>TRUE</code>.</p>
+<p><code>R</code> can process different classes of inputs. In this case we used a letters and we <em>asked</em> R whether ‘this’ was equal to ‘this’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <code>character</code> values in R), you need quotation marks <code>'</code>. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as <code>numeric</code> ‘class’ values.</p>
+<p>You can use the <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function to check what something is in R. For example, try running <code>class(42)</code>, <code>class('42')</code>, and <code>class(TRUE)</code> in the Console.</p>
 <p>Perhaps logical operators do not make much sense at this point, but you will find out later that they are useful to manipulate data. For example, these are essential to filter a data set based on specific <em>rules</em> or patterns.</p>
-</section><section id="assigning-values-to-objects" class="level4"><h4 class="anchored" data-anchor-id="assigning-values-to-objects">Assigning values to ‘objects’</h4>
-<p>In <code>R</code>, it is very common (and practical) to store values or data as ‘objects’. These are temporally stored in your current session. Let’s try it!</p>
-<p>Now, we will work in the <code>R</code> script file (<strong>Pane 1</strong>, top-left pane), write the following and run it by clicking the green arrow or using <code>alt + enter</code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">a</span> <span class="op">+</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New Terms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>What do you observe?…</p>
-<p>…That’s right! The operator <code>&lt;-</code> assigned the numeric value <code>10</code> to the object <code>a</code> (on the left hand-side of the arrow). Later, you used the object (<code>a</code>) to compute a sum (i.e, <code>a + 5</code>).</p>
-<p>Now, write and run the following in your <code>R</code> script (Pane 1)</p>
+<div class="callout-title-container flex-fill">
+New Terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<code>class</code>: an object’s classification in R that informs how R handles it.</li>
+<li>
+<code>character</code>: text in quotes, such as “Glasgow”. (<code>'42'</code> as it is in quotes would be treated as character)</li>
+<li>
+<code>numeric</code>: real or decimal numbers, such as <code>42</code> or <code>5.1</code>.</li>
+</ul>
+</div>
+</div>
+</section><section id="assigning-values-to-objects" class="level3"><h3 class="anchored" data-anchor-id="assigning-values-to-objects">Assigning values to ‘objects’</h3>
+<p>In <code>R</code>, it is common (and practical) to store values or data as ‘objects’. Once values are assigned to them, objects are then stored in your current R session. Assignments are made using <code>object_name &lt;- value</code>, such as <code>a &lt;- 5</code> or <code>b &lt;- 'Glasgoow'</code>. Let’s try it!</p>
+<p>Go to the “assign-1” code chunk run it by clicking the green arrow/triangle or - with your text cursor within the code chunk - using <code>Ctrl+Shift+Enter</code>.</p>
+<p>What do you observe? Pay attention to what appears under the code chunk <strong>and</strong> in the Environment pane (the top-right of the four panes). Why are the values different? …</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_assign-1.png" class="img-fluid figure-img"></p>
+<figcaption>Result under code chunk and value in environment after running assign-1 code chunk</figcaption></figure>
+</div>
+<p>The operator <code>&lt;-</code> assigned the numeric value <code>10</code> to the object <code>a</code> (on the left hand-side of the arrow). The next line used the object (<code>a</code>) to compute a sum (i.e, <code>a + 5</code>). Only the assignment is stored in the session environment (the <code>a &lt;- 10</code>) and assignments do not return an output, so only the result of <code>a + 5</code> is shown under the code chunk when run.</p>
+<p>To see this, within the “assign-2” chunk add <code>c &lt;- 3</code> and run it:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_assign-2.png" class="img-fluid figure-img"></p>
+<figcaption>Value for ‘c’ in environment after running assign-2 code chunk</figcaption></figure>
+</div>
+<p>Now, add and run the following in the “assign-2” chunk:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span></span>
 <span><span class="va">a</span> <span class="op">*</span> <span class="va">c</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As you can see, you stored the numeric value <code>3</code> in the variable <code>c</code>. Then, you called the previously created object <code>a</code> in a multiplication.</p>
+<p>As you can see, running <code>c</code> on a line by its own returns the numeric value <code>3</code> stored in the variable <code>c</code>. Then, <code>a * c</code> calls the previously created object <code>a</code> and multiplies it by <code>c</code> (<code>a * c</code> is effectively <code>10 * 3</code>). Note, most programming languages, R included, do not use <code>x</code> for multiplication and use <code>*</code> instead. One reason for this is because <code>x</code> could also end up as a named object, <code>x &lt;- 2</code>.</p>
 <p>In the same way as you assigned these simple variables, you will store other types of objects later, e.g.&nbsp;vectors, data frames or lists. This is useful because those objects will be ready in your session to do some computations.</p>
-<p>There are a few things to note when assigning objects to variables. If you use a different value to the same variable, e.g.&nbsp;by typing <code>a &lt;- 5</code>, you will replace the old value with the new. So, instead of having <code>a</code> representing the value 10, you will have <code>5</code>. You can see the objects available in your session on the Global Environment (‘Environment’ tab in Pane 2) as shown below.</p>
-<p><br></p>
-<div class="cell">
-<div class="cell-output-display">
+</section><section id="code-order" class="level3"><h3 class="anchored" data-anchor-id="code-order">Code Order</h3>
+<p>There are a few things to note when assigning objects to variables. If you assign a different value to the same object, e.g.&nbsp;by running <code>a &lt;- 5</code>, you will replace the old value with the new. So, instead of having <code>a</code> representing the value 10, you will have <code>5</code>.</p>
+<p>You can see the objects available in your session on the Global Environment (‘Environment’ tab in top-right pane) as shown below.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_environment.png" class="img-fluid figure-img"></p>
-<figcaption>‘Environment’ tab.</figcaption></figure>
+<figure class="figure"><p><img src="./images/rstudio_lab1_env.png" class="img-fluid figure-img"></p>
+<figcaption>Enivornment tab in top-right pane showing values for a and c</figcaption></figure>
 </div>
+<p>Now, let’s see what happens if change value of <code>a</code>:</p>
+<ol type="1">
+<li>Run the “order-1” code chunk that contains <code>a + 2</code>.</li>
+<li>Now in the Console type and run <code>a &lt;- 5</code>.</li>
+<li>Run the “order-1” code chunk again.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_order-1.png" class="img-fluid figure-img"></p>
+<figcaption>Console results for <code>a + 2</code> before and after assigning new value to <code>a</code></figcaption></figure>
 </div>
+<p>As can see, the code in the “order-1” chunk remains the same, but the result from running the code changes based on the value assigned to <code>a</code>. That may seem an obvious point to make, but a large proportion of unexpected results and errors arise from changing what is assigned to an object.</p>
+<p>A good rule of thumb then when a code chunk that was previously working suddenly returns unexpected results or an error message is to run your code from the top-down. Thankfully, RStudio also makes this easy to do. To ‘Run All Chunks Above’ a specific code chunk, click the downward facing grey arrow/triangle with a green line under it (see image below!). After that, you can click the green arrow/triangle to ‘Run Current Chunk’.</p>
+<p>Do that for the ‘order-1’ chunk and it will return 12 again:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_restore-order.png" class="img-fluid figure-img"></p>
+<figcaption>‘Run All Chunks Above’ (purple) and ‘Run Current Chunk’ (blue)</figcaption></figure>
 </div>
+<p>It is also possible to use an object in a calculation and assign the result of that calculation back to the object. For example, <code>a &lt;- a + 5</code> is equivalent to <code>a &lt;- 10 + 5</code>. Whilst that can be perfectly valid to do, care needs to be taken as now <code>a</code> is <code>15</code>. What do you think would happen if you keep running the same <code>a &lt;- a + 5</code> line of code?</p>
+<p>Go to the “order-2” code chunk and run it multiple times, looking at the result underneath the chunk and the value for <code>a</code> in the Environment pane.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_order-2.png" class="img-fluid figure-img"></p>
+<figcaption>’Increased value of <code>a</code> after running “order-2” chunk multiple times</figcaption></figure>
+</div>
+<p>Again, you can ‘Run All Chunks Above’ (downwards grey arrow/triangle, green line) and ‘Run Current Chunk’ (green arrow/triangle) to restore <code>a</code> to value it would be if only ran each code chunk once top to bottom.</p>
 <!-- ### Load your first file -->
 <!-- You are now done with the basics, it is time to get serious. We will use R to download a real data set and then we will load it as an object in our working session. The data we will use for this exercise is the [Scottish Hill Races](https://dasl.datadescription.com/datafile/scottish-hill-races/). -->
 <!-- The first thing you will do is download the data set. Copy, paste the following bit in to your R Script (pane 1) and run it: -->
@@ -621,18 +681,42 @@ New terms
 <!-- ![Console](./images/rstudio_cloud_view.png) -->
 <!-- <br> -->
 <!-- Here, you can scroll down or visualize your columns to your right in a table-style format. You can sort the contents of the variables by clicking on the header. But note that you cannot make any changes from here. Once you finished checking your data, simply click on the cross mark and you will be back to your script tab. -->
-<p>This is a very good start, great job!</p>
-<p>Note that the changes made in your script are saved automatically in RStudio Cloud. To verify this, have a look at the name of your script in the top-left of pane 1. If changes are due to be saved, the name will be written in red. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, end your session simply by closing the RStudio Cloud tab in your browser.</p>
+<p>This is a good start, great job!</p>
+<p>Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterix at the end, <code>Lab-01.Rmd*</code>. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New Terms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+New Terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<code>object</code>: any data or function stored in memory and usually bound to a name in an environment.</li>
+<li>
+<code>assignment</code>: bind a name to an object in an environment with <code>&lt;-</code>, creating or updating that binding (e.g.&nbsp;<code>a &lt;- 10</code>).</li>
+<li>
+<code>environment</code>: a workspace that maps names and objects (the main one is the Global Environment, which can see in the top-right panel in RStudio).</li>
+</ul>
+</div>
+</div>
 </section></section><section id="activity" class="level2"><h2 class="anchored" data-anchor-id="activity">Activity</h2>
-<p>Discuss the following questions with your neighbour or tutor:</p>
+<p>Discuss the following questions with your neighbour or tutor, and write notes from your discussion in your R Markdown file:</p>
 <ol type="1">
-<li>What are the main differences between working on a <code>R</code> script file (pane 1) and directly on the console (pane 3)?</li>
+<li>What are the main differences between working in a <code>R Markdown</code> file (pane 1) and directly on the console (pane 3)?</li>
 <li>Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="3" type="1">
+<li>Click the ‘Knit’ button in the bar at the top of the R Markdown file (pane 1). This will turn your R Markdown file into an HTML document.</li>
+</ol>
+<p>(Note: Another reason code chunk order matters. When you ‘knit’ an R Markdown file, the code chunks are run top to bottom in a fresh R session.)</p>
 
 
 

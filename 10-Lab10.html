@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.32">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>lab10 – Lab Workbook</title>
 <style>
 code{white-space: pre-wrap;}
@@ -19,6 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -26,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./11-Answers.html" rel="next">
+<link href="./11-Lab11.html" rel="next">
 <link href="./09-Lab9.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -37,10 +41,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-42cc806643f66bac1a4d3b89392713e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1efbf008e2baeeb4cb205a51dd9b7791.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -65,15 +70,22 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="style.css">
+}</script>
+
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo"></a>
+    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Lab Workbook</span>
     </a>
@@ -84,28 +96,12 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Help!</span>
-    </span>
-  </li>  
   <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Reference</span>
-    </span>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Additional</span>
-    </span>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Assessments</span>
-    </span>
+    <a class="nav-link" href="./assessments/assessments.html"> 
+<span class="menu-text">Assessments</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -116,7 +112,9 @@ ul.task-list li input[type="checkbox"] {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -124,17 +122,18 @@ ul.task-list li input[type="checkbox"] {
           <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
-  </nav><div id="quarto-announcement" data-announcement-id="d529eddb0664eabf899534f6c6953add" class="alert alert-info hidden">
-<i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Reminder</strong> - a link to join your RStudio Cloud group is available in the lab group forums on Moodle</p>
-</div>
-<i class="bi bi-x-lg quarto-announcement-action"></i>
-</div>
-</header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+  <div id="quarto-announcement" data-announcement-id="2d92ee72f5f7cb3880c08507c300d9e0" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Reminder</strong> - check your email for your Posit Cloud group join link, links are also available in the lab group forums on Moodle.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -191,146 +190,52 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-Lab9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 9</strong> Multivariate Linear Regression</span></a>
+ <span class="menu-text"><strong>Lab 9</strong> Multiple Linear Regression (part 1)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-Lab10.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><strong>Lab 10</strong> Interpretive Report Assessment</span></a>
+ <span class="menu-text"><strong>Lab 10</strong> Multiple Linear Regression (part 2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Answers.html" class="sidebar-item-text sidebar-link">
+  <a href="./11-Lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Lab 11</strong> Interpretive Report Assessment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Answers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workbook suggested answers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-InterpretiveReportStructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix 1: RMarkdown &amp; the Interpretive Report Template</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13-RFAQ.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix 2: R Issues FAQ</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li>
-<a href="#interpretivereport" id="toc-interpretivereport" class="nav-link active" data-scroll-target="#interpretivereport">UG Quants summative assessment: Interpreting Quantitative Findings Report</a>
-  <ul class="collapse">
-<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li>
-<a href="#create-your-research-report-template-from-github" id="toc-create-your-research-report-template-from-github" class="nav-link" data-scroll-target="#create-your-research-report-template-from-github">Create your research report template from GitHub</a>
-  <ul class="collapse">
-<li><a href="#rstudio-cloud-version" id="toc-rstudio-cloud-version" class="nav-link" data-scroll-target="#rstudio-cloud-version">RStudio Cloud version</a></li>
-  <li><a href="#rstudio-desktop-version" id="toc-rstudio-desktop-version" class="nav-link" data-scroll-target="#rstudio-desktop-version">RStudio Desktop version</a></li>
-  </ul>
-</li>
-  <li><a href="#about-the-research-report-template" id="toc-about-the-research-report-template" class="nav-link" data-scroll-target="#about-the-research-report-template">About the research report template</a></li>
-  <li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity 1</a></li>
-  <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><section id="interpretivereport" class="level1"><h1>UG Quants summative assessment: Interpreting Quantitative Findings Report</h1>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This is our final practical session. Thank you for tuning in and all your hard work! Today, we will discuss some practical aspects of the summative assessment <em>Interpreting Quantitative Findings Report</em>. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!</p>
-<p>Before proceeding, please take about 10 minutes to read the instructions for the assignment available in Moodle.</p>
-</section><section id="create-your-research-report-template-from-github" class="level2"><h2 class="anchored" data-anchor-id="create-your-research-report-template-from-github">Create your research report template from GitHub</h2>
-<p>We’ve created a GitHub repository which contains an RStudio project and all the essentials you need to start writing your report. There are two options for you. One is writing in <strong>RStudio Cloud</strong>, as we have been doing all along this course. Alternatively, you can also use the <strong>RStudio Desktop</strong> version (this requires having <code>R</code> and RStudio installed locally on your device). The result will be the same and the process is very similar. So, the choice is totally up to you and what your preference is. Here, we explain how to start your own project for both options.</p>
-<p>For this session, try only <em>one</em> of these. Don’t worry about which one you choose now, you can change your mind later. If you can’t make up your mind, then try the <strong>RStudio Cloud</strong> route first, as it means you can work on your assignment on any devices, regardless of the computational power of your device, but it does mean you need to work on the assignment online using a web browser. If online connection is an issue for you, then choose the <strong>RStudio Desktop</strong> route.</p>
-<section id="rstudio-cloud-version" class="level3"><h3 class="anchored" data-anchor-id="rstudio-cloud-version">RStudio Cloud version</h3>
-<p>If you wish to write your project using RStudio Cloud, please follow the next steps:</p>
-<ol type="1">
-<li>Access <a href="https://rstudio.cloud/">RStudio Cloud</a> as usual.</li>
-<li>Make sure you are in your Quants lab group (not in ‘Your Workspace’).</li>
-<li>Click on the ‘New Project’ button and select ‘New Project from Git Repository’.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/research_rep_2.PNG" class="img-fluid figure-img"></p>
-<figcaption>New project from GitHub.</figcaption></figure>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Paste the following URL in the box and click ‘OK’: https://github.com/UGQuants/UGQuant-assignment2.</li>
-<li>You are all set! Just click on the project to access the contents.</li>
-</ol></section><section id="rstudio-desktop-version" class="level3"><h3 class="anchored" data-anchor-id="rstudio-desktop-version">RStudio Desktop version</h3>
-<p>If alternately you decide to write your assessment using the RStudio Desktop version, consider the following steps:</p>
-<ol type="1">
-<li>Access the following GitHub repository copying and pasting the following URL in your browser: <a href="https://github.com/UGQuants/UGQuant-assignment2" class="uri">https://github.com/UGQuants/UGQuant-assignment2</a>.</li>
-<li>Click on the ‘Code’ button and select the ‘Download ZIP’ option, as shown below.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/research_rep_4.PNG" class="img-fluid figure-img"></p>
-<figcaption>Downlowad ZIP from GitHub.</figcaption></figure>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Go to your local downloads folder, right click on the <code>UGQuant-assignment2-main.zip</code> and choose the ‘Extract all’ option (here, you can also chose the folder where you want to store the RStudio project and write your assignment).</li>
-<li>Click on the ‘Extract’ button.</li>
-<li>As you can see, this folder contains an RStudio project. Open the <code>UGQuant-assignment2.Rproj</code> which will initialize a new RStudio session.</li>
-</ol></section></section><section id="about-the-research-report-template" class="level2"><h2 class="anchored" data-anchor-id="about-the-research-report-template">About the research report template</h2>
-<p>Once in your <strong>UGQuant-assignment2</strong> project, open the <code>Assignmet2-template.Rmd</code> file in Pane 4 under the ‘Files’ tab, as shown below.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/research_rep_3.PNG" class="img-fluid figure-img"></p>
-<figcaption>Template.</figcaption></figure>
-</div>
-</div>
-</div>
-<p>This template contains the following:</p>
-<ul>
-<li>Suggested structure of the report.</li>
-<li>Suggested word count for each section.</li>
-<li>The code necessary to run and present the results of a multivariate linear regression.</li>
-</ul>
-<p>In essence, this is the basic structure to start writing your assignment. Of course, you can add, edit, and customize as much as you consider appropriate. Remember, this is just a generic suggestion and you should still address all the points to the best of your abilities. <strong>Remember: There are no hard and fast rules to say what’s right or wrong.</strong> You are the one who can determine and justify why you did what you did. There are also many ways to write and approach this assignment, so make choices based on your own interest(s) and disciplinary background. It is truly your time to shine! The course handbook also gives important pointers on how your report will be assessed, offering some guiding questions to tackle the report–don’t skip this crucial step.</p>
-</section><section id="activity-1" class="level2"><h2 class="anchored" data-anchor-id="activity-1">Activity 1</h2>
-<ol type="1">
-<li>In the template, fill in the ‘author’ and ‘date’ space in the YAML at the top of the file with your student number and appropriate information using quotation marks.</li>
-<li>Knit the <code>Rmd</code> file as <code>html</code> (RStudio may ask to install some packages; click ‘Yes’).</li>
-<li>In the output, look at the results of the table under the ‘Results’ section and identify the <em>dependent</em> and the <em>independent</em> variables. You can learn about the meaning of these variables in the NILT documentation (<a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">click here to access the documentation</a>).</li>
-<li>Identify the variables that are significant in this model and the direction of the relationship.</li>
-<li>Discuss your interpretations with your neighbour or tutor. You can refer back to <a href="./08-Lab8.html">Lab 8</a> and <a href="./09-Lab9.html">Lab 9</a> to refresh your memory.</li>
-</ol></section><section id="activity-2" class="level2"><h2 class="anchored" data-anchor-id="activity-2">Activity 2</h2>
-<ol type="1">
-<li>Write one introductory paragraph in the ‘Introduction’ section of the template according to the guidance provided and your preliminary insights.</li>
-<li>Knit the document again.</li>
-</ol></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>You are on the right track now!</p>
-<p>We hope that by getting familiar with this setting, you will easily succeed in writing your research report using all the knowledge and skills acquired during this course. Take this session to ask questions about the assignment or the course in general as much as possible. This is the right time to have specialized one-to-one support from your tutors.</p>
-<p>We wish you the best of luck! Get in touch with your tutors via email or, even better, post any questions you have about the assignment on your lab group discussion forum on Moodle, if you don’t know where to start or get stuck. Don’t suffer in silence. Remember your Tutors, lab group mates, and the teaching and admin team are here for you. Also don’t forget coding is <em>all</em> about <strong>trial and error</strong>, so it’s completely normal to write / copy and paste some code, then get an error message, and basically for your code to not work. Keep chipping at it, which sometimes can take hours (if not days), until you can get it to work. That’s a normal process even for professional data scientists and quantitative researchers! So do persevere and don’t panic if you don’t get it to work right away, because troubleshooting your code is part of the work, in addition to making your own choices in the analysis and reporting. For the code, the error message you get often gives you clues about, well, where the error is. So read the error message carefully, it might be you haven’t loaded the package required to run the code (remember to do this every time you open RStudio) or you might have missed a parentheses, or you might have not capitalised a word in the R syntax when you need to. Double check the R cheatsheets or previous sections in the lab workbook to ensure you have specified R syntax/arguments correctly. Again, trial and error is your friend, unlike writing an essay/doing an exam.</p>
-<p>Good luck and have fun! You got this.</p>
+<main class="content" id="quarto-document-content">
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -893,30 +798,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./09-Lab9.html" class="pagination-link" aria-label="**Lab 9** Multivariate Linear Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Lab 9</strong> Multivariate Linear Regression</span>
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-Lab9.html" class="pagination-link" aria-label="**Lab 9** Multiple Linear Regression (part 1)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Lab 9</strong> Multiple Linear Regression (part 1)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11-Answers.html" class="pagination-link" aria-label="Workbook suggested answers">
-        <span class="nav-page-text">Workbook suggested answers</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./11-Lab11.html" class="pagination-link" aria-label="**Lab 11** Interpretive Report Assessment">
+        <span class="nav-page-text"><strong>Lab 11</strong> Interpretive Report Assessment</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org">Quarto</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licensed under <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a></p>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
