@@ -271,14 +271,15 @@ div.csl-indent {
   <li>
 <a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R Packages</a>
   <ul class="collapse">
-<li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing packages</a></li>
-  <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity:</a></li>
+<li><a href="#open-your-posit-cloud-project" id="toc-open-your-posit-cloud-project" class="nav-link" data-scroll-target="#open-your-posit-cloud-project">Open Your Posit Cloud Project</a></li>
+  <li><a href="#open-the-lab-2-r-markdown-file" id="toc-open-the-lab-2-r-markdown-file" class="nav-link" data-scroll-target="#open-the-lab-2-r-markdown-file">Open the Lab 2 R Markdown file</a></li>
+  <li><a href="#into-the-tidyverse" id="toc-into-the-tidyverse" class="nav-link" data-scroll-target="#into-the-tidyverse">Into the Tidyverse</a></li>
   </ul>
 </li>
   <li>
 <a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables">Types of variables</a>
   <ul class="collapse">
-<li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity:</a></li>
+<li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity:</a></li>
   </ul>
 </li>
   <li><a href="#more-operators-and-some-essential-symbols" id="toc-more-operators-and-some-essential-symbols" class="nav-link" data-scroll-target="#more-operators-and-some-essential-symbols">More operators and some essential symbols</a></li>
@@ -298,56 +299,117 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content"><section id="data-in-r" class="level1"><h1>Data in R</h1>
 <section id="welcome-back" class="level2"><h2 class="anchored" data-anchor-id="welcome-back">Welcome back!</h2>
-<p>In our previous lab, we set up an RStudio Cloud session and we got familiar with the RStudio environment and some of the purpose and contents of its panes. In this Lab we will learn about R packages, how to install them and load them. Also, we will use different types of data. You will have the chance to practice with additional <code>R</code> operators. Lastly, we will load a real-world data set and put in practice your new skills.</p>
+<p>In the previous lab, we set up an RStudio session in Posit Cloud and we got familiar with the RStudio environment and the purpose and contents of RStudio’s panes. In this Lab we will learn about R packages, how to install them and load them. Also, we will use different types of data. You will have the chance to practice with additional <code>R</code> operators. Lastly, we will load a real-world data set and put in practice your new skills.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Overview">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of this lab you will know how to:</p>
+<ul>
+<li>install and load packages in R</li>
+<li>download a dataset from a URL and assign it to a named object</li>
+<li>use the pipe (<code>|&gt;</code>) operator to chain steps</li>
+<li>examine, wrangle, and subset a dataset using functions</li>
+</ul>
+</div>
+</div>
 </section><section id="r-packages" class="level2"><h2 class="anchored" data-anchor-id="r-packages">R Packages</h2>
-<p>As mentioned in our last lab, <code>R</code> <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span> is a collaborative project. This means that <code>R</code> users are developing, maintaining, and extending the functionalities constantly. When you set up <code>R</code> and RStudio for the first time, as we did it last week, it comes only with the ‘basic’ functionalities by default. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called <em><strong>packages</strong></em>.</p>
-<p>Most of the times, we use packages because they simplify our work in <code>R</code> or they allow us to extend the capabilites of base R.</p>
-<section id="installing-packages" class="level3"><h3 class="anchored" data-anchor-id="installing-packages">Installing packages</h3>
-<p>Let’s put hands-on to install and load some useful packages. We will start with <code>tidyverse</code> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021</a>)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</section><section id="activity" class="level3"><h3 class="anchored" data-anchor-id="activity">Activity:</h3>
-<p><strong>Part 1</strong>. Access your lab group in RStudio Cloud</p>
+<p>As mentioned in our last lab, <code>R</code> <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span> is a collaborative project. This means that <code>R</code> users are developing, maintaining, and extending the functionalities constantly. When you set up <code>R</code> and RStudio for the first time, as we did last week, it comes only with the ‘basic’ functionalities by default. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called <em><strong>packages</strong></em>.</p>
+<p>Most of the times, we use packages because they simplify our work in <code>R</code> - such as by replacing what would be dozens of lines of complex code in base R with a simple one-line function - or they allow us to extend beyond the capabilites of base R.</p>
+<p>Let’s put hands-on to install and load some useful packages. We will start with one of R’s most famous packages, and one we will use a lot across the labs, the <code>tidyverse</code> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021</a>)</span> package.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> First, sign-in to Posit Cloud, create/open your Labs-1-2 project, and then open the Lab-2 R Markdown file.</p>
+<section id="open-your-posit-cloud-project" class="level3"><h3 class="anchored" data-anchor-id="open-your-posit-cloud-project">Open Your Posit Cloud Project</h3>
+<p>For those who missed Lab 1:</p>
 <ol type="1">
-<li>Make sure you have a free, institutional-subscription <a href="https://rstudio.cloud/">RStudio Cloud</a> account (in case you have not created one yet, please follow the guidance provided in <a href="./01-intro.html#setting-up-rstudio">Lab 1</a>);</li>
-<li>You will receive a link from your tutor to join your lab group in a shared space. Copy and paste it in your web browser (log in if necessary). If you already joined your lab group in RStudio Cloud, simply access the ‘Lab 2’ project and omit steps 3 to 5. Otherwise, continue with steps 3, 4 and 5.</li>
-<li>If you did not join your lab group yet, you should see the following window:</li>
+<li>Make sure you have a free, institutional-subscription <a href="https://sso.posit.cloud/glasgow">Posit Cloud</a> account (in case you have not created one yet, please follow the guidance provided in <a href="./01-intro.html#setting-up-rstudio">Lab 1</a>);</li>
+<li>If you enrolled before teaching started, you will have received an email with a link to join your lab group. If you joined the course after the start of teaching, you can find a link in your Lab Group’s forum on Moodle. You tutor will also be able to provide you with a link.</li>
+<li>Follow the rest of the <a href="./01-intro.html#part-3-create-a-new-project">Lab 1</a> guidance in the ‘Create a New Project’ section.</li>
 </ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_joinspace.png" class="img-fluid figure-img"></p>
-<figcaption>Join Space</figcaption></figure>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Click on the ‘Join space’ button shown above.</li>
-<li>Open the shared space form the left-hand side pane called ‘Quants Lab Group..’ and start the Lab 2 project by clicking on the ‘Start’ button as shown below:</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_startproject_lab2.png" class="img-fluid figure-img"></p>
-<figcaption>Start Lab 2.</figcaption></figure>
-</div>
-</div>
-</div>
-<p><br><strong>Part 2</strong>. Working on your script</p>
+<p>For those who already joined and created a project in Lab 1, log into <a href="https://sso.posit.cloud/glasgow">Posit Cloud</a> and:</p>
 <ol type="1">
-<li>Once you have accessed the ‘Lab 2’ project, write or copy the following line in your <strong>script</strong> (pane 1) and run it:</li>
+<li>From the left-hand menu, click “Lab Group ..” where “..” is your lab group number.</li>
+<li>Within the main screen, click “Labs-1-2” to open the Posit Cloud project you created last week.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/posit_cloud_lab2_open-project.png" class="img-fluid figure-img"></p>
+<figcaption>Select your lab group space and then open ‘Labs-1-2’ project</figcaption></figure>
+</div>
+</section><section id="open-the-lab-2-r-markdown-file" class="level3"><h3 class="anchored" data-anchor-id="open-the-lab-2-r-markdown-file">Open the Lab 2 R Markdown file</h3>
+<p>You will find your project in same state as left it last week. To open a tab for the Lab 2 R Markdown file, click to open ‘Lab-02.Rmd’ in the “Files” tab in the bottom-right pane.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab2_rmd.png" class="img-fluid figure-img"></p>
+<figcaption>Click ‘Lab-02.Rmd’ in the “Files” tab in the bottom-right pane</figcaption></figure>
+</div>
+<p>Within Lab 1, you may have noticed the <code>field: value</code> lines between two <code>---</code>. This is called <code>YAML</code>. The R Markdown file for this lab has a couple more lines added this time:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab2_yaml.png" class="img-fluid figure-img"></p>
+<figcaption>YAML block at top of Lab-02.Rmd</figcaption></figure>
+</div>
+<p><code>title</code> and <code>author</code> are self-explanatory, but make sure to replace <code>[your name here]</code> with your name.</p>
+<p><code>date</code> can be any text, but <code>format(Sys.time(), '%d/%m/%y')</code> gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025.</p>
+<p><code>output</code> specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using ‘html_document’ as it is easiest to work with across the packages we are using.</p>
+<p>After the YAML block, there is a ‘setup’ code chunk setting <code>knitr</code> options:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab2_setupchunk.png" class="img-fluid figure-img"></p>
+<figcaption>r setup code chunk with knitr options to set message and false to FALSE</figcaption></figure>
+</div>
+<p>This may look intimidating, but it is relatively simple when parsed bit by bit:</p>
+<ul>
+<li>
+<code>knitr</code> is the package used to knit R Markdown files</li>
+<li>
+<code><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">knitr::opts_chunk</a></code> stores default settings applied to all code chunks</li>
+<li>
+<code>knitr::opts_chunk$set(...)</code> runs the <code>set()</code> function on <code><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">knitr::opts_chunk</a></code> to change the defaults</li>
+</ul>
+<p>So, what the code in the setup chunk does is set messages and warnings to “FALSE”. This prevents any messages or warnings that get raised when running code chunks from also appearing in any knitted files. (Why we do this will become clear in a bit.)</p>
+</section><section id="into-the-tidyverse" class="level3"><h3 class="anchored" data-anchor-id="into-the-tidyverse">Into the Tidyverse</h3>
+<ol type="1">
+<li>Once you have the Lab 2 R Markdown file open, type the following in the Console (bottom-right pane) and hit ‘Enter’ to run it:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Wait until you get the message ‘The downloaded source packages are in…’. The installing process can take up to a couple of minutes to finish.</li>
+<li>Wait until you get the message ‘The downloaded source packages are in…’. The install process can take a couple of minutes to finish.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab2_tidyinstalled.png" class="img-fluid figure-img"></p>
+<figcaption>Console once tidyverse package finished installing</figcaption></figure>
+</div>
+<ol start="3" type="1">
 <li>Once the package is installed, you need to load it using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. Please, copy and paste the following line, and run it:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And that’s it, <code>tidyverse</code> is ready to be used in your current session!</p>
+<p>What you will also notice is the message raised in the Console why loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we were to knit Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk.</p>
 <p>There are couple of things you should know. First, the packages need to be installed only per project in RStudio Cloud (and only once if you are working in RStudio Desktop version). However, packages must be loaded using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function every time you restart an R session.</p>
 <p>Another thing to notice is that when you install a package you need to use quotation marks, whereas in <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> you only need to write the plain package name within brackets. Usually, you will load the packages at the beginning of your script.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="New Term">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+New Term
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<code>tidyverse</code>: a collection of R packages that share a consistent design philosophy and work together for importing, wrangling, and visualising data.</li>
+<li>
+<code>YAML</code>: a human-readable data serialisation language, often used for configuration/settings; in R Markdown the YAML front matter between <code>---</code> sets document metadata and other options.</li>
+</ul>
+</div>
+</div>
 </section></section><section id="types-of-variables" class="level2"><h2 class="anchored" data-anchor-id="types-of-variables">Types of variables</h2>
 <p><code>R</code> can handle many classes of data. It is crucial that you can distinguish the main ones. Broadly speaking there are two types of variables,</p>
 <ol type="1">
@@ -359,7 +421,7 @@ div.csl-indent {
 <p>Categorical variables are distinctive because they are limited in the number of categories it can take, e.g., country, name, political party, or gender. Ordinal data is a <em>sub-type</em> of the categorical, and it is used when the categories can be ranked and their order is meaningful, e.g., education level or level of satisfaction. Numeric values can be continuous (these are usually measured and can take infinite values, e.g.&nbsp;speed or time).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>In <code>R</code>, the basic types of data are known as ‘atomic vectors’ and there are 6 of them (logical, integer, double, character, complex and raw). In the social sciences, we often use the following: <code>numeric</code>, <code>factor</code> and <code>character</code>. Numeric vectors are used to represent continuous numerical data.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> On the other hand, factor vectors are used to represent categorical and ordinal data.</p>
 <p>In R, there are couple of functions that will help us to identify the type of data. First, we have <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>. This prints some of the main characteristics of a data set, namely its overall dimension, name of each variable (column), the first values for each variable, and the type of the variable. Second we have the function <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>, that will help us to determine the overall class(type) of on <code>R</code> object.</p>
-<section id="activity-1" class="level3"><h3 class="anchored" data-anchor-id="activity-1">Activity:</h3>
+<section id="activity" class="level3"><h3 class="anchored" data-anchor-id="activity">Activity:</h3>
 <p>We are now going to use some datasets that are pre-loaded in the <code>R</code> session by default. Please go to your ‘Lab_2’ project in RStudio Cloud and do the following:</p>
 <ol type="1">
 <li>We will start with a classic dataset example in R called <code>iris</code>. This contains measurements of various flowers species (for more info type <code><a href="https://rdrr.io/r/datasets/iris.html">?iris</a></code> in your console). Please go to your <strong>console</strong> and type the line below.</li>
@@ -421,10 +483,12 @@ div.csl-indent {
 </section></section><section id="more-operators-and-some-essential-symbols" class="level2"><h2 class="anchored" data-anchor-id="more-operators-and-some-essential-symbols">More operators and some essential symbols</h2>
 <!-- More operators and symbols...Let's start with the hashtag `#`. Even though this is not an operator in R, this symbol allow us to include a comment or ´mute´ the whole line in your script. In fact, it is important that you add comments on your own code, so when you come back later to your code, you can have a quicker idea of what it is going in each line of the script. -->
 <!-- The dollar sign `$` is frequently used and it is part of base R. Actually, we used it a couple of times in the previous section. This is used to access or extract information from an object (e.g. a data set). For instance, earlier we selected only one variable from the `starwars` data set by writing `starwars2$species`. A practical tip to quickly access or find variables in a data set is to write the name of your object followed by the dollar sign only, like this: `starwars2$` (without specifying the variable to be accessed yet). After, type `tab` in your keyboard. Then, R will display a list with the variables available. Try it yourself! -->
-<p>A useful operator is the pipe <code>%&gt;%</code>. This is part of the <code>tidyverse</code> package. So, it is ready for you to use. This operator passes the result of one operation to the next. Check the results of the following operations in your <strong>console</strong>:</p>
+<p>A useful operator is the pipe <code>|&gt;</code>. This is the base R version of the pipe. This operator passes the result of one operation to the next.</p>
+<p>(There is also a <code>%&gt;%</code> version you may see that is part of the <code>tidyverse</code> package. The tidyverse version came first, where due to its popularity an equivalent was added to base R. This operator passes the result of one operation to the next.)</p>
+<p>Check the results of the following operations in your <strong>Console</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">1</span></span>
-<span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="op">+</span><span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Observe what happened…The result from the first line was 2. This is because this line can be read as: ‘take 1, THEN sum 1’. Therefore, the result is 2.</p>
 <p>Similarly, the second line follows this process: ‘take 1, THEN sum 1, take the result of this (which is ’2’) and THEN sum 5’. Therefore, the result is 7. This can sound a bit abstract at this point, but we will practice with some data in the next section.</p>
@@ -512,12 +576,16 @@ div.csl-indent {
 <p>Using the <code>police_2</code> dataset:</p>
 <ol type="1">
 <li>Filter how many observations are ‘White’ in <code>raceethnicity</code>? How may rows/observations are left?</li>
-<li>How many ‘Latino/Hispanic’ are there in the dataset?</li>
+<li>How many ‘Hispanic/Latino’ are there in the dataset?</li>
 <li>Using the example of Figure 2.3, could you filter how many were killed that were (a) ‘Black’ and (b) killed by firearm (‘firearm’)?</li>
 <li>What about ‘White’ and ‘firearm’?</li>
 </ol>
-<p>Extra activities: 1. Why did you have to use quotes in the following: <code>filter(police, raceethnicity==”White” &amp; raceethnicity==”firearm”)</code>? 2. What do you have to repeat the variable <code>raceethnicity</code> twice?</p>
-<p>This is the end of Lab 2. Again, the changes in your script should be saved automatically in RStudio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!</p>
+<p>Extra activities:</p>
+<ol type="1">
+<li>Why did you have to use quotes in the following: <code>filter(police, raceethnicity==”White” &amp; raceethnicity==”firearm”)</code>?</li>
+<li>What do you have to repeat the variable <code>raceethnicity</code> twice?</li>
+</ol>
+<p>This is the end of Lab 2. Again, the changes in your R Markdown file should be saved automatically in RStudio. However, make sure this is the case as covered in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!</p>
 
 
 
