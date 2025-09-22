@@ -350,14 +350,11 @@ Overview
 <figure class="figure"><p><img src="./images/rstudio_lab2_yaml.png" class="img-fluid figure-img"></p>
 <figcaption>YAML block at top of Lab-02.Rmd</figcaption></figure>
 </div>
-<p><code>title</code> and <code>author</code> are self-explanatory, but make sure to replace <code>[your name here]</code> with your name.</p>
-<p><code>date</code> can be any text, but <code>format(Sys.time(), '%d/%m/%y')</code> gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025.</p>
+<p><code>title</code> and <code>author</code> are self-explanatory, but make sure to replace <code>[your name here]</code> with your name, making sure to keep the quotation marks around it. Without the quotation marks, you will receive an error message when trying to knit.</p>
+<p><code>date</code> can be any text. However, <code>format(Sys.time(), '%d/%m/%y')</code> is a nice single line of R code that when run when the file is being knitted gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025. This then effectively makes the <code>date</code> field “date this file was knitted” and saves you having to manually update it each time. (Don’t knit your file just yet though as it will result in an error message until you complete the sections below!)</p>
 <p><code>output</code> specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using ‘html_document’ as it is easiest to work with across the packages we are using.</p>
 <p>After the YAML block, there is a ‘setup’ code chunk setting <code>knitr</code> options:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_lab2_setupchunk.png" class="img-fluid figure-img"></p>
-<figcaption>r setup code chunk with knitr options to set message and false to FALSE</figcaption></figure>
-</div>
+<p><img src="./images/rstudio_lab2_setupchunk.png" class="img-fluid" alt="r setup code chunk with knitr options to set message and warmings to FALSE"><br></p>
 <p>This may look intimidating, but it is relatively simple when parsed bit by bit:</p>
 <ul>
 <li>
@@ -376,7 +373,7 @@ Overview
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Wait until you get the message ‘The downloaded source packages are in…’. The install process can take a couple of minutes to finish.</li>
+<li>Wait until you get the message ‘The downloaded source packages are in …’. The install process can take a couple of minutes to finish.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="./images/rstudio_lab2_tidyinstalled.png" class="img-fluid figure-img"></p>
@@ -388,8 +385,8 @@ Overview
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And that’s it, <code>tidyverse</code> is ready to be used in your current session!</p>
-<p>What you will also notice is the message raised in the Console why loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we were to knit Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk.</p>
+<p>And that’s it, <code>tidyverse</code> is ready to use in your current session!</p>
+<p>What you will also notice is the message raised in the Console when loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we knitted the Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk. We will cover other options you can set to customise what appears in your knitted files in later weeks.</p>
 <p>There are couple of things you should know. First, the packages need to be installed only per project in RStudio Cloud (and only once if you are working in RStudio Desktop version). However, packages must be loaded using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function every time you restart an R session.</p>
 <p>Another thing to notice is that when you install a package you need to use quotation marks, whereas in <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> you only need to write the plain package name within brackets. Usually, you will load the packages at the beginning of your script.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="New Term">
