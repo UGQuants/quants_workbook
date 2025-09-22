@@ -52,15 +52,15 @@ Within Lab 1, you may have noticed the `field: value` lines between two `---`. T
 
 ![YAML block at top of Lab-02.Rmd](./images/rstudio_lab2_yaml.png)
 
-`title` and `author` are self-explanatory, but make sure to replace `[your name here]` with your name.
+`title` and `author` are self-explanatory, but make sure to replace `[your name here]` with your name, making sure to keep the quotation marks around it. Without the quotation marks, you will receive an error message when trying to knit.
 
-`date` can be any text, but `format(Sys.time(), '%d/%m/%y')` gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025.
+`date` can be any text. However, `format(Sys.time(), '%d/%m/%y')` is a nice single line of R code that when run when the file is being knitted gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025. This then effectively makes the `date` field "date this file was knitted" and saves you having to manually update it each time. (Don't knit your file just yet though as it will result in an error message until you complete the sections below!)
 
 `output` specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using 'html_document' as it is easiest to work with across the packages we are using.
 
 After the YAML block, there is a 'setup' code chunk setting `knitr` options:
 
-![r setup code chunk with knitr options to set message and false to FALSE](./images/rstudio_lab2_setupchunk.png)
+![r setup code chunk with knitr options to set message and warmings to FALSE](./images/rstudio_lab2_setupchunk.png)\
 
 This may look intimidating, but it is relatively simple when parsed bit by bit:
 
@@ -78,7 +78,7 @@ So, what the code in the setup chunk does is set messages and warnings to "FALSE
 install.packages("tidyverse")
 ```
 
-2. Wait until you get the message 'The downloaded source packages are in...'. The install process can take a couple of minutes to finish.
+2. Wait until you get the message 'The downloaded source packages are in ...'. The install process can take a couple of minutes to finish.
 
 ![Console once tidyverse package finished installing](./images/rstudio_lab2_tidyinstalled.png)
 
@@ -88,9 +88,9 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-And that's it, `tidyverse` is ready to be used in your current session!
+And that's it, `tidyverse` is ready to use in your current session!
 
-What you will also notice is the message raised in the Console why loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we were to knit Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk.
+What you will also notice is the message raised in the Console when loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we knitted the Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk. We will cover other options you can set to customise what appears in your knitted files in later weeks.
 
 There are couple of things you should know. First, the packages need to be installed only per project in RStudio Cloud (and only once if you are working in RStudio Desktop version). However, packages must be loaded using the `library()` function every time you restart an R session. 
 

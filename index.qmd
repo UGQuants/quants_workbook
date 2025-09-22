@@ -3,8 +3,8 @@ title: "Quantitative Methods in the Social Sciences"
 subtitle: "A step-by-step guide for conducting quantitative research with R"
 author:
   - J Rafael Verudzco Torres
-  - Mark Wong
   - Alasdair B R Stewart
+  - Mark Wong
   - Colin Mack
 date: "`r Sys.Date()`"
 ---

@@ -1,9 +1,11 @@
 {
-  "hash": "911f9043f7b8e9176df4b500d28d9e06",
+  "hash": "5b56c0a0d206efb73f5cb02a801f94b4",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Quantitative Methods in the Social Sciences\"\nsubtitle: \"A step-by-step guide for conducting quantitative research with R\"\nauthor:\n  - J Rafael Verudzco Torres\n  - Mark Wong\n  - Alasdair B R Stewart\n  - Colin Mack\ndate: \"2025-09-20\"\n---\n\n\n\n\n\n\n# Welcome {-#Welcome}\n\nWelcome to the Quantitative Methods in the Social Sciences lab workbook!\n\n![](./images/quant_methods_hex.svg){fig-alt=\"Hexsticker for UofG UG Hons Quants Methods.\"}\n\nThis workbook is for University of Glasgow students enrolled in the undergraduate **Quantitative Methods in the Social Sciences** course within the School of Social and Political Sciences. The activities are designed for [Posit Cloud](https://posit.cloud/).\n\nThese webpages are made with {{< fa brands r-project >}} and [Quarto](https://quarto.org) and licensed under the {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}} {{< fa brands creative-commons-sa >}} [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Quantitative Methods in the Social Sciences\"\nsubtitle: \"A step-by-step guide for conducting quantitative research with R\"\nauthor:\n  - J Rafael Verudzco Torres\n  - Alasdair B R Stewart\n  - Mark Wong\n  - Colin Mack\ndate: \"2025-09-22\"\n---\n\n\n\n\n\n\n# Welcome {-#Welcome}\n\nWelcome to the Quantitative Methods in the Social Sciences lab workbook!\n\n![](./images/quant_methods_hex.svg){fig-alt=\"Hexsticker for UofG UG Hons Quants Methods.\"}\n\nThis workbook is for University of Glasgow students enrolled in the undergraduate **Quantitative Methods in the Social Sciences** course within the School of Social and Political Sciences. The activities are designed for [Posit Cloud](https://posit.cloud/).\n\nThese webpages are made with {{< fa brands r-project >}} and [Quarto](https://quarto.org) and licensed under the {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}} {{< fa brands creative-commons-sa >}} [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

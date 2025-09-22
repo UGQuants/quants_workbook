@@ -107,7 +107,7 @@ To get started with Posit Cloud, follow the next steps:
 2. Click 'Log In Via University of Glasgow' which will take you to the usual University of Glasgow login pages;
 3. Enter your University of Glasgow email address and password in the login page as normal;
 
-![Posit SSO Login Page](images/sso_login.png)
+![Posit SSO Login Page](images/sso_login.png)\
 
 4. Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;
 
@@ -117,7 +117,7 @@ You will have received a link via email to join your lab group on Posit Cloud (t
 
 1. Copy and paste the link in your web browser. You should see the following window:
 
-![Join Lab Group Space](images/posit_cloud_joinspace.png)
+![Join Lab Group Space](images/posit_cloud_joinspace.png)\
 
 2. Join your lab by clicking the 'Yes' button shown above.
 
@@ -127,7 +127,7 @@ You will have received a link via email to join your lab group on Posit Cloud (t
 2. Click the blue 'New Project' button on the right of the screen.
 3. From the menu list that opens select 'New Project from Git Repository'.
 
-![New Project, New Project from Git Repository](images/posit_cloud_new_project_git.png)
+![New Project, New Project from Git Repository](images/posit_cloud_new_project_git.png)\
 
 4. Within the dialogue box that opens, copy and paste the link below into the 'URL of your Git Repository' field.
 
@@ -137,7 +137,7 @@ https://github.com/UGQuants/Labs-1-2
 
 5. Click 'OK' to create the new project.
 
-![New Project from Git Repository dialogue](images/posit_cloud_new_project_git_dialogue.png)
+![New Project from Git Repository dialogue](images/posit_cloud_new_project_git_dialogue.png)\
 
 <!-- <br> -->
 <!-- In addition and only optionally you can download and install the Desktop versions by following these links: -->
@@ -154,16 +154,16 @@ https://github.com/UGQuants/Labs-1-2
 
 After your new 'Labs 1-2' project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:
 
-![Screen after creating 'Labs 1-2' project](images/posit_cloud_lab1_start.png)
+![Screen after creating 'Labs 1-2' project](images/posit_cloud_lab1_start.png)\
 
 1. In the bottom-right 'Files' pane, click "Lab-01.Rmd".
 2. That will open a new pane in the top-left, within the yellow banner in it click 'Install'.
 
-![Open the Lab-01.Rmd file and 'Install' rmarkdown package](images/posit_cloud_lab1_install.png)
+![Open the Lab-01.Rmd file and 'Install' rmarkdown package](images/posit_cloud_lab1_install.png)\
 
 The bottom-left pane will now switch to the "Background Jobs" tab and you will see a lot of red text. Despite the colour, this is expected behaviour. RStudio is now installing the `rmarkdown` package that makes it possible to work with `R Markdown` files in RStudio (more on this later). Once it finishes installing, the tab will automatically switch back to "Console".
 
-![Red text in Background Jobs tab during install of 'rmarkdown' package](images/posit_cloud_lab1_background.png)
+![Red text in Background Jobs tab during install of 'rmarkdown' package](images/posit_cloud_lab1_background.png)\
 
 R Markdown is a file format (`.Rmd`) that lets you write text and run code in the same document. You write your narrative text and add your code within `code chunks`. When you `Knit` (render) a R Markdown file, R runs the code chunks from top to bottom and weaves their outputs (numbers, tables, plots) into a finished 'knitted' report (such as HTML or PDF). This makes your analysis transparent and reproducible, whereby anyone can see what code produced each result. When learning R, it also makes it great for making notes alongside the code.
 
@@ -181,7 +181,7 @@ We will cover R Markdown in more detail across the next few weeks, but some init
 
 After this, your RStudio screen will be split in four **important** windows or panes as shown below:
 
-![RStudio's four main panels](images/posit_cloud_panels.png)
+![RStudio's four main panels](images/posit_cloud_panels.png)\
 
 - In **Pane 1** (purple), you have the Lab-01 `R Markdown` file.
 
@@ -209,7 +209,7 @@ Finally, the `Viewer` displays interactive outputs.
 
 Note, code chunks (the shaded grey fenced blocks) for writing code into have been set up for you this week. Remember though you can also write regular text as well outside of these chunks to record any notes:
 
-![Adding regular text in R Markdown](./images/rstudio_lab1_typetext.png)
+![Adding regular text in R Markdown](./images/rstudio_lab1_typetext.png)\
 
 ## Hands on R
 
@@ -222,14 +222,14 @@ In your 'Lab-01' R Markdown file, look at the code chunk named "sum-1" containin
 
 To run a code chunk, you can click on the `Run` green arrow situated on the top right corner of it. Alternatively, if your text cursor is inside the code chunk you can press `Ctrl+Shift+Enter` on your keyboard.
 
-![Run current code chunk button](./images/rstudio_chunk_run.png)
+![Run current code chunk button](./images/rstudio_chunk_run.png)\
 
 What you will see after running the chunk is:
 
 1. In the R Markdown file, `[1] 4` underneath the code chunk.
 2. In the Console, both `> 2 + 2` and `[1] 4`.
 
-![Output in R Markdown file and Console after running a code chunk](./images/rstudio_chunk_ran.png)
+![Output in R Markdown file and Console after running a code chunk](./images/rstudio_chunk_ran.png)\
 
 Why do we see this? When you run a chunk, RStudio sends the code to the Console for R to run it, so you see the code echoed and its raw output there. RStudio also shows the results inline under the chunk so you can see the output in context. (This also becomes important later with graphs and formatted tables that cannot be viewed in the Console.)
 
@@ -237,11 +237,11 @@ What does the `[1]` mean? It's a label R adds to printed results, where `[1]` ju
 
 Of course, you can also go to the **Console**, write a simple calculation, and run it by typing 'Enter', as shown below:
 
-![Running simple calculations in the Console](./images/rstudio_console_calc.png)
+![Running simple calculations in the Console](./images/rstudio_console_calc.png)\
 
 It's also possible to run multiple calculations in a single chunk. Add a line for `5 * 5` and `21 -4` in the empty "sum-2" chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)
 
-![Adding simple calculations to sum-2 code chunk](./images/rstudio_lab1_sum-2.png)
+![Adding simple calculations to sum-2 code chunk](./images/rstudio_lab1_sum-2.png)\
 
 Try different operations such as `50 / 20` or `3 * 5`, whether adding to the code chunk or directly in the Console.
 
@@ -253,7 +253,7 @@ Let's continue with the next activities!
 
 Now, run the "logical-1" code chunk in the R Markdown file.
 
-![logical-1 code chunk and results from running it](./images/rstudio_lab1_logical.png)
+![logical-1 code chunk and results from running it](./images/rstudio_lab1_logical.png)\
 
 Now, in the "logical-2" code chunk, add the following and then run it:
 
@@ -284,19 +284,19 @@ Perhaps logical operators do not make much sense at this point, but you will fin
 
 ### Assigning values to 'objects'
 
-In `R`, it is common (and practical) to store values or data as 'objects'. Once values are assigned to them, objects are then stored in your current R session. Assignments are made using `object_name <- value`, such as `a <- 5` or `b <- 'Glasgoow'`. Let's try it! 
+In `R`, it is common (and practical) to store values or data as 'objects'. Once values are assigned to them, objects are then stored in your current R session. Assignments are made using `name <- value`, such as `a <- 5` or `b <- 'Glasgow'`. Let's try it! 
 
 Go to the "assign-1" code chunk run it by clicking the green arrow/triangle or - with your text cursor within the code chunk - using `Ctrl+Shift+Enter`.
 
 What do you observe? Pay attention to what appears under the code chunk **and** in the Environment pane (the top-right of the four panes). Why are the values different? ...
 
-![Result under code chunk and value in environment after running assign-1 code chunk](./images/rstudio_lab1_assign-1.png)
+![Result under code chunk and value in environment after running assign-1 code chunk](./images/rstudio_lab1_assign-1.png)\
 
-The operator `<-` assigned the numeric value `10` to the object `a` (on the left hand-side of the arrow). The next line used the object (`a`) to compute a sum (i.e, `a + 5`). Only the assignment is stored in the session environment (the `a <- 10`) and assignments do not return an output, so only the result of `a + 5` is shown under the code chunk when run.
+The operator `<-` assigned the numeric value `10` to the name `a` (on the left hand-side of the arrow). The next line used the object (`a`) to compute a sum (i.e, `a + 5`). Only the assignment is stored in the environment (the `a <- 10`) and assignments do not return an output, so only the result of `a + 5` is shown under the code chunk when run.
 
 To see this, within the "assign-2" chunk add `c <- 3` and run it:
 
-![Value for 'c' in environment after running assign-2 code chunk](./images/rstudio_lab1_assign-2.png)
+![Value for 'c' in environment after running assign-2 code chunk](./images/rstudio_lab1_assign-2.png)\
 
 
 Now, add and run the following in the "assign-2" chunk:
@@ -306,7 +306,7 @@ c
 a * c
 ```
 
-![Results running the "assign-2" chunk after adding `c` and `a * c`](./images/rstudio_lab1_assignaxc.png)
+![Results running the "assign-2" chunk after adding `c` and `a * c`](./images/rstudio_lab1_assignaxc.png)\
 
 As you can see, running `c` on a line by its own returns the numeric value `3` stored in the variable `c`. Then, `a * c` calls the previously created object `a` and multiplies it by `c` (`a * c` is effectively `10 * 3`). Note, most programming languages, R included, do not use `x` for multiplication and use `*` instead. One reason for this is because `x` could also end up as a named object, `x <- 2`.
 
@@ -318,7 +318,7 @@ There are a few things to note when assigning objects to variables. If you assig
 
 You can see the objects available in your session on the Global Environment ('Environment' tab in top-right pane) as shown below.
 
-![Enivornment tab in top-right pane showing values for a and c](./images/rstudio_lab1_env.png)
+![Enivornment tab in top-right pane showing values for a and c](./images/rstudio_lab1_env.png)\
 
 Now, let's see what happens if change value of `a`:
 
@@ -326,7 +326,7 @@ Now, let's see what happens if change value of `a`:
 2. Now in the Console type and run `a <- 5`.
 3. Run the "order-1" code chunk again.
 
-![Console results for `a + 2` before and after assigning new value to `a`](./images/rstudio_lab1_order-1.png)
+![Console results for `a + 2` before and after assigning new value to `a`](./images/rstudio_lab1_order-1.png)\
 
 As can see, the code in the "order-1" chunk remains the same, but the result from running the code changes based on the value assigned to `a`. That may seem an obvious point to make, but a large proportion of unexpected results and errors arise from changing what is assigned to an object.
 
@@ -334,13 +334,13 @@ A good rule of thumb then when a code chunk that was previously working suddenly
 
 Do that for the 'order-1' chunk and it will return 12 again:
 
-!['Run All Chunks Above' (purple) and 'Run Current Chunk' (blue)](./images/rstudio_lab1_restore-order.png)
+!['Run All Chunks Above' (purple) and 'Run Current Chunk' (blue)](./images/rstudio_lab1_restore-order.png)\
 
 It is also possible to use an object in a calculation and assign the result of that calculation back to the object. For example, `a <- a + 5` is equivalent to `a <- 10 + 5`. Whilst that can be perfectly valid to do, care needs to be taken as now `a` is `15`. What do you think would happen if you keep running the same `a <- a + 5` line of code?
 
 Go to the "order-2" code chunk and run it multiple times, looking at the result underneath the chunk and the value for `a` in the Environment pane.
 
-!['Increased value of `a` after running "order-2" chunk multiple times](./images/rstudio_lab1_order-2.png)
+!['Increased value of `a` after running "order-2" chunk multiple times](./images/rstudio_lab1_order-2.png)\
 
 Again, you can 'Run All Chunks Above' (downwards grey arrow/triangle, green line) and 'Run Current Chunk' (green arrow/triangle) to restore `a` to value it would be if only ran each code chunk once top to bottom.
 
@@ -392,12 +392,12 @@ Again, you can 'Run All Chunks Above' (downwards grey arrow/triangle, green line
 
 This is a good start, great job! 
 
-Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterix at the end, `Lab-01.Rmd*`. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.
+Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterisk at the end, `Lab-01.Rmd*`. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.
 
 ::: {.callout-tip title="New Terms"}
-- `object`: any data or function stored in memory and usually bound to a name in an environment.
-- `assignment`: bind a name to an object in an environment with `<-`, creating or updating that binding (e.g. `a <- 10`).
-- `environment`: a workspace that maps names and objects (the main one is the Global Environment, which can see in the top-right panel in RStudio).
+- `object`: any data or function that exists in the R session's memory; usually accessed via a name.
+- `assignment`: assign a value (object) to a name; usually with `<-` (e.g. `a <- 10`).
+- `environment`: a workspace that maps names to objects; the main one you use is the Global Environment (visible in RStudio's top-right Environment pane).
 :::
 
 ## Activity
@@ -414,6 +414,8 @@ object1 <- 30
 
 3. Click the 'Knit' button in the bar at the top of the R Markdown file (pane 1). This will turn your R Markdown file into an HTML document.
 
-(Note: Another reason code chunk order matters. When you 'knit' an R Markdown file, the code chunks are run top to bottom in a **fresh** R session.)
+(Note: Another reason code chunk order matters. R Markdown files are meant to be reproducible, where anyone with a copy of the file can run the code from top to bottom and receive the same results. When you 'knit' an R Markdown file, the code chunks are run top to bottom in a **fresh** R session - in other words, it starts with a blank **Global Environment**. For example, if you run `d <- 25` manually in the **Console** and then add `d + 5` in a code chunk, that code chunk will work fine when manually run in RStudio, but will result in an "object not found" error if you try to knit. This is because `d <- 25` also needs to be in a code chunk within the R Markdown file, and needs to come before `d + 5`. So, make sure all essential code for your analysis is within code chunks *and* in the correct order that they need to be run in.)
+
+4. Create a new code chunk, you can put your text cursor on a line at the end of the R Markdown file and press `Ctrl+Alt+I` on the keyboard. Alternatively, from the menu bar at the top of RStudio, you can select `Code > Insert Chunk`.
 
 [^Positron]: If you have prior experience working with coding environments, such as Visual Studio Code, you may want to take a look at [Positron](https://positron.posit.co/). It is based on Visual Studio Code and setup to have a similar panel layout as within RStudio. One of the benefits of open-source software is having this diversity of tools can pick from. It is advised though for this course to stick with Posit Cloud and RStudio.
