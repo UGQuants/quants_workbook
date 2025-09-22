@@ -492,11 +492,11 @@ New terms
 <p>We will cover R Markdown in more detail across the next few weeks, but some initial short definitions:</p>
 <ul>
 <li>
-<code>R Markdown</code>: a file format that mixes narrative text and code; when <code>knit</code>, the results from the code are woven into the ‘knitted’ document.</li>
+<code>R Markdown</code>: a file format that mixes text and code, using simple syntax for formatting text and code chunks for adding and running code.</li>
 <li>
-<code>code chunk</code>: a fenced block in an R Markdown file for adding R code; as well as running when you knit the file, each code chunk can be run on its own within RStudio.</li>
+<code>code chunk</code>: a fenced block in an R Markdown file for adding R code; as well as being run when you knit the file, each code chunk can be run on its own within RStudio.</li>
 <li>
-<code>knit</code>: render an R Markdown file into a specified format (e.g.&nbsp;HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the code results.</li>
+<code>knit</code>: render an R Markdown file into a specified format (e.g.&nbsp;HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the output from the code.</li>
 </ul>
 </div>
 </div>
@@ -581,8 +581,8 @@ New terms
 </ul>
 <p>(Note, if you receive an “Error: object ‘this’ not found’” message, check you are using single quotes and have <code>'this'</code> rather than <code>this</code>.)</p>
 <p>What do you see running the code chunks? Why is R outputting these results? …</p>
-<p>…That’s it! When you use the double equal sign <code>==</code> you are <em>asking</em> R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark <code>!</code> with another operator, you get the reversed result. For example, <code>!=</code> is interpreted as “is not equal to”, that is why <code>10 != 10</code> returns <code>FALSE</code>, but <code>10 == 10</code> returns <code>TRUE</code>.</p>
-<p><code>R</code> can process different classes of inputs. In this case we used a letters and we <em>asked</em> R whether ‘this’ was equal to ‘this’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <code>character</code> values in R), you need quotation marks <code>'</code>. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as <code>numeric</code> ‘class’ values.</p>
+<p>When you use the double equal sign <code>==</code> you are <em>asking</em> R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark <code>!</code> with another operator, you get the reversed result. For example, <code>!=</code> is interpreted as “is not equal to”, that is why <code>10 != 10</code> returns <code>FALSE</code>, but <code>10 == 10</code> returns <code>TRUE</code>.</p>
+<p><code>R</code> can process different classes of inputs. In this case we used a letters and we <em>asked</em> R whether ‘this’ was equal to ‘this’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <code>character</code> values in R), you need quotation marks, <code>'text'</code>. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as <code>numeric</code> ‘class’ values.</p>
 <p>You can use the <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function to check what something is in R. For example, try running <code>class(42)</code>, <code>class('42')</code>, and <code>class(TRUE)</code> in the Console.</p>
 <p>Perhaps logical operators do not make much sense at this point, but you will find out later that they are useful to manipulate data. For example, these are essential to filter a data set based on specific <em>rules</em> or patterns.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="New Terms">
@@ -623,6 +623,10 @@ New Terms
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span></span>
 <span><span class="va">a</span> <span class="op">*</span> <span class="va">c</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/rstudio_lab1_assignaxc.png" class="img-fluid figure-img"></p>
+<figcaption>Results running the “assign-2” chunk after adding <code>c</code> and <code>a * c</code></figcaption></figure>
 </div>
 <p>As you can see, running <code>c</code> on a line by its own returns the numeric value <code>3</code> stored in the variable <code>c</code>. Then, <code>a * c</code> calls the previously created object <code>a</code> and multiplies it by <code>c</code> (<code>a * c</code> is effectively <code>10 * 3</code>). Note, most programming languages, R included, do not use <code>x</code> for multiplication and use <code>*</code> instead. One reason for this is because <code>x</code> could also end up as a named object, <code>x &lt;- 2</code>.</p>
 <p>In the same way as you assigned these simple variables, you will store other types of objects later, e.g.&nbsp;vectors, data frames or lists. This is useful because those objects will be ready in your session to do some computations.</p>
