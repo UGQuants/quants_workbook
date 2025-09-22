@@ -1,0 +1,8 @@
+---
+title: "Assessments"
+---
+
+::: {.callout-important title="Deadlines"}
+- [Formative Assessment](formative.qmd) – 12 noon, Friday 31st October 2025
+- [Summative Assessments](summative.qmd) ([Reflective Summary](summative.qmd#reflective-course-summary) + [Interpreting Quantitative Findings Report](summative.qmd#interpreting-quantitative-findings-report)) - 12 noon, Monday 15th December 2025.
+:::

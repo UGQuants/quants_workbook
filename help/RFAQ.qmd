@@ -1,4 +1,6 @@
-# Appendix 2: R Issues FAQ {#RFAQ .unnumbered}
+---
+title: "R FAQ"
+---
 
 ## Introduction {.unnumbered}
 
@@ -15,7 +17,7 @@ When making a Moodle post or emailing about an issue it is vital to provide suff
 
 Error messages will often flag the relevant code chunk where the error occurred:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/errorlines.png")
 ```
 
@@ -32,7 +34,7 @@ If variables go missing from your regression results table or the regression res
 
 The preamble code block at the top of the RMarkdown file provide with the template reads in the 'fullnilt_2012.rds' dataset and assigns it to the 'nilt' data frame object.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/preamble_readRDS.png")
 ```
 
@@ -40,7 +42,7 @@ You therefore do not need to download and read in anther dataset, this is all se
 
 For example, these would be lines to remove:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/removelines.png")
 ```
 
@@ -48,7 +50,7 @@ The 'NILT2012GR' that we used in the labs has a different set of the NILT variab
 
 Similarly, this would also be code to remove:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/removelines2.png")
 ```
 
@@ -58,7 +60,7 @@ The `select()` function keeps variables passed to it and drops the others. The f
 
 If you need to create a subset of the data, ensure to assign it to a new data frame:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/subsetcorrect.png")
 ```
 
@@ -68,13 +70,13 @@ knitr::include_graphics("./images/subsetcorrect.png")
 
 'Object not found' errors often arise when no data has been assigned to a data frame object. For example, if you ran code using 'nilt_subset', such as `sumtable(nilt_subset, ...)` without first assigning data to it `nilt_subset <- ...`, you would receive the following error message when running/knitting your code:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/objectnotfound.png")
 ```
 
 When working with a subset of the data, ensure before the lines identified in the error message that you included code that assigns data to it (`dataframe <- ...`). For example, if you need to work with a subset of data that used filter() or select():
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/subsetexamples.png")
 ```
 
@@ -90,19 +92,19 @@ If the word count displayed at the top of your knitted HTML is wrong, check whet
 
 Within the template RMarkdown document, we include an inline code block that uses a word count addin to calculate your word count within the knitted HTML file:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/wordcountinline.png")
 ```
 
 Which when knitted will look as follows in the HTML file:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/knittedwordcount.png")
 ```
 
 However, the code to calculate the word count refers to a specific file "Assignmet2-template.Rmd". if you created a new RMarkdown file, such as one that included your student number 'Assignment2-255615q.Rmd', you also need to update the file name in the code:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/wordcountchange.png")
 ```
 
@@ -116,23 +118,23 @@ If receiving a "package '...' could not be loaded" error message, check the YAML
 
 You should have either of the following for `output: ...`:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/outputhtml1.png")
 ```
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/outputhtml2.png")
 ```
 
 But, will probably have the something like the following if receiving the error message:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/outputhtmlpdf.png")
 ```
 
 This can happen unintentionally as RStudio can automatically add a line for PDF outline, such as if accidentally clicked 'Knit to PDF':
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/accidentalpdf.gif")
 ```
 
@@ -140,7 +142,7 @@ Annoyingly, even if you click 'Knit to HTML' from the options, if your YAML bloc
 
 So, if you are receiving the error message and have the two output lines, you can easily fix it by removing the pdf_document line:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/deletepdfoutput.gif")
 ```
 
@@ -152,13 +154,13 @@ The most common cause of this error is from renaming the RMarkdown file, but not
 
 For example, if you renamed the RMarkdwon file from 'Assignmet2-template.Rmd' to 'Assignment2-255615q.Rmd', you will receive an 'Execution halted' error when trying to knit:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exechalted.png")
 ```
 
 To fix it, just update the line of code that calculates the word count so it refers to the new name you have given the file:
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/wordcountchange.png")
 ```
 
@@ -170,37 +172,37 @@ If Turnitin is providing an error message that it is unable to open your submitt
 
 To export your knitted HTML file - 1. Check the box next to your knitted HTML file in the 'Files' panel. By default, the Files panel is on the bottom right of the screen.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml1.png")
 ```
 
 2.  Click 'More' from the toolbar at the top of the Files panel.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml2.png")
 ```
 
 3.  Click 'Export' from the menu options that pop-up.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml3.png")
 ```
 
 4.  This will pop open an 'Export Files' dialogue. Here, you can rename the file to include your student number. Just make sure the ".html" at the end remains included.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml4.png")
 ```
 
 5.  After naming the file, click 'Download'. This will open a dialogue to select which location to save the file.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml5.png")
 ```
 
 Here's a short gif running through all the steps together.
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 knitr::include_graphics("./images/exporthtml.gif")
 ```
 

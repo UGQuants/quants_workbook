@@ -1,35 +1,15 @@
 
-
 # Introduction to R {#lab-intro}
 
 ::: {.callout-note title="Overview"}
 By the end of this lab you will:
 
-- log into Posit Cloud and join your lab space
-- create an R Markdown file
+- log into Posit Cloud and join your lab group space
 - learn basic R syntax and use R as a calculator
+- discover the importance of the order code is run in
 - create a neatly formatted HTML file by knitting an R Markdown file 
 :::
 
-::: {.callout-caution title="select()"}
-Choose which columns of a data table to keep, optionally renaming them or changing their order.
-
-**Usage**
-
-```{r}
-#| eval: false
-select(.data, ...)
-```
-
-**Arguments**
-
-- `.data` - the data frame you want to choose columns from.
-- `...` - one or more column selectors. You can list column names (`col1, col2`), rename while selecting (`name_name = old_name`), or use simple helpers (e.g. `where(is.numeric)` to select all numeric columns)
-
-**Returns**
-
-A data frame containing only the selected columns, in the orer given. The original `.data` is unchanged ...
-:::
 
 ## Tools We Are Using
 
@@ -55,6 +35,7 @@ knitr::include_graphics("images/r-lang-popularity-increase.png")
 ::: {.callout-tip title="New terms"}
 - `R`: a programming language and environment for data analysis.
 - `RStudio`: a user-interface for working with R.
+- `Posit Cloud`: website for running RStudio in a browser.
 :::
 
 ## Why R?
@@ -72,6 +53,7 @@ Lastly, `R` is powerful to communicate and share information and documents. Ther
 `R` works in a command-based `Console` environment. This means that you need to call the commands (or _**functions**_, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexible. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.
 
 ::: {.callout-tip title="New terms"}
+
 We will cover these in more detail in future weeks, but as initial short definitions:
 
 - `Package`: a collection of ready-made R tools - such as functions with help pages, and sometimes example data - that you can install (and later load) to add features to R.
@@ -81,7 +63,7 @@ We will cover these in more detail in future weeks, but as initial short definit
 
 ### Advantages of using R
 
-Some advantages of using R are the following:
+Some advantages of using R:
 
 - It is free and open source software. You do not need to pay for a licence. You can then use it anywhere at any time, even if you do not have an affiliation to an institution or organisation (e.g. University or workplace);
 - It is a collaborative project. This means that it is the users who maintain, extend, and update its applications;
@@ -125,24 +107,37 @@ To get started with Posit Cloud, follow the next steps:
 2. Click 'Log In Via University of Glasgow' which will take you to the usual University of Glasgow login pages;
 3. Enter your University of Glasgow email address and password in the login page as normal;
 
-![Posit SSO Login Page](images/sso_login.png){fig-alt="Screenshot of the Posit SSO log in page for University of Glasgow"}
+![Posit SSO Login Page](images/sso_login.png)
 
 4. Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;
 
 #### **Part 2** Join your lab group
 
-1. You will receive a link from your tutor to join your lab group on RStudio Cloud (the link will be posted on Moodle too). N.b. you must use this specific link to join and access your lab group workspace, as each link is unique to your group. So only use your group's specific link. Copy and paste the link in your web browser. You should see the following window:
+You will have received a link via email to join your lab group on Posit Cloud (the link will be available within your Lab Group forum on Moodle too). Note, you must use this specific link to join and access your lab group workspace, as each link is unique to your group. So, only use your group's specific link.
 
-```{r fig.cap="Join Space.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_joinspace.png")
+1. Copy and paste the link in your web browser. You should see the following window:
+
+![Join Lab Group Space](images/posit_cloud_joinspace.png)
+
+2. Join your lab by clicking the 'Yes' button shown above.
+
+#### **Part 3** Create a New Project
+
+1. Open the shared space form the left-hand side pane called 'Lab Group ...' (where ... is your Lab Group number).
+2. Click the blue 'New Project' button on the right of the screen.
+3. From the menu list that opens select 'New Project from Git Repository'.
+
+![New Project, New Project from Git Repository](images/posit_cloud_new_project_git.png)
+
+4. Within the dialogue box that opens, copy and paste the link below into the 'URL of your Git Repository' field.
+
+```text
+https://github.com/UGQuants/Labs-1-2
 ```
 
-2. Join your lab by clicking on the 'Join space' button shown above.
-3. Open the shared space form the left-hand side pane called 'Quants Lab Group..' and start the Lab 1 project by clicking on the 'Start' button as shown below:
+5. Click 'OK' to create the new project.
 
-```{r fig.cap="Start project.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_startproject.png")
-```
+![New Project from Git Repository dialogue](images/posit_cloud_new_project_git_dialogue.png)
 
 <!-- <br> -->
 <!-- In addition and only optionally you can download and install the Desktop versions by following these links: -->
@@ -155,110 +150,197 @@ knitr::include_graphics("./images/rstudio_cloud_startproject.png")
 
 ### RStudio environment
 
+#### Getting started
+
+After your new 'Labs 1-2' project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:
+
+![Screen after creating 'Labs 1-2' project](images/posit_cloud_lab1_start.png)
+
+1. In the bottom-right 'Files' pane, click "Lab-01.Rmd".
+2. That will open a new pane in the top-left, within the yellow banner in it click 'Install'.
+
+![Open the Lab-01.Rmd file and 'Install' rmarkdown package](images/posit_cloud_lab1_install.png)
+
+The bottom-left pane will now switch to the "Background Jobs" tab and you will see a lot of red text. Despite the colour, this is expected behaviour. RStudio is now installing the `rmarkdown` package that makes it possible to work with `R Markdown` files in RStudio (more on this later). Once it finishes installing, the tab will automatically switch back to "Console".
+
+![Red text in Background Jobs tab during install of 'rmarkdown' package](images/posit_cloud_lab1_background.png)
+
+R Markdown is a file format (`.Rmd`) that lets you write text and run code in the same document. You write your narrative text and add your code within `code chunks`. When you `Knit` (render) a R Markdown file, R runs the code chunks from top to bottom and weaves their outputs (numbers, tables, plots) into a finished 'knitted' report (such as HTML or PDF). This makes your analysis transparent and reproducible, whereby anyone can see what code produced each result. When learning R, it also makes it great for making notes alongside the code.
+
+::: {.callout-tip title="New terms"}
+
+We will cover R Markdown in more detail across the next few weeks, but some initial short definitions:
+
+- `R Markdown`: a file format that mixes narrative text and code; when `knit`, the results from the code are woven into the 'knitted' document.
+- `code chunk`: a fenced block in an R Markdown file for adding R code; as well as running when you knit the file, each code chunk can be run on its own within RStudio.
+- `knit`: render an R Markdown file into a specified format (e.g. HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the code results.
+
+:::
+
 #### RStudio screen
-
-Once you have started 'Lab 1' you will see the screen below:
-
-```{r fig.cap="Project name.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_lab1_empty.png")
-```
-
-Now, go to the "File" tab and create a R Script as follows `File > New file > R Script`
-
-```{r fig.cap="New R Script.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_new_script.png")
-```
-
-Once you have created your first R Script, save it by clicking on File > Save as.. > `[write the name of your file]`. 
 
 After this, your RStudio screen will be split in four **important** windows or panes as shown below:
 
-```{r fig.cap="RStudio panes.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_panels.png")
-```
+![RStudio's four main panels](images/posit_cloud_panels.png)
 
-* In **Pane 1**, you have your newly created `R` script. This is the area where you will be working most of the time. From here, you will write functions. To run an `R` script line, you can click on the `Run` green arrow situated on the top of pane 1 or more commonly you can run a code line by typing `alt + enter`. The things you write in this section will be saved in your R script file.
+- In **Pane 1** (purple), you have the Lab-01 `R Markdown` file.
 
-![Run button](./images/rstudio_cloud_run_button.png)
+This is the area where you will be working most of the time. From here, you will write text and code. `Code chunks` are shaded grey, with each starting with ```` ```{r optional-name} ```` and ending with ```` ``` ````. (The ```` ` ```` is called a `back-tick`, and on UK keyboards is the key to the left of 1.)
 
-* In **Pane 2**, you have the "Global Environment", this is one of the most useful tabs in this pane. It shows you the active 'objects' that you have available/loaded in your current session (this will probably make more sense in the coming sections).
-* In **Pane 3**, you have the R Console, this is where you will see most of the results of the functions you run from your script (pane 1). You can also write and run functions from here, by typing the function and hitting enter. NOTE that what you do here will NOT be saved, this is usually used to quickly call functions that you do not want to save in your script.
+- In **Pane 2** (blue), you have the "Global Environment".
 
-```{r fig.cap="Console.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_console.png")
-```
+This is one of the most useful tabs in this pane. It shows you the active 'objects' that you have available/loaded in your current R session (this will make more sense in the coming sections).
 
-* Finally, in **Pane 4** you have multiple useful tabs. In the `File` tab you can see the files and directories that you have in your R project. In the `Plot` tab you will see a preview of the static plots/charts you will be producing from your script. In `Packages`, you have a list of the extensions or plug-ins (called 'packages' in R) that are installed in your working environment. The `Help` contains some resources that clarify or expand what each of the functions does. Again, probably this will make more sense once you get started. We will come back to this later. Finally, the `Viewer` displays interactive outputs.
+- In **Pane 3** (green), you have the R Console.
+
+This is where you will see most of the results of the code you run (pane 1). You can also write and run code from here, by typing the code and hitting enter. **Note**, it is best practice to have code necessary for your analysis saved in your R Markdown file. The Console is usually used instead to quickly run code that you do not want to save in your file.
+
+- Finally, in **Pane 4** (yellow) you have multiple useful tabs.
+
+In the `File` tab you can see the files and directories that you have in your R project.
+
+In the `Plot` tab you will see a preview of the static plots/charts you will be producing from your script.
+
+In `Packages`, you have a list of the extensions or plug-ins (called 'packages' in R) that are installed in your working environment.
+
+The `Help` contains some resources that clarify or expand what each of the functions does. Again, probably this will make more sense once you get started. We will come back to this later.
+
+Finally, the `Viewer` displays interactive outputs.
+
+Note, code chunks (the shaded grey fenced blocks) for writing code into have been set up for you this week. Remember though you can also write regular text as well outside of these chunks to record any notes:
+
+![Adding regular text in R Markdown](./images/rstudio_lab1_typetext.png)
 
 ## Hands on R
 
 Now you are ready! It is your turn to start exploring and getting familiar with R by completing the following activities.
 
-#### R as calculator
 
-Go to your **console** (pane 3, bottom-left pane), write some simple calculations and run them by typing 'enter' after each of them, as shown below.
+### R as calculator
 
-```{r fig.cap="R Console as calculator.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_r_as_calculator.png")
-```
+In your 'Lab-01' R Markdown file, look at the code chunk named "sum-1" containing `2 + 2`. Let's run it!
 
-<br>
-Try different operations such as `50 / 20` or `3 * 5`.
+To run a code chunk, you can click on the `Run` green arrow situated on the top right corner of it. Alternatively, if your text cursor is inside the code chunk you can press `Ctrl+Shift+Enter` on your keyboard.
 
-Fairly simple, right? And don't forget, it is entirely normal to copy/paste and tweak any existing codes. Unlike writing an essay or an exam, you don't actually need to know and write codes "off the cuff" or recite/memorise any syntax. You are only expected to know how to run the codes and tweak them as you go along, there is a huge amount of trial and error when you work in R. So don't worry if you feel like you are just making minor changes to the codes, that's how it's supposed to work, and the first few weeks is all about getting comfortable in using R, then the level of challenge will go up. Let's continue with the next activities!
+![Run current code chunk button](./images/rstudio_chunk_run.png)
 
-#### Testing logical operators
+What you will see after running the chunk is:
 
-Now, write and run the following lines in your **console** (pane 3) and take some time to observe the result in detail for each of them:
+1. In the R Markdown file, `[1] 4` underneath the code chunk.
+2. In the Console, both `> 2 + 2` and `[1] 4`.
 
-* `10 == 10`
-* `10 != 10`
-* `1 == 5`
-* `1 > 5`
-* `'a' == 'a'`
-* `'a' == 'b'`
+![Output in R Markdown file and Console after running a code chunk](./images/rstudio_chunk_ran.png)
 
-What do you see? ... 
+Why do we see this? When you run a chunk, RStudio sends the code to the Console for R to run it, so you see the code echoed and its raw output there. RStudio also shows the results inline under the chunk so you can see the output in context. (This also becomes important later with graphs and formatted tables that cannot be viewed in the Console.)
 
-...That's it! When you use the double equal sign `==` you are _asking_ R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark `!` with other operator, you get the reversed result. In the past exercises you used `!=`, this was interpreted as "is not equal to", that is why `10 != 10` returns `FALSE`, but `10 == 10` returns `TRUE`. 
+What does the `[1]` mean? It's a label R adds to printed results, where `[1]` just means "this line starts at item 1". If there were lots of items, the next line might start `[7]` or `[15]`.
 
-`R` can process different classes of inputs. In this case we used letters and we _asked_ R whether 'a' was equal to 'a', and of course the result is `TRUE`. Note that when you want to input text (referred as _character_ values in R), you need quotation marks `'`. If you want to enter numeric values, you simply input the raw number. These are different 'class' values.
+Of course, you can also go to the **Console**, write a simple calculation, and run it by typing 'Enter', as shown below:
+
+![Running simple calculations in the Console](./images/rstudio_console_calc.png)
+
+It's also possible to run multiple calculations in a single chunk. Add a line for `5 * 5` and `21 -4` in the empty "sum-2" chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)
+
+![Adding simple calculations to sum-2 code chunk](./images/rstudio_lab1_sum-2.png)
+
+Try different operations such as `50 / 20` or `3 * 5`, whether adding to the code chunk or directly in the Console.
+
+Fairly simple, right? And don't forget, it is normal to copy and tweak existing code. A lot of learning to code involves going through working examples and tweaking it to work with what you are trying to achieve. Unlike writing an essay or an exam, you don't actually need to know and write code "off the cuff" or have all necessary code syntax and functions memorised. So, don't worry if you feel like you are just making minor changes to existing code, that's how it's supposed to work. The crucial thing is learning how the code works, so you know what to tweak for your analysis. And, the first few weeks is all about getting comfortable in using R, then the level of challenge will go up.
+
+Let's continue with the next activities!
+
+### Testing logical operators
+
+Now, run the "logical-1" code chunk in the R Markdown file.
+
+![logical-1 code chunk and results from running it](./images/rstudio_lab1_logical.png)
+
+Now, in the "logical-2" code chunk, add the following and then run it:
+
+- `1 == 5`
+- `1 > 5`
+- `5 < 10`
+- `'this' == 'this'`
+- `'this' == 'that'`
+- `'this' != 'that'`
+
+(Note, if you receive an "Error: object 'this' not found'" message, check you are using single quotes and have `'this'` rather than `this`.)
+
+What do you see running the code chunks? Why is R outputting these results? ...
+
+...That's it! When you use the double equal sign `==` you are _asking_ R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark `!` with another operator, you get the reversed result. For example, `!=` is interpreted as "is not equal to", that is why `10 != 10` returns `FALSE`, but `10 == 10` returns `TRUE`. 
+
+`R` can process different classes of inputs. In this case we used a letters and we _asked_ R whether 'this' was equal to 'this', and of course the result is `TRUE`. Note that when you want to input text (referred as `character` values in R), you need quotation marks `'`. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as `numeric` 'class' values.
+
+You can use the `class()` function to check what something is in R. For example, try running `class(42)`, `class('42')`, and `class(TRUE)` in the Console.
 
 Perhaps logical operators do not make much sense at this point, but you will find out later that they are useful to manipulate data. For example, these are essential to filter a data set based on specific _rules_ or patterns.
 
-#### Assigning values to 'objects'
+::: {.callout-tip title="New Terms"}
+- `class`: an object's classification in R that informs how R handles it.
+- `character`: text in quotes, such as "Glasgow". (`'42'` as it is in quotes would be treated as character)
+- `numeric`: real or decimal numbers, such as `42` or `5.1`.
+:::
 
-In `R`, it is very common (and practical) to store values or data as 'objects'. These are temporally stored in your current session. Let's try it! 
+### Assigning values to 'objects'
 
-Now, we will work in the `R` script file (**Pane 1**, top-left pane), write the following and run it by clicking the green arrow or using `alt + enter`:
+In `R`, it is common (and practical) to store values or data as 'objects'. Once values are assigned to them, objects are then stored in your current R session. Assignments are made using `object_name <- value`, such as `a <- 5` or `b <- 'Glasgoow'`. Let's try it! 
+
+Go to the "assign-1" code chunk run it by clicking the green arrow/triangle or - with your text cursor within the code chunk - using `Ctrl+Shift+Enter`.
+
+What do you observe? Pay attention to what appears under the code chunk **and** in the Environment pane (the top-right of the four panes). Why are the values different? ...
+
+![Result under code chunk and value in environment after running assign-1 code chunk](./images/rstudio_lab1_assign-1.png)
+
+The operator `<-` assigned the numeric value `10` to the object `a` (on the left hand-side of the arrow). The next line used the object (`a`) to compute a sum (i.e, `a + 5`). Only the assignment is stored in the session environment (the `a <- 10`) and assignments do not return an output, so only the result of `a + 5` is shown under the code chunk when run.
+
+To see this, within the "assign-2" chunk add `c <- 3` and run it:
+
+![Value for 'c' in environment after running assign-2 code chunk](./images/rstudio_lab1_assign-2.png)
+
+
+Now, add and run the following in the "assign-2" chunk:
 
 ```{r eval = FALSE}
-a <- 10
-a + 5
-```
-
-What do you observe?...
-
-...That's right! The operator `<-` assigned the numeric value `10` to the object `a` (on the left hand-side of the arrow). Later, you used the object (`a`) to compute a sum (i.e, `a + 5`). 
-
-Now, write and run the following in your `R` script (Pane 1)
-
-```{r eval = FALSE}
-c <- 3
+c
 a * c
 ```
 
-As you can see, you stored the numeric value `3` in the variable `c`. Then, you called the previously created object `a` in a multiplication. 
+As you can see, running `c` on a line by its own returns the numeric value `3` stored in the variable `c`. Then, `a * c` calls the previously created object `a` and multiplies it by `c` (`a * c` is effectively `10 * 3`). Note, most programming languages, R included, do not use `x` for multiplication and use `*` instead. One reason for this is because `x` could also end up as a named object, `x <- 2`.
 
 In the same way as you assigned these simple variables, you will store other types of objects later, e.g. vectors, data frames or lists. This is useful because those objects will be ready in your session to do some computations.
 
-There are a few things to note when assigning objects to variables. If you use a different value to the same variable, e.g. by typing `a <- 5`, you will replace the old value with the new. So, instead of having `a` representing the value 10, you will have `5`. You can see the objects available in your session on the Global Environment ('Environment' tab in Pane 2) as shown below.
+### Code Order
 
-<br>
+There are a few things to note when assigning objects to variables. If you assign a different value to the same object, e.g. by running `a <- 5`, you will replace the old value with the new. So, instead of having `a` representing the value 10, you will have `5`.
 
-```{r fig.cap="'Environment' tab.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_environment.png")
-```
+You can see the objects available in your session on the Global Environment ('Environment' tab in top-right pane) as shown below.
+
+![Enivornment tab in top-right pane showing values for a and c](./images/rstudio_lab1_env.png)
+
+Now, let's see what happens if change value of `a`:
+
+1. Run the "order-1" code chunk that contains `a + 2`.
+2. Now in the Console type and run `a <- 5`.
+3. Run the "order-1" code chunk again.
+
+![Console results for `a + 2` before and after assigning new value to `a`](./images/rstudio_lab1_order-1.png)
+
+As can see, the code in the "order-1" chunk remains the same, but the result from running the code changes based on the value assigned to `a`. That may seem an obvious point to make, but a large proportion of unexpected results and errors arise from changing what is assigned to an object.
+
+A good rule of thumb then when a code chunk that was previously working suddenly returns unexpected results or an error message is to run your code from the top-down. Thankfully, RStudio also makes this easy to do. To 'Run All Chunks Above' a specific code chunk, click the downward facing grey arrow/triangle with a green line under it (see image below!). After that, you can click the green arrow/triangle to 'Run Current Chunk'.
+
+Do that for the 'order-1' chunk and it will return 12 again:
+
+!['Run All Chunks Above' (purple) and 'Run Current Chunk' (blue)](./images/rstudio_lab1_restore-order.png)
+
+It is also possible to use an object in a calculation and assign the result of that calculation back to the object. For example, `a <- a + 5` is equivalent to `a <- 10 + 5`. Whilst that can be perfectly valid to do, care needs to be taken as now `a` is `15`. What do you think would happen if you keep running the same `a <- a + 5` line of code?
+
+Go to the "order-2" code chunk and run it multiple times, looking at the result underneath the chunk and the value for `a` in the Environment pane.
+
+!['Increased value of `a` after running "order-2" chunk multiple times](./images/rstudio_lab1_order-2.png)
+
+Again, you can 'Run All Chunks Above' (downwards grey arrow/triangle, green line) and 'Run Current Chunk' (green arrow/triangle) to restore `a` to value it would be if only ran each code chunk once top to bottom.
 
 <!-- ### Load your first file -->
 
@@ -306,20 +388,30 @@ knitr::include_graphics("./images/rstudio_cloud_environment.png")
 
 <!-- Here, you can scroll down or visualize your columns to your right in a table-style format. You can sort the contents of the variables by clicking on the header. But note that you cannot make any changes from here. Once you finished checking your data, simply click on the cross mark and you will be back to your script tab. -->
 
-This is a very good start, great job! 
+This is a good start, great job! 
 
-Note that the changes made in your script are saved automatically in RStudio Cloud. To verify this, have a look at the name of your script in the top-left of pane 1. If changes are due to be saved, the name will be written in red. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, end your session simply by closing the RStudio Cloud tab in your browser.
+Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterix at the end, `Lab-01.Rmd*`. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.
+
+::: {.callout-tip title="New Terms"}
+- `object`: any data or function stored in memory and usually bound to a name in an environment.
+- `assignment`: bind a name to an object in an environment with `<-`, creating or updating that binding (e.g. `a <- 10`).
+- `environment`: a workspace that maps names and objects (the main one is the Global Environment, which can see in the top-right panel in RStudio).
+:::
 
 ## Activity
 
-Discuss the following questions with your neighbour or tutor:
+Discuss the following questions with your neighbour or tutor, and write notes from your discussion in your R Markdown file:
 
-1. What are the main differences between working on a `R` script file (pane 1) and directly on the console (pane 3)?
+1. What are the main differences between working in a `R Markdown` file (pane 1) and directly on the console (pane 3)?
 2. Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)
 
 ```{r}
 object1 <- 10
 object1 <- 30
 ```
+
+3. Click the 'Knit' button in the bar at the top of the R Markdown file (pane 1). This will turn your R Markdown file into an HTML document.
+
+(Note: Another reason code chunk order matters. When you 'knit' an R Markdown file, the code chunks are run top to bottom in a **fresh** R session.)
 
 [^Positron]: If you have prior experience working with coding environments, such as Visual Studio Code, you may want to take a look at [Positron](https://positron.posit.co/). It is based on Visual Studio Code and setup to have a similar panel layout as within RStudio. One of the benefits of open-source software is having this diversity of tools can pick from. It is advised though for this course to stick with Posit Cloud and RStudio.

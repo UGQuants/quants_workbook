@@ -7,47 +7,81 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ## Welcome back!
 
-In our previous lab, we set up an RStudio Cloud session and we got familiar with the RStudio environment and some of the purpose and contents of its panes. In this Lab we will learn about R packages, how to install them and load them. Also, we will use different types of data. You will have the chance to practice with additional `R` operators. Lastly, we will load a real-world data set and put in practice your new skills.
+In the previous lab, we set up an RStudio session in Posit Cloud and we got familiar with the RStudio environment and the purpose and contents of RStudio's panes. In this Lab we will learn about R packages, how to install them and load them. Also, we will use different types of data. You will have the chance to practice with additional `R` operators. Lastly, we will load a real-world data set and put in practice your new skills.
+
+::: {.callout-note title="Overview"}
+By the end of this lab you will know how to:
+
+- install and load packages in R
+- download a dataset from a URL and assign it to a named object
+- use the pipe (`|>`) operator to chain steps
+- examine, wrangle, and subset a dataset using functions
+
+:::
 
 ## R Packages
 
-As mentioned in our last lab, `R` [@R-base] is a collaborative project. This means that `R` users are developing, maintaining, and extending the functionalities constantly. When you set up `R` and RStudio for the first time, as we did it last week, it comes  only with the 'basic' functionalities by default. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called _**packages**_.
+As mentioned in our last lab, `R` [@R-base] is a collaborative project. This means that `R` users are developing, maintaining, and extending the functionalities constantly. When you set up `R` and RStudio for the first time, as we did last week, it comes only with the 'basic' functionalities by default. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called _**packages**_.
 
-Most of the times, we use packages because they simplify our work in `R` or they allow us to extend the capabilites of base R.
+Most of the times, we use packages because they simplify our work in `R` - such as by replacing what would be dozens of lines of complex code in base R with a simple one-line function - or they allow us to extend beyond the capabilites of base R.
 
-### Installing packages
+Let's put hands-on to install and load some useful packages. We will start with one of R's most famous packages, and one we will use a lot across the labs, the `tidyverse` [@R-tidyverse] package.^[<https://www.tidyverse.org/>] First, sign-in to Posit Cloud, create/open your Labs-1-2 project, and then open the Lab-2 R Markdown file.
 
-Let's put hands-on to install and load some useful packages. We will start with `tidyverse` [@R-tidyverse].^[<https://www.tidyverse.org/>]
+### Open Your Posit Cloud Project
 
-### Activity: 
+For those who missed Lab 1:
 
-**Part 1**. Access your lab group in RStudio Cloud
+1. Make sure you have a free, institutional-subscription [Posit Cloud](https://sso.posit.cloud/glasgow) account (in case you have not created one yet, please follow the guidance provided in [Lab 1](01-intro.qmd#setting-up-rstudio));
+2. If you enrolled before teaching started, you will have received an email with a link to join your lab group. If you joined the course after the start of teaching, you can find a link in your Lab Group's forum on Moodle. You tutor will also be able to provide you with a link.
+3. Follow the rest of the [Lab 1](01-intro.qmd#part-3-create-a-new-project) guidance in the 'Create a New Project' section.
 
-1. Make sure you have a free, institutional-subscription [RStudio Cloud](https://rstudio.cloud/) account (in case you have not created one yet, please follow the guidance provided in [Lab 1](01-intro.qmd#setting-up-rstudio));
-2. You will receive a link from your tutor to join your lab group in a shared space. Copy and paste it in your web browser (log in if necessary). If you already joined your lab group in RStudio Cloud, simply access the 'Lab 2' project and omit steps 3 to 5. Otherwise, continue with steps 3, 4 and 5.
-3. If you did not join your lab group yet, you should see the following window:
+For those who already joined and created a project in Lab 1, log into [Posit Cloud](https://sso.posit.cloud/glasgow) and:
 
-```{r fig.cap="Join Space", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_joinspace.png")
-```
+1. From the left-hand menu, click "Lab Group .." where ".." is your lab group number.
+2. Within the main screen, click "Labs-1-2" to open the Posit Cloud project you created last week.
 
-4. Click on the 'Join space' button shown above.
-5. Open the shared space form the left-hand side pane called 'Quants Lab Group..' and start the Lab 2 project by clicking on the 'Start' button as shown below:
+![Select your lab group space and then open 'Labs-1-2' project](./images/posit_cloud_lab2_open-project.png)
 
-```{r fig.cap="Start Lab 2.", echo=FALSE}
-knitr::include_graphics("./images/rstudio_cloud_startproject_lab2.png")
-```
+### Open the Lab 2 R Markdown file
 
-<br>
-**Part 2**. Working on your script
+You will find your project in same state as left it last week. To open a tab for the Lab 2 R Markdown file, click to open 'Lab-02.Rmd' in the "Files" tab in the bottom-right pane.
 
-1. Once you have accessed the 'Lab 2' project, write or copy the following line in your **script** (pane 1) and run it:
+![Click 'Lab-02.Rmd' in the "Files" tab in the bottom-right pane](./images/rstudio_lab2_rmd.png)
+
+Within Lab 1, you may have noticed the `field: value` lines between two `---`. This is called `YAML`. The R Markdown file for this lab has a couple more lines added this time:
+
+![YAML block at top of Lab-02.Rmd](./images/rstudio_lab2_yaml.png)
+
+`title` and `author` are self-explanatory, but make sure to replace `[your name here]` with your name.
+
+`date` can be any text, but `format(Sys.time(), '%d/%m/%y')` gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025.
+
+`output` specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using 'html_document' as it is easiest to work with across the packages we are using.
+
+After the YAML block, there is a 'setup' code chunk setting `knitr` options:
+
+![r setup code chunk with knitr options to set message and false to FALSE](./images/rstudio_lab2_setupchunk.png)
+
+This may look intimidating, but it is relatively simple when parsed bit by bit:
+
+- `knitr` is the package used to knit R Markdown files
+- `knitr::opts_chunk` stores default settings applied to all code chunks
+- `knitr::opts_chunk$set(...)` runs the `set()` function on `knitr::opts_chunk` to change the defaults
+
+So, what the code in the setup chunk does is set messages and warnings to "FALSE". This prevents any messages or warnings that get raised when running code chunks from also appearing in any knitted files. (Why we do this will become clear in a bit.)
+
+### Into the Tidyverse
+
+1. Once you have the Lab 2 R Markdown file open, type the following in the Console (bottom-right pane) and hit 'Enter' to run it:
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
 ```
 
-2. Wait until you get the message 'The downloaded source packages are in...'. The installing process can take up to a couple of minutes to finish.
+2. Wait until you get the message 'The downloaded source packages are in...'. The install process can take a couple of minutes to finish.
+
+![Console once tidyverse package finished installing](./images/rstudio_lab2_tidyinstalled.png)
+
 3. Once the package is installed, you need to load it using the `library()` function. Please, copy and paste the following line, and run it:
 
 ```{r eval = TRUE}
@@ -56,9 +90,16 @@ library(tidyverse)
 
 And that's it, `tidyverse` is ready to be used in your current session!
 
+What you will also notice is the message raised in the Console why loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we were to knit Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk.
+
 There are couple of things you should know. First, the packages need to be installed only per project in RStudio Cloud (and only once if you are working in RStudio Desktop version). However, packages must be loaded using the `library()` function every time you restart an R session. 
 
 Another thing to notice is that when you install a package you need to use quotation marks, whereas in `library()` you only need to write the plain package name within brackets. Usually, you will load the packages at the beginning of your script.
+
+::: {.callout-tip title="New Term"}
+- `tidyverse`: a collection of R packages that share a consistent design philosophy and work together for importing, wrangling, and visualising data.
+- `YAML`: a human-readable data serialisation language, often used for configuration/settings; in R Markdown the YAML front matter between `---` sets document metadata and other options.
+:::
 
 ## Types of variables
 
@@ -154,11 +195,15 @@ Hopefully, these examples will help you to identify the main vector types and, m
 
 <!-- The dollar sign `$` is frequently used and it is part of base R. Actually, we used it a couple of times in the previous section. This is used to access or extract information from an object (e.g. a data set). For instance, earlier we selected only one variable from the `starwars` data set by writing `starwars2$species`. A practical tip to quickly access or find variables in a data set is to write the name of your object followed by the dollar sign only, like this: `starwars2$` (without specifying the variable to be accessed yet). After, type `tab` in your keyboard. Then, R will display a list with the variables available. Try it yourself! -->
 
-A useful operator is the pipe `%>%`. This is part of the `tidyverse` package. So, it is ready for you to use. This operator passes the result of one operation to the next. Check the results of the following operations in your **console**:
+A useful operator is the pipe `|>`. This is the base R version of the pipe. This operator passes the result of one operation to the next.
+
+(There is also a `%>%` version you may see that is part of the `tidyverse` package. The tidyverse version came first, where due to its popularity an equivalent was added to base R. This operator passes the result of one operation to the next.)
+
+Check the results of the following operations in your **Console**:
 
 ```{r eval = FALSE}
-1 %>% +1
-1 %>% +1 %>% +5
+1 |> sum(1)
+1 |> sum(1) |> sum(5)
 ```
 
 Observe what happened...The result from the first line was 2. This is because this line can be read as: 'take 1, THEN sum 1'. Therefore, the result is 2. 
@@ -282,12 +327,13 @@ Discuss the following questions with your neighbour or tutor:
 Using the `police_2` dataset:
 
 1. Filter how many observations are ‘White’ in `raceethnicity`? How may rows/observations are left?
-2. How many ‘Latino/Hispanic’ are there in the dataset?
+2. How many ‘Hispanic/Latino’ are there in the dataset?
 3. Using the example of Figure 2.3, could you filter how many were killed that were (a) 'Black' and (b) killed by firearm ('firearm')?
 4. What about 'White' and 'firearm'?
 
 Extra activities:
+
 1. Why did you have to use quotes in the following: `filter(police, raceethnicity==”White” & raceethnicity==”firearm”)`?
 2. What do you have to repeat the variable `raceethnicity` twice?
 
-This is the end of Lab 2. Again, the changes in your script should be saved automatically in RStudio Cloud. However, make sure this is the case as you were taught in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!
+This is the end of Lab 2. Again, the changes in your R Markdown file should be saved automatically in RStudio. However, make sure this is the case as covered in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!
