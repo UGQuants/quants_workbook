@@ -171,9 +171,9 @@ R Markdown is a file format (`.Rmd`) that lets you write text and run code in th
 
 We will cover R Markdown in more detail across the next few weeks, but some initial short definitions:
 
-- `R Markdown`: a file format that mixes narrative text and code; when `knit`, the results from the code are woven into the 'knitted' document.
-- `code chunk`: a fenced block in an R Markdown file for adding R code; as well as running when you knit the file, each code chunk can be run on its own within RStudio.
-- `knit`: render an R Markdown file into a specified format (e.g. HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the code results.
+- `R Markdown`: a file format that mixes text and code, using simple syntax for formatting text and code chunks for adding and running code.
+- `code chunk`: a fenced block in an R Markdown file for adding R code; as well as being run when you knit the file, each code chunk can be run on its own within RStudio.
+- `knit`: render an R Markdown file into a specified format (e.g. HTML or PDF) by running all code chunks from top to bottom and creating a knitted document combining the text with the output from the code.
 
 :::
 
@@ -268,9 +268,9 @@ Now, in the "logical-2" code chunk, add the following and then run it:
 
 What do you see running the code chunks? Why is R outputting these results? ...
 
-...That's it! When you use the double equal sign `==` you are _asking_ R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark `!` with another operator, you get the reversed result. For example, `!=` is interpreted as "is not equal to", that is why `10 != 10` returns `FALSE`, but `10 == 10` returns `TRUE`. 
+When you use the double equal sign `==` you are _asking_ R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark `!` with another operator, you get the reversed result. For example, `!=` is interpreted as "is not equal to", that is why `10 != 10` returns `FALSE`, but `10 == 10` returns `TRUE`. 
 
-`R` can process different classes of inputs. In this case we used a letters and we _asked_ R whether 'this' was equal to 'this', and of course the result is `TRUE`. Note that when you want to input text (referred as `character` values in R), you need quotation marks `'`. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as `numeric` 'class' values.
+`R` can process different classes of inputs. In this case we used a letters and we _asked_ R whether 'this' was equal to 'this', and of course the result is `TRUE`. Note that when you want to input text (referred as `character` values in R), you need quotation marks, `'text'`. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as `numeric` 'class' values.
 
 You can use the `class()` function to check what something is in R. For example, try running `class(42)`, `class('42')`, and `class(TRUE)` in the Console.
 
@@ -305,6 +305,8 @@ Now, add and run the following in the "assign-2" chunk:
 c
 a * c
 ```
+
+![Results running the "assign-2" chunk after adding `c` and `a * c`](./images/rstudio_lab1_assignaxc.png)
 
 As you can see, running `c` on a line by its own returns the numeric value `3` stored in the variable `c`. Then, `a * c` calls the previously created object `a` and multiplies it by `c` (`a * c` is effectively `10 * 3`). Note, most programming languages, R included, do not use `x` for multiplication and use `*` instead. One reason for this is because `x` could also end up as a named object, `x <- 2`.
 
