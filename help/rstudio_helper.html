@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Formatting</span></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>Do not nest R code chunks inside code blocks as it results in two sets of "```" at the end, creating issues when rendering your response.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>When nesting R code chunks inside code blocks use four backticks for the code block so the triple ones inside for R chunks are preserved.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="conversation-starters" class="level2">
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Formatting</strong>:</p>
 <ul>
-<li>GenAI will put code inside ‘code blocks’ so they display on screen as code. This uses the same syntax as for creating code chunks in R markdown. When GenAI then tries to place an R code chunk inside a code block the formatting in the response ends up a mess. Regular text gets formatted as code and code gets formatted as regular text.</li>
+<li>GenAI puts code inside ‘code blocks’ so they display on screen as code. This uses the same syntax as for creating code chunks in R markdown. When GenAI then tries to place an R code chunk inside a code block the formatting in the response ends up a mess. Regular text gets formatted as code and code gets formatted as regular text.</li>
 <li>This final instruction at the end <em>reduces</em> but does not remove the problem. Whenever it occurs it’s best to just start a new chat as whenever the issue arises in a chat, it tends to persist across all later responses.</li>
 </ul>
 
