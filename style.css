@@ -12,4 +12,20 @@
 /* Bold the navigation bar title */
 .navbar-title {
   font-weight: bold;
+  color: #dce0e8;
+}
+
+.nav-link .menu-text {
+  color: #dce0e8;
+}
+
+.blockquote {
+}
+
+.callout.callout-style-simple > div.callout-header {
+  opacity: 85%;
+}
+
+.sidebar-menu-container .menu-text {
+  opacity: 90%;
 }

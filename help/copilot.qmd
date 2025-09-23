@@ -1,0 +1,37 @@
+---
+title: "Copilot - Saved Prompts"
+---
+
+After you send a prompt and Copilot finishes its response, hover your mouse over your prompt and use the bookmark icon in the options that pop-up:
+
+![Save prompt in Copilot](../images/copilot_save_prompt.png)\
+
+This will open a dialogue where you can give your prompt a name and then click Save to confirm:
+
+![Give the prompt you are saving a title](../images/copilot_save_this_prompt.png)\
+
+When starting a new chat, you can access your saved prompt by clicking 'See more' in the bottom right:
+
+![See more button in bottom-right in Copilot](../images/copilot_see_more.png)\
+
+Then scroll down and you will see the 'Prompt Gallery' button in the bottom-right:
+
+![Prompt Gallery button in bottom-right in Copilot](../images/copilot_prompt_gallery.png)\
+
+That will open a menu with the Copilot Prompt Gallery, where along the top row there is a button to access your saved prompts:
+
+![Your prompts button in the Copilot Prompt Gallery](../images/copilot_your_prompts.png)\
+
+And from there you can click the box for the prompt you want and Copilot will add the text of the saved prompt to the message box, where you can then just hit enter:
+
+![Your prompts screen showing box for RStudio Helper saved prompt](../images/copilot_your_prompts_2.png)\
+
+It's also easier to access the Copilot Prompt Gallery *after* you send your first prompt. Instead of needing to click see more and scrolling down, a new 'View prompts' button gets added on the right just above the message box:
+
+![View prompts button in Copilot](../images/copilot_view_prompts.png)\
+
+Finally, by default, Copilot when accessing it via your student account still uses GPT-4o. You can though switch to GPT-5 by clicking the 'Try GPT-5' button in the top-right:
+
+![Try GPT-5 button in Copilot](../images/copilot_gpt5.png)\
+
+Despite the bad press GPT-5 got at launch, it is a significant improvement on 4o for coding questions.
