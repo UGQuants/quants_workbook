@@ -590,7 +590,7 @@
     "href": "help/rstudio_helper.html",
     "title": "RStudio Helper GPT",
     "section": "",
-    "text": "RStudio Helper is designed to address common issues when using GenAI to learn quantitative data analysis with R.\nYou can access it as a ChatGPT Custom GPT and Copilot Saved Prompt:\nLink to ChatGPT Custom GPT\nLink to Copilot Saved Prompt\nOn this page, you will also find:\nTo be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to make it easier to get more useful responses from GenAI. The instructions with explanation are provided so you can understand how to achieve similar in your own prompts."
+    "text": "RStudio Helper is designed to address common issues when using GenAI to learn quantitative data analysis with R.\nYou can access it as a ChatGPT Custom GPT and Copilot Saved Prompt:\nLink to Copilot Saved Prompt\nLink to ChatGPT Custom GPT\nOn this page, you will also find:\nTo be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to make it easier to get more useful responses from GenAI. The instructions with explanations are provided on this page, so you can see how to achieve similar with your own prompts."
   },
   {
     "objectID": "help/rstudio_helper.html#what-problems-does-this-gpt-address",
