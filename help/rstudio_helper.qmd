@@ -10,9 +10,9 @@ RStudio Helper is designed to address common issues when using GenAI to learn qu
 
 You can access it as a ChatGPT Custom GPT and Copilot Saved Prompt:
 
-[Link to ChatGPT Custom GPT](https://chatgpt.com/g/g-avpvexSTn-rstudio-helper)
-
 [Link to Copilot Saved Prompt](https://m365.cloud.microsoft/chat/entity1-d870f6cd-4aa5-4d42-9626-ab690c041429/eyJpZCI6IlZYTmxjbFl4ZkdoMGRIQnpPaTh2YzNWaWMzUnlZWFJsTFdsdWRDNXZabVpwWTJVdVkyOXRMM3hQU1VRNk5UTTNORGs1TldNdE1EbGxZaTAwTmpSaExXRTJaVGd0T0Roa09UYzRabUppTWpaaGZEbGlPR016WW1KakxXSXpORFV0TkdFNFlTMDROV1F5TFRVME5XTmxNalZoWVRNNE5ud3lNREkxTFRBNUxUSXpWREl3T2pVNU9qRTFMakkwTVRneU4xbyUzZCIsInNjZW5hcmlvIjoic2hhcmVMaW5rVmlhUHJvbXB0TGlicmFyeSIsInByb3BlcnRpZXMiOnsicHJvbXB0U291cmNlIjoidXNlciIsImNsaWNrVGltZXN0YW1wIjoiMjAyNS0wOS0yM1QyMTowMDowOC42NTFaIn0sImNoYXRUeXBlIjoid2ViIiwidmVyc2lvbiI6MS4xfQ)
+
+[Link to ChatGPT Custom GPT](https://chatgpt.com/g/g-avpvexSTn-rstudio-helper)
 
 On this page, you will also find:
 
@@ -21,17 +21,17 @@ On this page, you will also find:
 - [Example prompts to try with it](rstudio_helper.qmd#conversation-starters)
 - [A breakdown and explanation of the instructions](rstudio_helper.qmd#breakdown)
 
-To be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to make it easier to get more useful responses from GenAI. The instructions with explanation are provided so you can understand how to achieve similar in your own prompts.
-
-### Getting Around ChatGPT Usage Limits
-
-A Custom GPT is nothing fancy and under the hood is basically a saved prompt. I have set this Custom GTP up in ChatGPT solely because it offers an easy and convenient way to share examples. You can recreate the behaviour of a Custom GPT in a regular chat by simply copying and pasting the instructions as your first prompt. For free ChatGPT users, the Custom GPT usage limit is smaller than when using regular ChatGPT. So, don't worry if you hit a usage limit, just copy the instructions below and paste them in a new regular chat.
-
-'Projects' are also now available for free ChatGPT users, which like Custom GPTs you can add instructions for that will be used in all chats within the Project. So again you can get around the usage limit for Custom GPTs by copying and pasting the instructions below as instructions for a new Project. OpenAI has [steps to follow for creating a Project and adding instructions](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) on their website. 
+To be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to make it easier to get more useful responses from GenAI. The instructions with explanations are provided on this page, so you can see how to achieve similar with your own prompts.
 
 ### Using Copilot to Create Saved Prompts
 
-**Note**: You have free access to Copilot with your University of Glasgow student account. This has enterprise level encryption and your data is not used to train models. Copilot has also recently added a feature where you can save prompts so can quickly reuse them again later. I have created a page with steps to follow to [create and access saved prompts in Copilot](copilot.qmd).
+**Note**: You have free access to Copilot with your University of Glasgow student account. This has enterprise level encryption and your data is not used to train models. The Copilot Saved Prompt link at the top of the page uses a new feature in Copilot that lets users saved prompts so they can be quickly reused again in new chats. I have created a page with steps to follow to [create and access saved prompts in Copilot](copilot.qmd). When using the RStudio Helper saved prompt, click the 'Try GPT-5' button on the top-right of Copilot. By default, Copilot still uses GPT-4o, where you will get better responses using GPT-5 instead.
+
+### Getting Around ChatGPT Usage Limits
+
+A Custom GPT is nothing fancy and under the hood is basically the same as a saved prompt. I have set up this Custom GTP in ChatGPT solely because it offers an easy and convenient way to share examples. You can recreate the behaviour of a Custom GPT in a regular chat by simply copying and pasting the instructions as your first prompt. For free ChatGPT users, the Custom GPT usage limit is smaller than when using regular ChatGPT. So, don't worry if you hit a usage limit, just copy the instructions below and paste them in a new regular chat.
+
+'Projects' are also now available for free ChatGPT users, which like Custom GPTs you can add instructions for that will be used in all chats within the Project. So again you can get around the usage limit for Custom GPTs by copying and pasting the instructions below as instructions for a new Project. OpenAI has [steps to follow for creating a Project and adding instructions](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) on their website. 
 
 ## What problems does this GPT address?
 
