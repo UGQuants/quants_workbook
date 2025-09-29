@@ -235,7 +235,7 @@ starwars2 <- starwars[, 1:11]
 glimpse(starwars2)
 ```
 
-Note, creating a reduced version uses another selection operator available with tibbles - the tidyverse's version of an R data frame. The basic format is `dataset[rows, columns]`. Here `starwars[, 1:11]` leaves rows blank, which effectively means select all rows, and columns has `1:11`, which means select columns 1 to 11. So, the code returns all rows but only the first 11 columns.
+Note, creating a reduced version uses another **selection operator** available with the tidyverse's improved version of base R's data frames. The basic format is `data_frame[rows, columns]`. Here `starwars[, 1:11]` leaves the `rows` argument blank, which effectively means select all rows, and the `columns` argument has `1:11`, which effectively means select columns 1 to 11. So, the code returns a copy of the data frame with all rows but only the first 11 columns.
 
 What do you observe this time?
 
@@ -267,7 +267,7 @@ levels(starwars2$species)
 
 The glimpse result now is telling us that `species` is a `<fct>`, as expected. Furthermore, the `levels()` function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.
 
-Hopefully, these examples will help you to identify the main vector types and, more importantly, an initial understanding of how to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values without the labels, for example, using '0' for male and '1' for female. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values for the numeric code and their respective meaning. It's important to read the code book/documentation of every data set as the conventions and meanings can vary. For example, some surveys now put gender in alphabetical order, with 0 for female and 1 for male.
+Hopefully, these examples will help you to identify the main vector types and, more importantly, an initial understanding of how to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values without the labels, for example, using '0' for male and '1' for female - and as part of the initial process turning these variables into factors you will also need to provide a list mapping these numbers to the labels to use. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values for the numeric code and their respective meaning. It's important to read the code book/documentation of every data set rather than assuming what the numbers stand for as the conventions and meanings can vary. For example, some surveys now put gender in alphabetical order, with 0 for female and 1 for male.
 
 ## Pipes
 
@@ -277,7 +277,6 @@ Hopefully, these examples will help you to identify the main vector types and, m
 
 A useful operator is the pipe `|>`. This is the base R version of the pipe. This operator is what is known in programming as `syntactic sugar`. It is syntax which helps make code easier to read and write without changing any functionality. The pipe operator passes the result of one function as the first argument to the next (left to right).
 
-
 Run the 'pipe-1' code chunk and check its results.
 
 ```{r eval = FALSE}
@@ -285,9 +284,22 @@ Run the 'pipe-1' code chunk and check its results.
 1 |> sum(1) |> sum(5)
 ```
 
-The `sum()` function adds the value of two numbers in format `sum(x, y)`. Using a pipe for `1 |> sum(1)` is the equivalent to `sum(1, 1)`. So for line one it is equivalent of 'take 1, then add it with 1' and line 2 'take 1, then add it with 1, then add it with 5'.
+The `sum()` function adds the value of two numbers in format `sum(x, y)`. Using a pipe for `1 |> sum(1)` is the equivalent to `sum(1, 1)`. If we were to write `sum(x, y)` with a pipe, it would be `x |> sum(y)`. So, in our exaple code chunk, the pipe let's us 'unpack' the first argument in each function, whereby line 1 reads equivalent to saying 'take 1, then add it with 1' and line 2 'take 1, then add it with 1, then add it with 5'.
 
-This may seem as if it is overcomplicating things, but as the code becomes more complex the value of the pipe operator becomes clearer. The second line, `1 |> sum(1) |> sum(5)` would be written as `sum(sum(1,1), 5)` without pipes. Going left to right, `1 |> sum(1)` would be `sum(1,1)` and then `sum(1,1) |> sum(5)` would be `sum(sum(1,1), 5)`. Pipes then help us avoid `function(function(function(...), ...) ...)` monstrosities in our code.
+This may seem as if it is overcomplicating things, but as the code becomes more complex the value of the pipe operator becomes clearer. The second line, `1 |> sum(1) |> sum(5)` would be written as `sum(sum(1,1), 5)` without pipes. Going left to right, `1 |> sum(1)` would be `sum(1,1)` and then `sum(1,1) |> sum(5)` would be `sum(sum(1,1), 5)`. Pipes then help us avoid `foo(foo(foo(...), ...) ...)` monstrosities in our code. (In coding examples, you will see often see words like `foo`, `bar` and `baz` used as placeholder names when explaining how coding syntax works rather than using real functions and other objects.)
+
+As we will cover in examples in the next section below, plenty of functions take more than two arguments. Let's imagine we had a data frame `df` and we were updating it by using - in order - `foo`, `bar`, and `baz` functions that each take arguments x, y, and z. Without pipes our code would be `df <- baz(bar(foo(df, y, z), y, z) y, z)`. This is a tangled mess, we want the result from `foo` passed to `bar` and its result in turn passed to `baz`. This ordering though gets visually reversed when nesting each function within the other - we have to read it inside out for it to make sense.
+
+With pipes, it becomes:
+
+```{r eval = FALSE}
+df < - df |>
+  foo(y, z) |>
+  bar(y, z) |>
+  baz(y, z)
+```
+
+Now it is easy to read and the ordering of the functions matches how we could verbally describe what the code does, "we are updating a data frame called `df` by running the functions `foo`, `bar` and `baz` on it in turn". In the code chunk above, we make use of another wonderful thing about pipes - it let's us break complex code over multiple lines. To do so you add the pipe at the end of the line after a function, then start the new line with an indent, usually 2 spaces by default.
 
 Note, in the readings and other materials, you may come across another `%>%` pipe. This pipe comes from the `tidyverse`. The tidyverse pipe came before the base R one, where due to its popularity an equivalent was added to base R. Whilst you will still see it in use, and it remains supported in the tidyverse, the tidyverse itself recommends people start using the base R `|>` pipe. To see that they work the same, run the 'pipe-2' chunk.
 
@@ -365,13 +377,13 @@ As you can see, there are several variables included in the dataset, such as age
 
 ### Data wrangling
 
-Before coercing these variables, we will create a smaller subset selecting only the variables that we are interested in. To do so, we can use the `select()` function. The `select()` function takes the name of the data first and then the name of the variables we want to keep (no quotation marks needed). We will select a few variables and assign the result to a new object called `police_2`.
+Before coercing these variables, we will create a smaller subset selecting only the variables that we are interested in. To do so, we can use the `select()` function. The `select()` function takes the name of the data first and then the name of the variables we want to keep (no quotation marks needed). Remember with pipes we can replace `select(data_frame, variable1, variable2, ...)` with `data_frame |> select(variable1, variable2, ...` making it easer to read as "from our data frame select the following variables". Let's create a code chunk to select a few variables and assign the result to a new object called `police_2`.
 
 ```{r}
-police_2 <- select(police, age, gender, raceethnicity, lawenforcementagency, armed)
+police_2 <- police |> select(age, gender, raceethnicity, lawenforcementagency, armed)
 ```
 
-Note, `select()` is another function from the `dplyr` tidyverse package. Many tidyverse functions that take a data frame as the first argument, `select(first_argument, ...)`, will assume all variables listed after are from that data frame. Within the function, this then let's us type `age` and `gender` rather than `police$age` and `police$gender`.
+Note, `select()` is another function from the `dplyr` tidyverse package. Many tidyverse functions that take a data frame as the first argument, `foo(first_argument, ...)` or with pipe `first_argument |> foo(...)`, will assume all variables listed after are from that data frame. Within the function, this then let's us type `age` and `gender` rather than `police$age` and `police$gender`. Notice how with pipes this results in everything listed within the function just being the variables we are interested in.
 
 If you look again to the 'Environment' tab, there is now a second data set with the same number of observations but only 5 variables. Create a new code chunk, then add and run the following code to glimpse its contents.
 
@@ -399,7 +411,7 @@ Age is not known for some cases. Thus, it is recorded as 'Unknown' in the datase
 We can continue coercing `raceethnicity` and `gender` from character to a factor by adding the following lines to our chunk:
 
 ```{r}
-# Coerce factor
+# Coerce factors
 police_2 <- police_2 |> mutate(raceethnicity = factor(raceethnicity))
 police_2 <- police_2 |> mutate(gender = factor(gender))
 ```
@@ -463,11 +475,26 @@ To make it easier to compare, the results from this code are included here as we
 
 <!-- If we look at the summary again, the classifications of `raceethnicity` are reduced in the new variable `raceethnicity_recoded`. The categories 'Native American' and 'Asian/Pacific Islander' were summed in only one category called `Other`. -->
 
+As a final side note - and a wee preview of code you will see in later labs and in R textbooks - all the steps we did above for creating and modifying `police_2` can also be written in a single code chunk. In this version, we do all the same steps, we create `police_2` by first selecting variables from `police`, then coercing the types of some variables, and finally filtering the data.
+
+```{r eval = FALSE}
+police_2 <- police |>
+  select(age, gender, raceethnicity, lawenforcementagency, armed) |>
+  mutate(
+    age = as.numeric(age),
+    raceethnicity = factor(raceethnicity),
+    gender = factor(gender)
+  ) |>
+  filter(raceethnicity != "Unknown")
+```
+
+Notice here that we can also pass multiple variables to `mutate()` by separating each with a commma. R also lets us split anything after a bracket or comma onto a new line. With long functions, it is common to start a new line after the `(`, then add each element that is separated by a comma on a line of its own, then add a final line with the closing `)`. Notice as well that the elements are indented as further two spaces and the closing `)` is indented the same as `mutate(`.
+
 ## Activities
 
 Discuss the following questions with your neighbour or tutor:
 
-1. What is the main purpose of the functions `select()` and `filter`?
+1. What is the main purpose of the functions `select()` and `filter()`?
 2. What does *coerce* mean in the context of `R`? and Why do we need to coerce some variables?
 3. What is the `mutate()` function useful for?
 
@@ -475,14 +502,16 @@ Using the `police_2` dataset:
 
 1. Filter how many observations are ‘White’ in `raceethnicity`? How may rows/observations are left?
 2. How many ‘Hispanic/Latino’ are there in the dataset?
-3. Using the example of Figure 2.3, could you filter how many were killed that were (a) 'Black' and (b) killed by firearm ('firearm')?
-4. What about 'White' and 'firearm'?
+3. Using the example of Figure 2.3, could you filter how many people were killed that were (a) 'Black' and (b) possessed a firearm on them at the time ('Firearm')?
+4. What about 'White' and 'Firearm'?
 
 Finally, 'Knit' your R Markdown file.
 
 Extra activities:
 
-1. Why did you have to use quotes in the following: `filter(police, raceethnicity==”White” & raceethnicity==”firearm”)`?
-2. What do you have to repeat the variable `raceethnicity` twice?
+1. Why did you have to use quotes in the following: `police |> filter(raceethnicity=="White" & armed=="Firearm")`?
+2. What do you have to use `==` rather than `=`?
+
+Note, `police |> filter(raceethnicity=="White" & armed=="Firearm")` could also be written as `police |> filter(raceethnicity=="White", armed=="Firearm")`. However, using `&` makes it clearer that we want to keep rows that meet **both** conditions. If we wanted to filter for rows where **either** condition is true, we would use `|` (which is often used as an operator for 'or' in programing languages) instead of `&`.
 
 This is the end of Lab 2. Again, the changes in your R Markdown file should be saved automatically in RStudio. However, make sure this is the case as covered in Lab 1. After this, you can close the tab in your web browser. Hope you had fun!
