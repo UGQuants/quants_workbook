@@ -119,32 +119,7 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script><link rel="stylesheet" href="style.css">
+}</script><link rel="stylesheet" href="style.css">
 </head>
 <body class="nav-sidebar floating nav-fixed">
 
@@ -678,7 +653,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">police</span>, <span class="va">age</span>, <span class="va">gender</span>, <span class="va">raceethnicity</span>, <span class="va">lawenforcementagency</span>, <span class="va">armed</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> is another function from the <code>dplyr</code> tidyverse package. Many tidyverse functions that take a data frame as the first argument, <code>select(first_argument, ...)``, will assume all variables listed after are from that data frame. Within the function, this then let's us type</code>age<code>and</code>gender<code>rather than</code>police<span class="math inline">\(age` and `police\)</span>gender`.</p>
+<p>Note, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> is another function from the <code>dplyr</code> tidyverse package. Many tidyverse functions that take a data frame as the first argument, <code>select(first_argument, ...)</code>, will assume all variables listed after are from that data frame. Within the function, this then let’s us type <code>age</code> and <code>gender</code> rather than <code>police$age</code> and <code>police$gender</code>.</p>
 <p>If you look again to the ‘Environment’ tab, there is now a second data set with the same number of observations but only 5 variables. Create a new code chunk, then add and run the following code to glimpse its contents.</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
