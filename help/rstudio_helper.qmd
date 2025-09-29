@@ -8,7 +8,7 @@ title: "RStudio Helper GPT"
 
 RStudio Helper is designed to address common issues when using GenAI to learn quantitative data analysis with R. 
 
-You can access it as a ChatGPT Custom GPT and Copilot Saved Prompt:
+You can access it as a Copilot Saved Prompt and a ChatGPT Custom GPT:
 
 [Link to Copilot Saved Prompt](https://m365.cloud.microsoft/chat/entity1-d870f6cd-4aa5-4d42-9626-ab690c041429/eyJpZCI6IlZYTmxjbFl4ZkdoMGRIQnpPaTh2YzNWaWMzUnlZWFJsTFdsdWRDNXZabVpwWTJVdVkyOXRMM3hQU1VRNk5UTTNORGs1TldNdE1EbGxZaTAwTmpSaExXRTJaVGd0T0Roa09UYzRabUppTWpaaGZEbGlPR016WW1KakxXSXpORFV0TkdFNFlTMDROV1F5TFRVME5XTmxNalZoWVRNNE5ud3lNREkxTFRBNUxUSXpWREl3T2pVNU9qRTFMakkwTVRneU4xbyUzZCIsInNjZW5hcmlvIjoic2hhcmVMaW5rVmlhUHJvbXB0TGlicmFyeSIsInByb3BlcnRpZXMiOnsicHJvbXB0U291cmNlIjoidXNlciIsImNsaWNrVGltZXN0YW1wIjoiMjAyNS0wOS0yM1QyMTowMDowOC42NTFaIn0sImNoYXRUeXBlIjoid2ViIiwidmVyc2lvbiI6MS4xfQ)
 
@@ -21,7 +21,9 @@ On this page, you will also find:
 - [Example prompts to try with it](rstudio_helper.qmd#conversation-starters)
 - [A breakdown and explanation of the instructions](rstudio_helper.qmd#breakdown)
 
-To be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to make it easier to get more useful responses from GenAI. The instructions with explanations are provided on this page, so you can see how to achieve similar with your own prompts.
+To be clear, your GenAI use on this course is not limited to RStudio Helper. Instead, it is made available to help you get more useful responses from GenAI. The instructions with explanations are provided on this page, so you can see how to achieve similar when writing your own prompts. Overtime as you build your quants skills and awareness of common issues in GenAI responses, you will want to experiment with writing prompts tailored to your needs and use-cases.
+
+Whilst this GPT is also set up with instructions to mitigate GenAI's predilection towards undermining learning and disregard for academic integrity, due to the inherent limitations with GenAI care still needs to be taken when using it. Please ensure to read the information about permitted [GenAI use for the assessments](../assessments/assessments.qmd#genai-and-the-assessments) and the SLD's [Quick Guidance for Students](https://www.gla.ac.uk/myglasgow/sld/ai/students/) page.
 
 ### Using Copilot to Create Saved Prompts
 
@@ -40,6 +42,8 @@ A key issue with GenAI models - such as ChatGPT, Gemini, and Claude - is that by
 GenAI is also nowhere near as 'intelligent' as AI companies and online AI boosters claim. This is especially the case when using GenAI for R. GenAI models can generate over-convulted code, sometimes providing 10+ lines of code for something that can be done in 1-4 lines instead. Without including additional relevant information, responses tend towards being abstract and assuming a reasonable degree of prior knowledge. This can result in misleading and confusing responses as key information useful for beginners gets left out. Responses can also include fabricated data, whilst claiming the code it is spitting out is based on the dataset you provided it. 
 
 ## Instructions
+
+Below is a copy of the instructions used to create RStudio Helper GPT. If you hover your mouse over the gray box, you'll see a clipboard appear in the top-right of it, that you can clip to copy the instructions in full to the clipboard.
 
 ::: instructions
 ```markdown
@@ -112,7 +116,7 @@ When nesting R code chunks inside code blocks use four backticks for the code bl
 
 ## Conversation Starters
 
-Some examples prompts to try with RStudio Helper:
+Some example prompts to try with RStudio Helper:
 
 - What are the benefits of the tidyverse compared to base R?
 - What are the steps to debug and fix an object not found error?
@@ -129,7 +133,7 @@ Some examples prompts to try with RStudio Helper:
 
 ## Breakdown
 
-Below is bullet points explaining content included in each main section of the instructions.
+Below are bullet points explaining the reason behind what was included in each main section of the instructions.
 
 **Role and General Interaction**:
 
@@ -146,7 +150,7 @@ You will see aspects from this initial section repeated across others. With shor
 
 GenAI models do not care about academic integrity and are incredibly bad at providing responses that support learning.
 
-- Rule one re-emphasises the importance of acdemic integrity with clarification of what that means for its responses.
+- Rule one re-emphasises the importance of academic integrity with clarification of what that means for its responses.
 - Rule two encourages it to provide better responses that supports learning. Without this, prompts mentioning a variable for annual income would receive a response using a monthly income variable. This ensures responses still use comparable variables, just not ones that are overly similar.
 - Rule three further clarifies what not doing work for the user involves. Again without this, and despite all the rest of the instructions, GenAI models will too often default to spitting out its own interpretation rather than explaining how to interpret.
 - Rule four addresses the issue of GenAI being over-eager to make assumptions. When information is unclear, GenAI frequently makes 'best guess' assumptions rather than clarifying first. It will then happily spit out information based on wrong assumptions, and will a lot of time not even mention the assumptions made in the response.

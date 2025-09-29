@@ -7,7 +7,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ## Welcome back!
 
-In the previous lab, we set up an RStudio session in Posit Cloud and we got familiar with the RStudio environment and the purpose and contents of RStudio's panes. In this Lab we will learn about R packages, how to install them and load them. Also, we will use different types of data. You will have the chance to practice with additional `R` operators. Lastly, we will load a real-world data set and put in practice your new skills.
+In the previous lab, we set up an RStudio session in Posit Cloud and we got familiar with the RStudio environment and the purpose and contents of RStudio's panes. In this Lab we will learn about R packages, how to install them and load them. We will also use different types of data. You will have the chance to practice with additional `R` operators. Lastly, we will load a real-world data set and put in practice your new skills.
 
 ::: {.callout-note title="Overview"}
 By the end of this lab you will know how to:
@@ -21,11 +21,11 @@ By the end of this lab you will know how to:
 
 ## R Packages
 
-As mentioned in our last lab, `R` [@R-base] is a collaborative project. This means that `R` users are developing, maintaining, and extending the functionalities constantly. When you set up `R` and RStudio for the first time, as we did last week, it comes only with the 'basic' functionalities by default. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called _**packages**_.
+As mentioned in our last lab, `R` [@R-base] is a collaborative project. This means that `R` users are developing, maintaining, and extending the functionalities constantly. When you set up `R` and RStudio for the first time, as we did last week, it comes only with the 'basic' functionalities by default, sometimes referred to as 'base R'. However, there are literally thousands of extensions that are developed by other users. In R, these non-default extensions are called _**packages**_.
 
-Most of the times, we use packages because they simplify our work in `R` - such as by replacing what would be dozens of lines of complex code in base R with a simple one-line function - or they allow us to extend beyond the capabilites of base R.
+Most of the time, we use packages because they simplify our work in `R` - such as by replacing what would take dozens of lines of complex code in base R with a simple one-line function - or they allow us to extend beyond the capabilities of base R.
 
-Let's put hands-on to install and load some useful packages. We will start with one of R's most famous packages, and one we will use a lot across the labs, the `tidyverse` [@R-tidyverse] package.^[<https://www.tidyverse.org/>] First, sign-in to Posit Cloud, create/open your Labs-1-2 project, and then open the Lab-2 R Markdown file.
+Let's install and load some useful packages. We will start with one of R's most famous packages, and one we will use across the labs, the `tidyverse` [@R-tidyverse] package.^[<https://www.tidyverse.org/>] First, sign-in to Posit Cloud, create/open your Labs-1-2 project, and then open the Lab-2 R Markdown file.
 
 ### Open Your Posit Cloud Project
 
@@ -44,31 +44,40 @@ For those who already joined and created a project in Lab 1, log into [Posit Clo
 
 ### Open the Lab 2 R Markdown file
 
-You will find your project in same state as left it last week. To open a tab for the Lab 2 R Markdown file, click to open 'Lab-02.Rmd' in the "Files" tab in the bottom-right pane.
+You will find your project in the same state as you left it last week. To open a tab for the Lab 2 R Markdown file, click to open 'Lab-02.Rmd' in the "Files" tab in the bottom-right pane.
 
 ![Click 'Lab-02.Rmd' in the "Files" tab in the bottom-right pane](./images/rstudio_lab2_rmd.png)
 
-Within Lab 1, you may have noticed the `field: value` lines between two `---`. This is called `YAML`. The R Markdown file for this lab has a couple more lines added this time:
+Within Lab 1, you may have noticed the `key: value` lines between two `---`. This is called `YAML`. YAML is a simple human-readable markup language for data serialization. It consists of what are referred to as `key-value pairs`. Within R Markdown, a YAML header can be included at the very top and must be `fenced` with the three hyphens, `---`, at start and end.
+
+The R Markdown file for this lab has a couple more lines in the YAML header this time:
 
 ![YAML block at top of Lab-02.Rmd](./images/rstudio_lab2_yaml.png)
 
-`title` and `author` are self-explanatory, but make sure to replace `[your name here]` with your name, making sure to keep the quotation marks around it. Without the quotation marks, you will receive an error message when trying to knit.
+`title` and `author` are self-explanatory, but make sure to replace `[your name here]` with your name, making sure to keep the quotation marks around it. Without the quotation marks, you will receive an error message when trying to knit. (Note: Don't knit your file just yet anyway as it will result in an error message until you complete the sections below.)
 
-`date` can be any text. However, `format(Sys.time(), '%d/%m/%y')` is a nice single line of R code that when run when the file is being knitted gets the current date and formats it as dd/mm/yyyy, such as 12/09/2025. This then effectively makes the `date` field "date this file was knitted" and saves you having to manually update it each time. (Don't knit your file just yet though as it will result in an error message until you complete the sections below!)
+`date` can be any text. However, `format(Sys.time(), '%d/%m/%y')` is a nice single line of R code that runs when the file is knitted to retrieve the current date and formats it as dd/mm/yyyy, such as 12/09/2025. This then effectively makes the `date` field "date this file was knitted" and saves you having to manually update it each time.
 
-`output` specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using 'html_document' as it is easiest to work with across the packages we are using.
+`output` specifies what file format(s) to output to when knitting the R Markdown file. Across the labs and assessments we are using 'html_document' as it is easiest to work with across the packages we are using in the labs and assessments.
 
-After the YAML block, there is a 'setup' code chunk setting `knitr` options:
+After the YAML header, there is a 'setup' code chunk setting `knitr` options:
 
 ![r setup code chunk with knitr options to set message and warmings to FALSE](./images/rstudio_lab2_setupchunk.png)\
 
 This may look intimidating, but it is relatively simple when parsed bit by bit:
 
 - `knitr` is the package used to knit R Markdown files
-- `knitr::opts_chunk` stores default settings applied to all code chunks
-- `knitr::opts_chunk$set(...)` runs the `set()` function on `knitr::opts_chunk` to change the defaults
+- `knitr::opts_chunk` is an object that stores default settings applied to all code chunks
+- `knitr::opts_chunk$set(...)` runs the `set()` function to change the `knitr::opts_chunk` default settings
 
 So, what the code in the setup chunk does is set messages and warnings to "FALSE". This prevents any messages or warnings that get raised when running code chunks from also appearing in any knitted files. (Why we do this will become clear in a bit.)
+
+::: {.callout-caution title="R Operators"}
+
+- `::` is the **namespace operator** for accessing an object (such as a function or dataset) from a package, in the format `package::object`. If you load a package using the `library()` function, as we will do later, you can call objects from it directly as `object` without needing to include `package::` before it.
+- `$` is the **component operator** for accessing named elements within an object, in the format `object$component`. In data analysis it is often used to access a column (variable) from a data frame. For example, if a data frame named `df` has a column named `age`, you can access it with `df$age`.
+
+:::
 
 ### Into the Tidyverse
 
@@ -80,60 +89,125 @@ install.packages("tidyverse")
 
 2. Wait until you get the message 'The downloaded source packages are in ...'. The install process can take a couple of minutes to finish.
 
-![Console once tidyverse package finished installing](./images/rstudio_lab2_tidyinstalled.png)
+![Console once tidyverse package finished installing](./images/rstudio_lab2_tidyinstalled.png)/
 
-3. Once the package is installed, you need to load it using the `library()` function. Please, copy and paste the following line, and run it:
+3. Once the package is installed, you next need to load it using the `library()` function. In the `preamble` code chunk already setup in the R Markdown file, add the following in the line under the `# Load packages` comment:
 
-```{r eval = TRUE}
+```{r}
 library(tidyverse)
 ```
 
+4. Now run the code chunk. Either by pressing `Ctrl+Shift+Enter` with your text cursor within the code chunk, or by clicking the green triangle in the top-right of the code chunk.
+
+![Run code chunk to load the tidyverse package](./images/rstudio_lab2_library.png)\
+
 And that's it, `tidyverse` is ready to use in your current session!
 
-What you will also notice is the message raised in the Console when loading the tidyverse. This is one of the reasons why we have the have the setup chunk to prevent messages and warnings from being included in knitted files. If we knitted the Lab-02.Rmd file without the setup chunk, the message on loading the tidyverse would be added into the knitted HTML file after the preamble chunk. We will cover other options you can set to customise what appears in your knitted files in later weeks.
+Note, we run `install.packages("package_name")` in the Console as we only need to install the package once for each Posit Cloud project. We load packages with `library(package_name)` in a code chunk at the top of the R Markdown file as packages need to be loaded for every R session. If we ran `library(...)` in the Console instead of adding it to a code chunk, our packages would not be available in the fresh R session that is created when knitting and would result in an error message.
 
-There are couple of things you should know. First, the packages need to be installed only per project in RStudio Cloud (and only once if you are working in RStudio Desktop version). However, packages must be loaded using the `library()` function every time you restart an R session. 
+Another thing to note is that when you install a package, you need to use quotation marks, `install.packages("package_name")`, whereas when loading a package you just use the package name without quotation marks, `library(package_name)`.
 
-Another thing to notice is that when you install a package you need to use quotation marks, whereas in `library()` you only need to write the plain package name within brackets. Usually, you will load the packages at the beginning of your script.
+What you may also notice is the message raised in the Console when loading the tidyverse. (If you already ran the `setup` code chunk that set messages and warnings to `FALSE` you won't see any text). This is one of the reasons why we have the setup chunk to exclude messages and warnings in knitted files. If we knitted the Lab-02.Rmd file without the setup chunk, the text on loading the tidyverse would also appear in the knitted HTML file after the preamble chunk. We will cover other options you can set to customise what appears in your knitted files in later weeks.
 
-::: {.callout-tip title="New Term"}
+![Text shown in knitted file if warnings were not set to FALSE](./images/rstudio_lab2_messages.png)\
+
+This text often causes users new to R to think an error has occurred. However, it is merely a 'message' about conflicts that can be ignored.
+
+The tidyverse is a `meta package` that bundles a collection of packages together, such as `dplyr` and `ggplot2`. These packages share a common design philosophy and are often used together in data analysis. Loading the tidyverse meta package, `library(tidyverse)`, saves us from having to load each of these packages individually with `library(dplyr)`, `library(ggplot2)`, and so on.
+
+What the message is showing then is that each of the core tidyverse packages were loaded OK, and there are conflicts for functions provided by the `dplyr` package. Two of its functions, `filter()` and `lag()`, share the same name as functions in the base R `stats` package. After loading the tidyverse, any code calling `filter()` will use the `dplyr` function with that name rather than the `stats` ones. (This applies only to `filter()` directly, the stats function can still be accessed when the tidyverse is loaded by using the `::` namespace operator, `stats::filter()`.)
+
+::: {.callout-tip title="New Terms"}
 - `tidyverse`: a collection of R packages that share a consistent design philosophy and work together for importing, wrangling, and visualising data.
 - `YAML`: a human-readable data serialisation language, often used for configuration/settings; in R Markdown the YAML front matter between `---` sets document metadata and other options.
 :::
 
+::: {.callout-caution title="`library()` function"}
+
+Loads an installed package so its functions are available in the R session.
+
+**Usage:** `library(package_name)`
+
+**Notes:**
+
+- A package needs to be installed first using `install.packages("package_name")` in the Console.
+- It is best practice to load packages in a code chunk at the top of R Markdown files.
+
+:::
+
 ## Types of variables
 
-`R` can handle many classes of data. It is crucial that you can distinguish the main ones. Broadly speaking there are two types of variables,
+In quantitative analysis, we often distinguish two main types of variables:
 
-1. **categorical** and; 
-2. **numeric** (formally know as interval or ratio). 
+1. **Numeric variables** have values that describe measurable or countable quantities.
+    - **Continuous variables** have values that can fall anywhere within a range, such as time and speed.
+    - **Discrete variables** have values that are whole numbers that count something, such as number of children in a household.
+2. **Categorical variables** have values that describe distinct, mutually exclusive categories.
+    - **Nominal variables** have categories without any order, such as country, name, political party, and gender.
+    - **Ordinal variables** have categories with a meaningful order, such as education level or level of satisfaction.
 
-Categorical variables are distinctive because they are limited in the number of categories it can take, e.g., country, name, political party, or gender. Ordinal data is a *sub-type* of the categorical, and it is used when the categories can be ranked and their order is meaningful, e.g., education level or level of satisfaction. Numeric values can be continuous (these are usually measured and can take infinite values, e.g. speed or time).^[For more details, please refer to the DataCamp module [Introduction to Data in R](https://learn.datacamp.com/courses/introduction-to-data-in-r).]
+In R, the most basic data building blocks are **atomic vectors**. There are six atomic *types*: `logical`, `integer`, `double`, `character`, `complex`, and `raw`.
 
-In `R`, the basic types of data are known as 'atomic vectors' and there are 6 of them (logical, integer, double, character, complex and raw). In the social sciences, we often use the following: `numeric`, `factor` and `character`. Numeric vectors are used to represent continuous numerical data.^[Notice that `numeric` vectors can be represented as `integer`or `double` in `R`, their difference is of little relevance for now.] On the other hand, factor vectors are used to represent categorical and ordinal data.
+In relation to our two main types of variables, we use the following vectors:
+
+- **Numeric vectors** (`integer` or `double`) to store continuous and discrete values.
+- **Factor vectors** (a `class` built on `integer` codes + `character` labels) to store nominal and ordinal categorical values.
+
+A numeric vector is usually stored as a `double` internally by default. The difference between `integer` and `double` is based on how they are computationally stored. Base R and most R packages handle the difference behind the scenes, so the difference in how they are stored does not matter to us.
+
+A factor is a class combining `integer` codes and a `levels` attribute containing the human-readable `character` labels for those codes. Each stored integer points to a character label in `levels`, so `1` might correspond to `"Conservative"`, `2` might correspond to `"Labour"`, and so on. For ordered factors, used for ordinal variables, R also records an explicit order of the levels to enable comparisons and sorting by that order.
+
+Two other vectors we commonly use are:
+
+- **Character vectors** (`character`) to store text, such as unique respondent IDs ("A102", "C006") and free-text answers.
+- **Logical vectors** (`logical`) to store boolean `TRUE` / `FALSE` values, useful for filtering and conditions, such as `age > 30`.
 
 In R, there are couple of functions that will help us to identify the type of data. First, we have `glimpse()`. This prints some of the main characteristics of a data set, namely its overall dimension, name of each variable (column), the first values for each variable, and the type of the variable. Second we have the function `class()`, that will help us to determine the overall class(type) of on `R` object.
 
-### Activity:
+::: {.callout-caution title="`glimpse()`"}
 
-We are now going to use some datasets that are pre-loaded in the `R` session by default. Please go to your 'Lab_2' project in RStudio Cloud and do the following:
+From the `dplyr` package, and loaded with the `tidyverse` package. Provides a 'glimpse' of an object.
 
-1. We will start with a classic dataset example in R called `iris`. This contains measurements of various flowers species (for more info type `?iris` in your console). Please go to your **console** and type the line below.
+**Usage**: `glimpse(x)`
 
-```{r eval=FALSE}
+**Arguments**:
+
+- `x` - The object (usually a data frame / tibble) to glimpse.
+
+**Returns**: Prints to the Console. For data frames / tibbles, it shows counts for rows and columns and a compact, transposed preview showing column names, types, and a few example values.
+
+**Notes**:
+
+- A tibble is just a tidyverse version of base R's data frames that has some nice extras.
+- Shows types such as `<int>` (integer), `<dbl>` (double), `<chr>` (character), `<lgl>` (logical), `<fct>` (factor).
+
+:::
+
+### Glimpsing Datasets
+
+We are now going to use some datasets that are available to us in the `R` session. `R` comes with some example datasets out of the box, such as `iris` with 150 observations of iris flowers. Some R packages also include additional example datasets, such as `starwars` - included in the `dplyr` tidyverse package - with info about 87 Star Wars characters. Unlike other datasets that we have to manually load, and will cover in later section, we can access these in any R session out the box or after loading the relevant package that provides them.
+
+Please go to the 'Types of variables' section in your `Lab-02.Rmd` file. You will see a few code chunks already setup for you:
+
+1. We will start with a classic dataset example in R called `iris`. (For more info about the dataset, you can type `?iris` or `help(iris)` in the Console). Please go to the "iris-glimpse" code chunk in your R Markdown file and run it.
+
+```{r}
 glimpse(iris)
 ```
 
-2. What do you observe from the output?... First, it tells you the number of rows and the columns on the top. Later, it lists the name of each variable. Additionally, it tells you the type of the variable between these symbols `< >`. The first five variables in this dataset are of type `<dbl>` which is a type of numeric variable. The last, `Species`, is a factor `<fct>`. In sum, there is information of the species and four types of continuous measures associated to each flower in this dataset.
-3. Now you know that each flower belongs to a species, but what are the specific categories in this data set? To find out, type the following in your console.
+What do you observe from the output?
+
+First, it tells you the number of rows and the columns on the top. After, it lists the name of each variable. Additionally, it tells you the type of the variable between these symbols `< >`. The first five variables in this dataset are of type `<dbl>` (double) which as covered above is a type of numeric variable. The last, `Species`, is a factor `<fct>`. So, for each of the 150 iris flowers observed, there is information on its species and four types of continuous measures. Though, as glimpse only provides a preview, we only see the values for the first few observations.
+
+2. Now you know that each iris flower belongs to a species, but what are the specific categories in this data set? To find out, add the following in the 'iris-levels' code chunk and then run it.
 
 ```{r eval = FALSE}
 levels(iris$Species)
 ```
 
-4. As you can see, there are three categories, which are three types of flower species. In `R` the categories in factor vectors are called _levels_.
+(If you receive 'NULL' when running the chunk, it because you have **s**pecies and not **S**pecies.)
 
-Note the syntax above. Inside the function, we used the name of the data set followed by the dollar sign (\$), which is needed to access the specific column/variable `Species`.
+As you can see, there are three categories, or `levels` as they are called in R factor variables, which are three types of iris flower species. Notice here we used the `$` component operator mentioned earlier. Here it basically means, from the iris data frame select the Species column/variable. `levels()` is then a nice little utility function that shows all the levels for a column given to it as an argument.
 
 <!-- Let's move to a different data set. This time we will use another classic example called `diamonds`. This data set contains some characteristics of more than 50K pieces of diamonds (to get more information type `?diamonds` in your console). -->
 
@@ -150,18 +224,22 @@ Note the syntax above. Inside the function, we used the name of the data set fol
 <!-- table(diamonds$cut) -->
 <!-- ``` -->
 
-Now, let's get serious and explore Star Wars. Yes, the famous film series! 
+Now, let's get serious and explore Star Wars.
 
-The `starwars` data set from the `dplyr` package contains information about the characters, including height, hair colour, and sex (to get more information type `?starwars` in your console). At this time we will use a reduced version of the full data set. Please complete the following activities from your `R` script (pane 1).
+The `starwars` data set from the `dplyr` package contains information about the characters, including height, hair colour, and sex. (Again, to get more information run `?starwars` or `help(starwars)` in the Console). For the purpose of keeping things relatively simple to focus on variable types, we will use a reduced version of the full data set.
 
-1. First, we will run the next couple of lines to reduce the data set, and then we will glimpse the Star Wars characters:
+1. First, run the 'starwars-glimpse' code chunk to create a reduced version of the data set named `starwars2` and then glimpse the Star Wars characters in that reduced data set:
 
 ```{r eval=FALSE}
 starwars2 <- starwars[, 1:11]
 glimpse(starwars2)
 ```
 
-2. What do you observe this time? ... It seems that the data type is not consistent with their content. For example, the variables `species`, `gender`, and `hair_color` are of type `<chr>` (that is `character`), when according to what we just learnt they should be a factor. To transform them, we will use the function ´factor()´. This process is known as coercing a variable, that is when you change from one type to another.
+Note, creating a reduced version uses another selection operator available with tibbles - the tidyverse's version of an R data frame. The basic format is `dataset[rows, columns]`. Here `starwars[, 1:11]` leaves rows blank, which effectively means select all rows, and columns has `1:11`, which means select columns 1 to 11. So, the code returns all rows but only the first 11 columns.
+
+What do you observe this time?
+
+It seems that the data type is not consistent with their content. For example, the variables `species`, `gender`, and `hair_color` are of type `<chr>` (that is `character`), when according to what we covered above these should be factors. To transform them, we will use the function ´factor()´. This process is known as **coercing** a variable, that is when you change a variable from one type to another. `factor()` is another nice little helper function 
 
 <!-- 3. Look what happens if you do the this..It confirms that this variable is stored as a character: -->
 <!-- ```{r eval=FALSE} -->
@@ -172,13 +250,15 @@ glimpse(starwars2)
 <!-- factor(starwars2$species) %>% class() -->
 <!-- ``` -->
 
-6. Let's coerce the species variable from character to factor and assign the result to the same column in the dataset.
+2. Let's coerce the species variable from character to factor and assign the result to the same column in the dataset. Add the following to the 'starwars-factor' code chunk and run it.
 
 ```{r eval=FALSE}
 starwars2$species <- factor(starwars2$species)
 ```
 
-7. Let's check if the type of variable really changed by glimpsing the data and checking the levels of `species`. 
+Note, most objects in R that are used for data analysis are what is known as `immutable`, meaning any changes to them requires explicit assignment back to the object. If you run `factor(starwars2$species` on its own, it will return all the values for `species` and the levels created. However, for the species column in starwars2 to be updated with the results returned by `factor(starwars2$species)` we need the `starwars2$species <- ...` assignment as well. What the code is effectively saying is "replace the species column in starwars2 with the version returned by the factor function".
+
+3. Let's check if the type of variable really changed by glimpsing the data and checking the levels of `species`. Added the following to the 'starwars-glimpse2' chunk and run it.
 
 ```{r eval=FALSE}
 glimpse(starwars2)
@@ -187,28 +267,29 @@ levels(starwars2$species)
 
 The glimpse result now is telling us that `species` is a `<fct>`, as expected. Furthermore, the `levels()` function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.
 
-Hopefully, these examples will help you to identify the main vector types and, more importantly, to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values, for example, using '0' for males and '1' for females. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values of the numeric code and their respective meaning. It's important to read the code book/documentation of every data set as the conventions and meanings can vary.
+Hopefully, these examples will help you to identify the main vector types and, more importantly, an initial understanding of how to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values without the labels, for example, using '0' for male and '1' for female. Usually, large data sets are accompanied by extra information in a _code book_ or _documentation_ file, which specifies the values for the numeric code and their respective meaning. It's important to read the code book/documentation of every data set as the conventions and meanings can vary. For example, some surveys now put gender in alphabetical order, with 0 for female and 1 for male.
 
-## More operators and some essential symbols
+## Pipes
 
 <!-- More operators and symbols...Let's start with the hashtag `#`. Even though this is not an operator in R, this symbol allow us to include a comment or ´mute´ the whole line in your script. In fact, it is important that you add comments on your own code, so when you come back later to your code, you can have a quicker idea of what it is going in each line of the script. -->
 
 <!-- The dollar sign `$` is frequently used and it is part of base R. Actually, we used it a couple of times in the previous section. This is used to access or extract information from an object (e.g. a data set). For instance, earlier we selected only one variable from the `starwars` data set by writing `starwars2$species`. A practical tip to quickly access or find variables in a data set is to write the name of your object followed by the dollar sign only, like this: `starwars2$` (without specifying the variable to be accessed yet). After, type `tab` in your keyboard. Then, R will display a list with the variables available. Try it yourself! -->
 
-A useful operator is the pipe `|>`. This is the base R version of the pipe. This operator passes the result of one operation to the next.
+A useful operator is the pipe `|>`. This is the base R version of the pipe. This operator is what is known in programming as `syntactic sugar`. It is syntax which helps make code easier to read and write without changing any functionality. The pipe operator passes the result of one function as the first argument to the next (left to right).
 
-(There is also a `%>%` version you may see that is part of the `tidyverse` package. The tidyverse version came first, where due to its popularity an equivalent was added to base R. This operator passes the result of one operation to the next.)
 
-Check the results of the following operations in your **Console**:
+Run the 'pipe-1' code chunk and check its results.
 
 ```{r eval = FALSE}
 1 |> sum(1)
 1 |> sum(1) |> sum(5)
 ```
 
-Observe what happened...The result from the first line was 2. This is because this line can be read as: 'take 1, THEN sum 1'. Therefore, the result is 2. 
+The `sum()` function adds the value of two numbers in format `sum(x, y)`. Using a pipe for `1 |> sum(1)` is the equivalent to `sum(1, 1)`. So for line one it is equivalent of 'take 1, then add it with 1' and line 2 'take 1, then add it with 1, then add it with 5'.
 
-Similarly, the second line follows this process: 'take 1, THEN sum 1, take the result of this (which is '2') and THEN sum 5'. Therefore, the result is 7. This can sound a bit abstract at this point, but we will practice with some data in the next section.
+This may seem as if it is overcomplicating things, but as the code becomes more complex the value of the pipe operator becomes clearer. The second line, `1 |> sum(1) |> sum(5)` would be written as `sum(sum(1,1), 5)` without pipes. Going left to right, `1 |> sum(1)` would be `sum(1,1)` and then `sum(1,1) |> sum(5)` would be `sum(sum(1,1), 5)`. Pipes then help us avoid `function(function(function(...), ...) ...)` monstrosities in our code.
+
+Note, in the readings and other materials, you may come across another `%>%` pipe. This pipe comes from the `tidyverse`. The tidyverse pipe came before the base R one, where due to its popularity an equivalent was added to base R. Whilst you will still see it in use, and it remains supported in the tidyverse, the tidyverse itself recommends people start using the base R `|>` pipe. To see that they work the same, run the 'pipe-2' chunk.
 
 ## Black lives matter!
 
@@ -216,94 +297,160 @@ In this section we will work with data originally collected by The Guardian in 2
 
 ### Downloading and reading the data
 
-For the following excercices, please make sure that your are working in your `R` script.
+As with installing packages, we only want to download the data once. For this lab, we will download the data running code in the Console. Next week though, we will go through how to set up an R script for downloading data. This is a common strategy for sharing the code used to download data whilst still keeping it separate to your main R Markdown file.
 
-First, we will create a new folder in our project directory to store the data. To do it from `R`, run this line in your script (Don't worry if you get a warning. This appears because you already have a folder with this name):
+First, we will create a new folder in our project directory to store the data. To do it from the Console, run this line. (Don't worry if you get a warning. This appears because you already have a folder with this name):
 
 ```{r}
 dir.create("data")
 ```
 
-Note that in the 'Files' tab of Pane 4, there is a new folder called `data`.
+Note that in the 'Files' tab of Pane 4, the bottom-right pane, there is a new folder called `data`.
 
-Now, download the data from the GitHub repository using the function `download.file()`. This function takes two arguments separated by a comma: (1) the URL and (2) the destination (including the directory, file name, and file extension), as shown below. Also, since the file we downloaded is wrapped in a `.zip` file, we will need to unzip it using `unzip()`. Copy, paste in your script, the following lines: 
+![Files tab showing the newly created 'data' folder.](./images/rstudio_lab2_data-folder.png)\
 
-```{r eval = FALSE}
-download.file(
-  "https://projects.fivethirtyeight.com/data-webpage-data/datasets/police-killings.zip",
-  "data/police-killings.zip"
-)
-unzip("data/police-killings.zip", exdir = "data")
-```
+Now, download the data from the GitHub repository using the function `download.file()`. This function takes two arguments separated by a comma: (1) the URL and (2) the destination (including the directory, file name, and file extension), as shown below. 
 
-After following the previous steps, we are ready to read the data. As you can see in the 'File' tab, the data comes as a `.csv` file. Thus, we can use the `read_csv()` function included in the `tidyverse` package (make sure you the package is loaded in your session as explained in a [previous section](#installing-packages)). We will assign the data in an object called `police`.
+Copy and paste the following lines into the Console: 
 
 ```{r eval = FALSE}
-police <- read_csv("data/police-killings/police_killings.csv")
+download.file("https://github.com/fivethirtyeight/data/raw/master/police-killings/police_killings.csv", "data/police_killings.csv")
 ```
 
-### Examining the data
+(Note, to avoid any issues typing out the URL, you can click the clipboard icon in the top-right of the code above to copy the full contents to your clipboard.)
 
-If you look at your 'Environment' tab in pane 2, you will see there is a new object called `police`, which has 467 observations and 34 variables (or columns). To start exploring the contents, we will glimpse the `police` data as following:
+After that, we are ready to read the data. As the data comes as a `.csv` file, we can use the `read_csv()` function included in the `tidyverse` package (make sure you the package is loaded in your session as explained in a [previous section](#installing-packages)).
+
+We will assign the data in an object called `police`. Importantly, as with loading packages, when loading data it is good practice to do so at the top of the file. So, go all the way back up to the preamable code chunk and add the following line after the '# Read data' comment.
+
+```{r}
+police <- read_csv("data/police_killings.csv")
+```
+
+You should now have:
+
+![Preamble chunk with line added to read csv file.](./images/rstudio_lab2_preamble2.png)\
+
+Run the code chunk and you'll know it has run OK if can see 'police' in your Global Environment in the top-right pane. It will have 467 observations and 34 variables (columns).
+
+!['police' object listed in Global Environment.](./images/rstudio_lab2_env.png)\
+
+
+### Creating code chunks
+
+OK, before we look at this police data, a reminder about creating code chunks. Scroll back in your R Markdown file to "## Black lives matter!". For this section, you will need to create your own code chunks. 
+
+To create a new code chunk, you have four options:
+
+- Put your text cursor on a line in your R Markdown file and press `Ctrl+Alt+I` on the keyboard.
+- From the menu bar at the top of RStudio, you can select `Code > Insert Chunk`.
+- Manually type three backticks, on UK layout keyboards the key to the left of the 1 key, and then `{r}` (remember to add three backticks on a line below to close the code chunk as well).
+- Click on the icon that is a c in green square with a '+' in a circle in top-left corner, and then click on R to create an R code chunk.
+
+![Using the 'c' icon to create a new code chunk.](./images/rstudio_lab2_new-chunk.png)\
+
+By default, a new code chunk will be plain `{r}`, but you can edit this to give it an optional name:
+
+![Adding 'optional-name' to R code chunk.](./images/rstudio_lab2_optional-name.png)\
+
+### Glimpsing the data
+
+Back to the data. Let's first glimpse the `police` data. Create a code chunk then add and run the following:
 
 ```{r eval = FALSE}
 glimpse(police)
 ```
 
-As you can see, there are several variables included in the dataset, such as age, gender, law enforcement agency (`lawenforcementagency`), or whether the victim was armed (`armed`). You will see some of these variables are not in the appropriate type. For instance, some are categorical and should be type `<fct>` instead of `<chr>`. 
+As you can see, there are several variables included in the dataset, such as age, gender, law enforcement agency (`lawenforcementagency`), or whether the victim was armed (`armed`). You will see some of these variables are not in the appropriate type. For instance, some are categorical and should be a factor (`<fct>`) instead of character (`<chr>`). 
 
 ### Data wrangling
 
-Before coercing these variables, we will create a smaller subset selecting only the variables that we are interested in. To do so, we can use the `select()` function. The `select` function takes the name of the data first and then the name of the variables we want to keep (no quotation marks needed). We will select a few variables and assign the result to a new object called `police_2`.
+Before coercing these variables, we will create a smaller subset selecting only the variables that we are interested in. To do so, we can use the `select()` function. The `select()` function takes the name of the data first and then the name of the variables we want to keep (no quotation marks needed). We will select a few variables and assign the result to a new object called `police_2`.
 
-```{r eval = FALSE}
+```{r}
 police_2 <- select(police, age, gender, raceethnicity, lawenforcementagency, armed)
 ```
 
-If you look again to the 'Environment' tab, there is a second data set with the same number of observations but only 5 variables. You can glimpse this object to have a better idea of its contents.
+Note, `select()` is another function from the `dplyr` tidyverse package. Many tidyverse functions that take a data frame as the first argument, `select(first_argument, ...)`, will assume all variables listed after are from that data frame. Within the function, this then let's us type `age` and `gender` rather than `police$age` and `police$gender`.
+
+If you look again to the 'Environment' tab, there is now a second data set with the same number of observations but only 5 variables. Create a new code chunk, then add and run the following code to glimpse its contents.
 
 ```{r eval = FALSE}
 glimpse(police_2)
 ```
 
-Having a closer look at the reduced version, we can see that in fact all the variables are of type `<chr>`, including `age`.
+Having a closer look at the reduced version, we can see that in fact all the variables are of type `<chr>` (character), including `age`.
 
-Let's coerce the variables in to their correct type. We will start with age, from character to numeric:
+Let's coerce the variables in to their correct type. Start by creating a code chunk and naming it 'coerce-police_2' or similar.
 
-```{r eval = FALSE}
-police_2 <- police_2 %>% mutate(age = as.numeric(age))
+Then within the chunk, let's start with age, coercing it from character to numeric by adding the following lines:
+
+```{r}
+# Coerce numeric
+police_2 <- police_2 |> mutate(age = as.numeric(age))
 ```
 
-Age is not known for some cases. Thus, it is recorded as 'Unknown' in the dataset. Since this is not recognized as a numeric value in the coercion process, `R` automatically sets it as a missing value, `NA`. This is why it will give you a warning message.
+The `# Coerce numeric` line let's us add a comment to our code. Any R code after a `#` is treated as a comment and is not run as part of the code. This is useful for recording the 'why' behind the code, so future-you (and others) can quickly read and understand it.
 
-We can continue coercing `raceethnicity` and `gender` from character to a factor:
+(You may be wondering why outside the code chunks there are `#` but these become headers when knitting the document. The reason is within Markdown syntax `#` is used for Headings, and Heading level - `#` for Heading 1, `##` for Heading 2, and so on. Unfortunately, as R and Markdown developed separately before the creation of R Markdown bringing them together, they both had by that point decided to use `#` for different things. Whilst confusing at first, it all boils down to inside chunk = comments, outside chunk = header. The reason for `##` Heading 2 for all the headings in the R Markdown template for this lab is because Heading 1 is already used for the title - the `title: "..."` in the YAML header.)
 
-```{r eval = FALSE}
-police_2 <- police_2 %>% mutate(raceethnicity = factor(raceethnicity))
-police_2 <- police_2 %>% mutate(gender = factor(gender))
+Age is not known for some cases. Thus, it is recorded as 'Unknown' in the dataset. Since this is not recognized as a numeric value in the coercion process, `R` automatically sets it as a missing value, `NA`. This is why it will give you a warning message. (You will not see a warning message if you ran the knitr setup chunk that disabled warning messages.)
+
+We can continue coercing `raceethnicity` and `gender` from character to a factor by adding the following lines to our chunk:
+
+```{r}
+# Coerce factor
+police_2 <- police_2 |> mutate(raceethnicity = factor(raceethnicity))
+police_2 <- police_2 |> mutate(gender = factor(gender))
 ```
 
-Let's run a summary of your data. This shows the number of observations in each category or a summary of a numeric variable:
+Run the chunk and then create and run a new chunk with the following to glimpse the data frame again:
+
+```{r eval = FALSE}
+glimpse(police_2)
+```
+
+You should hopefully now see the three coerced variables now have the correct types:
+
+- `age` as numeric `<dbl>`
+-  `gender` and `raceethnicity` as factor `<fct>`
+
+Now, let's run a summary of your data. This shows the number of observations in each category or a summary of a numeric variable. Create a code chunk, then add and run the following:
 
 ```{r eval = FALSE}
 summary(police_2)
 ```
 
-There are some interesting figures coming out from the summary. For instance, in age you can see that the youngest is... 16 years old(?!), and the oldest 87 years old. Also, the vast majority are male individuals (445 vs 22). In relation to race/ethnicity, roughly half of them is 'White', whereas 'Black' individuals represent an important share. One may question about the proportion of people killed in terms of race/ethnicity compared to the composition of the total population (considering Black is a minority group in the US).
+There are some interesting figures coming out from the summary. For instance, in age you can see that the youngest (Min.) is... 16 years old(?!), and the oldest (Max.) 87 years old. Also, the vast majority are male (445 vs 22). In relation to race/ethnicity, roughly half are 'White', whereas 'Black' individuals represent an important share. One may question the proportion of people killed in terms of race/ethnicity compared to the composition of the total population (considering Black is a minority group in the US).
 
-Let's suppose that we only want observations in which race/ethnicity is not unknown. To 'remove' _undesired_ observation we can use the `filter()` function. We will assign the result of `filter` in a variable called `police_2`.
+Let's suppose that we only want observations in which race/ethnicity is not unknown. To 'remove' _undesired_ observation we can use the `filter()` function. Remember, to make changes to an object we need to assign the result of a function back to it. We will then need to assign the result of `filter` back to the `police_2` object.
 
-```{r eval = FALSE}
-police_2 <- police_2 %>% filter(raceethnicity != "Unknown")
+Create a chunk, then add and run the following:
+
+```{r}
+police_2 <- police_2 |> filter(raceethnicity != "Unknown")
 ```
 
-So, what just happened in the code above? First, the pipe operator, `%>%`: What we are doing verbally is _take the object `police_2`, THEN filter raceethnicity based on a condition_. Later, what is happening inside `filter`? Let's have a look at what `R` does in the background for us (Artwork by \@alison_horst):
+So, what just happened in the code above? First, the pipe operator, `|>`: What we are doing verbally is _take the object `police_2`, THEN filter raceethnicity based on a condition_.
+
+Then, what is happening inside the `filter()` function? Let's have a look at what `R` does in the background for us (Artwork by \@alison_horst):
 
 ```{r fig.cap="Filter. Source: Artwork by @Horst.", echo=FALSE}
 knitr::include_graphics("./images/lab_2_filter.jpg")
 ```
 
-In the example above, we are keeping the observations in `raceethnicity` that are NOT EQUAL to 'Unknown'. Finally, when we assigned the result to an object named as the same as our previous object, we replaced the _old_ dataset with the filtered version.
+Note, `df` for us is `police_2`. Since we are using the pipe operator, `police_2 |> filter(raceethnicity != "Unkown")` is equivalent to writing `filter(police_2, raceethnicity != "Unkown"`) without the pipe operator.
+
+In our example then, we are keeping the observations in `raceethnicity` that are NOT EQUAL (`!=`) to 'Unknown'. When we then assign the result to an object named the same as our existing object, we replace the _old_ dataset with the new filtered version.
+
+Finally then, create another code chunk to get a glimpse and summary of the data frame again:
+
+```{r}
+glimpse(police_2)
+summary(police_2)
+```
+
+To make it easier to compare, the results from this code are included here as well. Within your R Markdown file, scroll up to your previous glimpse and summary chunks for the `police_2`. You should see that under `raceethnicity`, 'Unkown' is now 0 instead, when it was 15 before we filtered the dataset. Correspondingly, the total number of rows has dropped by 15, going from 467 initially, to 452 after filtering.
 
 <!-- Finally, there are times when you would like to group categories in a factor differently, for example to simplify a graph or statistical analysis. Coming back to race/ethnicity, we may observe that there are some relatively small categories, e.g. 'Native American', 'Asian/Pacific Islander'. So we will create a new variable called `raceethnicity_recoded` using `mutate()` which will recode these categories in to one only called 'Other' using the function `recode()`. We will save the result under the same data named `police_2`. -->
 
@@ -330,6 +477,8 @@ Using the `police_2` dataset:
 2. How many ‘Hispanic/Latino’ are there in the dataset?
 3. Using the example of Figure 2.3, could you filter how many were killed that were (a) 'Black' and (b) killed by firearm ('firearm')?
 4. What about 'White' and 'firearm'?
+
+Finally, 'Knit' your R Markdown file.
 
 Extra activities:
 
