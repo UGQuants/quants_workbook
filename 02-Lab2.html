@@ -384,7 +384,8 @@ More R Operators
 <code>::</code> is the <strong>namespace operator</strong> for accessing an object (such as a function or dataset) from a package, in the format <code>package::object</code>. If you load a package using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function, as we will do later, you can call objects from it directly as <code>object</code> without needing to include <code>package::</code> before it.</li>
 <li>
 <code>$</code> is the <strong>component operator</strong> for accessing named elements within an object, in the format <code>object$component</code>. In data analysis it is often used to access a column (variable) from a data frame. For example, if a data frame named <code>df</code> has a column named <code>age</code>, you can access it with <code>df$age</code>.</li>
-<li>(introduced further below) <code>[]</code> is the <strong>subsetting operator</strong> is used to extract elements from an object. In contrast to <code>$</code> where we used the name for the component we wanted, <code>[]</code> uses numbers. If we had a data frame (i.e.&nbsp;a table) called <code>df</code> and ran the code <code>df[2, 4]</code>, R would return the value found in the fourth column of the second row.</li>
+<li>
+<code>[]</code> (which is introduced later in this lab) is the <strong>subsetting operator</strong> and is used to extract elements from an object, in the format <code>object[...]</code>. In contrast to <code>$</code> where we used the name for the component we wanted, <code>[]</code> uses numbers. If we had a data frame (i.e.&nbsp;a table) called <code>df</code> and ran the code <code>df[2, 4]</code>, R would return the value found in the fourth column of the second row.</li>
 </ul>
 </div>
 </div>
