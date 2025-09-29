@@ -290,8 +290,10 @@ div.csl-indent {
   <li><a href="#creating-code-chunks" id="toc-creating-code-chunks" class="nav-link" data-scroll-target="#creating-code-chunks">Creating code chunks</a></li>
   <li><a href="#glimpsing-the-data" id="toc-glimpsing-the-data" class="nav-link" data-scroll-target="#glimpsing-the-data">Glimpsing the data</a></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data wrangling</a></li>
+  <li><a href="#new-functions" id="toc-new-functions" class="nav-link" data-scroll-target="#new-functions">New Functions</a></li>
   </ul>
 </li>
+  <li><a href="#code-formatting" id="toc-code-formatting" class="nav-link" data-scroll-target="#code-formatting">Code Formatting</a></li>
   <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a></li>
   </ul>
 </li>
@@ -437,6 +439,22 @@ New Terms
 </ul>
 </div>
 </div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`install.packages()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Install an R package that is available from the <a href="https://cran.r-project.org/">Comprehensive R Archive Network</a>.</p>
+<p><strong>Usage:</strong> <code>install.packages("package_name")</code></p>
+<p><strong>Arguments:</strong> <code>"package_name"</code> with the name of the package you want to install that must be in quotes, such as <code>install.packages("tidyverse")</code>.</p>
+<p><strong>Notes:</strong> Only needs to be run once per computer, or once per project in Posit Cloud.</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-caution callout-titled" title="`library()` function">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -447,8 +465,9 @@ New Terms
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Loads an installed package so its functions are available in the R session.</p>
+<p>Load an installed package so its functions are available in the R session.</p>
 <p><strong>Usage:</strong> <code><a href="https://rdrr.io/r/base/library.html">library(package_name)</a></code></p>
+<p><strong>Arguments:</strong> <code>package_name</code> with the name of the installed package you want to load.</p>
 <p><strong>Notes:</strong></p>
 <ul>
 <li>A package needs to be installed first using <code>install.packages("package_name")</code> in the Console.</li>
@@ -496,30 +515,6 @@ New Terms
 <strong>Logical vectors</strong> (<code>logical</code>) to store boolean <code>TRUE</code> / <code>FALSE</code> values, useful for filtering and conditions, such as <code>age &gt; 30</code>.</li>
 </ul>
 <p>In R, there are couple of functions that will help us to identify the type of data. First, we have <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>. This prints some of the main characteristics of a data set, namely its overall dimension, name of each variable (column), the first values for each variable, and the type of the variable. Second we have the function <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>, that will help us to determine the overall class(type) of on <code>R</code> object.</p>
-<div class="callout callout-style-simple callout-caution callout-titled" title="`glimpse()`">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>From the <code>dplyr</code> package, and loaded with the <code>tidyverse</code> package. Provides a ‘glimpse’ of an object.</p>
-<p><strong>Usage</strong>: <code>glimpse(x)</code></p>
-<p><strong>Arguments</strong>:</p>
-<ul>
-<li>
-<code>x</code> - The object (usually a data frame) to glimpse.</li>
-</ul>
-<p><strong>Returns</strong>: Prints to the Console. For data frames, it shows counts for rows and columns and a compact, transposed preview showing column names, types, and a few example values.</p>
-<p><strong>Notes</strong>:</p>
-<ul>
-<li>Shows types such as <code>&lt;int&gt;</code> (integer), <code>&lt;dbl&gt;</code> (double), <code>&lt;chr&gt;</code> (character), <code>&lt;lgl&gt;</code> (logical), <code>&lt;fct&gt;</code> (factor).</li>
-</ul>
-</div>
-</div>
 <section id="glimpsing-datasets" class="level3"><h3 class="anchored" data-anchor-id="glimpsing-datasets">Glimpsing Datasets</h3>
 <p>We are now going to use some datasets that are available to us in the <code>R</code> session. <code>R</code> comes with some example datasets out of the box, such as <code>iris</code> with 150 observations of iris flowers. Some R packages also include additional example datasets, such as <code>starwars</code> - included in the <code>dplyr</code> tidyverse package - with info about 87 Star Wars characters. Unlike other datasets that we have to manually load, and will cover in later section, we can access these in any R session out the box or after loading the relevant package that provides them.</p>
 <p>Please go to the ‘Types of variables’ section in your <code>Lab-02.Rmd</code> file. You will see a few code chunks already setup for you:</p>
@@ -597,6 +592,66 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 </div>
 <p>The glimpse result now is telling us that <code>species</code> is a <code>&lt;fct&gt;</code>, as expected. Furthermore, the <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.</p>
 <p>Hopefully, these examples will help you to identify the main vector types and, more importantly, an initial understanding of how to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values without the labels, for example, using ‘0’ for male and ‘1’ for female - and as part of the initial process turning these variables into factors you will also need to provide a list mapping these numbers to the labels to use. Usually, large data sets are accompanied by extra information in a <em>code book</em> or <em>documentation</em> file, which specifies the values for the numeric code and their respective meaning. It’s important to read the code book/documentation of every data set rather than assuming what the numbers stand for as the conventions and meanings can vary. For example, some surveys now put gender in alphabetical order, with 0 for female and 1 for male.</p>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`glimpse()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Provides a ‘glimpse’ of an object. From the <code>dplyr</code> package, and loaded with the <code>tidyverse</code> package.</p>
+<p><strong>Usage</strong>: <code>glimpse(x)</code></p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li>
+<code>x</code> - The object (usually a data frame) to glimpse.</li>
+</ul>
+<p><strong>Returns</strong>: For data frames, it returns counts for rows and columns and a compact, transposed preview showing column names, types, and a few example values. Types are shown as <code>&lt;int&gt;</code> (integer), <code>&lt;dbl&gt;</code> (double), <code>&lt;chr&gt;</code> (character), <code>&lt;lgl&gt;</code> (logical), <code>&lt;fct&gt;</code> (factor).</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`factor()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create a categorical variable (factor) with fixed, named levels.</p>
+<p><strong>Usage</strong>: <code>factor(x, levels, ordered = is.ordered(x))</code></p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li>
+<code>x</code> - A vector, such as a data frame column, to turn into a factor.</li>
+<li>
+<code>levels</code> - The allowed values and their order. If omitted, all unique values in <code>x</code> are used to create the levels.</li>
+<li>
+<code>ordered</code> - Set to <code>TRUE</code> where order matters when creating an ordered factor.</li>
+</ul>
+<p><strong>Notes</strong>: Whenever you see text like <code>ordered = is.ordered(x)</code> in a function documentation, this shows the name of the argument and its default value. In this example, the default value is for <code>ordered</code> is calculated using another function. The <code>is.ordered(x)</code> checks whether <code>x</code> is already an ordered factor and returns <code>TRUE</code> or <code>FALSE</code>. If you are using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> to adjust the levels/labels of an existing ordered factor then, you can leave the <code>ordered = TRUE</code> out.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`levels()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Get the category labels (“levels”) of a factor.</p>
+<p><strong>Usage:</strong> <code>levels(x)</code></p>
+<p><strong>Arguments:</strong> <code>x</code> - A factor variable, such as <code>data_frame$country</code>.</p>
+<p><strong>Returns:</strong> A character vector of level labels for the factor variable.</p>
+</div>
+</div>
 </section></section><section id="pipes" class="level2"><h2 class="anchored" data-anchor-id="pipes">Pipes</h2>
 <!-- More operators and symbols...Let's start with the hashtag `#`. Even though this is not an operator in R, this symbol allow us to include a comment or ´mute´ the whole line in your script. In fact, it is important that you add comments on your own code, so when you come back later to your code, you can have a quicker idea of what it is going in each line of the script. -->
 <!-- The dollar sign `$` is frequently used and it is part of base R. Actually, we used it a couple of times in the previous section. This is used to access or extract information from an object (e.g. a data set). For instance, earlier we selected only one variable from the `starwars` data set by writing `starwars2$species`. A practical tip to quickly access or find variables in a data set is to write the name of your object followed by the dollar sign only, like this: `starwars2$` (without specifying the variable to be accessed yet). After, type `tab` in your keyboard. Then, R will display a list with the variables available. Try it yourself! -->
@@ -770,6 +825,114 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <!--                                         'Native American' = 'Other')) -->
 <!-- ``` -->
 <!-- If we look at the summary again, the classifications of `raceethnicity` are reduced in the new variable `raceethnicity_recoded`. The categories 'Native American' and 'Asian/Pacific Islander' were summed in only one category called `Other`. -->
+</section><section id="new-functions" class="level3"><h3 class="anchored" data-anchor-id="new-functions">New Functions</h3>
+<p>As we introduced a lot of new functions in this section, here is a final sub-section with the mini help documentation for them all together -</p>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`summary()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Get a quick summary for an object. Supports many different object types.</p>
+<p><strong>Usage:</strong> <code>summary(object)</code></p>
+<p><strong>Arguments:</strong> <code>object</code> - The named object to summarise. This object can be a data frame, a specific column from a data frame, etc.</p>
+<p><strong>Returns:</strong> Depends on <code>object</code>.</p>
+<p>For data frame columns it summarises:</p>
+<ul>
+<li>
+<code>numeric</code> columns: Min, 1st Qu., Median, Mean, 3rd Qu., Max, NA count</li>
+<li>
+<code>factor</code> columns: frequency counts of each category, and NA count</li>
+</ul>
+<p>If provided a data frame it will provide this summary for each column.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`as.numeric()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Coerce a vector to numeric (double) if possible.</p>
+<p><strong>Usage:</strong> <code>as.numeric(x)</code></p>
+<p><strong>Arguments:</strong> <code>x</code> - The object, such as a data frame column, to coerce.</p>
+<p><strong>Returns:</strong> A numeric vector. Any text such as “10” will become a numeric value, but text such as “house”, “missing”, “unknown”, will all become <code>NA</code> values with a warning.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`mutate()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Modify existing column(s) or add new column(s). From the <code>dplyr</code> package, which is loaded with the <code>tidyverse</code> package.</p>
+<p><strong>Usage:</strong> <code>mutate(data_frame, column = expression, ...)</code> or with pipe <code>data_frame |&gt; mutate(column1 = expression, column2 = expression, ...)</code></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li>
+<code>data_frame</code> - The data frame to modify columns from.</li>
+<li>
+<code>column = expression</code> - On the left, the column name want to create or overwrite. On the right, an expression using existing columns and functions. For example <code>age = as.numeric(age)</code> will overwrite the existing <code>age</code> column, but <code>new_age = as.numeric(age)</code> would create a new <code>new_age</code> column.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`select()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Select specific columns (i.e.&nbsp;variables) from a data frame. From the <code>dplyr</code> package, which is loaded with the <code>tidyverse</code> package.</p>
+<p><strong>Usage:</strong> <code>select(data_frame, column1, column2, ...)</code> or with pipe <code>data_frame |&gt; select(column1, column2, ...)</code></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li>
+<code>data_frame</code> - The data frame to select columns from.</li>
+<li>
+<code>column1, column2, ...</code> - The columns in the data frame to keep, separated by commas.</li>
+</ul>
+<p><strong>Returns:</strong> A data frame containing only the selected columns, in the order they were listed in the function.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution callout-titled" title="`filter()` function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Filter rows in a data frame to keep only those meeting given conditions. From the <code>dplyr</code> package, which is loaded with the <code>tidyverse</code> package.</p>
+<p><strong>Usage:</strong> <code>filter(data_frame, condition1, condition2, ...)</code> or with pipe <code>data_frame |&gt; filter(condition1, condition2, ...)</code></p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li>
+<code>data_frame</code> - The data frame to filter.</li>
+<li>
+<code>condition1, condition2, ...</code> - Conditions stated as logical tests, such as <code>age &gt; 18</code>, <code>country == "Scotland"</code>.</li>
+</ul>
+<p><strong>Returns:</strong> A data frame containing only the rows where the conditions are met.</p>
+</div>
+</div>
+</section></section><section id="code-formatting" class="level2"><h2 class="anchored" data-anchor-id="code-formatting">Code Formatting</h2>
 <p>As a final side note - and a wee preview of code you will see in later labs and in R textbooks - all the steps we did above for creating and modifying <code>police_2</code> can also be written in a single code chunk. The code chunk below does all the same steps. It creates a <code>police_2</code> data frame by first selecting variables from the <code>police</code> data frame, then coerces the types of some variables, and finally filters the data.</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police</span> <span class="op">|&gt;</span></span>
@@ -783,7 +946,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 </div>
 <p>Notice here that we can also pass multiple variables to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and able to create a line for each variable being coerced. We can do this as R also lets us split anything after a bracket or comma onto a new line. With long functions, it is common to start a new line after the <code>(</code>, then add each element that is separated by a comma on a line of its own, then add a final line with the closing <code>)</code>. Notice as well that the elements are indented another two spaces (making the indent for them 4 spaces in total) and the closing <code>)</code> is indented the same as <code>mutate(</code>.</p>
 <p>It may take a while to get the hang of reading code with ease, but this formatting helps a lot. The initial 2 space indent after the first line let’s us know that “all the following lines are still part of the same series of steps”. The additional 2 space indent for the lines between the opening <code>(</code> and closing <code>)</code> for the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function then also visually lets us know, “all the following lines are arguments within the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function”. This code would be incredibly difficult to read at a glance if it was written instead as a single line and without any pipes.</p>
-</section></section><section id="activities" class="level2"><h2 class="anchored" data-anchor-id="activities">Activities</h2>
+</section><section id="activities" class="level2"><h2 class="anchored" data-anchor-id="activities">Activities</h2>
 <p>Discuss the following questions with your neighbour or tutor:</p>
 <ol type="1">
 <li>What is the main purpose of the functions <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>?</li>
