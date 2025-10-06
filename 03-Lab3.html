@@ -418,14 +418,14 @@ Overview
 <li>
 <code>!"tidyverse" %in%</code> uses the <code>!</code> logical operator and <code>%in%</code> operator, which is equivalent then of saying “If the word ‘tidyverse’ is <strong>not</strong> in…”</li>
 <li>
-<code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> gets the label names for rows in a data frame or matrix (matrix is like a simplier data frame)</li>
+<code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> gets the label names for rows in a data frame or matrix (a matrix is like a simpler data frame).</li>
 <li>
-<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> is a function that returns a matrix with all packages currently installed on the system, so within Posit Cloud is all the the installed packages within the current project. Each row’s label name matches the installed package name.</li>
+<code><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages()</a></code> (note install<strong>ed</strong>) is a function that returns a matrix with all packages currently installed on the system, so within Posit Cloud it returns all the installed packages within the current project. Each row’s label name matches the installed package name.</li>
 <li>
-<code>install.packages("tidyverse")</code> you know already and installs the tidyverse</li>
+<code>install.packages("tidyverse")</code> we know already, this code installs the tidyverse package.</li>
 </ul>
-<p>Putting it all today, we have <code>if</code> the tidyverse is not in our currenly installed packages then install the tidyverse. That way we - and anyone we share the project with - avoid installing and re-installing the tidyverse needlessly each time the script is run.</p>
-<p>We can test it by putting your text cursor on the line with the code and pressing <code>Ctrl+Enter</code>, or click the Run button at the top of your file.</p>
+<p>Putting it all today, we have <code>if</code> the tidyverse is not in our currently installed packages then install the tidyverse. Logically then, if the tidyverse is installed our if check will return <code>FALSE</code> and the code to install the tidyverse will not be run. That way we - and anyone we share the project with - avoid installing and re-installing the tidyverse needlessly each time the script is run.</p>
+<p>We can test it by putting the text cursor on the line with the code and pressing <code>Ctrl+Enter</code>, or click the Run button at the top of your file.</p>
 <p><img src="./images/lab3_iftidy.png" class="img-fluid" alt="Run button, ensure your text cursor is on line with the code to run (highlighted yellow)"><br></p>
 <p>You should see the tidyverse installing in the Console. Once it has finished installing, trying running the same line of code again.</p>
 <p><img src="./images/lab3_already-tidy.png" class="img-fluid" alt="Run button, ensure your text cursor is on line with the code to run (highlighted yellow)"><br></p>
