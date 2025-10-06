@@ -9,12 +9,6 @@ callout-appearance: simple
 
 website:
   title: "Lab Workbook"
-  announcement:
-    icon: info-circle
-    dismissible: true
-    content: "**Reminder** - check your email for your Posit Cloud group join link, links are also available in the lab group forums on Moodle."
-    type: info
-    position: below-navbar
   page-navigation: true
   bread-crumbs: false
   reader-mode: true
