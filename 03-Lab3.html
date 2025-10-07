@@ -142,13 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
-  </nav><div id="quarto-announcement" data-announcement-id="2d92ee72f5f7cb3880c08507c300d9e0" class="alert alert-info hidden">
-<i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Reminder</strong> - check your email for your Posit Cloud group join link, links are also available in the lab group forums on Moodle.</p>
-</div>
-<i class="bi bi-x-lg quarto-announcement-action"></i>
-</div>
-</header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -307,24 +301,24 @@ Overview
 <p>The “Label” column mostly shows the corresponding text used in the survey for the variable. For <code>rage</code> it is “Q1. Household grid: Age of respondent”. If you look at page 2 of the <a href="https://www.ark.ac.uk/nilt/2012/main12.pdf">main questionnaire</a>, you will see that the ‘household grid’ was a repeat set of questions used to gather key information about each member of the household. The <code>r</code> in <code>rage</code> stands for “respondent”, i.e.&nbsp;the person who answered the survey questions.</p>
 <p>Some variable names, such as <code>work</code> and <code>tunionsa</code> on page 9, note under the name “(compute)”. This means the variable rather than representing a direct answer to a survey question is instead ‘computed’ / ‘derived’ from answers to other questions. The variable label for these then detail which questions were used to compute these variables. Work status may seem an odd variable to compute rather than ask directly. However, as can see from page 39 in the <a href="https://www.ark.ac.uk/nilt/2012/main12.pdf">main questionnaire</a>, a series of questions were asked to ascertain employment status and economic activity. Given the diversity of situations people can be in, it is more practical to ask a series of yes/no and other questions and then use these to calculate categories for other variables.</p>
 <p>Whilst it may look more complex on paper, it is simpler for respondents. Let’s imagine being a 32 year old respondent who answers ‘No’ to Q8, whether taken part in paid work in last seven days, and then ‘Yes’ to Q9a, whether taking part in a government scheme for employment training.</p>
-<p><img src="./images/lab3_q8.png" class="img-fluid" alt="Questions 8 and 9a from the survey">/</p>
+<p><img src="images/lab3_q8.png" class="img-fluid" alt="Questions 8 and 9a from the survey"><br></p>
 <p>From these two answers we can compute the respondent is ‘Government training scheme’ for <code>empst</code>, ‘Not in paid employment’ for <code>empst2</code>, and ‘Economically active’ for <code>econact</code>. Note as well that Q9a was only asked based on whether the participant would be eligible for the government training scheme, calculated using age and gender. (Highlighted in blue above.)</p>
-<p><img src="./images/lab3_q8-2.png" class="img-fluid" alt="Calculated values for our imagined respondent">/</p>
+<p><img src="./images/lab3_q8-2.png" class="img-fluid" alt="Calculated values for our imagined respondent"><br></p>
 <p>Importantly, we gathered this information by asking simple yes/no questions, structured the questions in way to only ask the minimum number of questions relevant for the respondent, and avoided needing to explain jargon such as ‘economically active’. Economically active means someone is either in employment (including waiting to start a job they have been offered and accepted) or unemployed but looking for work and if offered could start a job within the next two weeks. The questions capture this complexity - and more - and without ever having to provide a definition of economically active.</p>
 <p>The <code>tunionsa</code> variable is also a good example of why cannot assume what a variable measures by its name. As can see bottom of page 9 in the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">documentation</a>, <code>tunionsa</code> is derived from Q22 and Q22a.</p>
-<p><img src="./images/lab3_tu.png" class="img-fluid" alt="Codebook showing tunionsa derived from Q22-Q22a.">/</p>
+<p><img src="./images/lab3_tu.png" class="img-fluid" alt="Codebook showing tunionsa derived from Q22-Q22a."><br></p>
 <p>However, if we look at those two questions on page 43 of the questionniare - screenshot below to save having to switch tabs - we can see Q22 asks the respondent whether they are currently a member of a trade union or staff association and Q22a is whether they have ever been a member.</p>
-<p><img src="./images/lab3_tu2.png" class="img-fluid" alt="Questions Q22 and Q22a in the main questionnaire.">/</p>
+<p><img src="./images/lab3_tu2.png" class="img-fluid" alt="Questions Q22 and Q22a in the main questionnaire."><br></p>
 <p>If a respondent answered ‘Yes, trade union’ or ‘Yes, staff association’ for <strong>either</strong> Q22 or Q22a the value computed for <code>tunionsa</code> is ‘Yes’. Whilst <code>tunionsa</code> then is broadly a measure of trade union membership it would be more accurate to say it is a measure of whether the respondent currently is <strong>or</strong> ever was a member of a trade union or staff association.</p>
 <p>Do not worry if you could not tell that from just the codebook. Normally, dataset documentation should also include a separate section with information on how each computed variable was derived. I was only able to confirm this was how <code>tunionsa</code> was computed by checking the values with those for Q22 and Q22a in the main data set. This though does show the importance of not assuming what a variable measures by just its name and label. If we mistook <code>tunionsa</code> as measuring current membership only, we may then later be surprised seeing the high number of people currently unemployed with ‘Yes’ for <code>tunionsa</code>. It is not surprising to see that though when we understand that ‘Yes’ includes those who have ever been a member.</p>
 </section><section id="values-and-measures" class="level3"><h3 class="anchored" data-anchor-id="values-and-measures">Values and Measures</h3>
 <p>The ‘Measure’ column in the codebook tells us whether the variable is ‘scale’, ‘nominal’, or ‘ordinal’. This is based on how SPSS, a proprietary statistical analysis program that was used by the NILT project, stores variables. Within R, these correspond respectively with numeric, (unordered) factor, and ordered factor variables that we covered last week. As we will also cover later in the lab, the tidyverse also provides us with tools to work with data created in SPSS.</p>
 <p>The ‘Values’ column then tells us what the numbers represent. For numeric variables this is the unit being measured, such as “years” and “number of people”. This may seem ‘obvious’ for some variables, but good documentation should still always provide this information. The importance of this becomes clearer if we look at <code>livearea</code>. Without it clarifying “Numeric (years)” someone could mistake it as representing number of months instead. Similarly, the “0 Less than 1 year” is an important clarifier, helping us understand that anything less than 1 year was recorded as 0. In other words, if someone had lived in the area for 7 months, it was still recorded as 0 rather than rounded up to 1.</p>
-<p><img src="./images/lab3_livearea.png" class="img-fluid" alt="livearea with values highlighted in yellow"><br></p>
+<p><img src="images/lab3_livearea.png" class="img-fluid" alt="The livearea values highlighted in yellow"><br></p>
 <p>For the categorical variables it then provides the code and label for the categories. For example, with <code>rsex</code> the categories are 1 (code) Male (label) and 2 (code) Female (label). As mentioned last week, the ‘raw’ data is often stored in numeric codes as - among other reasons - it is more efficient to store it this way. Using the codebook, someone looking at the raw data would then know that a value of 1 represents Male. And as we will cover later, knowing the code and label means we can set up the data in R to show the labels instead of the raw codes.</p>
 <p><img src="./images/lab3_rsex.png" class="img-fluid" alt="rsex with the category codes and labels highlighted in yellow"><br></p>
 <p>You may have spotted though that the Values column for some variables also includes additional grey text, “-9 Non Applicable”, “-99 Don’t Know”, and “-999 Not answered/refused”. These are part of what is known as ‘missing values’, where we do not have an answer to a question for a participant, where these values record the reason why an answer is missing. Recording such reasons is important for multiple reasons. Let’s take ‘-9 Non Applicable’, which following convention is used in the NILT to denote the reason there is no answer is the participant was not asked the question. For example, as shown in image below if a person answered ‘Yes’ to question 8 to say they were in paid work, then they were not asked question 9a.</p>
-<p><img src="./images/lab3_q8-3.png" class="img-fluid" alt="Conditional logic where Q9a skipped if answered ‘Yes’ to Q8">/</p>
+<p><img src="./images/lab3_q8-3.png" class="img-fluid" alt="Conditional logic where Q9a skipped if answered ‘Yes’ to Q8"><br></p>
 <p>For clarity, we record it as ‘non applicable’ instead of leaving it blank or ‘No’. If we left it blank we would not know whether it was blank because the question was skipped deliberately or accidentally. If we recorded it as ‘No’ rather than ‘non applicable’, we lose distinction between our participants. For instance, say we had 100 respondents and 10 answered yes, 20 answered no, and 70 were non applicable. We know from those values that of the 30 who could potentially be on a government scheme 20 were not.</p>
 <p>“-99 Don’t Know” and “-999 Not answered/refused” are then useful to know whilst the question was applicable to the respondent, it was not answered for another reason. During a pilot of the survey, a higher than expected number of “Don’t know” and “Not answered” can also help indicate where a question is potentially unclear or phrased in a way that respondents do not feel comfortable answering.</p>
 <p>Importantly though as ‘missing values’ they are treated the same in analysis. Within R, values designated as ‘missing values’ are grouped together and labelled “NA”. Take note, this stands for “Not available” - covering all reasons a value is not available (i.e.&nbsp;missing). A common mistake people make is to assume NA stands for ‘non applicable’, resulting in inaccurate interpretations.</p>
@@ -416,114 +410,192 @@ Overview
 <li>
 <code>(...)</code> we use to enclose a chunk of code to make clear this is our <code>x</code>.</li>
 <li>
-<code>!"tidyverse" %in%</code> uses the <code>!</code> logical operator and <code>%in%</code> operator, which is equivalent then of saying “If the word ‘tidyverse’ is <strong>not</strong> in…”</li>
+<code>!"tidyverse" %in%</code> uses the NOT <code>!</code> logical operator and the <code>%in%</code> operator, which is equivalent then of saying “If the word ‘tidyverse’ is <strong>not</strong> in…”</li>
 <li>
 <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> gets the label names for rows in a data frame or matrix (a matrix is like a simpler data frame).</li>
 <li>
 <code><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages()</a></code> (note install<strong>ed</strong>) is a function that returns a matrix with all packages currently installed on the system, so within Posit Cloud it returns all the installed packages within the current project. Each row’s label name matches the installed package name.</li>
 <li>
-<code>install.packages("tidyverse")</code> we know already, this code installs the tidyverse package.</li>
+<code>install.packages("tidyverse")</code> as we know already from last week, this code installs the tidyverse package.</li>
 </ul>
-<p>Putting it all today, we have <code>if</code> the tidyverse is not in our currently installed packages then install the tidyverse. Logically then, if the tidyverse is installed our if check will return <code>FALSE</code> and the code to install the tidyverse will not be run. That way we - and anyone we share the project with - avoid installing and re-installing the tidyverse needlessly each time the script is run.</p>
-<p>We can test it by putting the text cursor on the line with the code and pressing <code>Ctrl+Enter</code>, or click the Run button at the top of your file.</p>
+<p>Putting it all today, we have <code>if</code> the tidyverse is not in our currently installed packages then install the tidyverse. Logically then, if the tidyverse is installed our <code>if</code> check will return <code>FALSE</code> and the code to install the tidyverse will not be run. That way we - and anyone we share the project with - avoid installing and re-installing the tidyverse needlessly when the script is run. (Also, whilst anyone we would share our project with should only need to run this file once, they can also run it again to fix any issues resulting from things like accidentally deleting or making irreversible changes to the data.)</p>
+<p>We can test it by putting the text cursor on the line with the code and pressing <code>Ctrl+Enter</code>, or click the Run button at the top of the file.</p>
 <p><img src="./images/lab3_iftidy.png" class="img-fluid" alt="Run button, ensure your text cursor is on line with the code to run (highlighted yellow)"><br></p>
 <p>You should see the tidyverse installing in the Console. Once it has finished installing, trying running the same line of code again.</p>
 <p><img src="./images/lab3_already-tidy.png" class="img-fluid" alt="Run button, ensure your text cursor is on line with the code to run (highlighted yellow)"><br></p>
-<p>As can see, the code will be sent to the Console but the tidyverse is not installed again. As the <code>if</code> not returns <code>FALSE</code> as tidyverse is in the names of our installed packages, then the code to install it is no longer run.</p>
-<p>Now, we need to load the packages we will be using. As you can probably guess the tidyverse is one, and we will be adding a new one as well ‘haven’. Add the following lines to your script.</p>
+<p>As can see, the code will be sent to the Console but the tidyverse is not installed again. As the <code>if</code> now returns <code>FALSE</code> as the tidyverse is in the names of our installed packages, then the code to install it is no longer run.</p>
+<p>Now, we need to load the packages we will be using. As you can probably guess the tidyverse is one, and we will be adding a new one as well <code>haven</code>. Add the following lines to your script.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>TODO</p>
+<p>Use your mouse to select both the <code><a href="https://rdrr.io/r/base/library.html">library(...)</a></code> lines and press <code>Ctrl+Enter</code> or click the run button to load the tidyverse and haven.</p>
+<p>Why did we not need to install <code>haven</code> first? It is one of the additional tidyverse packages for importing data. On the main <a href="https://www.tidyverse.org/packages/">tidyverse packages page</a>, there is an explanation of all the packages that you have access to when installing the tidyverse. The ‘core tidyverse’ set of packages are the ones that get loaded with <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>. These are the ones that most data analysis will likely use. The tidyverse though also comes with additional packages that you might not need to use as often and these we <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> load on an as needed basis.</p>
+<p>The <code>haven</code> package is used for loading data saved in file formats from three of the proprietary software tools that used to dominate quantitative analysis before R - SAS, SPSS, and Stata. The tidyverse core package for loading data, <code>readr</code>, works with comma-separated value (CSV) and tab-separated value files (TSV). All this means is either a comma or tab is used to separate values, such as “value1, value2, …” with new lines used for each row of values. These file-types are what is known as ‘interoperable’, meaning they are not limited to a specific app. Ideally then this is the file-format data should be shared in to support openness.</p>
+<p>However, as covered in the online lecture this week, CSV does not store ‘metadata’. If using 1, 2, 3, … codes for a categorical variable, this information is stored separately, and if loading in data requires mapping codes and labels (e.g.&nbsp;1 = UK, 2 = France, …). This can quickly become tedious and time-consuming. Whilst various attempts have been made to create ‘data packaging formats’ that build on top of CSV and/or TSV, none have gained wide-spread popularity. As a result, it is still common to see data being shared in data archives as an SPSS and/or Stata file - sometimes with a CSV file as well.</p>
+<p>The Free Software Foundation (FSF) also created ‘PSPP’, a free alternative to SPSS, that saves to the same sav file-type - and it is code from ‘PSPP’ that <code>haven</code> uses to read SPSS files. This involved pain-staking work ‘reverse engineering’ the SPSS file-type to understand how the data is stored and writing code so that other software - and not just SPSS - could use it. It was then not SPSS’s benevolence that made it possible to read SPSS files in R - indeed, properietary software companies often do all they can to prevent other software being able to use their proprietary file-types. In was instead the work of an open community striving to ensure people have freedom in how they use their computers and are not forced in using - and paying for - specific software. (Sadly, the FSF likes terrible names, with PSPP not actually standing for anything, it is instead the ‘inverse’ of SPSS, playing on it being a free open alternative to proprietary closed software.)</p>
+<p>Indeed, <code>haven</code> is the victim of its own success here. With the <code>haven</code> package, it does not matter that the data is in a proprietary SAS, SPSS, or Stata file type, it can read it into R. Importantly, it reads it into R in a way that it can then immediately start being used with all the core tidyverse functions. As we will see though it also reads in the metadata stored within SPSS files, the file-type used by the NILT data we will be using, and makes these available to functions within R as well.</p>
+<p>Despite SPSS files being a closed proprietary format then, because it is easy to read the data into R and it maintains metadata, a lot of researchers use it as if it were an open file type, using it still to archive data. This has likely contributed to the lack of widespread adoption of the open data packages aiming to replace the proprietary file formats, as it is not a pressing need. However, I would still encourage you if looking to archive your own data in future to consider ways in which you can make it available using an open standard.</p>
 </section><section id="downloading-the-nilt" class="level3"><h3 class="anchored" data-anchor-id="downloading-the-nilt">Downloading the NILT</h3>
-<p>TO-UPDATE</p>
-<p>Next, we will create a folder to store the data. Then, download and read the NILT data set, following the next steps:</p>
-<ol type="1">
-<li>From your script, create a new folder called ‘data’:</li>
-</ol>
+<p>OK, let’s actually download the NILT data we will be using across the labs.</p>
+<p>Start by using a comment to make clear in your R script that we are starting a new section:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">### Download and read data ----------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>Download the data using the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function. Remember that you have to specify the URL first, and the destination of the file second (including the folder).</li>
-</ol>
+<p>Next, we will create a folder to store the data. Last week, we used <code><a href="https://rdrr.io/r/base/files2.html">dir.create()</a></code> in the Console to create a folder for our data (‘dir’ is merely short for directory, anoter name used for folders). As we are setting up our project in a reproducible way we will want to create a folder this way in our script. This way R automatically creates the folder for anyone running the code, rather than them having to do it manually. Is also then ensures the data is downloaded to and read in from the location the rest of our R code will assume.</p>
+<p>In your script, add the code to create a new folder called ‘data’:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create folder</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, with your text cursor on the <code>dir.create(...)</code> create line, press <code>Ctrl+Enter</code> or click the run button. You should see the data folder appear in the files pane (bottom-right). (Though, if not, check whether you are still in the R sub-folder, and if so navigate back up to the parent directory.)</p>
+<p>We now need the code to download the file with the NILT data set. We can do this by using another function we used last week, the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function. The arguments for this are <code>download.file("URL", "folder/filename.type"</code>. So, we need a URL for where the file is available online and we need to then specify where and with what name we want to download it.</p>
+<p>Add the following then next within your R script. As this involves a URL, it is OK to copy and paste this code rather than typing it out manually.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Download NILT 2012</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
 <span>  <span class="st">"https://www.ark.ac.uk/teaching/NILT2012GR.sav"</span>,</span>
 <span>  <span class="st">"data/nilt2012.sav"</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="3" type="1">
-<li>Take a look to the ‘Files’ tab in pane 3, you will see a folder called ‘data’, click on it, and you will see the <code>nilt2012.sav</code> file.</li>
-</ol>
+<p>Again select the code and run it.</p>
+<p>Take a look to the ‘Files’ tab in bottom-right, you should now have a folder called ‘data’, click on it, and you will see the <code>nilt2012.sav</code> file.</p>
+<p><img src="images/lab3_data.png" class="img-fluid" alt="Click on the data folder"><br></p>
+<p>Remember within the Files tab to then also click <code>project</code> in the nav-bar or the <code>..</code> at the top of the list of files - so, given we only have one file, right-above the <code>nilt2012.sav</code>.</p>
+<p>The <code>.sav</code> is the SPSS file format. We will need to use a function made available to us by <code>haven</code> to read it into R, <code><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav()</a></code>.</p>
+<p>Let’s use it to read in the <code>.sav</code> file and assign it to an object called <code>nilt</code>.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/rstudio_cloud_files.png" class="img-fluid figure-img"></p>
-<figcaption>Cloud files.</figcaption></figure>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read NILT</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"data/nilt2012.sav"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>To read this type of file use the <code><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav()</a></code> function. Read the <code>.sav</code> file and assign it to an object called <code>nilt</code>.</li>
-</ol>
+<p>Once more, put your text cursor on the line that reads in the data and run it.</p>
+<p>And that’s it! You should see a new data object in your ‘Environment’ tab (Pane 2 - top-right) ready to be used. If you recall last week, we read in the <code>police_killings.csv</code> file using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>. Despite the NILT data being stored in the SPSS file-type, once read in, we can see it and interact with it the same as our data last week.</p>
+<p><img src="images/lab3_nilt.png" class="img-fluid" alt="nilt in our Global Environment"><br></p>
+<p>You can also see that this contains 1204 observations (rows) and 133 variables (columns). If you click on it, you can open it up in a new tab like an Excel sheet.</p>
+<p><img src="images/lab3_nilt2.png" class="img-fluid" alt="Viewing the nilt as a table in the Sources pane"><br></p>
+<p>(You can get back to your R script by either (1) clicking the small ‘x’ to close the tab showing the nilt data frame or (2) clicking on the tab for the R script.)</p>
+<p>Whilst that gives us a visual interactive view of our data frame. You will notice scrolling along the columns that variables like <code>rsex</code> has values of 1 and 2 rather than showing the category labels. To explore this in more detail we need to switch back to code. Also, as you build up your R skills you will find it much quicker - and more intuitive - to start exploring your data using code rather than opening it up in visual views like this.</p>
+<p>Let’s <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> our data frame to see the types of variables included and understand why we do not see our category labels.</p>
+<p>As we are now moving from code we are writing so anyone with our script can setup their own R project the same as our own to taking a quick look at our data, <strong>do not</strong> add <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> to your R script. Instead, type the following in the Console.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"data/nilt2012.sav"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And that’s it! You should see a new data object in your ‘Environment’ tab (Pane 2) ready to be used. You can also see that this contains 1204 observations (rows) and 133 variables (columns). Lets glimpse our newly imported data and see the type of variables included.</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>(Being able to move from the source pane (top-left) to the Console (bottom-left) to switch between ‘writing code to reproduce the setting up of our project’ in an R script and ‘writing code to take a look at our data’ is a benefit of RStudio. Whilst it may have looked intimidating at first with all of its panes and tabs, you can hopefully now see how this supports quickly moving between different tasks.)</p>
 </section></section><section id="data-wrangling-1" class="level2"><h2 class="anchored" data-anchor-id="data-wrangling-1">Data wrangling</h2>
-<p>As you can see from the result of glimpse, the class for practically all the variables is <code>&lt;dbl+lbl&gt;</code>. What does this mean? This happened because usually datasets use numbers to represent each of the categories/levels in categorical variables. These numbers are <em>labelled</em> with their respective meaning. This is why we have a combination of value types (<code>&lt;dbl+lbl&gt;</code>). Take the example of the variable called <code>rsex</code>, as you can see from the values displayed using <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, this includes numbers only, e.g.&nbsp;<code>1,1,2,2...</code>. This is because ‘1’ represents ‘Male’ respondents and ‘2’ represents ‘Female’ respondents in the NILT dataset (n.b.&nbsp;the authors of this lab workbook recognise that sex and gender are different concepts, and we acknowledge this tension and that it will be problematic to imply or define gender identities as binary, as with any dataset. More recent surveys normally approach this in a more inclusive way by offering self-describe options). You can check the pre-defined parameters of the variable in NILT in the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">documentation</a> or running <code>print_labels(nilt$rsex)</code> in your console, which returns the numeric value and its respective label. As with <code>rsex</code>, this is the case for many other variables in this data set.</p>
-<p>You should be aware that this type of ‘mix’ variable is a special case since we imported a file from a <em>foreign</em> file that saves metadata for each variable (containing the names of the categories). As you learned in the last lab, in <code>R</code> we treat categorical variables as <code>factor</code>. Therefore, we will coerce some variables as <code>factor</code>. This time we will use the function <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code> instead of the simple <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> that we used before. This is because <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code> allows us to keep the names of each category in the variables. The syntax is exactly the same as before. Copy and run the following from your script:</p>
+<p>As you can see from the result of <code>glimpse()``, the class for practically all the variables is</code>&lt;dbl+lbl&gt;` (which if recall from last week, stands for double - i.e.&nbsp;numeric - and label).</p>
+<p>What does this mean? This happened because usually datasets use numbers to represent each of the categories/levels in categorical variables. These numbers are <em>labelled</em> with their respective meaning. This is why we have a combination of value types (<code>&lt;dbl+lbl&gt;</code>).</p>
+<p>Look at <code>rsex</code> in the <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> output, as you can see from the values displayed this includes numbers only, e.g.&nbsp;<code>1,1,2,2...</code>. This is because ‘1’ represents ‘Male’ respondents and ‘2’ represents ‘Female’ respondents in the NILT dataset (n.b.&nbsp;the authors of this lab workbook recognise that sex and gender are different concepts, and we acknowledge this tension and that it will be problematic to imply or define gender identities as binary, as with any dataset. More recent surveys normally approach this in a more inclusive way by offering self-describe options). You can check the pre-defined parameters of the variable in NILT in the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">documentation</a> or running <code>print_labels(nilt$rsex)</code> in your Console, which returns the numeric value (i.e.&nbsp;the code) and its respective label. As with <code>rsex</code>, this is the case for many other variables in this data set.</p>
+<p><img src="images/lab3_rsex-labels.png" class="img-fluid" alt="Printing the labels for rsex in the Console"><br></p>
+<p>You should be aware that this type of ‘mix’ variable is a special case since we imported a file from a SPSS file that saves metadata for each variable (containing the names of the categories). The <code><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav()</a></code> function let us read this in as a data frame so we can use it in R, preserving the metadata as well. However, as with any data we load in, we still need to clean and ‘wrangle’ it to make it useable.</p>
+<p>As you learned in the last lab, in <code>R</code> we treat categorical variables as <code>factor</code>. Therefore, we will coerce some variables as <code>factor</code>. This time we will use the function <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code> instead of the simple <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> that we used before. This is because <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code> allows us to keep the names of each category in the variables. The syntax is exactly the same as before.</p>
+<p>Back to our R script then. First, use a commment to make clear we are starting a new section:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Gender of the respondent</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rsex <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">rsex</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Highest Educational qualification</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>highqual <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">highqual</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Religion</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>religcat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">religcat</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Political identification</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>uninatid <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">uninatid</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Happiness</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ruhappy <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">ruhappy</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce variables   ---------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notice from the code above that we are replacing the ‘old’ dataset with the result of the mutated variables that are of type <code>factor</code>. This is why we assigned the result with the <em>assigning operator</em> <code>&lt;-</code>.</p>
-<p>What about the numeric variables? In the documentation file there is a table in which you will see a type of measure ‘scale’. This usually refers to continuous numeric variables (e.g.&nbsp;age or income).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Let’s coerce some variables to the appropriate type.</p>
-<p>In the previous operation we coerced the variables as factor one by one, but we can transform several variables at once within the <code>mutate</code> function. As we did before, copy and run the following code in your script:</p>
+<p>Next add and run the following in your script:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce several variables as numeric</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Gender of the respondent</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rsex <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">rsex</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Highest Educational qualification</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>highqual <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">highqual</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Religion</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>religcat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">religcat</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Political identification</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>uninatid <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">uninatid</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Happiness</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ruhappy <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">ruhappy</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice from the code above that we assign the result of <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> back to our <code>nilt</code> data frame, the <code>nilt &lt;- ...</code> part of the code. This replaces our ‘old’ data frame with a version with the mutated variables that are of type <code>factor</code>.</p>
+<p>Back in the Console again, run <code>glimpse(nilt)</code> once more and scroll up to see the line for <code>rsex</code> in the output.</p>
+<p><img src="images/lab3_rsex-coerce.png" class="img-fluid" alt="Glimpsing nilt after coercing some variables"><br></p>
+<p>R has taken the codes (the <code>&lt;dbl&gt;</code> values) and mapped them to the labels (the <code>&lt;lbl&gt;</code> values), whereby we can now more easily see and work with our categories.</p>
+<p>Last week, with the police killings data we could simply use <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> on our variables as the values were saved in the file as labels without any codes, which is another way people get around CSV files not storing metadata. Running <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> in such cases creates a code for us for each unique label. The only danger with that, and something to keep eye out for, is any typos in the data, such as <code>Scotland</code> and <code>Scoltand</code>, as they are ‘unique’ labels would result in these being treated as two different categories after running <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
+<p>If we read in our data from a file type that stored the values as codes, but did not include the metadata, we would need to manually add this mapping, along the lines of:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survey</span> <span class="op">&lt;-</span> <span class="va">survey</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
+<span>      <span class="va">country</span>,</span>
+<span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Scotland"</span>, <span class="st">"England"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Back to our NILT data again - What about the numeric variables? In the documentation file there is a table in which you will see a type of measure ‘scale’. This usually refers to continuous numeric variables (e.g.&nbsp;age or income).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Let’s coerce some variables to the appropriate numeric type.</p>
+<p>In the previous operation we coerced the variables as factor one by one, but we can transform several variables at once within a single <code>mutate</code> function.</p>
+<p>As we did before, add and run the following code in your script:</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce several variables as numeric</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    rage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rage</span><span class="op">)</span>,</span>
 <span>    rhourswk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rhourswk</span><span class="op">)</span>,</span>
 <span>    persinc2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">persinc2</span><span class="op">)</span>,</span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Before doing some analyses, we will drop unused levels (or categories) in our dataset using the function <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code>, as following:</p>
+<p>Another thing we need to do is drop any unused levels (or categories) in our dataset using the function <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code>, by adding and running the following in our script:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># drop unused levels</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># drop unused levels</span></span>
 <span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The previous function is useful to remove some categories that are not being used in the dataset (e.g.&nbsp;categories including 0 observations).</p>
-<p>Finally, save the NILT survey in an <code>.rds</code> file (this is the R format). We will not use this file now, but this will save us time formatting the dataset in next labs (So, we do not have to repeat the steps above every time).</p>
+<p>This function is useful to remove some categories that are not being used in the dataset (e.g.&nbsp;categories that have 0 observations).</p>
+<p>Finally, as we now have our data and done some wrangling, we do not want to have to repeat it each time we load it in our R Markdown files. So, let’s save it as an <code>.rds</code> file - R’s own file-type.</p>
+<p>This will save us time in future labs, as we will be able to read in an already formatted version of the NILT in next labs.</p>
+<p>Add a comment then to make clear we have a new section:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">nilt</span>, <span class="st">"data/nilt_r_object.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Save data ------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Then add and run the code to save our nilt data frame as an RDS file.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save as rds</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">nilt</span>, <span class="st">"data/nilt_r_object.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Lastly, as this script is merely to download, prep, and save a cleaned version of our data, it is good practice to end by clearing the global environment. This removes all loaded objects and puts it can into a clear state. We do this for a few reasons, including (1) if we did more complex setup operations the global environment could be filled with a lot of objects we no longer need, and (2) whilst we will continue naming the object containing our data frame as ‘nilt’ in the labs, we do not want to enforce this on anyone we share the project with.</p>
+<p>Add and run then the following at the end of your R script:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># clean global environment</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should now see your Global Environment is empty:</p>
+<p><img src="images/lab3_clear-env.png" class="img-fluid" alt="(Global) Environment is empty"><br></p>
+<p>Note, whilst this removes objects, like our nilt data frame, it does not remove any loaded libraries, so the functions provided by the tidyverse and haven remain available to us.</p>
 </section><section id="read-the-clean-dataset" class="level2"><h2 class="anchored" data-anchor-id="read-the-clean-dataset">Read the clean dataset</h2>
 <p>Phew! Good job. You have completed the basics for wrangling the data and producing a workable dataset.</p>
 <p>As a final step, just double check that things went as expected. For this purpose, we will re-read the clean dataset.</p>
+<p>Create a new R Markdown file, within the ‘Files’ pane (bottom-right):</p>
+<ol type="1">
+<li>Click ‘New file’</li>
+<li>Click ‘R Markdown’</li>
+</ol>
+<p><img src="images/lab3_rmd-1.png" class="img-fluid" alt="Create a new Rmd file"><br></p>
+<p>This will open a dialogue for creating a new file:</p>
+<ol start="4" type="1">
+<li>Add <code>nilt_test.Rmd</code> as the new file name.</li>
+<li>Click the OK button to confirm creation of an R Markdown file.</li>
+</ol>
+<p><img src="images/lab3_rmd-2.png" class="img-fluid" alt="Add a name for new R Markdown file"><br></p>
+<p>This will create the file and open it in a new tab:</p>
+<p><img src="images/lab3_rmd-3.png" class="img-fluid" alt="New R Markdown file"><br></p>
+<p>You are now read for the activities for the end of this week’s lab.</p>
 <section id="activity" class="level3"><h3 class="anchored" data-anchor-id="activity">Activity</h3>
 <ul>
-<li>Using the <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> function, read the <code>.rds</code> file that you just created in the last step and assign it to an object called <code>cleaned_data</code>. Remember to include the full directory of the file using quotation marks inside the function.</li>
-<li>Run the <code>glimpse</code> function on the <code>cleaned_data</code> object.</li>
-<li>Run the <code>glimpse</code> function on the <code>nilt</code> object.</li>
-<li>Do they look the same? If yes, it means that you successfully saved your work.</li>
+<li>Within your R Markdown file create a code chunk to load the tidyverse and haven packages.</li>
 </ul>
-<p>Add activity to create project for following along with Fogarty book!</p>
+<p>(Aside: Whilst we saved our file as <code>.rds</code> as the original file was <code>.sav</code> we still need to load haven to read all the information stored in it. These packages also remain in our environment, but this ensures our R Markdown file will still run without issue if we restart our R session.)</p>
+<ul>
+<li>
+<p>Using the <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> function, create a code chunk and:</p>
+<ol type="1">
+<li>read the <code>.rds</code> file that you just created in the last step and assign it to an object called <code>cleaned_data</code>. (Hint: You need to read it in by providing “folder/file-name.rds” as an argument.)</li>
+<li>read in the original <code>.sav</code> file that we downloaded and assign it to an object called <code>unclean_data</code>.</li>
+</ol>
+</li>
+<li><p>Run the <code>glimpse</code> function on the <code>cleaned_data</code> object.</p></li>
+<li><p>Run the <code>glimpse</code> function on the <code>unclea_data</code> object.</p></li>
+<li><p>Do they look the same? (If yes, it means that you successfully saved your work.)</p></li>
+<li><p>Finally, write code in the Console to clean your global environment, so we have a clear environment to start with next week.</p></li>
+</ul>
 
 
 </section></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
