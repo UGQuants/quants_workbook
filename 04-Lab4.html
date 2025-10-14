@@ -267,7 +267,12 @@ window.Quarto = {
 <li>
 <a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a>
   <ul class="collapse">
-<li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+<li>
+<a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <ul class="collapse">
+<li><a href="#setting-up-an-r-markdown-file" id="toc-setting-up-an-r-markdown-file" class="nav-link" data-scroll-target="#setting-up-an-r-markdown-file">Setting up an R Markdown file</a></li>
+  </ul>
+</li>
   <li>
 <a href="#exploratory-analysis" id="toc-exploratory-analysis" class="nav-link" data-scroll-target="#exploratory-analysis">Exploratory analysis</a>
   <ul class="collapse">
@@ -285,27 +290,91 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><section id="exploratory-data-analysis" class="level1"><h1>Exploratory data analysis</h1>
-<p>In our previous session we learned about wrangling data in <code>R</code> by implementing useful function such as <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>select()</code>, and <code>mutate()</code>. In this session we will focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
+<p>In our previous session we learned about setting up an RStudio project and wrangling data in <code>R</code> by implementing useful function such as <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. In this session we will continue working with the NILT 2012 dataset and focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
 <section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>We will continue working on the same project and dataset that you created in the last lab on RStudio Cloud. Please follow the next steps:</p>
+<p>We will continue working on the same NILT RStudio project and dataset that you created in the last lab on Posit Cloud. To get started, please follow the usual steps:</p>
 <ol type="1">
-<li>Go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a>.</li>
-<li>Open the project called ‘NILT’ located in your lab group’.</li>
-<li>Continue working at the bottom of the ‘Exploratory analysis’ script that you created in the last lab.</li>
-<li>Load <code>nilt</code> dataset that you created in the last session using the following code:</li>
+<li>Go to your ‘Lab Group’ in <a href="https://rstudio.cloud/">Posit Cloud</a>.</li>
+<li>Open your existing project called ‘NILT’ located in your lab group.</li>
 </ol>
+<p>(If you missed Lab 3, quickly run through setting up an <a href="./03-Lab3.html#nilt-rstudio-project">NILT RStudio Project</a> and <a href="./03-Lab3.html#read-the-clean-dataset">Read the clean dataset</a> sections. Ensure to make time later to go through the section on the <a href="./03-Lab3.html#the-nilt-documentation">NILT Documentation</a> though.)</p>
+<p>Then we need to create an R Markdown file for today. Within the Files pane (bottom-right):</p>
+<ol start="3" type="1">
+<li>Click ‘New File’.</li>
+<li>From the list of options select ‘R Markdown’</li>
+</ol>
+<p><img src="images/lab4-new-rmd.png" class="img-fluid" alt="Create a new Rmd file"><br></p>
+<p>Then within the ‘Create a New File in Currect Directory’ dialogue that pops up:</p>
+<ol start="5" type="1">
+<li>Give it an appropriate name, such as ‘Lab-4-Exploratory.Rmd’</li>
+<li>Click the ‘OK’ button to confirm creation of the file.</li>
+</ol>
+<p><img src="images/lab4_name-rmd.png" class="img-fluid" alt="Give the Rmd file an appropriate name"><br></p>
+<section id="setting-up-an-r-markdown-file" class="level3"><h3 class="anchored" data-anchor-id="setting-up-an-r-markdown-file">Setting up an R Markdown file</h3>
+<p>The R Markdown file will automatically open in the Sources pane (top-left). It just contains basic YAML for title and output, which is HTML by default. Flesh it out by:</p>
+<ul>
+<li>Give it a full title, by default it just uses the name given to the file.</li>
+<li>Add a line to add an <code>author</code> key with your name in quotation marks as the value.</li>
+<li>Add a line for a <code>date</code> key and within quotation marks add the following -</li>
+</ul>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the data from the .rds file we created in the last lab</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">`r format(Sys.time(), '%d/%m/%y)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/lab4_yaml.png" class="img-fluid" alt="Your YAML should now look like this."><br></p>
+<p>Remember the back-tick, <code>`</code>, can be found to the left of <code>1</code> on a UK keyboard. Now that we have used some R functions across the labs, the code here should be more readable than when you first encountered it. Enclosing code in single back-ticks allows us to add “inline code” on a single line in our file, similar to how we fence code in three back-ticks to create code chunks that span multiple lines. Then -</p>
+<ul>
+<li>The <code>r</code> at the start specifies that we are adding <code>r</code> code, similar to using <code>{r}</code> at the start of a code chunk.</li>
+<li>The <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> function takes an object as its first argument and then one or more further arguments to specify how it should be formatted.</li>
+<li>The <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> function checks the date and time on the device and creates a date time object.</li>
+<li>If you run <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> in the Console though, you will see the date is formatted Year-Month-Day. This is common in computing as if you have a list of dates and sort them this will work, whereas if it was Day-Month-Year it would put 1st October before 5th May because 1 comes before 5.</li>
+<li>Our last bit of code then, <code>%d/%m/%y</code>, specifies the format the date should be in. The <code>%</code> followed by a letter specifies which date/time info to include and in what format, and how to format it, from our date time object. You can run <code><a href="https://rdrr.io/r/base/strptime.html">help(format.POSIXct)</a></code> in the Console and scroll down a bit in the help page to see what other <code>%</code> options are available. (<code>POSIXct</code> is just the class type of the date time object we created, with ‘ct’ standing for calendar time.)</li>
+</ul>
+<p>Next, we need to create our setup code chunk with our knitr options. So -</p>
+<ul>
+<li>Create a new code chunk.</li>
+<li>Modify the very top-level of the code chunk to have <code>{r setup, include=FALSE}</code>
+</li>
+<li>Within the code chunk add the following -</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>message <span class="op">=</span> <span class="cn">FALSE</span>, warning <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/lab4_knitr.png" class="img-fluid" alt="Code chunk with our knitr options."><br></p>
+<p>As quick wee reminder:</p>
+<ul>
+<li>the <code>setup</code> after <code>r</code> in the line opening the code chunk names the chunk ‘setup’</li>
+<li>the <code>include=FALSE</code> after a comma then tells R when knitting the file tells R what to do with the code chunk. Here, the <code>include=FALSE</code> means the code should be run, but the code chunk and any output should not be included in the knitted file.</li>
+<li>we then use <code>knitr::opts_chunk$set()</code> to set the default code chunk options for all code chunks in the current R Markdown file.</li>
+<li>
+<code>message = FALSE</code> means no messages and <code>warning = FALSE</code> no warnings outputted when running code will be included in the knitted file. We do this as even running code like loading the tidyverse outputs messages that are safe to ignore and we do not want to see in our knitted files.</li>
+</ul>
+<p>After that, we now want a preamble code chunks to load packages, read in data, and so on. So, create another code chunk and name it preamble and set the option to not include it in knitted files.</p>
+<p>Within it add -</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read NILT</span></span>
 <span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/nilt_r_object.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="5" type="1">
-<li>Create a subset of the <code>nilt</code> data keeping only few variables using the <code>select()</code> function as shown below:</li>
-</ol>
+<p>We do not need to <code>install.packages("tidyverse")</code> as we are working within the same RStudio project as last week, so the tidyverse is already installed. Whilst we also <code>libary(tidyverse)</code> to load the tidyverse last week, remember that when we knit files it creates a clean R environment. Whilst it can access packages that are installed on the device - or in our case within a Posit Cloud RStudio Project - it has no packages loaded nor data frames read in. So, for each R Markdown file we created within a project, we need this premable.</p>
+<p>Now, as we are going to work with the variables we coerced last week, let’s setup a subset with just those variables. A subset is merely a copy of our NILT data frame, but with just the rows and columns we are interested in.</p>
+<p>To do this add the following at the end of your premable code chunk -</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset</span></span>
-<span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">nilt</span>, <span class="va">rsex</span>, <span class="va">rage</span>, <span class="va">highqual</span>, <span class="va">religcat</span>, <span class="va">uninatid</span>, <span class="va">ruhappy</span>, <span class="va">rhourswk</span>, <span class="va">persinc2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create subset</span></span>
+<span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">rsex</span>, <span class="va">rage</span>, <span class="va">highqual</span>, <span class="va">religcat</span>, <span class="va">uninatid</span>, <span class="va">ruhappy</span>, <span class="va">rhourswk</span>, <span class="va">persinc2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exploratory-analysis" class="level2"><h2 class="anchored" data-anchor-id="exploratory-analysis">Exploratory analysis</h2>
+<p>Your full code chunk should now look like the below.</p>
+<p><img src="images/lab4_preamble.png" class="img-fluid" alt="Full preamble code chunk."><br></p>
+<p>Click the green triangle to run the code chunk and you’ll see the <code>nilt_subset</code> appear in the Environment pane (top-left).</p>
+<p><img src="images/lab4_sub-env.png" class="img-fluid" alt="Environment pane with nilt_subset highlighted."><br></p>
+<p>Notice how our nilt object has “1204 obs. of <strong>133 variables</strong>” and our nilt_subset object “1204 obs. of <strong>8 variables</strong>”.</p>
+<p>Why do this? With <em>very</em> large datasets this helps reduce the compute required when running code. Whilst the NILT dataset we are using is big, with 1,204 observations across 133 variables, it is not large in terms of computing. The other reason to subset data, and pertinent for us, is it simplifies working with our data.</p>
+<p>To illustrate, within the Console run in turn <code>glimpse(nilt)</code> and then <code>glimpse(nilt_subset)</code>.</p>
+<p><img src="images/lab4_glimpse-sub.png" class="img-fluid" alt="Glimping the nilt_subset object."><br></p>
+<p>As can see, whilst glimping the nilt data frame outputs lines for all 133 variables, glimpsing the nilt_subset data frame gives us lines for just the 8 variables we selected.</p>
+</section></section><section id="exploratory-analysis" class="level2"><h2 class="anchored" data-anchor-id="exploratory-analysis">Exploratory analysis</h2>
 <section id="data-overview" class="level3"><h3 class="anchored" data-anchor-id="data-overview">Data overview</h3>
 <p>Are your summary statistics hiding something interesting?</p>
 <div class="cell">
@@ -318,20 +387,24 @@ window.Quarto = {
 </div>
 <!-- There are some basic functions that will allow you to understand and get familiar with the data. You used an important one already, `glimpse()`. But there are other useful ones. For instance, try `names()` to see a list of the variables' names, or have a look at the data using `View()`.  -->
 <p>To start exploring our data it essential to distinguish the adequate tools and measures available for the type of data in question. As you know now, there are two broad types: (1) categorical and (2) numeric.</p>
-<p>There are several ways in which we can summarise our data. Today, we will use a useful package called <code>vtable</code>. Install it in your session running the following line from your console:</p>
+<p>There are several ways in which we can summarise our data. Today, we will use a useful package called <code>vtable</code>.</p>
+<p>Install it in your RStudio project by running the following line in the Console (bottom-left):</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vtable"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vtable"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Once it is installed, make sure to load it with the next line. This time copy and paste it in your <code>R</code> script, so you can run it every time you restart your session.</p>
+<p>Once it is installed, make sure to load it within your R Markdown file. Remember, it is best practice to load all your packages at the top, making it clear to anyone looking at the file which packages are being used and ensuring the packages are available for all the code chunks after it.</p>
+<p>So within the preamable code chunk, add the following line after <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Remember to also run this line of code. With your text cursor on the line, press <code>Ctrl+Enter</code>. Or, immediately above your file in the top-right of the Sources pane, click the small downwards pointing black triangle on the ‘Run’ button, and from the list of options select “Run Selected Line(s)”</p>
+<p><img src="images/lab4_run-line.png" class="img-fluid" alt="Run Selected Line(s)."><br></p>
 </section><section id="categorical-data" class="level3"><h3 class="anchored" data-anchor-id="categorical-data">Categorical data</h3>
 <p>A usual way to explore the categorical data is using contingency and proportion tables. The contingency tables include the count for each category while the proportion tables contain the count divided by the total number of observations.</p>
 <p>Try to focus on the interpretation of the outputs in the following section. At this time, it is just optional to run the code shown.</p>
 <p>Let’s say we are interested in the data’s break down by respondents’ sex (called <code>rsex</code> in the dataset). We will use function <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> of the <code>vtable</code> package to produce a contingency table for a single variable (known as One-Way contingency table).</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -364,7 +437,7 @@ window.Quarto = {
 <p>Specifically, we see that males respondents represent 44.6% of the total sample, whereas females 55.4%.</p>
 <p>We can do this with any type of categorical variable. Let’s see how the sample is split by religion (<code>religcat</code>). So, we will add it to in the <code>vars</code> argument.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span>, <span class="st">"religcat"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rsex"</span>, <span class="st">"religcat"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -416,7 +489,7 @@ window.Quarto = {
 <p>As you can see, about the same number of people are identified as being catholic or protestant, and a relatively small number with no religion.</p>
 <p>What if we want to know the religious affiliation breakdown by males and females. This is where Two-Way contingency tables are useful and very common in quantitative research. To produce it, we have to specify the group argument in the <code>sumtable</code> function as follows:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"religcat"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"religcat"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -482,7 +555,7 @@ Female
 </div>
 <p>There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 43.5% vs 40.2% and 44.1% vs 40.6%, respectively. We also see that there are almost 20% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.</p>
 </section><section id="activity-1" class="level3"><h3 class="anchored" data-anchor-id="activity-1">Activity 1</h3>
-<p>From your RStudio Cloud script, do the following activities using the data in the <code>nilt_subset</code> object (feel free to copy and adapt the code shown above):</p>
+<p>In your R Markdown file, do the following activities using the data in the <code>nilt_subset</code> object (feel free to copy and adapt the code shown above):</p>
 <ul>
 <li>Create a One-Way contingency table for <code>uninatid</code> in the <code>nilt_subset</code> dataset using the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function;</li>
 <li>Using the variables <code>religcat</code> and <code>uninatid</code>, generate a Two-Way contingency table;</li>
@@ -494,10 +567,10 @@ Female
 <p>In quantitative research, we usually have access to many observations in a sample which contains different attributes for each of them. It would be difficult (and probably not very useful) to talk about each of the NILT respondents one by one. Instead, to describe this sample we need measures that roughly represent all participants.</p>
 <p>This is actually an important step in quantitative research, since it allows us to characterise the people that we are studying. For example, in the previous section we only talked about the respondents’ sex and political affiliation, but who are the people we are talking about? Probably a place to start digging deeper is to know their age. The first tool that we will use to understand numeric values is a histogram. Let’s see how the age of NILT respondents is distributed.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="04-Lab4_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="04-Lab4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -505,7 +578,7 @@ Female
 <p>This plot shows us on the X axis (horizontal) the age and the frequency on the Y axis. We can see that the youngest age in the sample is somewhere close to 20, and the oldest is almost 100. We also observe that the total number of observations (represented by the frequency on the vertical axis) for extreme values (close to 20 on the left-hand side and 100 on the right-hand side) tends to be lower than the values in the centre of the plot (somewhere between 30 and 45). For instance, we can see that there are approximately 120 respondents who are around 40 years old; that seems to be the most <em>popular</em>/frequent age in our sample. Now, we can represent these central values with actual measures, typically <em>mean</em> or <em>median</em>.</p>
 <p>The <em>median</em> is the mid-point value in a numeric series. If you sort the values and split it by half, the value right in the middle is the median. Luckily there is a function ready to be used called… You guessed it - <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48</code></pre>
 </div>
@@ -513,7 +586,7 @@ Female
 <p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows: <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span> The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers (e.g.&nbsp;a very, very old person). To compute the mean you need the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 49.61532</code></pre>
 </div>
@@ -523,7 +596,7 @@ Female
 <p>By contrast, there are measures that help us to describe how far away a series of numeric values are from the centre. The common measures of spread are <em>quartiles</em>, <em>variance</em> and <em>standard deviation</em>.</p>
 <p>The quartiles are very useful to quickly see how numeric data is distributed. Imagine that we sort all ages in the sample and split it into four equal parts. The first quartile includes the lowest 25% of values, the second the next 25%, the third another 25%, and the fourth the highest 25%. To compute quartiles, we can use the <code>quantile</code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
   18   35   48   64   97 </code></pre>
@@ -534,7 +607,7 @@ Female
 <p><span class="math display">\[ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } \]</span></p>
 <p>To decipher the formula above, the <span class="math inline">\(\bar{x}\)</span> represents the mean, the <span class="math inline">\(x\)</span> represents each of the values in the numeric series. The formula takes each of the <span class="math inline">\(x\)</span> values and subtract it from the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. Later, it squares the result of the subtraction (that is multiply it by itself). This is done to obtain a positive value, since some numbers in the series will be lower than the mean (resulting in negative values). Then, we sum all of them and divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1. To estimate the variance in R we only need the <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 343.3486</code></pre>
 </div>
@@ -542,7 +615,7 @@ Female
 <p>As you can see, the result is not very intuitive. That is because we squared the subtraction. Luckily, there is a measure that put it in <em>readable</em> scale. This is the <em>standard deviation</em>. In essence this takes the square root of the variance (the reversed operation of squaring it): <span class="math display">\[sd=\sqrt{var}\]</span></p>
 <p>To compute it in <code>R</code>, use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.52967</code></pre>
 </div>
@@ -553,7 +626,7 @@ Female
 <p>… Luckily we can use the <code>sumtable</code> function to compute all these measures at the same time!</p>
 <p>It is very simple. You can compute a quick summary for age as following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
@@ -584,7 +657,7 @@ Female
 <section id="categorical-and-numeric-data" class="level4"><h4 class="anchored" data-anchor-id="categorical-and-numeric-data">Categorical and numeric data</h4>
 <p>Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="va">nilt_subset</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span><span class="op">)</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary Statistics</caption>
