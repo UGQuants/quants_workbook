@@ -9,6 +9,12 @@ Remember to also check the [Assessment section on Moodle](https://moodle.gla.ac.
 - [Summative Assessments](summative.qmd) ([Reflective Summary](summative.qmd#reflective-course-summary) + [Interpreting Quantitative Findings Report](summative.qmd#interpreting-quantitative-findings-report)) - 12 noon, Monday 15th December 2025.
 :::
 
+### Setting Up RStudio Projects for the Assessments
+
+We provide template projects to use for the formative and summative assessments via GitHub repositories. This is similar to how we shared the template project we used for Labs 1 and 2.
+
+Please see the [Setup Assessment Projects](creating-assessment-projects.qmd) page for step-by-step guide and links to use.
+
 ### GenAI and the Assessments
 
 The University of Glasgow's [position on GenAI use](https://www.gla.ac.uk/myglasgow/sld/ai/) is not to prohibit GenAI use, but instead to support you to use it "effectively, ethically, critically, and transparently".
