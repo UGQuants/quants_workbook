@@ -528,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     const Original = H;
     function Patched(el, opts) {
-      const desired = { offset: 180, tolerance: { up: 60, down: 10 } };
+      const desired = { offset: 180, tolerance: { up: 40, down: 10 } };
       const merged = Object.assign({}, opts, desired);
       const inst = new Original(el, merged);
       try { el._headroom = inst; } catch (_) {}
@@ -560,6 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       fab.className = "q-nav-fab";
       fab.type = "button";
       fab.setAttribute("aria-label", "Show navbar (Alt+Shift+H)");
+      fab.setAttribute("title", "Show navbar (Alt+Shift+H)");
       fab.innerHTML = '<span aria-hidden="true">≡</span>';
       fab.addEventListener("click", () => toggleNav(false));
       document.body.appendChild(fab);
@@ -600,8 +601,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 
   function bindNavbarToolIfPresent() {
-    const tool = document.querySelector('#quarto-header [aria-label="Toggle navbar (Alt+Shift+H)"]');
-    if (tool) tool.addEventListener("click", (e) => { e.preventDefault(); toggleNav(); });
+    const tool = document.querySelector('#quarto-header [aria-label*="Toggle navbar"]');
+    if (!tool) return;
+
+    // keep the toggle working
+    tool.setAttribute("href", "#");
+    tool.addEventListener("click", (e) => { e.preventDefault(); toggleNav(); });
+
+    // ONE native tooltip: on the icon only
+    const label = tool.getAttribute("aria-label") || "Toggle navbar";
+    tool.removeAttribute("title");                // no tooltip on the anchor
+    const icon = tool.querySelector("i, svg");    // Bootstrap Icons render as <i> or <svg>
+    if (icon) icon.setAttribute("title", label);
+
+    tool.setAttribute("role", "button");
   }
 
   function start() { bindHotkey(); bindNavbarToolIfPresent(); }
