@@ -100,6 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../css/nav-toggle.css">
 </head>
 <body class="nav-sidebar floating nav-fixed">
 
@@ -126,6 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
+    <a href="../#" title="" class="quarto-navigation-tool px-1" aria-label="Toggle navbar (Alt+Shift+H)"><i class="bi bi-pin-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -518,7 +520,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If it doesn’t, please see the <a href="13-RFAQ.qmd">R Issues FAQ</a>.</p>
 
 
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script>
+(function () {
+  function installShim() {
+    const H = window.Headroom;
+    if (!H || H._patched) return !!H && H._patched;
+
+    const Original = H;
+    function Patched(el, opts) {
+      const desired = { offset: 180, tolerance: { up: 60, down: 10 } };
+      const merged = Object.assign({}, opts, desired);
+      const inst = new Original(el, merged);
+      try { el._headroom = inst; } catch (_) {}
+      return inst;
+    }
+    Object.assign(Patched, Original);
+    Patched.prototype = Original.prototype;
+    Patched._patched = true;
+    window.Headroom = Patched;
+    return true;
+  }
+
+  if (!installShim()) {
+    const t = setInterval(() => { if (installShim()) clearInterval(t); }, 10);
+    window.addEventListener("DOMContentLoaded", () => clearInterval(t), { once: true });
+  }
+})();
+</script><script>
+(function () {
+  function headerEl() { return document.querySelector("#quarto-header"); }
+  function headroomInst() { const h = headerEl(); return h && h._headroom ? h._headroom : null; }
+  function setScrollPaddingTop(px) { document.documentElement.style.setProperty("scroll-padding-top", px); }
+  function visibleNavbarHeight() { const h = headerEl(); return h ? `${h.offsetHeight}px` : "0px"; }
+
+  function ensureFab() {
+    let fab = document.querySelector(".q-nav-fab");
+    if (!fab) {
+      fab = document.createElement("button");
+      fab.className = "q-nav-fab";
+      fab.type = "button";
+      fab.setAttribute("aria-label", "Show navbar (Alt+Shift+H)");
+      fab.innerHTML = '<span aria-hidden="true">≡</span>';
+      fab.addEventListener("click", () => toggleNav(false));
+      document.body.appendChild(fab);
+    }
+    return fab;
+  }
+
+  function toggleNav(forceHidden) {
+    const body = document.body;
+    const wantHide = (forceHidden === undefined) ? !body.classList.contains("nav-hidden") : forceHidden;
+    const hr = headroomInst();
+
+    if (wantHide) {
+      body.classList.add("nav-hidden");
+      if (hr && typeof hr.freeze === "function") hr.freeze();
+      body.dataset.prevScrollPaddingTop = getComputedStyle(document.documentElement).scrollPaddingTop;
+      setScrollPaddingTop("0px");
+      ensureFab().style.display = "inline-flex";
+    } else {
+      body.classList.remove("nav-hidden");
+      if (hr && typeof hr.unfreeze === "function") hr.unfreeze();
+      const prev = body.dataset.prevScrollPaddingTop || visibleNavbarHeight();
+      setScrollPaddingTop(prev);
+      const fab = document.querySelector(".q-nav-fab");
+      if (fab) fab.style.display = "none";
+    }
+  }
+
+  function bindHotkey() {
+    document.addEventListener("keydown", (e) => {
+      const inEditable = e.target.closest("input, textarea, [contenteditable='true']");
+      if (inEditable) return;
+      if (e.altKey && e.shiftKey && e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        toggleNav();
+      }
+    });
+  }
+
+  function bindNavbarToolIfPresent() {
+    const tool = document.querySelector('#quarto-header [aria-label="Toggle navbar (Alt+Shift+H)"]');
+    if (tool) tool.addEventListener("click", (e) => { e.preventDefault(); toggleNav(); });
+  }
+
+  function start() { bindHotkey(); bindNavbarToolIfPresent(); }
+
+  (document.readyState === "loading")
+    ? document.addEventListener("DOMContentLoaded", start)
+    : start();
+})();
+</script><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
