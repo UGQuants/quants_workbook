@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../assessments/RFAQ.html" rel="next">
 <link href="../assessments/creating-assessment-projects.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,6 +138,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Assessments</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assessments/formative.html" class="sidebar-item-text sidebar-link">
@@ -160,6 +162,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../assessments/assessment-faq.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Interpretive Report Q&amp;A</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/RFAQ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Issues FAQ</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -203,7 +211,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="interpretive-report-qa" class="level1">
 <h1>Interpretive Report Q&amp;A</h1>
-<p>Please find below answers to questions about the summitive <a href="../assessments/summative.html#interpreting-quantitative-findings-report">interpreting quantitative findings report</a> assessment. Please get in touch if you have any other questions or where any of the answers below are unclear.</p>
+<p>Please find below answers to questions about the summitive <a href="../assessments/summative.html#interpreting-quantitative-findings-report">interpreting quantitative findings report</a> assessment. For FAQ about R issues in relation to the summative assessment, please see the separate <a href="../assessments/RFAQ.html">R Issues FAQ</a> page.</p>
+<p>Please get in touch if you have any other questions or where any of the answers below are unclear.</p>
 <section id="what-is-the-process-for-starting-the-report-in-r-can-we-have-an-outline" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-process-for-starting-the-report-in-r-can-we-have-an-outline">What is the process for starting the report in R? Can we have an outline?</h2>
 <p>Please see the <a href="../assessments/creating-assessment-projects.html">Setup Assessment Projects</a> page in the Assessments section of the Lab Workbook. It provides details for how to create a Posit Cloud project for the interpretive report from a template we provide. The template project includes an R Markdown file with an advised outline, suggested word counts for each section, and code-blocks for installing/loading packages, reading in the dataset, and producing the regression results table. You will need to create additional code chunks for any tables and visualisations you include as part of your interpretive report.</p>
@@ -261,9 +270,6 @@ ul.task-list li input[type="checkbox"] {
 </p>
 <p>As can see, despite the project template’s RMarkdown file having over 300 words and the knitted HTML having a regression results table that contains 50+ words, none of the code nor table/figure text is included within the actual word count.</p>
 <p>The ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the calculated word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
-<p>Please also note, whilst they won’t be included in the word count, the code in the code chunks should not be displayed within your knitted HTML file. The R Markdown file provided in the project template is already setup to not include the code from code chunks by setting the global knitr options to <code>echo=FALSE</code>in the setup code chunk. If the code from code chunks are appearing in your knitted file, check you have not accidentally removed/modified the setup code chunk. If code from a specific code chunk is shownig, but not others, then check you have not accidentally added <code>echo=TRUE</code> to its options.</p>
-<p><img src="../images/summative_echo-false.png" class="img-fluid" alt="setup code chunk that sets global option to not include code from code chunks in knitted outputs"><br>
-</p>
 </section>
 <section id="for-a-categorical-variable-if-one-category-is-statistically-significant-but-another-isnt-can-we-say-the-variable-is-significant" class="level2">
 <h2 class="anchored" data-anchor-id="for-a-categorical-variable-if-one-category-is-statistically-significant-but-another-isnt-can-we-say-the-variable-is-significant">For a categorical variable, if one category is statistically significant but another isn’t, can we say the variable is significant?</h2>
@@ -956,6 +962,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../assessments/RFAQ.html" class="pagination-link" aria-label="R Issues FAQ">
+        <span class="nav-page-text">R Issues FAQ</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

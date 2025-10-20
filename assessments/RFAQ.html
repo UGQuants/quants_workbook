@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.32">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Help! – Lab Workbook</title>
+<title>rfaq – Lab Workbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -30,7 +60,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../help/InterpretiveReportStructure.html" rel="next">
+<link href="../assessments/assessment-faq.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -43,8 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-1efbf008e2baeeb4cb205a51dd9b7791.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -69,23 +98,16 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../style.css">
+}</script><link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../css/nav-toggle.css">
 </head>
-
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../brand/uofg-keyline.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../brand/uofg-keyline.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Lab Workbook</span>
     </a>
@@ -96,12 +118,12 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../assessments/assessments.html"> 
+<li class="nav-item">
+    <a class="nav-link active" href="../assessments/assessments.html" aria-current="page"> 
 <span class="menu-text">Assessments</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
     <a href="../#" title="" class="quarto-navigation-tool px-1" aria-label="Toggle navbar (Alt+Shift+H)"><i class="bi bi-pin-fill"></i></a>
@@ -113,45 +135,57 @@ ul.task-list li input[type="checkbox"] {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Help!</h1>
+          <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../help/help.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Help!</span></a>
+  <a href="../assessments/assessments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessments</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
- <span class="menu-text">help/RFAQ.qmd</span>
-  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../help/InterpretiveReportStructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RMarkdown &amp; the Interpretive Report Template</span></a>
+  <a href="../assessments/formative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formative Assessment</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../help/SummativeTemplateBreakdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summative Template Breakdown</span></a>
+  <a href="../assessments/summative.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summative Assessments</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/creating-assessment-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup Assessment Projects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/assessment-faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpretive Report Q&amp;A</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/RFAQ.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">R Issues FAQ</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
@@ -159,40 +193,275 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#r-issues-faq" id="toc-r-issues-faq" class="nav-link active" data-scroll-target="#r-issues-faq">R Issues FAQ</a>
+  <ul class="collapse">
+<li><a href="#reporting-r-issues" id="toc-reporting-r-issues" class="nav-link" data-scroll-target="#reporting-r-issues">Reporting R Issues</a></li>
+  <li><a href="#regression-results-table-issues" id="toc-regression-results-table-issues" class="nav-link" data-scroll-target="#regression-results-table-issues">Regression Results Table Issues</a></li>
+  <li><a href="#object-not-found" id="toc-object-not-found" class="nav-link" data-scroll-target="#object-not-found">Object Not Found</a></li>
+  <li><a href="#wrong-word-count" id="toc-wrong-word-count" class="nav-link" data-scroll-target="#wrong-word-count">Wrong Word Count</a></li>
+  <li>
+<a href="#unable-to-knit" id="toc-unable-to-knit" class="nav-link" data-scroll-target="#unable-to-knit">Unable to Knit</a>
+  <ul class="collapse">
+<li><a href="#execution-halted" id="toc-execution-halted" class="nav-link" data-scroll-target="#execution-halted">Execution Halted</a></li>
+  <li><a href="#package-could-not-be-loaded" id="toc-package-could-not-be-loaded" class="nav-link" data-scroll-target="#package-could-not-be-loaded">Package could not be loaded</a></li>
+  </ul>
+</li>
+  <li><a href="#turnitin-unable-to-open-html-file" id="toc-turnitin-unable-to-open-html-file" class="nav-link" data-scroll-target="#turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">Help!</h1>
+<main class="content" id="quarto-document-content"><section id="r-issues-faq" class="level1"><h1>R Issues FAQ</h1>
+<p>This page contains information for solving common issues students have reported when working on their interpretive findings report.</p>
+<p>Updates will continue being added to this page with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.</p>
+<section id="reporting-r-issues" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="reporting-r-issues">Reporting R Issues</h2>
+<p>When making a Moodle post or emailing about an issue it is vital to provide sufficient context to enable others to help find a solution. This includes:</p>
+<ul>
+<li>The full text of any error message that you are receiving.</li>
+<li>Any relevant code that is producing the error.</li>
+</ul>
+<p>Error messages will often flag the relevant code chunk where the error occurred:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/errorlines.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
+</div>
+</div>
+<p>So, based on the above error message you would include the code within the code block at lines 49-50.</p>
+<p>Additionally, when emailing, please also include:</p>
+<ul>
+<li>Your lab group number.</li>
+<li>If already made a Moodle post about the issue, a link to the post.</li>
+</ul></section><section id="regression-results-table-issues" class="level2"><h2 class="anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
+<p>If variables go missing from your regression results table or the regression results are different to how they originally appeared when you knitted the template, you may have unintentionally replaced the data included with the template.</p>
+<p>The preamble code block at the top of the R Markdown file provided with the template reads in the ‘fullnilt_2012.rds’ dataset and assigns it to the ‘nilt’ data frame object.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read data</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/fullnilt_2012.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You therefore do not need to download and read in another dataset, this is all setup for you already within the preamble code block. To resolve the issue, remove all additional code where you downloaded and assign another dataset to the <code>nilt</code> data frame. Then re-run the preamble code chunk.</p>
+<p>For example, these would be lines to remove:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/removelines.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The ‘NILT2012GR’ that we used in the labs has a different set of the NILT variables, and does not contain all the variables in the ‘fullnilt_2012’ dataset provided in the project template. The above code then would result in variables disappearing from your regression results table.</p>
+<p>Similarly, this would also be code to remove:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/removelines2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The above code replaces the original nilt data frame with a version that only includes the 5 variables listed within the selection function. Again, resulting in variables disappearing from the regression results table.</p>
+<p>The <code>select()</code> function keeps variables passed to it and drops the others. The first argument is always the dataframe being selected from, <code>select(dataframe, ...)</code>, with variables to keep from it listed after, <code>select(dataframe, variable1, variable2, ...)</code>. Assigning, <code>&lt;-</code>, select() to the same dataframe, <code>dataframe &lt;- select(dataframe, ..)</code>, is effectively saying, ‘from this dataframe keep these variables and permanently remove the others’. Unless your whole analysis is only going to use that selection, always assign it to a new dataframe instead, <code>dataframe_subset &lt;- select(dataframe, ...)</code>.</p>
+<p><strong>Important</strong>: the preamble code chunk in the R Markdown file provided in the project template already has a line of code for creating an <code>nilt_subset</code> object with only the variables that are used in the regression model.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset with variables used in regression model</span></span>
+<span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">persinc2</span>, <span class="va">rsex</span>, <span class="va">religcat</span>, <span class="va">orient</span>, <span class="va">uninatid</span>, <span class="va">tunionsa</span>, <span class="va">rsuper</span>, <span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="object-not-found" class="level2"><h2 class="anchored" data-anchor-id="object-not-found">Object Not Found</h2>
+<p>‘Object not found’ errors often arise when no data has been assigned to a data frame object. For example, if you ran code using <code>nilt</code> object, such as <code>sumtable(nilt, ...)</code> without first assigning data to it <code>nilt &lt;- ...</code>, you would receive the following error message when running/knitting your code:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/objectnotfound.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The preamble code chunk in the R Markdown file provided with the project template contains code for reading in the NILT data set and assigning it to an <code>nilt</code> data frame object. It also sets up an <code>nilt_subset</code> with just the variables used in the regression model.</p>
+<p>If you are receiving object not found errors for these then, ensure you have run the preamble code chunk. If you still receive an error message, double-check for typos and capitalisation, <code>nilt_subset</code>, <code>NILT_subset</code>, and <code>ni1t_subset</code> will be treated as different objects.</p>
+</section><section id="wrong-word-count" class="level2"><h2 class="anchored" data-anchor-id="wrong-word-count">Wrong Word Count</h2>
+<p>If the word count displayed at the top of your knitted HTML is wrong, check whether the line of code that calculates the word count refers to the correct R Markdown file you are using.</p>
+<p>Within the template R Markdown document, we include an inline code block that uses a word count addin to calculate your word count within the knitted HTML file:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountinline.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Which when knitted will look as follows in the HTML file:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/summative_knit-count.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, the code to calculate the word count refers to a specific file “Summative-template.Rmd”. if you created a new RMarkdown file, such as one that included your student number ‘Summative-245425s.Rmd’, you also need to update the file name in the code:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountchange.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note, the ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
+<p>Please also note, whilst they won’t be included in the calculated word count, the code in the code chunks should not be displayed within your knitted HTML file. The R Markdown file provided in the project template is already setup to not include the code from code chunks by setting the global knitr options to <code>echo=FALSE</code>in the setup code chunk.</p>
+<p><img src="../images/summative_echo-false.png" class="img-fluid" alt="setup code chunk that sets global option to not include code from code chunks in knitted outputs"><br></p>
+<p>If the code from code chunks are appearing in your knitted file, check you have not accidentally removed/modified the setup code chunk. If code from a specific code chunk is showing, but not others, then check you have not accidentally added <code>echo=TRUE</code> to its options.</p>
+</section><section id="unable-to-knit" class="level2"><h2 class="anchored" data-anchor-id="unable-to-knit">Unable to Knit</h2>
+<section id="execution-halted" class="level3"><h3 class="anchored" data-anchor-id="execution-halted">Execution Halted</h3>
+<p>The most common cause of this error is from renaming the R Markdown file, but not updating the line of code that calculates the word count. See <a href="#wrong-word-count">Wrong Word Count</a> section for general info.</p>
+<p>For example, if you renamed the R Markdwon file from ‘Summative-template.Rmd’ to ‘Summative-245425s.Rmd’, you will receive an ‘Execution halted’ error when trying to knit:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exechalted.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To fix it, just update the line of code that calculates the word count so it refers to the new name you have given the file:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountchange.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="package-could-not-be-loaded" class="level3"><h3 class="anchored" data-anchor-id="package-could-not-be-loaded">Package could not be loaded</h3>
+<p>If receiving a “package ‘…’ could not be loaded” error message, check the YAML code block at the top of your RMarkdown file. Where this error message has occurred previously, it is due to using the <code>vtable</code> package and the YAML code block includes PDF as an output.</p>
+<p>You should have either of the following for <code>output: ...</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtml1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtml2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>But, will probably have the something like the following if receiving the error message:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtmlpdf.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This can happen unintentionally as RStudio can automatically add a line for PDF outline, such as if accidentally clicked ‘Knit to PDF’:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/accidentalpdf.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Annoyingly, even if you click ‘Knit to HTML’ from the options, if your YAML block includes pdf_document in its outputs, R will still try to create a PDF document and keep running into the error message.</p>
+<p>So, if you are receiving the error message and have the two output lines, you can easily fix it by removing the pdf_document line:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/deletepdfoutput.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note, as the YAML block is already specifying to create an HTML output, you can just click the ‘Knit’ button directly each time rather than clicking the wee down arrow to select ‘Knit to HTML’ specifically.</p>
+</section></section><section id="turnitin-unable-to-open-html-file" class="level2"><h2 class="anchored" data-anchor-id="turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</h2>
+<p><strong>Please ensure to submit an exported version of your knitted HTML file rather than one saved through your browser.</strong></p>
+<p>If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g.&nbsp;right-clicking and ‘Save as…’) rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but the code in the file creates issues for Turnitin.</p>
+<p>To export your knitted HTML file - 1. Check the box next to your knitted HTML file in the ‘Files’ panel. By default, the Files panel is on the bottom right of the screen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Click ‘More’ from the toolbar at the top of the Files panel.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Click ‘Export’ from the menu options that pop-up.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>This will pop open an ‘Export Files’ dialogue. Here, you can rename the file to include your student number. Just make sure the “.html” at the end remains included.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>After naming the file, click ‘Download’. This will open a dialogue to select which location to save the file.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here’s a short gif running through all the steps together.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Important</strong>: Some browsers by default will download to a ‘Downloads’ folder and instantly open the file within the browser after its finished downloading. This will open your knitted file in a tab within your browser. <strong>Do not</strong> then ‘Save as…’ the file from within the browser. Instead, close the tab and use your file explorer to navigate to your ‘Downloads’ folder to find the exported copy of your file to submit.</p>
+<p>Please note: Don’t panic if Turnitin is unable to open your file. We are aware of the issue and you will not be penalised if you submit a file on time, but then have to resubmit after the deadline due to Turnitin being unable to open your original submission.</p>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-
-
-
-</main> <!-- /main -->
-<script>
+</section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;
@@ -218,9 +487,7 @@ ul.task-list li input[type="checkbox"] {
     window.addEventListener("DOMContentLoaded", () => clearInterval(t), { once: true });
   }
 })();
-</script>
-
-<script>
+</script><script>
 (function () {
   function headerEl() { return document.querySelector("#quarto-header"); }
   function headroomInst() { const h = headerEl(); return h && h._headroom ? h._headroom : null; }
@@ -297,8 +564,7 @@ ul.task-list li input[type="checkbox"] {
     ? document.addEventListener("DOMContentLoaded", start)
     : start();
 })();
-</script>
-<script id="quarto-html-after-body" type="application/javascript">
+</script><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -861,32 +1127,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../assessments/assessment-faq.html" class="pagination-link" aria-label="Interpretive Report Q&amp;A">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Interpretive Report Q&amp;A</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../help/InterpretiveReportStructure.html" class="pagination-link" aria-label="RMarkdown &amp; the Interpretive Report Template">
-        <span class="nav-page-text">RMarkdown &amp; the Interpretive Report Template</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org">Quarto</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licensed under <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a></p>
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

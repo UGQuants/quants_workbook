@@ -9,63 +9,43 @@
     <lastmod>2025-10-17T15:47:55.645Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/assessments/formative.html</loc>
-    <lastmod>2025-10-06T11:53:56.401Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/assessments/RFAQ.html</loc>
+    <lastmod>2025-10-20T16:39:13.305Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/11-Lab11.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/assessments/assessments.html</loc>
+    <lastmod>2025-10-17T15:35:26.871Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/09-Lab9.html</loc>
+    <lastmod>2025-08-27T22:40:23.958Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/10-Lab10.html</loc>
     <lastmod>2025-10-06T11:53:56.392Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/05-Lab5.html</loc>
-    <lastmod>2025-08-27T22:46:42.723Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/04-Lab4.html</loc>
+    <lastmod>2025-10-14T10:15:29.481Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/07-Lab7.html</loc>
-    <lastmod>2025-08-27T23:14:22.028Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/index.html</loc>
+    <lastmod>2025-10-06T11:53:56.430Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/Answers.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/01-intro.html</loc>
+    <lastmod>2025-10-06T11:53:56.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/08-Lab8.html</loc>
+    <lastmod>2025-08-27T22:52:29.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/References.html</loc>
     <lastmod>2025-10-06T11:53:56.392Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/99-references.html</loc>
-    <lastmod>2025-08-27T16:08:30.830Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/03-Lab3.html</loc>
-    <lastmod>2025-10-07T20:03:15.004Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/06-Lab6.html</loc>
-    <lastmod>2025-08-27T23:13:41.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/copilot.html</loc>
-    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/r basics.html</loc>
-    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/help.html</loc>
-    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/rstudio.html</loc>
-    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/InterpretiveReportStructure.html</loc>
-    <lastmod>2025-10-06T11:53:56.402Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/RFAQ.html</loc>
-    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/rstudio_helper.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/help/r markdown.html</loc>
     <lastmod>2025-10-06T11:53:56.403Z</lastmod>
   </url>
   <url>
@@ -73,44 +53,64 @@
     <lastmod>2025-10-06T11:53:56.403Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/help/r markdown.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/help/rstudio_helper.html</loc>
     <lastmod>2025-10-06T11:53:56.403Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/References.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/help/InterpretiveReportStructure.html</loc>
+    <lastmod>2025-10-06T11:53:56.402Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/help/rstudio.html</loc>
+    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/help/help.html</loc>
+    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/help/r basics.html</loc>
+    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/help/copilot.html</loc>
+    <lastmod>2025-10-06T11:53:56.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/06-Lab6.html</loc>
+    <lastmod>2025-08-27T23:13:41.475Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/03-Lab3.html</loc>
+    <lastmod>2025-10-07T20:03:15.004Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/99-references.html</loc>
+    <lastmod>2025-08-27T16:08:30.830Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ugquants.github.io/quants_workbook/Answers.html</loc>
     <lastmod>2025-10-06T11:53:56.392Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/08-Lab8.html</loc>
-    <lastmod>2025-08-27T22:52:29.700Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/07-Lab7.html</loc>
+    <lastmod>2025-08-27T23:14:22.028Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/01-intro.html</loc>
-    <lastmod>2025-10-06T11:53:56.391Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/05-Lab5.html</loc>
+    <lastmod>2025-08-27T22:46:42.723Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/index.html</loc>
-    <lastmod>2025-10-06T11:53:56.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/04-Lab4.html</loc>
-    <lastmod>2025-10-14T10:15:29.481Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/10-Lab10.html</loc>
+    <loc>https://ugquants.github.io/quants_workbook/11-Lab11.html</loc>
     <lastmod>2025-10-06T11:53:56.392Z</lastmod>
   </url>
   <url>
-    <loc>https://ugquants.github.io/quants_workbook/09-Lab9.html</loc>
-    <lastmod>2025-08-27T22:40:23.958Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ugquants.github.io/quants_workbook/assessments/assessments.html</loc>
-    <lastmod>2025-10-17T15:35:26.871Z</lastmod>
+    <loc>https://ugquants.github.io/quants_workbook/assessments/formative.html</loc>
+    <lastmod>2025-10-06T11:53:56.401Z</lastmod>
   </url>
   <url>
     <loc>https://ugquants.github.io/quants_workbook/assessments/assessment-faq.html</loc>
-    <lastmod>2025-10-20T15:43:56.355Z</lastmod>
+    <lastmod>2025-10-20T16:36:37.820Z</lastmod>
   </url>
   <url>
     <loc>https://ugquants.github.io/quants_workbook/assessments/summative.html</loc>

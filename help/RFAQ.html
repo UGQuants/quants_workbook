@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R FAQ – Lab Workbook</title>
+<title>rfaq – Lab Workbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">R FAQ</h1>
+          <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../help/RFAQ.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">R FAQ</span></a>
+ <span class="menu-text">R Issues FAQ</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,38 +186,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+<li>
+<a href="#r-issues-faq" id="toc-r-issues-faq" class="nav-link active" data-scroll-target="#r-issues-faq">R Issues FAQ</a>
+  <ul class="collapse">
+<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#reporting-r-issues" id="toc-reporting-r-issues" class="nav-link" data-scroll-target="#reporting-r-issues">Reporting R Issues</a></li>
   <li><a href="#regression-results-table-issues" id="toc-regression-results-table-issues" class="nav-link" data-scroll-target="#regression-results-table-issues">Regression Results Table Issues</a></li>
-  <li><a href="#object-nilt_subset-not-found" id="toc-object-nilt_subset-not-found" class="nav-link" data-scroll-target="#object-nilt_subset-not-found">Object ‘nilt_subset’ Not Found</a></li>
+  <li><a href="#object-not-found" id="toc-object-not-found" class="nav-link" data-scroll-target="#object-not-found">Object Not Found</a></li>
   <li><a href="#wrong-word-count" id="toc-wrong-word-count" class="nav-link" data-scroll-target="#wrong-word-count">Wrong Word Count</a></li>
   <li>
 <a href="#unable-to-knit" id="toc-unable-to-knit" class="nav-link" data-scroll-target="#unable-to-knit">Unable to Knit</a>
   <ul class="collapse">
-<li><a href="#package-could-not-be-loaded" id="toc-package-could-not-be-loaded" class="nav-link" data-scroll-target="#package-could-not-be-loaded">Package could not be loaded</a></li>
-  <li><a href="#execution-halted" id="toc-execution-halted" class="nav-link" data-scroll-target="#execution-halted">Execution Halted</a></li>
+<li><a href="#execution-halted" id="toc-execution-halted" class="nav-link" data-scroll-target="#execution-halted">Execution Halted</a></li>
+  <li><a href="#package-could-not-be-loaded" id="toc-package-could-not-be-loaded" class="nav-link" data-scroll-target="#package-could-not-be-loaded">Package could not be loaded</a></li>
   </ul>
 </li>
   <li><a href="#turnitin-unable-to-open-html-file" id="toc-turnitin-unable-to-open-html-file" class="nav-link" data-scroll-target="#turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title d-none d-lg-block">R FAQ</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header><section id="introduction" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h2>
+<main class="content" id="quarto-document-content"><section id="r-issues-faq" class="level1"><h1>R Issues FAQ</h1>
+<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This appendix contains information for solving common issues students have reported when working on their interpretive findings report.</p>
 <p>Updates will continue being added to this appendix with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.</p>
 </section><section id="reporting-r-issues" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="reporting-r-issues">Reporting R Issues</h2>
@@ -228,136 +219,234 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Error messages will often flag the relevant code chunk where the error occurred:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/errorlines.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/errorlines.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>So, based on the above error message you would include the code within the code block at lines 49-50.</p>
 <p>Additionally, when emailing, please also include:</p>
 <ul>
 <li>Your lab group number.</li>
 <li>If already made a Moodle post about the issue, a link to the post.</li>
-</ul></section><section id="regression-results-table-issues" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
+</ul></section><section id="regression-results-table-issues" class="level2"><h2 class="anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
 <p>If variables go missing from your regression results table or the regression results are different to how they originally appeared when you knitted the template, you may have unintentionally replaced the data included with the template.</p>
-<p>The preamble code block at the top of the RMarkdown file provide with the template reads in the ‘fullnilt_2012.rds’ dataset and assigns it to the ‘nilt’ data frame object.</p>
+<p>The preamble code block at the top of the R Markdown file provided with the template reads in the ‘fullnilt_2012.rds’ dataset and assigns it to the ‘nilt’ data frame object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/preamble_readRDS.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read data</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/fullnilt_2012.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You therefore do not need to download and read in anther dataset, this is all setup for you already within the preamble code block. To resolve the issue, remove all code where you download and assign another dataset to the nilt data frame.</p>
+<p>You therefore do not need to download and read in another dataset, this is all setup for you already within the preamble code block. To resolve the issue, remove all additional code where you downloaded and assign another dataset to the <code>nilt</code> data frame. Then re-run the preamble code chunk.</p>
 <p>For example, these would be lines to remove:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/removelines.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/removelines.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<p>The ‘NILT2012GR’ that we used in the labs has a different set of the NILT variables, and does not contain all the variables in the ‘fullnilt_2012’ dataset provided in the template. The above code then would result in variables disappearing from your regression results table.</p>
+</div>
+</div>
+<p>The ‘NILT2012GR’ that we used in the labs has a different set of the NILT variables, and does not contain all the variables in the ‘fullnilt_2012’ dataset provided in the project template. The above code then would result in variables disappearing from your regression results table.</p>
 <p>Similarly, this would also be code to remove:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/removelines2.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/removelines2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>The above code replaces the original nilt data frame with a version that only includes the 5 variables listed within the selection function. Again, resulting in variables disappearing from the regression results table.</p>
 <p>The <code>select()</code> function keeps variables passed to it and drops the others. The first argument is always the dataframe being selected from, <code>select(dataframe, ...)</code>, with variables to keep from it listed after, <code>select(dataframe, variable1, variable2, ...)</code>. Assigning, <code>&lt;-</code>, select() to the same dataframe, <code>dataframe &lt;- select(dataframe, ..)</code>, is effectively saying, ‘from this dataframe keep these variables and permanently remove the others’. Unless your whole analysis is only going to use that selection, always assign it to a new dataframe instead, <code>dataframe_subset &lt;- select(dataframe, ...)</code>.</p>
-<p>If you need to create a subset of the data, ensure to assign it to a new data frame:</p>
+<p><strong>Important</strong>: the preamble code chunk in the R Markdown file provided in the project template already has a line of code for creating an <code>nilt_subset</code> object with only the variables that are used in the regression model.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/subsetcorrect.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset with variables used in regression model</span></span>
+<span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">persinc2</span>, <span class="va">rsex</span>, <span class="va">religcat</span>, <span class="va">orient</span>, <span class="va">uninatid</span>, <span class="va">tunionsa</span>, <span class="va">rsuper</span>, <span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Note</strong>, always consider whether you actually need to create a subset. Most functions have arguments for defining which variables to use, so you do not necessarily need to provide a subset to them.</p>
-</section><section id="object-nilt_subset-not-found" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="object-nilt_subset-not-found">Object ‘nilt_subset’ Not Found</h2>
-<p>‘Object not found’ errors often arise when no data has been assigned to a data frame object. For example, if you ran code using ‘nilt_subset’, such as <code>sumtable(nilt_subset, ...)</code> without first assigning data to it <code>nilt_subset &lt;- ...</code>, you would receive the following error message when running/knitting your code:</p>
+</section><section id="object-not-found" class="level2"><h2 class="anchored" data-anchor-id="object-not-found">Object Not Found</h2>
+<p>‘Object not found’ errors often arise when no data has been assigned to a data frame object. For example, if you ran code using <code>nilt</code> object, such as <code>sumtable(nilt, ...)</code> without first assigning data to it <code>nilt &lt;- ...</code>, you would receive the following error message when running/knitting your code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/objectnotfound.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/objectnotfound.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<p>When working with a subset of the data, ensure before the lines identified in the error message that you included code that assigns data to it (<code>dataframe &lt;- ...</code>). For example, if you need to work with a subset of data that used filter() or select():</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/subsetexamples.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you already have code assigning data to the object and do so before the code that is producing the error message, try running the lines of code where you assigning the data again, or ‘Run All’. If you still receive an error message, double-check for typos and capitalisation, <code>nilt_subset</code>, <code>NILT_subset</code>, and <code>ni1t_subset</code> will be treated as different objects.</p>
-<p>If the code was previously working, it may be the case that you have accidentally deleted code blocks / lines that assigned data to the object, added new code above the lines where you assigned data, or moved code where the lines assigning data to the object and calling it within a function are now in the wrong order.</p>
-<p><strong>Note</strong>, always consider whether you actually need to create a subset. Most functions have arguments for defining which variables to use, so you do not necessarily need to provide a subset to them.</p>
-</section><section id="wrong-word-count" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="wrong-word-count">Wrong Word Count</h2>
-<p>If the word count displayed at the top of your knitted HTML is wrong, check whether the line of code that calculates the word count refers to the correct RMarkdown file you are using.</p>
-<p>Within the template RMarkdown document, we include an inline code block that uses a word count addin to calculate your word count within the knitted HTML file:</p>
+</div>
+<p>The preamble code chunk in the R Markdown file provided with the project template contains code for reading in the NILT data set and assigning it to an <code>nilt</code> data frame object. It also sets up an <code>nilt_subset</code> with just the variables used in the regression model.</p>
+<p>If you are receiving object not found errors for these then, ensure you have run the preamble code chunk. If you still receive an error message, double-check for typos and capitalisation, <code>nilt_subset</code>, <code>NILT_subset</code>, and <code>ni1t_subset</code> will be treated as different objects.</p>
+</section><section id="wrong-word-count" class="level2"><h2 class="anchored" data-anchor-id="wrong-word-count">Wrong Word Count</h2>
+<p>If the word count displayed at the top of your knitted HTML is wrong, check whether the line of code that calculates the word count refers to the correct R Markdown file you are using.</p>
+<p>Within the template R Markdown document, we include an inline code block that uses a word count addin to calculate your word count within the knitted HTML file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/wordcountinline.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountinline.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Which when knitted will look as follows in the HTML file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/knittedwordcount.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/summative_knit-count.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<p>However, the code to calculate the word count refers to a specific file “Assignmet2-template.Rmd”. if you created a new RMarkdown file, such as one that included your student number ‘Assignment2-255615q.Rmd’, you also need to update the file name in the code:</p>
+</div>
+</div>
+<p>However, the code to calculate the word count refers to a specific file “Summative-template.Rmd”. if you created a new RMarkdown file, such as one that included your student number ‘Summative-245425s.Rmd’, you also need to update the file name in the code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/wordcountchange.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountchange.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<p>Note, the ‘- 10’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to “wordcountaddin::word_count(”Assignmet2-template.Rmd”) - 193”.</p>
-</section><section id="unable-to-knit" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="unable-to-knit">Unable to Knit</h2>
-<section id="package-could-not-be-loaded" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="package-could-not-be-loaded">Package could not be loaded</h3>
-<p>If receiving a “package ‘…’ could not be loaded” error message, check the YAML code block at the top of your RMarkdown file. Where this error message has occurred previously, it is due to using the ‘vtable’ package and the YAML code block includes pdf as an output.</p>
+</div>
+</div>
+<p>Note, the ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
+</section><section id="unable-to-knit" class="level2"><h2 class="anchored" data-anchor-id="unable-to-knit">Unable to Knit</h2>
+<section id="execution-halted" class="level3"><h3 class="anchored" data-anchor-id="execution-halted">Execution Halted</h3>
+<p>The most common cause of this error is from renaming the R Markdown file, but not updating the line of code that calculates the word count. See <a href="#wrong-word-count">Wrong Word Count</a> section for general info.</p>
+<p>For example, if you renamed the R Markdwon file from ‘Summative-template.Rmd’ to ‘Summative-245425s.Rmd’, you will receive an ‘Execution halted’ error when trying to knit:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exechalted.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To fix it, just update the line of code that calculates the word count so it refers to the new name you have given the file:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/wordcountchange.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="package-could-not-be-loaded" class="level3"><h3 class="anchored" data-anchor-id="package-could-not-be-loaded">Package could not be loaded</h3>
+<p>If receiving a “package ‘…’ could not be loaded” error message, check the YAML code block at the top of your RMarkdown file. Where this error message has occurred previously, it is due to using the <code>vtable</code> package and the YAML code block includes PDF as an output.</p>
 <p>You should have either of the following for <code>output: ...</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/outputhtml1.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtml1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/outputhtml2.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtml2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>But, will probably have the something like the following if receiving the error message:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/outputhtmlpdf.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/outputhtmlpdf.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>This can happen unintentionally as RStudio can automatically add a line for PDF outline, such as if accidentally clicked ‘Knit to PDF’:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/accidentalpdf.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/accidentalpdf.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Annoyingly, even if you click ‘Knit to HTML’ from the options, if your YAML block includes pdf_document in its outputs, R will still try to create a PDF document and keep running into the error message.</p>
 <p>So, if you are receiving the error message and have the two output lines, you can easily fix it by removing the pdf_document line:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/deletepdfoutput.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/deletepdfoutput.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Note, as the YAML block is already specifying to create an HTML output, you can just click the ‘Knit’ button directly each time rather than clicking the wee down arrow to select ‘Knit to HTML’ specifically.</p>
-</section><section id="execution-halted" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="execution-halted">Execution Halted</h3>
-<p>The most common cause of this error is from renaming the RMarkdown file, but not updating the line of code that calculates the word count. See <a href="#wrong-word-count">Wrong Word Count</a> section for general info.</p>
-<p>For example, if you renamed the RMarkdwon file from ‘Assignmet2-template.Rmd’ to ‘Assignment2-255615q.Rmd’, you will receive an ‘Execution halted’ error when trying to knit:</p>
-<div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exechalted.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To fix it, just update the line of code that calculates the word count so it refers to the new name you have given the file:</p>
-<div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/wordcountchange.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section><section id="turnitin-unable-to-open-html-file" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</h2>
-<p>To avoid such potential issues, please ensure to submit an exported version of your knitted HTML file rather than one saved through your browser.</p>
-<p>If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g.&nbsp;right-clicking and ‘Save as…’) rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but creates issues for Turnitin.</p>
+</section></section><section id="turnitin-unable-to-open-html-file" class="level2"><h2 class="anchored" data-anchor-id="turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</h2>
+<p><strong>Please ensure to submit an exported version of your knitted HTML file rather than one saved through your browser.</strong></p>
+<p>If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g.&nbsp;right-clicking and ‘Save as…’) rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but the code in the file creates issues for Turnitin.</p>
 <p>To export your knitted HTML file - 1. Check the box next to your knitted HTML file in the ‘Files’ panel. By default, the Files panel is on the bottom right of the screen.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml1.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <ol start="2" type="1">
 <li>Click ‘More’ from the toolbar at the top of the Files panel.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml2.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <ol start="3" type="1">
 <li>Click ‘Export’ from the menu options that pop-up.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml3.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <ol start="4" type="1">
 <li>This will pop open an ‘Export Files’ dialogue. Here, you can rename the file to include your student number. Just make sure the “.html” at the end remains included.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml4.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <ol start="5" type="1">
 <li>After naming the file, click ‘Download’. This will open a dialogue to select which location to save the file.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml5.png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Here’s a short gif running through all the steps together.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/exporthtml.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="../images/exporthtml.gif" class="img-fluid figure-img"></p>
+</figure>
 </div>
+</div>
+</div>
+<p><strong>Important</strong>: Some browsers by default will download to a ‘Downloads’ folder and instantly open the file within the browser after its finished downloading. This will open your knitted file in a tab within your browser. <strong>Do not</strong> then ‘Save as…’ the file from within the browser. Instead, close the tab and use your file explorer to navigate to your ‘Downloads’ folder to find the exported copy of your file to submit.</p>
 <p>Please note: Don’t panic if Turnitin is unable to open your file. We are aware of the issue and you will not be penalised if you submit a file on time, but then have to resubmit after the deadline due to Turnitin being unable to open your original submission.</p>
 
 
-</section></main><!-- /main --><script>
+</section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;
