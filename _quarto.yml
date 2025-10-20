@@ -26,6 +26,9 @@ website:
       - icon: github
         href: https://github.com/UGQuants/quants_workbook
         text: Workbook GitHub
+      - icon: pin-fill
+        href: "#"
+        aria-label: "Toggle navbar (Alt+Shift+H)"
     right:
       #- text: "Help!"
       #href: help/help.qmd
@@ -90,6 +93,7 @@ website:
         - assessments/assessments.qmd
         - assessments/formative.qmd
         - assessments/summative.qmd
+        - assessments/creating-assessment-projects.qmd
         - text: "**Back to Lab Workbook**"
           href: index.qmd
 
@@ -119,3 +123,6 @@ format:
       dark: [cosmo, theme-dark.scss]
     css:
       - style.css
+      - css/nav-toggle.css
+    include-after-body:
+      - _includes/scripts.html
