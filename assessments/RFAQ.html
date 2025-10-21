@@ -207,6 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#regression-results-table-issues" id="toc-regression-results-table-issues" class="nav-link" data-scroll-target="#regression-results-table-issues">Regression Results Table Issues</a></li>
   <li><a href="#object-not-found" id="toc-object-not-found" class="nav-link" data-scroll-target="#object-not-found">Object Not Found</a></li>
   <li><a href="#wrong-word-count" id="toc-wrong-word-count" class="nav-link" data-scroll-target="#wrong-word-count">Wrong Word Count</a></li>
+  <li><a href="#code-chunks-appearing-in-knitted-file" id="toc-code-chunks-appearing-in-knitted-file" class="nav-link" data-scroll-target="#code-chunks-appearing-in-knitted-file">Code Chunks Appearing in Knitted File</a></li>
   <li>
 <a href="#unable-to-knit" id="toc-unable-to-knit" class="nav-link" data-scroll-target="#unable-to-knit">Unable to Knit</a>
   <ul class="collapse">
@@ -320,7 +321,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note, the ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
-<p>Please also note, whilst they won’t be included in the calculated word count, the code in the code chunks should not be displayed within your knitted HTML file. The R Markdown file provided in the project template is already setup to not include the code from code chunks by setting the global knitr options to <code>echo=FALSE</code>in the setup code chunk.</p>
+</section><section id="code-chunks-appearing-in-knitted-file" class="level2"><h2 class="anchored" data-anchor-id="code-chunks-appearing-in-knitted-file">Code Chunks Appearing in Knitted File</h2>
+<p>The code in the code chunks should not be displayed within your knitted HTML file. The R Markdown file provided in the project template is already setup to not include the code from code chunks by setting the global knitr options to <code>echo=FALSE</code>in the setup code chunk.</p>
 <p><img src="../images/summative_echo-false.png" class="img-fluid" alt="setup code chunk that sets global option to not include code from code chunks in knitted outputs"><br></p>
 <p>If the code from code chunks are appearing in your knitted file, check you have not accidentally removed/modified the setup code chunk. If code from a specific code chunk is showing, but not others, then check you have not accidentally added <code>echo=TRUE</code> to its options.</p>
 </section><section id="unable-to-knit" class="level2"><h2 class="anchored" data-anchor-id="unable-to-knit">Unable to Knit</h2>
@@ -395,7 +397,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="turnitin-unable-to-open-html-file" class="level2"><h2 class="anchored" data-anchor-id="turnitin-unable-to-open-html-file">Turnitin Unable to Open HTML File</h2>
 <p><strong>Please ensure to submit an exported version of your knitted HTML file rather than one saved through your browser.</strong></p>
 <p>If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g.&nbsp;right-clicking and ‘Save as…’) rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but the code in the file creates issues for Turnitin.</p>
-<p>To export your knitted HTML file - 1. Check the box next to your knitted HTML file in the ‘Files’ panel. By default, the Files panel is on the bottom right of the screen.</p>
+<p>To export your knitted HTML file -</p>
+<ol type="1">
+<li>Check the box next to your knitted HTML file in the ‘Files’ panel. By default, the Files panel is on the bottom right of the screen.</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
 <div>

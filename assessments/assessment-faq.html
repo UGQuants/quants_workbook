@@ -237,7 +237,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Not citing any literature. Ensure to cite research literature to provide context to your research question, when interpreting findings, and in the conclusion. Similarly, cite relevant methods literature to support your discussion of data and method and interpretation of findings.</li>
 <li>Not providing a clear research question and/or hypothesis. As covered above, key to interpreting findings is going beyond just the numbers. To effectively do that you need to have a clear research question and hypothesis/hypotheses. Fogarty chapter 6 “Developing Hypotheses” provides a good range of examples for how to clearly phrase hypotheses.</li>
 <li>Not including any additional tables or graphs. The template includes the code for creating the regression results table, but you should also provide an appropriate visualisation of the dependent variable, table of descriptive statistics for variables included in the model, and appropriate visualisations of any particularly interesting relationships in the model.</li>
-<li>Not interpreting all or part of the regression results table. Interpreting the regression results table is a critical part of the assignment. The guidance for the <a href="../assessments/summative.html#part-3-results-and-discussion-approx.-1300-words">Results and Discussion</a> provides information on what you should be covering in doing so. Importantly, this includes the model fit statistics, which is the part that most often gets missed. The in-person lectures in Week 9 (evaluating coefficient information) and Week 10 (model evaluation) will cover these in more detail.</li>
+<li>Not interpreting all or part of the regression results table. Interpreting the regression results table is a critical part of the assignment. The guidance for the <a href="../assessments/summative.html#part-3-results-and-discussion-approx.-1200-words">Results and Discussion</a> provides information on what you should be covering in doing so. Importantly, this includes the model fit statistics, which is the part that most often gets missed. The in-person lectures in Week 9 (evaluating coefficient information) and Week 10 (model evaluation) will cover these in more detail.</li>
 </ul>
 </section>
 <section id="how-much-secondary-literature-should-we-include-i.e.-referencing-the-key-reading" class="level2">
@@ -246,12 +246,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-does-the-variable-rsuper-signify-what-does-it-mean-by-supervisor" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-variable-rsuper-signify-what-does-it-mean-by-supervisor">What does the variable “rsuper” signify? What does it mean by “Supervisor”?</h2>
-<p>Excellent question. It is always key to consider what it is that variables actually measure and represent. As covered in the online lecture on Open Research, it is good research practice to provide documentation alongside datasets, <a href="https://www.ark.ac.uk/nilt/2012/">which the NILT project does</a>.</p>
+<p>Excellent question. It is always key to consider what it is that variables actually measure and represent. As covered in the online lectures, it is good research practice to provide documentation alongside datasets, <a href="https://www.ark.ac.uk/nilt/2012/">which the NILT project does</a>.</p>
 <p>Within the <a href="https://www.ark.ac.uk/nilt/2012/main12.pdf">main questionnaire</a>, Q12 on page 41 is the question used for the “rsuper” variable:</p>
 <p><img src="../images/rsuper.png" class="img-fluid" alt="Question used for rsuper variable in the NILT questionnaire"><br>
 </p>
 <p>So, the phrasing of the question would be inclusive of what would also be called ‘line management’ rather than limited to people with ‘supervisor’ in their job title or description.</p>
-<p>Important to note as well is the “<strong>ASK IF EMPLOYEE</strong>” routing information. This means the “rsuper” question Q12 was only asked if the respondent answered “Employee” to Q11. As a result, anyone who answered “Self-employed” to Q11 were not asked Q12, the question for the rsuper variable, resulting in ‘NA’ values:</p>
+<p>Important to note as well is the “<strong>ASK IF EMPLOYEE</strong>” routing information. This means the “rsuper” question Q12 was only asked if the respondent answered “Employee” to Q11. As a result, anyone who answered “Self-employed” to Q11 were not asked Q12, the question for the rsuper variable, resulting in ‘NA’ (i.e.&nbsp;missing) values:</p>
 <p><img src="../images/self-nosuper.png" class="img-fluid" alt="rsuper has NA values for participants who are self-employed"><br>
 </p>
 </section>
@@ -262,14 +262,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="are-tablesfigurescode-included-in-the-word-count" class="level2">
 <h2 class="anchored" data-anchor-id="are-tablesfigurescode-included-in-the-word-count">Are tables/figures/code included in the word count?</h2>
 <p>Tables, figures, and code are not included in the word count. The project template is setup with a “word count add-in”, that will add a word count for you at the top of your <strong>knitted</strong> document. In other words, you will need to knit your file and view the knitted HTML file to see the word count.</p>
-<p>This is how it looks within the RMarkdown file:</p>
-<p><img src="../images/summative_word-count.png" class="img-fluid" alt="Code in R Markdown file provided in project template that is used to calculate word count"><br>
+<p>This is how it looks within the R Markdown file:</p>
+<p><img src="../images/wordcountinline.png" class="img-fluid" alt="Code in R Markdown file provided in project template that is used to calculate word count"><br>
 </p>
 <p>And, this is what it then looks like within the knitted HTML file:</p>
 <p><img src="../images/summative_knit-count.png" class="img-fluid" alt="Word count when knitting the R Markdown template"><br>
 </p>
-<p>As can see, despite the project template’s RMarkdown file having over 300 words and the knitted HTML having a regression results table that contains 50+ words, none of the code nor table/figure text is included within the actual word count.</p>
-<p>The ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the calculated word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
+<p>As can see, despite the project template’s R Markdown file having over 300 words and the knitted HTML having a regression results table that contains 50+ words, none of the code nor table/figure text is included within the actual word count.</p>
+<p>The ‘- 14’ in the code is so the words in “Word count:” and each of the headers - “Introduction”, “Data and method”, etc - are substracted from the calculated word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to “wordcountaddin::word_count(”Summative-template.Rmd”) - 198”.</p>
 </section>
 <section id="for-a-categorical-variable-if-one-category-is-statistically-significant-but-another-isnt-can-we-say-the-variable-is-significant" class="level2">
 <h2 class="anchored" data-anchor-id="for-a-categorical-variable-if-one-category-is-statistically-significant-but-another-isnt-can-we-say-the-variable-is-significant">For a categorical variable, if one category is statistically significant but another isn’t, can we say the variable is significant?</h2>
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="can-we-see-an-interpretive-report-that-got-a-good-grade-the-moodle-example-got-a-c." class="level2">
 <h2 class="anchored" data-anchor-id="can-we-see-an-interpretive-report-that-got-a-good-grade-the-moodle-example-got-a-c.">Can we see an interpretive report that got a good grade? The Moodle example got a C.</h2>
 <p>Within the <a href="https://www.gla.ac.uk/myglasgow/apg/policies/uniregs/regulations2024-25/feesandgeneral/assessmentandacademicappeals/reg16/#schedulea">University of Glasgow’s Code of Assessment</a>, a C is a good grade. A = Excellent, B = Very Good, C = Good, D = Satisfactory.</p>
-<p>Due to data protection regulations, in order to share previous student work on Moodle the university requires us to have students sign a form providing permission. As this is an honours level course and we need to wait until after the Exam Board takes place before approaching students, we tend to have a very low response rate to these requests.</p>
+<p>Due to data protection regulations, in order to share previous student work on Moodle the university requires us to have students sign a form providing permission. As this is an honours level course and we need to wait until after the Exam Board takes place before approaching students, we tend to have a very low response rate to such requests.</p>
 
 
 </section>

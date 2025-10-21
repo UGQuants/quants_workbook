@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -212,13 +246,31 @@ ul.task-list li input[type="checkbox"] {
 <a href="#rmarkdown" id="toc-rmarkdown" class="nav-link active" data-scroll-target="#rmarkdown">Reporting in R Markdown</a>
   <ul class="collapse">
 <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a></li>
   <li>
-<a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a>
+<a href="#new-r-markdown-document" id="toc-new-r-markdown-document" class="nav-link" data-scroll-target="#new-r-markdown-document">New R Markdown Document</a>
   <ul class="collapse">
-<li><a href="#first-r-markdown-document" id="toc-first-r-markdown-document" class="nav-link" data-scroll-target="#first-r-markdown-document">First R Markdown document</a></li>
+<li><a href="#yaml-header" id="toc-yaml-header" class="nav-link" data-scroll-target="#yaml-header">YAML Header</a></li>
   </ul>
 </li>
-  <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
+  <li>
+<a href="#r-markdown-syntax" id="toc-r-markdown-syntax" class="nav-link" data-scroll-target="#r-markdown-syntax">R Markdown Syntax</a>
+  <ul class="collapse">
+<li><a href="#line-spacing" id="toc-line-spacing" class="nav-link" data-scroll-target="#line-spacing">Line spacing</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#code-chunks-options" id="toc-code-chunks-options" class="nav-link" data-scroll-target="#code-chunks-options">Code Chunks Options</a>
+  <ul class="collapse">
+<li><a href="#exporting-html-files" id="toc-exporting-html-files" class="nav-link" data-scroll-target="#exporting-html-files">Exporting HTML Files</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a>
+  <ul class="collapse">
+<li><a href="#moving-files" id="toc-moving-files" class="nav-link" data-scroll-target="#moving-files">Moving Files</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -226,20 +278,39 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content"><section id="rmarkdown" class="level1"><h1>Reporting in R Markdown</h1>
 <section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In the previous labs you were exploring the 2012 <a href="https://www.ark.ac.uk/nilt/">Northern Ireland Life and Times Survey (NILT)</a>. You’ve learnt how to download, read and format the data. Also, you’ve learnt how to explore categorical and numeric data and a mix of them. In this lab, you will learn about how to efficiently report quantitative results directly from R, using R Markdown, which is used by many academics and professionals in a workplace setting to communicate quantitative findings to a wider audience. R Markdown is also what you will use to write your research report assignment for this course. So, Let’s dive in and learn more!</p>
+<p>In the previous labs you were exploring the 2012 <a href="https://www.ark.ac.uk/nilt/">Northern Ireland Life and Times Survey (NILT)</a>. You’ve learnt how to download, read and format the data. Also, you’ve learnt how to explore categorical and numeric data and a mix of them.</p>
+<p>Across the labs we have also been using R Markdown, incrementally introducing aspects of it each week. In this lab, we will consolidate what we have covered and learn about how to efficiently report quantitative results. R Markdown is used by many academics and professionals in a workplace setting to communicate quantitative findings to a wider audience. R Markdown is also what you will use to write your research report assignment for this course - where we are keeping this week’s lab relatively short so you have time to setup and apply what we have covered to your formative assessment. Let’s dive in and learn more!</p>
 </section><section id="r-markdown" class="level2"><h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
-<p>R Markdown (Rmd) is a different type of file included in RStudio (and it is actually a different markup language). This allows you to generate reports in common file types, such as <code>.html</code> (the same one used for this lab workbook you’re reading right now), <code>.pdf</code>, or Word (<code>.doc</code>). The interesting thing is that the Rmd file allows you to integrate text, code, and plots directly into your report (so you do not have to copy and paste tables or graphs into a Word document, for example, which is often very messy and time-consuming). You have already seen how well this works in the lab workbooks so far, which are written entirely in R Markdown.</p>
-<p>The basic components of an Rmd file are: the <strong><em>code</em></strong>, <strong><em>text</em></strong> and <strong><em>metadata</em></strong>. The code is integrated by blocks called ‘chunks’, and the metadata contains information to format the report. We believe the best way to learn is by doing it. So, let’s create your first Rmd document!</p>
-<section id="first-r-markdown-document" class="level3"><h3 class="anchored" data-anchor-id="first-r-markdown-document">First R Markdown document</h3>
-<p>We will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">RStudio Cloud</a>.</p>
+<p>To briefly summarise what covered so far - R Markdown allows you to combine your narrative and data analysis in one document, writing <strong>plain-text</strong> documents with code chunks that can be converted to multiple file formats, such as HTML or PDF. This makes R Markdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.</p>
+<p>R Markdown achieves this by combining the power of R, Markdown, and Pandoc. Markdown is a lightweight markup language with simple, human-readable syntax for formatting text. Pandoc is a tool for converting files from one format to another, such as Markdown to PDF or HTML. R Markdown builds on these tools. When you ‘knit’ a document, the code chunks are executed to run your analysis and generate your tables and graphs using R. The output from these are then integrated with the Markdown text is passed to Pandoc to convert into a neat and consistently formatted HTML, PDF, or other specified file format.</p>
+<p>R Markdown then demonstrates another wonderful aspect of free and open source software - bringing together a combination of existing software into more powerful tools. It may look ugly at first, especially as most software follows the “What You See is What You Get” (aka WYSIWYG) principle, such as Microsoft Word. Indeed, it can seem odd needing to use <code>#</code>s in Markdown at the start of lines to create headers, and the text not looking the same as when you knit it. The use of <code>#</code> and other syntax in Markdown is what is known as ‘markup’, using code to specify the structure and formatting. Mark<strong>down</strong> is a play on the term ‘markup’ as compared to many alternatives, it is lightweight and human-readable.</p>
+<p>It is easier to explain what is meant by lightweight and human-readable if we compare it to Microsoft Word documents. Whilst using Word you may have WYSIWYG, behind the scenes Word is recording all text in a markup language. More specifically, it uses XML, which has a system of tags, e.g.&nbsp;<code>&lt;tag&gt;</code> to start section formatted in specific way and <code>&lt;/tag&gt;</code> to mark where that formatting ends. In Markdown we can simply write <code>## My Section Title</code> to add a 2nd level header with the text “My Section Title”. Within the XML for Word documents this would instead be:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">w:p</span>&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">w:pPr</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">w:pStyle</span><span class="ot"> w:val=</span><span class="st">"Heading2"</span>/&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">w:pPr</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">w:r</span>&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">w:t</span>&gt;My Section Title&lt;/<span class="kw">w:t</span>&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">w:r</span>&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">w:p</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Whilst it can be beneficial then that Word handles all this for you, it can also result in a series of problems. Different versions of Word can display the same document differently. I have collaborated on lengthy documents with colleagues where on one person’s screen a new section begins on page 32 and on someone else’s page 33. When you copy and paste text from elsewhere you need to ensure you “paste without source formatting” to avoid the formatting from other documents being used in your current document. You have likely also experienced the horror when working in large documents of adding an image and all the formatting going awry. With complex formatting, the document can also develop unfixable issues, as issues within the underlying XML accummulate that Word itself is unable to fix and the user is unable to directly edit.</p>
+</section><section id="new-r-markdown-document" class="level2"><h2 class="anchored" data-anchor-id="new-r-markdown-document">New R Markdown Document</h2>
+<p>For this lab, we will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">Posit Cloud</a>.</p>
 <ol type="1">
-<li>Please go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">RStudio Cloud</a> (log in if necessary);</li>
-<li>Open your own copy of the ‘NILT’ project from the ‘Quants lab group’;</li>
-<li>Create a new Rmd file, this is similar as creating and <code>R Script</code>, from the ‘File’ tab on the top-left: <code>File&gt;New File&gt;R Markdown...</code> (Rstudio may ask to install some packages, click ‘Yes’);</li>
-<li>Type ‘Test1’ in the ‘Title’ section and your name in the ‘Author’ box. Leave the ‘Default Output Format’ as <code>HTML</code>. Then, click ‘OK’.</li>
-<li>Save the Rmd file clicking on <code>File&gt;Save as...</code>, type <code>Test1</code> in the ‘File name’ box, and click on the Save button.</li>
+<li>Please go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">Posit Cloud</a> (log in if necessary);</li>
+<li>Open your own copy of the ‘NILT’ project from the ‘Lab Group ##’;</li>
 </ol>
-<p>After completing the previous steps, your screen should look like this (You can minimize the console to expand pane 1):</p>
+<p>Note, if you received an error last week when trying to run the code to load the NILT dataset, the most likely cause was that you created your R Markdown file in a subfolder, rather than the top-level project folder. Please see the <a href="./05-Lab5.html#moving-files">final section</a> below for how to check if this was the problem and how to fix it.</p>
+<ol start="3" type="1">
+<li>Create a new Rmd file, from the ‘File’ tab on the top-left: `File&gt;New File&gt;R Markdown…’</li>
+<li>RStudio may display a yellow banner at the top of your file, asking to install some packages, click ‘Yes’. (Don’t worry if this doesn’t show, if followed the instructions last week you will likely not see a yellow banner when creating a new file this week.)</li>
+<li>Type ‘R Markdown Test’ in the ‘Title’ section, your name in the ‘Author’ box, and tick the checkbox for ‘Use current date when rendering document’. Leave the ‘Default Output Format’ as <code>HTML</code>. Then, click ‘OK’.</li>
+<li>Save the Rmd file clicking on <code>File&gt;Save as...</code>, type <code>RMarkdown</code> in the ‘File name’ box, and click on the Save button.</li>
+</ol>
+<p>After completing the previous steps, your screen should look like this:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -248,49 +319,224 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Note that now you have two files open in Pane 1, one tab includes the <code>R</code> script that we created in the last lab (called <code>Lab_3.R</code>), and the other is the <code>Rmd</code> document that you just created.</p>
-<p>The Rmd document <code>Test1</code> contains an example by default. The first bit on the top enclosed by the dashes <code>---</code>, contains the general metadata to format the output, as shown in the Figure @ref(fig:yaml-chunk). This bit is called YAML. In the default example, it contains the title, name of the author, data and the type of output (html). You can adjust this information directly by typing the relevant info (e.g.&nbsp;date or name).</p>
+<p>Note that you can have multiple files open in the Sources pane (top-left) at the same time. These will appear as a series of tabs along the top of the Sources pane. If what you were working on suddenly changes, make sure you haven’t accidentally switched tabs to another file.</p>
+<p><img src="images/lab5_tabs.png" class="img-fluid" alt="Source view with tabs open for files created during the labs"><br></p>
+<section id="yaml-header" class="level3"><h3 class="anchored" data-anchor-id="yaml-header">YAML Header</h3>
+<p>Compared to how we created RMarkdown files in previous weeks, when creating a new R Markdown file via the <code>File</code> menu, it creates one that includes some example content by default.</p>
+<p>Rmd document <code>RMarkdown</code> contains an example by default. The first bit on the top enclosed by the dashes <code>---</code>, you should be used to by now and contains the general metadata to format the output. This bit is called YAML. In the default example, it contains the title, name of the author, date, and the type of output (html).</p>
+<p>We can do a lot with this YAML header. Let’s specify some more options. Under the line for <code>title</code> add a new line and add:</p>
 <div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/lab4_rmd_view_2.png" class="img-fluid figure-img"></p>
-<figcaption>YAML and code chunk.</figcaption></figure>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"This is a test"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Next modify the “output” line by firstly on the <code>output:</code> line placing your cursor at the start of <code>html_document</code> and hit enter. This will place <code>html_document</code> on a new line with a tab / 2-space indent at the start. Next add <code>:</code> at the end of <code>html_document</code>, so you have <code>html_document:</code>, and hit enter again. This will start a new line with a double tab / 4-space indent at the start. Add the following lines:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Below the YAML shown in Figure @ref(fig:yaml-chunk), there is another box. This is an <code>R</code> code ‘chunk’. To run a chunk of code individually (that is to visualize a partial result of an <code>Rmd</code> document), you can click on the green arrow pointed on the top-left of the first chunk.</p>
-<p>In line 12, you have a second-level header, which contains the name of a section in the document. As you can see this is preceded by double hash tag <code>##</code>. If you want a first-level header section, you would require only one hash tag like this <code>#</code>, and three for a third-level header. Finally the ‘Knit’ word is enclosed by double asterisk <code>**</code>. This is to format the characters enclosed in bold.</p>
-<p>In line 26, you will see a chunk including a basic plot. Let’s check the results that this example in ‘Test1’ produce.</p>
+<p>Your YAML header should now look at follows:</p>
+<p><img src="images/lab5_yaml-header.png" class="img-fluid" alt="YAML Header with additional key value pairs"><br></p>
+<p><code>subtitle</code> is self-explanatory. What we have done by placing <code>html_document</code> on a new line with <code>:</code> at the end and nested list of further key-value pairs underneath, is we have specified some options for how we want our knitted HTML document to look. <code>toc</code> stands for “table of content”, <code>toc_float</code> places the table of contents on left-hand side of the document rather than at the top, and <code>theme</code> changes the default HTML template used to the “cosmo” theme instead.</p>
 <p>To render the document from Rmd to HTML, we need to <em>Knit</em> it by clicking on the icon shown below. Try it!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="./images/lab4_rmd_knit.png" class="img-fluid figure-img"></p>
 <figcaption>Knit button</figcaption></figure>
 </div>
-<p>RStudio may ask you if you want to update some packages, click ‘Yes’.</p>
-<p>After you knit the document, a window with the output will pop up automatically. As you can see, this document contains the main title, followed by your name and date, as specified in the YAML. Afterwards, there is a second-level header which includes the first section of this example document. Also, the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>.</p>
-<p>An interesting thing is that we can integrate the result of our code in the output as we did with the second chunk (which starts in line 18). Here, we can use a summary of the data set <code>cars</code> (which is an in-built data set in <code>R</code> that contains only two variables).</p>
-<!-- Next, there is a second header, called 'Including Plots'. Under this section you can see a plot, but this time the code is not shown since `echo` was set to `FALSE`. You can close the pop-window when you finish exploring the output. -->
-<p>Similarly, you can create a <code>.pdf</code> file. To do this, instead of clicking on the <em>Knit</em> icon directly, click on the black arrow next to it. Then click ‘Knit to PDF’. Try it and see the result.</p>
-<p>When you knitted the document, RStudio actually created a new <code>.html</code> or <code>.pdf</code> file with the same name as your Rmd document. You can confirm this in the ‘Files’ tab in Pane 4. You can download this file from the cloud to your local drive by clicking on the box of the output file. Then, click <code>More &gt; Export...</code> in the same pane (or click on the gear icon in Pane 4).</p>
-<!-- You can find more text styles and their respective syntax [here](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html). -->
-<!-- For a comprehensive list of chunk code options click [here](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html). -->
-<p><strong>IMPORTANT</strong>: Rmd files are different from simple R scripts. While everything you write in an R script is interpreted as code, only the bits within the code chunks will be interpreted as code in Rmd files. Everything else not within chunks in an Rmd file is interpreted as text.</p>
-</section></section><section id="activity" class="level2"><h2 class="anchored" data-anchor-id="activity">Activity</h2>
-<p>In the <code>Test1.Rmd</code> file that you just created, do the following:</p>
+<p>If this is your first time knitting in your NILT project, RStudio may ask you if you want to update some packages, click ‘Yes’.</p>
+<p>After you knit the document, a window with the output will pop up automatically. As you can see, this document contains the main title and subtitle, followed by your name and the current date, as specified in the YAML. A table of contents appears on the left, showing the headers used in the document, with the header for the section currently in view on the screen highlighted in blue (notice how it will change if you scroll up/down the HTML file).</p>
+<p><img src="images/lab5_cosmo.png" class="img-fluid" alt="Knitted R Markdown document with toc"><br></p>
+<p>You may notice that compared to previous R Markdown files we have knitted, the style of this one may look familiar…</p>
+<p>This is because the “cosmo” theme is the same one that this lab workbook itself uses as its base theme. This is another powerful aspect of using R Markdown. Your document itself remains fairly simple, but with a few simple options you can quickly customise its look and add features like a table of content. There is a lot more <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">options you can use with HTML documents</a> and range of <a href="https://rpubs.com/ranydc/rmarkdown_themes">themes can choose from</a>. As you build your coding skills, you can also write additional custom scripts to further style your documents and add even more features. Importantly, despite the increasing customisation and complexity, the R Markdown files with your narrative and code remain simple and will knit to consistently and neatly formatted HTML files.</p>
+</section></section><section id="r-markdown-syntax" class="level2"><h2 class="anchored" data-anchor-id="r-markdown-syntax">R Markdown Syntax</h2>
+<p>Back to the R Markdown file. After the YAML header, there is a second-level header which includes the first section of this example document. Also, the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>. You can also wrap text by a single asterisk <code>*</code> to make it italics.</p>
+<p>These are further examples of R Markdown’s simple, human-readable syntax for formatting text. Whilst different to what you will be used to using WYSIWYG apps, it is easy to learn. This simple transparent syntax makes it simple and quick to format our text, and avoids all the potential issues arising from hiding the syntax from users, as happens with Word document.</p>
+<p>Below is a screenshot from RStudio with text using the key basic syntax for formatting your main text:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/markdownraw.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And, this is how it appears when knitted:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/markdownknitted.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As seen already, headings are set using the pound / hash sign, <code>#</code>, at the start of a line, with the number of hashes determining the header level:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/headingsraw.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And, how it appears when knitted:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/headingsknitted.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="line-spacing" class="level3"><h3 class="anchored" data-anchor-id="line-spacing">Line spacing</h3>
+<p>The main thing in R Markdown’s syntax that often trips up new users is the need to ensure there are empty line spaces between:</p>
 <ul>
-<li>Change the title of the document in the YAML to ‘My first R Markdown document’.</li>
-<li>In the code chunk in line 21, replace the existing line (<code>summary(car)</code>) with the following: <code>glimpse(iris)</code>.</li>
+<li>Each paragraph</li>
+<li>Before and after a list</li>
+<li>Before and after a header</li>
+</ul>
+<p>Here’s some example text in an R Markdown document, the first without line spacing, the second with:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/linespacingraw.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And, how this looks when knitted:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/linespacingknitted.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Side-note, this practice of using empty line spaces originates from traditional coding conventions. A common coding style includes placing a specified limit on the number of characters per line, with any overflow placed on a new line. To distinguish these lines breaks to keep a limit on the number of characters per line and those used to designate new paragraphs, lists, and headers, an empty line is used. Using empty lines also helps add visual clarity when writing in R Markdown.</p>
+</section></section><section id="code-chunks-options" class="level2"><h2 class="anchored" data-anchor-id="code-chunks-options">Code Chunks Options</h2>
+<p>Included at the top of the example content in our R Markdown file is a code chunk named “setup”. Similar to how we have setup our R Markdown files in previous labs, this contains <code>knitr::opts_chunk$set()</code> code to set global default options for our code chunks. By global, what we mean is that the options set here will apply to all of our code chunks unless we set individual options for any of them.</p>
+<p>For example, if we scroll down to the code chunk named “pressure”, you will see it has “echo=FALSE”.</p>
+<p><img src="images/lab5_echo-false.png" class="img-fluid"></p>
+<p>This overrides the global default that was set - <code>echo=TRUE</code> - which tells R when knitting to include the code chunk in the knitted output. So, by setting <code>echo=FALSE</code> for this code chunk, it will not display in our knitted file. If you look at your knitted file, you will see that whilst the <code>summary(cars)</code> code is included, <code>plot(pressure)</code> is not.</p>
+<p><img src="images/lab5_knitted-echos.png" class="img-fluid"></p>
+<p>Some key options that you can set for code chunks - either globally in the “setup” code chunk or on a per code chunk basis - are:</p>
+<ul>
+<li>
+<strong>echo</strong> - whether the code chunk is shown in knitted files.</li>
+<li>
+<strong>include</strong> - whether the code chunk <strong>and</strong> its output - such as tables and graphs - are displayed in knitted files.</li>
+<li>
+<strong>message</strong> and <strong>warning</strong> - whether messages and warnings raised when running code are displayed in knitted files.</li>
+<li>
+<strong>eval</strong> - whether the code is run or not.</li>
+</ul>
+<p>As noted at the second in-person lecture, setting <code>eval=FALSE</code> is useful if wanting to include example code or code that would result in an error message. This makes it incredibly useful when writing your own notes as - for example - you can keep a record of code that resulted in an error message followed by another code chunk that has the working code.</p>
+<p>Importantly, whilst across the labs we have setup our R Markdown files to show the code from our code chunks in our knitted files, we do this so the files and their knitted outputs are useful reference material. When writing academic articles and research reports for public audience, we usually do not want to include our code. As you will see, because of that, the R Markdown files in the project templates for the formative and summative assessments already includes <code>echo=FALSE</code> as a global option in the setup code chunk. That saves you from then needing to manually add <code>echo=FALSE</code> to any additional code chunks you create. If you want to create code chunks to run code in your R Markdown file, but don’t want either the code or its output included in your knitted file, you can add <code>include=FALSE</code> in the code chunk options.</p>
+<section id="exporting-html-files" class="level3"><h3 class="anchored" data-anchor-id="exporting-html-files">Exporting HTML Files</h3>
+<p>When you knitted the document, RStudio actually created a new <code>.html</code> file with the same name as your R Markdown document. You can confirm this by looking in the ‘Files’ tab in bottom-right.</p>
+<p><img src="images/lab5_files.png" class="img-fluid"></p>
+<p>For the formative and summative assessments, you will need to <strong>export</strong> your HTML file rather than saving it via your browser. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but the code in the file creates issues for Turnitin.</p>
+<p>To export your knitted HTML file then -</p>
+<ol type="1">
+<li>Check the box next to the knitted HTML file you want to export in the ‘Files’ panel. By default, the Files panel is on the bottom right of the screen.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Click ‘More’ from the toolbar at the top of the Files panel.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Click ‘Export’ from the menu options that pop-up.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>This will pop open an ‘Export Files’ dialogue. Here, for the assessments, you can rename the file to include your student number. Just make sure the “.html” at the end remains included.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>After naming the file, click ‘Download’. This should open a dialogue to select which location to save the file. (If not see the ‘<strong>Important</strong>’ note below.)</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here’s a short gif running through all the steps together.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="images/exporthtml.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Important</strong>: Some browsers by default will download to a ‘Downloads’ folder and instantly open the file within the browser after its finished downloading. This will open your knitted file in a tab within your browser. <strong>Do not</strong> then ‘Save as…’ the file from within the browser. Instead, close the tab and use your file explorer to navigate to your ‘Downloads’ folder to find the exported copy of your file to submit.</p>
+</section></section><section id="activity" class="level2"><h2 class="anchored" data-anchor-id="activity">Activity</h2>
+<p>In the <code>RMarkdown.Rmd</code> file that you just created, do the following:</p>
+<ul>
+<li>Change the title of the document in the YAML to ‘Lab 5 - R Markdown Test’.</li>
 <li>In the code chunk called ‘pressure’, change <code>echo=FALSE</code> to <code>echo=TRUE</code>.</li>
+<li>Add/modify the <code>html_document:</code> <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">options and theme</a>. (Themes you can use: bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti.)</li>
 <li>At the very bottom of the script, create a new paragraph and write one or two lines briefly describing how you think quantitative methods are improving your discipline (e.g.&nbsp;politics, sociology, social and public policy, or central and eastern European studies).</li>
 <li>Knit the document in <code>html</code> format.</li>
-<li>Download the newly edited version of the <code>Test1.html</code> document to your machine.</li>
+<li>Export the newly edited version of the <code>RMarkdown.html</code> document to your machine.</li>
 <li>Discuss how each of the edits suggested above modify the output with your neighbour or your tutor.</li>
 </ul>
-<p><br></p>
-<p>Make sure you’ve got the basics of R Markdown, since this is the tool which you will use to write your final assignment (i.e.&nbsp;research report). If there is something not very clear, or you are curious about, feel free to ask your tutor. They will be happy to answer your questions.</p>
+<p>Make sure you’ve got the basics of R Markdown, including exporting your knitted HTML files, since this what you will use to write your formative and summative assessments.</p>
+<p>As a final activity for this lab, use the time remaining to <a href="./assessments/creating-assessment-projects.html">create an RStudio project for the formative assessment</a> and make a start.</p>
+<p>If there is something not very clear, or you are curious about, feel free to ask your tutor. They will be happy to answer your questions.</p>
+<section id="moving-files" class="level3"><h3 class="anchored" data-anchor-id="moving-files">Moving Files</h3>
+<p>For those who received an error message last week when trying to load the NILT dataset.</p>
+<p>You can check whether you created a file last week in a sub-folder in the bottom-right ‘Files’ tab. You should see a folder path hierarchy such as “Cloud &gt; project”. If this contains additional text, such as “&gt; data” or “&gt; R”, you are currently in a subfolder and any new file you create will be placed in it rather than the top-level project folder.</p>
+<p><img src="images/lab5_path-check.png" class="img-fluid" alt="Files tab with folder path highlighted"><br></p>
+<p>To move your R Markdown file created last week -</p>
+<ol type="1">
+<li>Tick the checkbox next to it in the file list.</li>
+<li>Click ‘More’ in the toolbar at the top of the ‘Files’ tab.</li>
+<li>From the drop-down options select ‘Move…’</li>
+</ol>
+<p><img src="images/lab5_move.png" class="img-fluid"></p>
+<p>This will open a ‘Choose Folder’ dialogue -</p>
+<ol start="4" type="1">
+<li>Click ‘project’ within the “cloud &gt; project &gt; data” folder hierachy.</li>
+<li>Click ‘Choose’ to confirm.</li>
+</ol>
+<p><img src="images/lab5_move2.png" class="img-fluid"></p>
+<p>If you have the file open in a tab in the Source view, you will be asked if you wish to close the tab now that it is moved, click ‘Yes’.</p>
+<p>You can then navigate back to the top-level folder by clicking ‘project’. Any new files you create will then be created in the top-level folder.</p>
 
 
-</section></section></main><!-- /main --><script>
+</section></section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;
