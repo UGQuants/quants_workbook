@@ -98,6 +98,7 @@ website:
         - assessments/summative.qmd
         - text: "---"
         - assessments/creating-assessment-projects.qmd
+        - assessments/export.qmd
         - assessments/assessment-faq.qmd
         - assessments/RFAQ.qmd
         - text: "---"
