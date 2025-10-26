@@ -42,11 +42,11 @@ In what follows you will find a guide to writing the report. This is in the form
 
 First, make sure you follow the instructions in lab workbook chapter 10 to download the report template we prepared for you in RStudio Cloud, which includes the regression model and R Markdown set up.
 
-#### Part 1: Introduction (approx. 400 words)
+#### Part 1: Introduction (approx. 350 words)
 
 Look at the regression model included in the template. Based on this choose and state your own research question and hypothesis. Remember a hypothesis needs at least two variables.
 
-#### Part 2: Data and Method (approx. 800 words)
+#### Part 2: Data and Method (approx. 600 words)
 
 In this section your goal is to demonstrate that you can describe data and that you understand research design and data collection. Therefore, you should make sure to cite the mandatory textbooks in support of your answers. The general rules of good scholarship apply to quantitative research as much as any other subject, so do take care with your references and bibliography. As in any other class you need to demonstrate you’ve kept up with reading and can use the reading to inform your understanding of the relevant concepts and data analytics.
 
@@ -55,7 +55,7 @@ In this section your goal is to demonstrate that you can describe data and that 
 - Present an appropriate visualisation of the dependent variable. Remember to number and label figures and tables. Describe the distribution. What does this plot tell us as a descriptive finding, and does it have any implications for the model?
 - Present a table of descriptive statistics for the variables included in the model. Discuss the descriptive findings, does the distribution of any variables have any implications for the model?
 
-#### Part 3: Results and Discussion (approx. 1300 words)
+#### Part 3: Results and Discussion (approx. 1200 words)
 
 In this section your goal is to demonstrate that you can interpret quantitative results. You are likely to get a higher grade if you are able to relate these findings to social science theories and literature or if you can put the findings in context.
 
@@ -67,7 +67,7 @@ In this section your goal is to demonstrate that you can interpret quantitative 
 - Present and discuss appropriate visualizations of particularly interesting relationships in the model. You may choose your own variable to focus on, based on your hypothesis.
 - Are any of these findings surprising? What do they mean for your hypothesis?
 
-#### Part 4: Conclusion (Approx. 500 words)
+#### Part 4: Conclusion (Approx. 350 words)
 
 Clearly state your findings. Do the findings raise any questions for future research? The tone you are trying to achieve here is one of a confident researcher. Be proud of your findings and your interpretation. Throughout the paper, if you have addressed each of the questions above then you have already acknowledged shortcomings with the research, you still need to persuade your readers of your findings despite these limitations. That’s what a conclusion is for. A good start to a conclusion is with the phrase “in conclusion…” Be explicit in your conclusion, a reader should be able to read only the conclusion and know the research question, the findings and the importance of those findings.
 

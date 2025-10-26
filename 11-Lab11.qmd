@@ -1,5 +1,11 @@
 # UG Quants summative assessment: Interpreting Quantitative Findings Report {#interpretivereport}
 
+:::{.callout-important title="Update In Progress"}
+
+We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
+
+:::
+
 ## Introduction
 
 This is our final practical session. Thank you for tuning in and all your hard work! Today, we will discuss some practical aspects of the summative assessment *Interpreting Quantitative Findings Report*. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!

@@ -1,3 +1,168 @@
----
-title: "Summative Template Breakdown"
----
+## Interpretive Report Template {.unnumbered}
+
+### YAML Block {.unnumbered}
+
+The top of the RMarkdown document includes a YAML block, enclosed with three dashes, `---`, at the start and end. The YAML block must be at the very start of the document, so do not add any new lines before it.
+
+YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templateyaml.png")
+```
+
+Please remember to add your student number - and not your name - to line 3.
+
+To save having to remember to update the date before knitting and submitting your final version, you can use the following in the YAML block:
+
+```{YAML, eval=FALSE}
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+```
+
+When knitted that code will automatically add the current date in dd/mm/yy format (e.g. 04/12/24):
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/knitteddate.png")
+```
+
+### Setup Code Chunk {.unnumbered}
+
+After the [YAML Block], there is a 'setup' code chunk that sets global options for knitr. The `include=FALSE` in its options means that this chunk and its output are not displayed in your knitted files:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templatesetup.png")
+```
+
+Global options apply to all code chunks in the document. This means anything set in the global options does not have to be individually added to each code chunk. Note, you can set a global option and still set a different one for a specific code chunk where needed. For example, if you set `option=FALSE` globally, but needed it to be `TRUE` for a specific code chunk, all you need to do is add `option=TRUE` to its options to override the global default.
+
+The global options set in the setup code chunk are:
+
+-   `message=FALSE`, which hides all non-warning messages when knitting code chunks. For example, when loading a library it will sometimes display non-warning messages.
+-   `warning=FALSE`, which hides all warning messages when knitting code chunks. Again, making sure that no warnings messages displayed when running code is included in your knitted file.
+
+**Importantly**, you do not want to display your code chunks in your knitted file, only the tables and graphs they generate. To achieve this you could add `echo=FALSE` to the options for each individual code chunk. Or -- you can simply add it as a global option in the setup code chunk!
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templatesetupechofalse.png")
+```
+
+### Preamble Code Chunk {.unnumbered}
+
+It is best practice to install and load any required packages and read in any data being used at the top of the RMarkdown file. This keeps all package management and data reading in a single location at the start of the document, making your code simpler and clearer. It further ensures that when running/knitting your code that all required packages are loaded and dataframes created before the rest of your code is run.
+
+The preamble code block within the template provides a structure following this practice.
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templatepreamble.png")
+```
+
+1.  **Install packages if missing**, outlined in pink. This code may look complex, but all it does is create a list of packages that are going to be used, assigning it to the object `list.of.packages`. This list is checked against packages already installed, creating a new list `new.packages` containing only the names of packages not already installed. The final line then basically says "if the length of `new.packages` is 1 or more, then install all packages in the `new.packages` list".
+2.  **Word count addin if missing**, outlined in blue. There is not an R package for calculating word counts, but there is what is known as an 'addin' for RStudio. The code here checks if the addin is already installed and if not it downloads a copy of the addin from GitHub. Please see the [Word Count Code] section for further information on how this addin is used in the document.
+3.  **Load packages**, outlined in yellow. This is where all packages used in the analysis are loaded.
+4.  **Read data**, outlined in red. The dataset used for the assignment in read in and assigned to the `nilt` dataframe object.
+
+**Important**, as a dataset is provided with the project template and read in already for you, you do not need to download or read in any other dataset. The assignment uses a version of the NILT dataset that includes more variables than the version of the data we used in the lab sessions. Downloading and reading in the dataset used in the labs will result in variables disappearing from the regression results table. Please see the [R Issues FAQ](13-RFAQ.qmd) for more info.
+
+If you require additional packages, the best way to add this would be:
+
+1.  Within the **Install packages if missing** section, add the package name at the end of the list that is being assigned to 'list.of.packages'
+2.  Within the **Load packages** section, add a new library() line under the existing ones.
+
+For example, if needing to install and load 'vtable' these are the changes that you would make:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/addingvtable.png")
+```
+
+As a gif:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/addingpackages.gif")
+```
+
+**Note**, moving all code for installing and loading of packages into this preamble code chunk means you do not need, and can safely remove, any other install.package() and library() lines from the rest of your code chunks. This will reduce risk of encountering error messages and make it easier to debug them if any do occur.
+
+### Word Count Code {.unnumbered}
+
+Tables, figures, and code are not included in the word count. The project template is setup with a "word count add-in", that will add a word count for you at the top of your knitted document. Note, you will need to knit your document each time you want to check the updated word count.
+
+This is how the code to calculate the word count looks within the RMarkdown file:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/wordcountinline.png")
+```
+
+Side-note, surrounding code with single back-ticks, (\`), creates an "inline code chunk", enabling you to add short snippets of code. The `r` at the start specifies that the code is R, similar to adding r in curly brackets for code chunks.
+
+This is then how it looks when knitting the project template (assuming you haven't added any additional text yet):
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/knittedwordcount.png")
+```
+
+We use this addin as the built-in RStudio word count, accessed via the 'Edit' menu at the top of the screen, includes all code and comments. So, despite the addin calculating '0', RStudio will provide:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/rstudiowordcount.png")
+```
+
+**Important**, the '- 10' in the code is so "Word count:" and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to `wordcountaddin::word_count("Assignmet2-template.Rmd") - 193`.
+
+### Template Outline {.unnumbered}
+
+The RMarkdown document provided in the project template includes headed sections you can use alongside suggested word count for each and brief summary reminder of what to include in each section. The [Course Handbook](https://moodle.gla.ac.uk/mod/resource/view.php?id=4853189), pages 26-30, provide a more detailed breakdown of what to include in each section.
+
+Screenshot of the outline and commented suggestions:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templateoutline.png")
+```
+
+**Important**, within the "Results and discussion" section, ensure to add your interpretation *after* the code chunk that creates the regression results table:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/regressioninterpretativeaftercode.png")
+```
+
+### Regression Results Code Chunk {.unnumbered}
+
+The code chunk that runs the multiple linear regression model and creates the table with the regression results can be found in the 'Results and discussion' section:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templateresults.png")
+```
+
+1.  First the model is run, outlined in pink, and assigned to the `model` object.
+2.  Next a list with labels to use for the independent and control variables in the regression table is created, outlined in blue, and assigned to the `cov_labels` object.
+3.  Finally, the stargazer package is used to create the regression results table, outlined in red. It is passed the `model` and `cov_label` objects, highlighted in yellow, alongside arguments for outputting the table in HTML, a title, and caption & label to use for the dependent variable.
+
+Stargazer produces well-formatted regression tables, but with the downside that when running the code chunk in RStudio, you will only see the raw HTML syntax that is created:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/templatehtmltable.png")
+```
+
+In order to view the table, you will need to knit your document and view the outputted HTML file:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/knitting.png")
+```
+
+Your knitted HTML file should then open in a new popup window. However, you might instead receive a dialogue window saying that a pop-up was prevented from opening, if so just click 'Try again':
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/tryagain.png")
+```
+
+Alternatively, you can open the last knitted version of your HTML file from the 'Files' panel. Click the HTML file and select 'View in Web Browser':
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/openknittedhtml.gif")
+```
+
+Below is how your regression results table should look in the knitted HTML file:
+
+```{r eval=FALSE}
+knitr::include_graphics("./images/knittedresultstable.png")
+```
+
+If it doesn't, please see the [R Issues FAQ](13-RFAQ.qmd).

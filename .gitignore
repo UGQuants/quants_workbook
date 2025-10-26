@@ -12,4 +12,6 @@ lab-workbook.tex
 cache/
 .utf8
 .DS_Store
+*.otter.R
+*.otter.html
 

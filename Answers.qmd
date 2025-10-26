@@ -39,7 +39,8 @@ nilt <- readRDS("data/nilt_r_object.rds")
 
 ```{r}
 # Subset
-nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
+nilt_subset <- nilt |> 
+  select(rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
 ### Activity #1
@@ -94,7 +95,8 @@ library(tidyverse)
 # Load the data from the .rds file we created in the last lab
 nilt <- readRDS("data/nilt_r_object.rds")
 # Create subset
-nilt_subset <- select(nilt, rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
+nilt_subset <- nilt |>
+  select(rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
 ### Excercices

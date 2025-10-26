@@ -45,6 +45,7 @@ website:
       contents:
         - text: "Welcome"
           href: index.qmd
+        - text: "---"
         - text: "**Lab 1** Introduction to R"
           href: 01-intro.qmd
         - text: "**Lab 2** Data in R"
@@ -67,6 +68,7 @@ website:
           href: 10-Lab10.qmd
         - text: "**Lab 11** Interpretive Report Assessment"
           href: 11-Lab11.qmd
+        - text: "---"
         - Answers.qmd
         - References.qmd
 
@@ -91,9 +93,14 @@ website:
     - title: "Assessments"
       contents:
         - assessments/assessments.qmd
+        - text: "---"
         - assessments/formative.qmd
         - assessments/summative.qmd
+        - text: "---"
         - assessments/creating-assessment-projects.qmd
+        - assessments/assessment-faq.qmd
+        - assessments/RFAQ.qmd
+        - text: "---"
         - text: "**Back to Lab Workbook**"
           href: index.qmd
 

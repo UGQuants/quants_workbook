@@ -1,5 +1,11 @@
 # Linear model: Simple linear regression {#simple-lm}
 
+:::{.callout-important title="Update In Progress"}
+
+We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
+
+:::
+
 ```{r}
 #| include: false
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)

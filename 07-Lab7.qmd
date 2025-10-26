@@ -1,5 +1,11 @@
 # Correlation
 
+:::{.callout-important title="Update In Progress"}
+
+We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
+
+:::
+
 ```{r}
 #| include: false
 library(tidyverse)

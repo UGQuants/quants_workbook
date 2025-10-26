@@ -1,0 +1,211 @@
+# R Issues FAQ
+
+This page contains information for solving common issues students have reported when working on their interpretive findings report.
+
+Updates will continue being added to this page with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.
+
+## Reporting R Issues {.unnumbered}
+
+When making a Moodle post or emailing about an issue it is vital to provide sufficient context to enable others to help find a solution. This includes:
+
+-   The full text of any error message that you are receiving.
+-   Any relevant code that is producing the error.
+
+Error messages will often flag the relevant code chunk where the error occurred:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/errorlines.png")
+```
+
+So, based on the above error message you would include the code within the code block at lines 49-50.
+
+Additionally, when emailing, please also include:
+
+-   Your lab group number.
+-   If already made a Moodle post about the issue, a link to the post.
+
+## Regression Results Table Issues
+
+If variables go missing from your regression results table or the regression results are different to how they originally appeared when you knitted the template, you may have unintentionally replaced the data included with the template.
+
+The preamble code block at the top of the R Markdown file provided with the template reads in the 'fullnilt_2012.rds' dataset and assigns it to the 'nilt' data frame object.
+
+```{r eval=FALSE}
+# Read data
+nilt <- readRDS("data/fullnilt_2012.rds")
+```
+
+You therefore do not need to download and read in another dataset, this is all setup for you already within the preamble code block. To resolve the issue, remove all additional code where you downloaded and assign another dataset to the `nilt` data frame. Then re-run the preamble code chunk.
+
+For example, these would be lines to remove:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/removelines.png")
+```
+
+The 'NILT2012GR' that we used in the labs has a different set of the NILT variables, and does not contain all the variables in the 'fullnilt_2012' dataset provided in the project template. The above code then would result in variables disappearing from your regression results table.
+
+Similarly, this would also be code to remove:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/removelines2.png")
+```
+
+The above code replaces the original nilt data frame with a version that only includes the 5 variables listed within the selection function. Again, resulting in variables disappearing from the regression results table.
+
+The `select()` function keeps variables passed to it and drops the others. The first argument is always the dataframe being selected from, `select(dataframe, ...)`, with variables to keep from it listed after, `select(dataframe, variable1, variable2, ...)`. Assigning, `<-`, select() to the same dataframe, `dataframe <- select(dataframe, ..)`, is effectively saying, 'from this dataframe keep these variables and permanently remove the others'. Unless your whole analysis is only going to use that selection, always assign it to a new dataframe instead, `dataframe_subset <- select(dataframe, ...)`.
+
+**Important**: the preamble code chunk in the R Markdown file provided in the project template already has a line of code for creating an `nilt_subset` object with only the variables that are used in the regression model.
+
+```{r eval=FALSE}
+# Subset with variables used in regression model
+nilt_subset <- nilt |>
+  select(persinc2, rsex, religcat, orient, uninatid, tunionsa, rsuper, rage)
+```
+
+## Object Not Found
+
+'Object not found' errors often arise when no data has been assigned to a data frame object. For example, if you ran code using `nilt` object, such as `sumtable(nilt, ...)` without first assigning data to it `nilt <- ...`, you would receive the following error message when running/knitting your code:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/objectnotfound.png")
+```
+
+The preamble code chunk in the R Markdown file provided with the project template contains code for reading in the NILT data set and assigning it to an `nilt` data frame object. It also sets up an `nilt_subset` with just the variables used in the regression model.
+
+If you are receiving object not found errors for these then, ensure you have run the preamble code chunk. If you still receive an error message, double-check for typos and capitalisation, `nilt_subset`, `NILT_subset`, and `ni1t_subset` will be treated as different objects.
+
+## Wrong Word Count
+
+If the word count displayed at the top of your knitted HTML is wrong, check whether the line of code that calculates the word count refers to the correct R Markdown file you are using.
+
+Within the template R Markdown document, we include an inline code block that uses a word count addin to calculate your word count within the knitted HTML file:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/wordcountinline.png")
+```
+
+Which when knitted will look as follows in the HTML file:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/summative_knit-count.png")
+```
+
+However, the code to calculate the word count refers to a specific file "Summative-template.Rmd". if you created a new RMarkdown file, such as one that included your student number 'Summative-245425s.Rmd', you also need to update the file name in the code:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/wordcountchange.png")
+```
+
+Note, the '- 14' in the code is so "Word count:" and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to "wordcountaddin::word_count("Summative-template.Rmd") - 198".
+
+## Code Chunks Appearing in Knitted File
+
+The code in the code chunks should not be displayed within your knitted HTML file. The R Markdown file provided in the project template is already setup to not include the code from code chunks by setting the global knitr options to `echo=FALSE`in the setup code chunk. 
+
+![setup code chunk that sets global option to not include code from code chunks in knitted outputs](../images/summative_echo-false.png)\
+
+If the code from code chunks are appearing in your knitted file, check you have not accidentally removed/modified the setup code chunk. If code from a specific code chunk is showing, but not others, then check you have not accidentally added `echo=TRUE` to its options.
+
+## Unable to Knit
+
+### Execution Halted
+
+The most common cause of this error is from renaming the R Markdown file, but not updating the line of code that calculates the word count. See [Wrong Word Count] section for general info.
+
+For example, if you renamed the R Markdwon file from 'Summative-template.Rmd' to 'Summative-245425s.Rmd', you will receive an 'Execution halted' error when trying to knit:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exechalted.png")
+```
+
+To fix it, just update the line of code that calculates the word count so it refers to the new name you have given the file:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/wordcountchange.png")
+```
+
+### Package could not be loaded
+
+If receiving a "package '...' could not be loaded" error message, check the YAML code block at the top of your RMarkdown file. Where this error message has occurred previously, it is due to using the `vtable` package and the YAML code block includes PDF as an output.
+
+You should have either of the following for `output: ...`:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/outputhtml1.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/outputhtml2.png")
+```
+
+But, will probably have the something like the following if receiving the error message:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/outputhtmlpdf.png")
+```
+
+This can happen unintentionally as RStudio can automatically add a line for PDF outline, such as if accidentally clicked 'Knit to PDF':
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/accidentalpdf.gif")
+```
+
+Annoyingly, even if you click 'Knit to HTML' from the options, if your YAML block includes pdf_document in its outputs, R will still try to create a PDF document and keep running into the error message.
+
+So, if you are receiving the error message and have the two output lines, you can easily fix it by removing the pdf_document line:
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/deletepdfoutput.gif")
+```
+
+Note, as the YAML block is already specifying to create an HTML output, you can just click the 'Knit' button directly each time rather than clicking the wee down arrow to select 'Knit to HTML' specifically.
+
+
+## Turnitin Unable to Open HTML File
+
+**Please ensure to submit an exported version of your knitted HTML file rather than one saved through your browser.**
+
+If Turnitin is providing an error message that it is unable to open your submitted HTML file, it may be due to having saved the file through your browser (e.g. right-clicking and 'Save as...') rather than exporting it from RStudio. Whilst HTML files saved from the browser and exported from RStudio will look absolutely identical when opened, some browsers - and browser extensions - will add additional code within the HTML file. This additional code does not change how the file looks when opened, but the code in the file creates issues for Turnitin.
+
+To export your knitted HTML file -
+
+1. Check the box next to your knitted HTML file in the 'Files' panel. By default, the Files panel is on the bottom right of the screen.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml1.png")
+```
+
+2.  Click 'More' from the toolbar at the top of the Files panel.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml2.png")
+```
+
+3.  Click 'Export' from the menu options that pop-up.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml3.png")
+```
+
+4.  This will pop open an 'Export Files' dialogue. Here, you can rename the file to include your student number. Just make sure the ".html" at the end remains included.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml4.png")
+```
+
+5.  After naming the file, click 'Download'. This will open a dialogue to select which location to save the file.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml5.png")
+```
+
+Here's a short gif running through all the steps together.
+
+```{r echo=FALSE}
+knitr::include_graphics("../images/exporthtml.gif")
+```
+
+**Important**: Some browsers by default will download to a 'Downloads' folder and instantly open the file within the browser after its finished downloading. This will open your knitted file in a tab within your browser. **Do not** then 'Save as...' the file from within the browser. Instead, close the tab and use your file explorer to navigate to your 'Downloads' folder to find the exported copy of your file to submit.
+
+Please note: Don't panic if Turnitin is unable to open your file. We are aware of the issue and you will not be penalised if you submit a file on time, but then have to resubmit after the deadline due to Turnitin being unable to open your original submission.
