@@ -209,7 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <a href="#r-issues-faq" id="toc-r-issues-faq" class="nav-link active" data-scroll-target="#r-issues-faq">R Issues FAQ</a>
   <ul class="collapse">
-<li><a href="#reporting-r-issues" id="toc-reporting-r-issues" class="nav-link" data-scroll-target="#reporting-r-issues">Reporting R Issues</a></li>
+<li>
+<a href="#please-read" id="toc-please-read" class="nav-link" data-scroll-target="#please-read">Please Read</a>
+  <ul class="collapse">
+<li><a href="#how-to-report-issues" id="toc-how-to-report-issues" class="nav-link" data-scroll-target="#how-to-report-issues">How to Report Issues</a></li>
+  <li><a href="#how-to-avoid-most-common-issues" id="toc-how-to-avoid-most-common-issues" class="nav-link" data-scroll-target="#how-to-avoid-most-common-issues">How to Avoid Most Common Issues</a></li>
+  <li><a href="#dont-believe-genais-lies" id="toc-dont-believe-genais-lies" class="nav-link" data-scroll-target="#dont-believe-genais-lies">Don’t Believe GenAI’s Lies</a></li>
+  </ul>
+</li>
   <li><a href="#regression-results-table-issues" id="toc-regression-results-table-issues" class="nav-link" data-scroll-target="#regression-results-table-issues">Regression Results Table Issues</a></li>
   <li><a href="#object-not-found" id="toc-object-not-found" class="nav-link" data-scroll-target="#object-not-found">Object Not Found</a></li>
   <li><a href="#wrong-word-count" id="toc-wrong-word-count" class="nav-link" data-scroll-target="#wrong-word-count">Wrong Word Count</a></li>
@@ -230,7 +237,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content"><section id="r-issues-faq" class="level1"><h1>R Issues FAQ</h1>
 <p>This page contains information for solving common issues students have reported when working on their interpretive findings report.</p>
 <p>Updates will continue being added to this page with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.</p>
-<section id="reporting-r-issues" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="reporting-r-issues">Reporting R Issues</h2>
+<section id="please-read" class="level2"><h2 class="anchored" data-anchor-id="please-read">Please Read</h2>
+<section id="how-to-report-issues" class="level3"><h3 class="anchored" data-anchor-id="how-to-report-issues">How to Report Issues</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="Reporting R Issues">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reporting R Issues
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>When making a Moodle post or emailing about an issue it is vital to provide sufficient context to enable others to help find a solution. This includes:</p>
 <ul>
 <li>The full text of any error message that you are receiving.</li>
@@ -250,7 +268,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Your lab group number.</li>
 <li>If already made a Moodle post about the issue, a link to the post.</li>
-</ul></section><section id="regression-results-table-issues" class="level2"><h2 class="anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
+</ul>
+</div>
+</div>
+</section><section id="how-to-avoid-most-common-issues" class="level3"><h3 class="anchored" data-anchor-id="how-to-avoid-most-common-issues">How to Avoid Most Common Issues</h3>
+<div class="callout callout-style-simple callout-important callout-titled" title="Important">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An underlying cause to many issues reported each year is believing more code needs to be written for the assessments than is actually required.</p>
+<p>The formative and summative assessment template projects we provide already have key things setup for you. Please ensure to follow <strong>all</strong> the instructions to <a href="../assessments/creating-assessment-projects.html">setup the assessment projects</a> correctly.</p>
+<p>A copy of the NILT dataset is already included in the template projects. After following the instructions, your formative/summative assessment projects will also have:</p>
+<ul>
+<li>Every package you will need - <em>except one</em> - installed <strong>and</strong> loaded.</li>
+<li>An <code>nilt_subset</code> data frame setup with only the variables used in the regression model.</li>
+<li>(Summative only) a code chunk with the code to produce the regression results table you need to interpret.</li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>You do not need to add nor run any additional code to download the NILT dataset.</li>
+<li>You do not need to add nor run any additional code that assigns new data to the <code>nilt</code> and <code>nilt_subset</code> data frame objects (e.g.&nbsp;do not add any new lines with <code>nilt &lt;- ...</code> or <code>nilt_subset &lt;- ...</code>).</li>
+<li>(Summative only) you do not need to add nor run any additional code to create a regression model nor a regression results table.</li>
+</ul>
+<p>You also should not remove any of the existing code chunks in the template as these are essential for initially setting everything up and when knitting your HTML file.</p>
+<p>As the key things are already setup in the template for you, <strong>you only have to write a few lines of code</strong> overall.</p>
+<p>For the formative, at its most basic, after following the setup instructions, all you need in terms of coding is -</p>
+<ul>
+<li>Install the <code>vtable</code> package.</li>
+<li>Load the <code>vtable</code> package.</li>
+<li>Use the <code>sumtable()</code> function to create a descriptive statistics table for the variables included in the model.</li>
+</ul>
+<p>That’s it. It’s no more complex than that. At its most basic, for the formative all you need to write is 3 lines of code. One in the Console, and two added to your R Markdown file.</p>
+<p>With the summative, alongside the above, the only additional thing you need to do in relation to coding is -</p>
+<ul>
+<li>Create visualisations with <code>ggplot</code>.</li>
+</ul>
+<p>You may want to write some additional code when initially exploring the data or to calculate / present some additional stats. However, it is perfectly possible to receive an A for the interpretive report with the code for what is outlined above.</p>
+<p>With <code>sumtable()</code> at its most basic, you can create tables with a single line of code. With <code>ggplot()</code> you can create plots with 3-4 lines of code, and nearly all plots most people will want to include only need 3 lines of code per plot.</p>
+<p>So, if you find yourself downloading and wrangling data, running a multitude of functions beyond <code>sumtable()</code> and <code>ggplot</code> functions, or writing dozens and dozens of lines of code, you are doing more than is actually necessary. You will also likely run into issues if any of this code replaces what is already setup in the assessment template.</p>
+</div>
+</div>
+</section><section id="dont-believe-genais-lies" class="level3"><h3 class="anchored" data-anchor-id="dont-believe-genais-lies">Don’t Believe GenAI’s Lies</h3>
+<div class="callout callout-style-simple callout-caution callout-titled" title="GenAI Misinformation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+GenAI Misinformation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Another common cause of issues each year is genAI leading people astray. GenAI is useful when you have a general understanding of the area / topic you are using it for. However, it is nowhere near as competent as the genAI companies and online grifters make it out to be. If you do not understand the area / topic you are prompting it about, you will not know when its responses contain inaccuracies or outright misinformation.</p>
+<p>This problem is especially true when it comes to R. GenAI when prompted about R will often respond with needlessly complex and over convoluted code. Even where it works, it will regualarly spit out 20+ lines of code for something that could be achieved with 1-4 lines of code. As a rule of thumb then, whenever genAI is advising you to install various packages and/or write dozens of lines of code, it is likely spouting absolute nonsense. Do not believe it’s lies - and instead go back through the info on the assessments and the relevant lab workbook weeks for what it is you are trying to do.</p>
+<p><strong>Critically</strong>, not only will uncritical use of genAI often lead you down the wrong path, prompting genAI to write code to copy and paste for your summative assignment will be treated as academic misconduct. You should only be using genAI to get textbook examples and explanations, and nothing that can be copied and pasted into your assignment. Please see the <a href="../assessments/assessments.html#genai-and-the-assessments">GenAI and the Assessments</a> section for more information on what genAI is permitted for the summative assessments.</p>
+</div>
+</div>
+</section></section><section id="regression-results-table-issues" class="level2"><h2 class="anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
 <p>If variables go missing from your regression results table or the regression results are different to how they originally appeared when you knitted the template, you may have unintentionally replaced the data included with the template.</p>
 <p>The preamble code block at the top of the R Markdown file provided with the template reads in the ‘fullnilt_2012.rds’ dataset and assigns it to the ‘nilt’ data frame object.</p>
 <div class="cell">
