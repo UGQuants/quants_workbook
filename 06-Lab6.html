@@ -272,6 +272,7 @@ div.csl-indent {
 <li><a href="#setup-a-new-r-markdown-file" id="toc-setup-a-new-r-markdown-file" class="nav-link" data-scroll-target="#setup-a-new-r-markdown-file">Setup a new R Markdown file</a></li>
   </ul>
 </li>
+  <li><a href="#ggplot-syntax" id="toc-ggplot-syntax" class="nav-link" data-scroll-target="#ggplot-syntax">ggplot Syntax</a></li>
   <li>
 <a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical variables</a>
   <ul class="collapse">
@@ -286,12 +287,8 @@ div.csl-indent {
   </ul>
 </li>
   <li><a href="#mixed-data" id="toc-mixed-data" class="nav-link" data-scroll-target="#mixed-data">Mixed data</a></li>
-  <li>
-<a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a>
-  <ul class="collapse">
-<li><a href="#r-cheatsheets" id="toc-r-cheatsheets" class="nav-link" data-scroll-target="#r-cheatsheets">R Cheatsheets</a></li>
-  </ul>
-</li>
+  <li><a href="#r-cheatsheets" id="toc-r-cheatsheets" class="nav-link" data-scroll-target="#r-cheatsheets">R Cheatsheets</a></li>
+  <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -389,27 +386,36 @@ div.csl-indent {
 <p>Run both of the previous chunks individually by clicking on the green arrow located on the top-right of the chunk.</p>
 <p>As wee reminder, despite in Lab 4 loading the tidyverse and setting up the nilt and nilt_subset data frame objects, we still need to do this again in each new R Markdown file. The reason for this is whilst they are available in our Global Environment, the top-right pane, each time you ‘knit’ your document it starts with a clean Global Environment. It does this as for reproducibility anyone with a copy of the R Markdown file and data being used should be able to run the code and receive the exact same results.</p>
 <p>Now that we have read the data in, we are ready to start creating our own plots using the 2012 NILT survey.</p>
-</section></section><section id="categorical-variables" class="level2"><h2 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h2>
-<p>Let’s start using the same variables we summarised in <strong>Lab 4</strong>. We started by computing the total number of respondents by gender in a one-way contingency table. We can easily visualize this using a bar plot with <code>ggplot</code>. This package always takes at least three layers, namely <em><strong>data</strong></em>, <em><strong>aesthetics</strong></em> and <em><strong>geometry</strong></em>. Here, we define the <em>data</em> as the first argument of the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>function with the <code>nilt_subset</code>. The second argument, <em>aesthetics</em>, is separated by a comma and is introduced using the function <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. In this case we define the X axis <code>x =</code> of the plot by the categories included in the variable <code>rsex</code>. The geometry is specified with the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> without arguments for now. Note that we added the geometry using the plus sign <code>+</code> at the end of the previous line code. As an extra, I included the main title and the name of the x axis using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function (you don’t need to copy or run the following code chunks in your .Rmd. This is only for demonstration purposes).</p>
+</section></section><section id="ggplot-syntax" class="level2"><h2 class="anchored" data-anchor-id="ggplot-syntax">ggplot Syntax</h2>
+<p>Fortunately, <code>ggplot</code> is part of the Tidyverse set of packages, which places strong emphasis on simplicity, readability, and consistency. As covered in the online lecture for this week, the <code>gg</code> in <code>ggplot</code> stands for “grammar of graphics”. This breaks down graphs into different components that - similar to using grammar to compose words together in a sentence - you compose together to create graphs. This combination of Tidyverse’s overall design philosophy and Wilkinson’s <a href="https://en.wikipedia.org/wiki/Wilkinson%27s_Grammar_of_Graphics">Grammar of Graphics</a> approach, makes <code>ggplot</code> incredibly powerful. We can create complex plots with only a few lines of (relatively) simple code.</p>
+<p>At its most basic, <code>ggplot</code> always takes at least three layers, namely <em><strong>data</strong></em>, <em><strong>aesthetics</strong></em> and <em><strong>geometry</strong></em>. It is good practice though to also include text labels - such as a title and labels for x and y axes - to make clear what is being visualised in your plot. In general then, with <code>ggplot</code> we use the general format -</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_frame</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">column_name1</span>, <span class="va">...</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_...</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Title text"</span>, x <span class="op">=</span> <span class="st">"Label for x-axis"</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To break this down:</p>
+<ul>
+<li>
+<code>data_frame</code> is the data frame object we want to use for our plot, such as <code>nilt_subset</code>.</li>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> is the main function to create a new plot and is always the first layer we add.</li>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, short for “aesthetic mappings”, is used inside the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function to specify which variables from our data frame we want to use. For univariate plots, we can just specify the x or y axis (e.g.&nbsp;<code>data_frame |&gt; ggplot(aes(x = column_name))</code>. It can also take other arguments, which we will cover in sections below.</li>
+<li>
+<code>+</code> is used between each <code>function()</code> to ‘compose’ them together. It is basically the equivalent of saying “after this function ADD this function”. If you encounter error messages when using ggplot, it is always best to first check whether you are missing any <code>+</code> symbols between functions.</li>
+<li>
+<code>geom_...()</code>, with “geom” being short for “geometry”, is used to specify the type of plot, such as <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>, and so on. We will cover each of these plot types in more detail further into the lab.</li>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> is then used to add our text labels, with main ones to be aware of being <code>title = ""</code>, <code>x = ""</code>, and <code>y = ""</code>.</li>
+</ul>
+<p>And that’s it! With often just three lines of code we can construct most plots we will want for our analysis. Importantly, despite all the different plot types we might want to construct, the code we need to write all follow this same basic ‘grammar’. The main bits that will change based on plot type are the precise arguments within the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function, which specific <code>geom_...()</code> function we use, and the labels we set using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function. So, pay attention to how those change across the plot types covered below and you’ll have a good sense of all you will need when creating your own plots.</p>
+</section><section id="categorical-variables" class="level2"><h2 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h2>
+<p>Let’s start using the same variables we summarised in <strong>Lab 4</strong>. In Lab 4, we started by computing the total number of respondents by gender in a <a href="./04-Lab4.html#categorical-data">one-way contingency table</a>. We can easily visualize this using a bar plot with <code>ggplot</code> -</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Gender"</span>, x <span class="op">=</span> <span class="st">"Gender of respondent"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>From the plot above, we can graphically see what we found out previously: there are more female respondents than males in our sample. The advantage is that we can have a sense of the magnitude of the difference by visualising it.</p>
-<section id="bivariate-categorical-vs-categorical" class="level3"><h3 class="anchored" data-anchor-id="bivariate-categorical-vs-categorical">Bivariate categorical vs categorical</h3>
-<p>In <strong>Lab 4</strong>, we computed a Two-Way contingency table, which included the count of two categorical variables. This summary can be visualized using a stacked bar plot. This is quite similar to the above, with the addition that the area of the vertical plot is coloured by the size of each group.</p>
-<p>If we wanted to know how gender is split by religion, we can add the <code>fill</code> argument with a second variable in aesthetics, as shown below.</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rsex</span>, fill <span class="op">=</span> <span class="va">religcat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Gender by religion"</span>, x <span class="op">=</span> <span class="st">"Gender of respondent"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
@@ -417,11 +423,23 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents’ sex. A plot can show us the magnitudes and composition by respondents’ sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable <code>religcat</code> on the <code>x</code> axis and <code>fill</code> with gender <code>rsex</code>.</p>
+<p>(Note: Remember you will need to create a code chunk for adding this code within your R Markdown file.)</p>
+<p>Here:</p>
+<ul>
+<li>We pass our data frame object, <code>nilt_subset</code>, using the pipe operator. Without a pipe, we would need to write <code>ggplot(nilt_subset, aes(...</code>.</li>
+<li>Inside the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function, we then use the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, <em>aesthetics</em>, function. In this case, within it we define the X axis <code>x =</code> of the plot by the categories included in the variable <code>rsex</code>.</li>
+<li>After <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> we add a <code>+</code> symbol to compose our functions together.</li>
+<li>The geometry is specified with the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> without arguments for now. Again we add <code>+</code> after it so R knows to compose the functions we are using together to construct the plot.</li>
+<li>Finally, we use the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function to include the main title and the name of the x axis using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function. Note, as this is our last function for constructing the plot, we <strong>do not</strong> need a <code>+</code> after it.</li>
+</ul>
+<p>From the plot above, we can graphically see what we found out previously: there are more female respondents than males in our sample. The advantage is that we can have a sense of the magnitude of the difference by visualising it.</p>
+<section id="bivariate-categorical-vs-categorical" class="level3"><h3 class="anchored" data-anchor-id="bivariate-categorical-vs-categorical">Bivariate categorical vs categorical</h3>
+<p>In <strong>Lab 4</strong>, we computed a Two-Way contingency table, which included the count of two categorical variables. This summary can be visualized using a stacked bar plot. This is quite similar to the above, with the addition that the area of the vertical plot is coloured by the size of each group.</p>
+<p>If we wanted to know how gender is split by religion, we can add the <code>fill</code> argument with a second variable in aesthetics, as shown below.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">religcat</span>, fill <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rsex</span>, fill <span class="op">=</span> <span class="va">religcat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Religion by gender"</span>, x <span class="op">=</span> <span class="st">"Religion"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Gender by religion"</span>, x <span class="op">=</span> <span class="st">"Gender of respondent"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -429,14 +447,11 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>As we can see, catholic and protestant religion are equally popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in the last lab. However, we have the advantage that we can graphically reprsent and inspect the magnitude of these differences.</p>
-</section></section><section id="numeric-variables" class="level2"><h2 class="anchored" data-anchor-id="numeric-variables">Numeric variables</h2>
-<section id="univariate-numeric" class="level3"><h3 class="anchored" data-anchor-id="univariate-numeric">Univariate numeric</h3>
-<p>Last time we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot; the difference is that it splits the numeric range into fixed “bins” and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. At this time, we set the <code>x</code> aesthetic with the numeric variable age <code>rage</code>. Also, the geometry is defined as a histogram using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> function.</p>
+<p>This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents’ sex. A plot can show us the magnitudes and composition by respondents’ sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable <code>religcat</code> on the <code>x</code> axis and <code>fill</code> with gender <code>rsex</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age distribution"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">religcat</span>, fill <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Religion by gender"</span>, x <span class="op">=</span> <span class="st">"Religion"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
@@ -444,12 +459,14 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent’s age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group.</p>
-<p>A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this time, <code>rage</code> is defined in the <code>y</code> axis. This is just a personal preference. The geometry is set by the <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> function.</p>
+<p>As we can see, Catholic and Protestant religion are similarly popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in Lab 4. However, we have the advantage that we can graphically represent and inspect the magnitude of these differences.</p>
+</section></section><section id="numeric-variables" class="level2"><h2 class="anchored" data-anchor-id="numeric-variables">Numeric variables</h2>
+<section id="univariate-numeric" class="level3"><h3 class="anchored" data-anchor-id="univariate-numeric">Univariate numeric</h3>
+<p>In Lab 4, we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot; the difference is that it splits the numeric range into fixed “bins” and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. This time, we will set the <code>x</code> aesthetic with the numeric variable age <code>rage</code>. Also, the geometry is defined as a histogram using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age boxplot"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age distribution"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -457,9 +474,22 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent’s age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group.</p>
+<p>A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this plot, <code>rage</code> is defined in the <code>y</code> axis. This is just a personal preference. The geometry is set by the <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age boxplot"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function. The lower edge of the box represents the 2nd quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
   18   35   48   64   97 </code></pre>
@@ -468,14 +498,14 @@ div.csl-indent {
 </section><section id="bivariate-numeric" class="level3"><h3 class="anchored" data-anchor-id="bivariate-numeric">Bivariate numeric</h3>
 <p>A useful plot to explore the relationship between two numeric variables is the scatter plot. This plot locates a dot for each observation according to their respective numeric values. In the example below, we use age <code>rage</code> on the X axis (horizontal), and personal income <code>persinc2</code> on the Y axis (vertical). This type of plot is useful to explore a relationship between variables.</p>
 <!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
-<p>To generate a scatter plot, we need to define <code>x</code> and <code>y</code> in aesthetics <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. The geometry is a point, expressed by <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. Note that we are specifying some further optional arguments. First, in <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> <code>alpha</code> regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> we defined <code>position</code> as <code>jitter</code>. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands are overlapped. Adding some transparency and <em>noise</em> to their position, can allow to visualize possible patterns easily.</p>
+<p>To generate a scatter plot, we need to define <code>x</code> and <code>y</code> in aesthetics <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. The geometry is a point, that we can specify using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function. Note that we are specifying some further optional arguments within <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. First, <code>alpha</code> regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in we defined <code>position</code> as <code>jitter</code>. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly ontop of each other. Adding some transparency and <em>noise</em> to their position with <code>jitter</code> (i.e.&nbsp;shifts dots slightly apart), can make it easier to visualize possible patterns.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">persinc2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">persinc2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span>, position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Personal income vs age"</span>, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Personal income (£)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -484,35 +514,65 @@ div.csl-indent {
 </section></section><section id="mixed-data" class="level2"><h2 class="anchored" data-anchor-id="mixed-data">Mixed data</h2>
 <p>Very often we want to summarise central or spread measure by categories or groups. For example, let’s go back to the example of age and respondents’ sex. We can visualize these two variables (which include one numeric and one categorical) using a box plot. To create this, we need to specify the <code>x</code> and <code>y</code> value in <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> and include the <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> geometry.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span>, x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span>, x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age by sex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>From this, we can visualize that female participants are slightly younger than their male counterparts in the sample.</p>
+</section><section id="r-cheatsheets" class="level2"><h2 class="anchored" data-anchor-id="r-cheatsheets">R Cheatsheets</h2>
+<p>There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don’t have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Data Visualization with ggplot2 Cheat Sheet</a>. An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. Another interesting site is the <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a>, which includes a comprehensive showcase of plot types and their respective code.</p>
+<p>As a quick example of how simply themeing is, let’s take the last graph and apply a minimal theme. All we need to do is add <code>+</code> after <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> followed by <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span>, x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age by sex"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="06-Lab6_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Rather than adding <code>+ theme_...()</code> to each plot individually, you can also set a global theme using <code><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set()</a></code>. As this is setting a theme to use for all plots, by convention the code for this would be added to your “preamble” code chunk at the top of your R Markdown document.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set ggplot theme</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After adding (and running) the code, any code you run to create a plot will use the minimal theme.</p>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Important</strong>. If you are interested in applying a theme to your plots please look at the linked resources above. Themeing plots is easy with <code>ggplot</code>, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.</p>
+<p>As a general rule of thumb, if genAI responses have code we did not cover in the labs, 99% of the time you can be confident it is spouting out absolute nonsense. As seen above, the built-in <code>ggplot</code> themes can be applied with a single line of code, and more complex customisation - that you will rarely, if ever, need - can be set once globally or used only when absolutely needed for a specific plot. GenAI will mislead you into thinking that creating plots with R requires 20+ lines of code rather than 3-4. It has similar issue with tables, sometimes giving 40+ lines of code to create a table that could instead be created with a single line of code.</p>
+</div>
+</div>
+</div>
 </section><section id="activity" class="level2"><h2 class="anchored" data-anchor-id="activity">Activity</h2>
-<p>Using the <code>nilt_subset</code> object, complete the tasks below in the Rmd file <code>Lab_6</code>, which you created earlier. Insert a new code chunk for each of these activities and include brief comments as text (outside the chunk) in the Rmd document to introduce or describe the plots. Feel free to copy and adapt the code to create the plots in the examples above.</p>
+<p>Using the <code>nilt_subset</code> object, complete the tasks below in your R Markdown file. Insert a new code chunk for each of these activities and include brief comments as regular text (i.e.&nbsp;outside the code chunk) to introduce or describe the plots. Feel free to copy and adapt the code to create the plots in the examples above. As covered in the lectures, you do not need to memorise the exact code. The important thing is that you understand what the code does and how to modify it for what you are trying to achieve.</p>
 <ul>
 <li>Create a first-level header to start a section called “Categorical analysis”;</li>
-<li>Create simple bar plot using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> geometry to visualize the political affiliation reported by the respondents using the variable <code>uninatid</code>;</li>
-<li>Based on the plot above, create a ‘stacked bar plot’ to visualize the political affiliation by religion, using the <code>uninatid</code> and <code>religcat</code> variables;</li>
+<li>Create simple bar plot using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> geometry to visualize the view on unionist/nationalist/neither affiliation reported by the respondents using the variable <code>uninatid</code>;</li>
+<li>Based on the plot above, create a ‘stacked bar plot’ to visualize this affiliation by religion, using the <code>uninatid</code> and <code>religcat</code> variables;</li>
 <li>Create a new first-level header to start a section called “Numeric analysis”;</li>
 <li>Create a scatter plot about the relationship between personal income <code>persinc2</code> on the Y axis and number of hours worked a week <code>rhourswk</code> on the X axis;</li>
-<li>Finally, create a box plot to visualize personal income <code>persinc2</code> on the Y axis and self-reported level of happiness <code>ruhappy</code> on the x axis… Interesting result, Isn’t it? Talk to your lab group-mates and tutors about your results.</li>
-<li>Add your own (brief) comments to each of the plots as text in your Rmd file;</li>
-<li>Knit the .Rmd document as HTML or PDF. The knitted file will be saved automatically in your project. You can come back to the Rmd file to make changes if needed and knit it again as many times as you wish.</li>
+<li>Finally, create a box plot to visualize personal income <code>persinc2</code> on the Y axis and self-reported level of happiness <code>ruhappy</code> on the x axis … Interesting result, Isn’t it? Talk to your lab group-mates and tutors about your results.</li>
+<li>Add your own (brief) comments to each of the plots as text in your R Markdown file;</li>
+<li>Knit the .Rmd document as HTML. The knitted file will be saved automatically in your project.</li>
 </ul>
-<section id="r-cheatsheets" class="level3"><h3 class="anchored" data-anchor-id="r-cheatsheets">R Cheatsheets</h3>
-<p>There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don’t have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Data Visualization with ggplot2 Cheat Sheet</a>. An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. Another interesting site is the <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a>, which includes a comprehensive showcase of plot types and their respective code.</p>
 
 
 
-</section></section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Horst" class="csl-entry" role="listitem">
 Horst, Alison. n.d. <span>“<span>GitHub</span> - Allisonhorst/Stats-Illustrations: <span>R</span> &amp; Stats Illustrations by @Allison_horst.”</span> Accessed July 11, 2022. <a href="https://github.com/allisonhorst/stats-illustrations">https://github.com/allisonhorst/stats-illustrations</a>.
 </div>
