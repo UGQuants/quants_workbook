@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
 <li><a href="#how-to-report-issues" id="toc-how-to-report-issues" class="nav-link" data-scroll-target="#how-to-report-issues">How to Report Issues</a></li>
   <li><a href="#how-to-avoid-most-common-issues" id="toc-how-to-avoid-most-common-issues" class="nav-link" data-scroll-target="#how-to-avoid-most-common-issues">How to Avoid Most Common Issues</a></li>
-  <li><a href="#dont-believe-genais-lies" id="toc-dont-believe-genais-lies" class="nav-link" data-scroll-target="#dont-believe-genais-lies">Don’t Believe GenAI’s Lies</a></li>
+  <li><a href="#dont-believe-genai-bullshit" id="toc-dont-believe-genai-bullshit" class="nav-link" data-scroll-target="#dont-believe-genai-bullshit">Don’t Believe GenAI Bullshit</a></li>
   </ul>
 </li>
   <li><a href="#regression-results-table-issues" id="toc-regression-results-table-issues" class="nav-link" data-scroll-target="#regression-results-table-issues">Regression Results Table Issues</a></li>
@@ -302,7 +302,7 @@ Important
 <ul>
 <li>Install the <code>vtable</code> package.</li>
 <li>Load the <code>vtable</code> package.</li>
-<li>Use the <code>sumtable()</code> function - which is provided by the <code>vtable</code> package - to create a descriptive statistics table for the variables included in the model.</li>
+<li>Use the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function - which is provided by the <code>vtable</code> package - to create a descriptive statistics table for the variables included in the model.</li>
 </ul>
 <p>That’s it. It’s no more complex than that. At its most basic, <strong>for the formative all you need to write is 3 lines of code</strong>. One in the Console, and two added to your R Markdown file. One can be added to the existing preamble code chunk, the other you’ll need to create a new code chunk for.</p>
 <p>With the summative, alongside the above, the only additional thing you need to do in relation to coding is -</p>
@@ -312,10 +312,10 @@ Important
 <p>As long as you followed the setup instructions, the <code>tidyverse</code> package - which includes <code>ggplot</code> - will already be installed and loaded. This means you <strong>do not</strong> need to install nor load any other packages for your plots.</p>
 <p>Overall then, at its most basic <strong>for the summative assessment all you need to write is the same 3 lines as the formative to create the descriptive statistics table and then an additional 3 lines of code per ggplot you want to create</strong>.</p>
 <p>You may want to write some additional code when initially exploring the data or to calculate / present some additional stats. In rare cases, a plot may need <em>one</em> additional line of code to fix an issue, like overlapping text labels. However, <strong>it is perfectly possible to receive an A for the interpretive report with just the code outlined above</strong>.</p>
-<p>So, if you find yourself downloading and wrangling data, running a multitude of functions beyond <code>sumtable()</code> and <code>ggplot</code> functions, or writing dozens and dozens of lines of code, you are doing more than is actually necessary. You will also likely run into issues if any of this code replaces what is already setup in the assessment template.</p>
+<p>So, if you find yourself downloading and wrangling data, running a multitude of functions beyond <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> and <code>ggplot</code> functions, or writing dozens and dozens of lines of code, you are doing more than is actually necessary. You will also likely run into issues if any of this code replaces what is already setup in the assessment template.</p>
 </div>
 </div>
-</section><section id="dont-believe-genais-lies" class="level3"><h3 class="anchored" data-anchor-id="dont-believe-genais-lies">Don’t Believe GenAI’s Lies</h3>
+</section><section id="dont-believe-genai-bullshit" class="level3"><h3 class="anchored" data-anchor-id="dont-believe-genai-bullshit">Don’t Believe GenAI Bullshit</h3>
 <div class="callout callout-style-simple callout-caution callout-titled" title="GenAI Misinformation">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -327,15 +327,36 @@ GenAI Misinformation
 </div>
 <div class="callout-body-container callout-body">
 <p>Another common cause of issues each year is genAI leading people astray. GenAI is useful when you have a general understanding of the area / topic you are using it for. However, it is nowhere near as competent as the genAI companies and online grifters make it out to be. If you do not understand the area / topic you are prompting it about, you will not know when its responses contain inaccuracies or outright misinformation.</p>
-<p>This problem is especially true when it comes to R. GenAI when prompted about R will often respond with needlessly complex and over convoluted code. Even where it works, it will regualarly spit out 20+ lines of code for something that could be achieved with 1-4 lines of code. As a rule of thumb then, whenever genAI is advising you to install various packages and/or write dozens of lines of code, it is likely spouting absolute nonsense. Do not believe it’s lies - and instead go back through the info on the assessments and the relevant lab workbook weeks for what it is you are trying to do.</p>
-<p><strong>Critically</strong>, not only will uncritical use of genAI often lead you down the wrong path, prompting genAI to write code to copy and paste for your summative assignment will be treated as academic misconduct. You should only be using genAI to get textbook examples and explanations, and nothing that can be copied and pasted into your assignment. Please see the <a href="../assessments/assessments.html#genai-and-the-assessments">GenAI and the Assessments</a> section for more information on what genAI is permitted for the summative assessments.</p>
+<p>Indeed, all genAI responses are <a href="https://link.springer.com/article/10.1007/s10676-024-09775-5">bullshit</a> - and I use that as the correct philosophical term to describe it. GenAI does not distinguish between fact and fiction, it merely selects the next most probable token - which for simplicity can think of as a word - based on the tokens fed to it.</p>
+<p>This is especially a problem when it comes to R. GenAI when prompted about R will respond with inaccurate information or needlessly complex and over convoluted code. Even where the code it spits out works, it can be 20+ lines of code for something that could more efficiently be achieved with 1-4 lines of code instead.</p>
+<p>For example, here is Copilot’s bullshit response to a common error you might encounter:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../images/sumtable_wrong.png" class="img-fluid figure-img"></p>
+<figcaption>Copilot bullshit response</figcaption></figure>
+</div>
+<p>The <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function, as we covered in <a href="../04-Lab04.qmd">Lab 4</a>, doesn’t come from the <code>stargazer</code>, <code>modelsummary</code>, nor <code>summarizer</code> packages. Instead, it comes from <code>vtable</code>. Yet, after telling Copilot that I still receive an error after installing the packages it advised:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../images/copilot_fail.png" class="img-fluid figure-img"></p>
+<figcaption>Copilot continuing to bullshit</figcaption></figure>
+</div>
+<p>So - First, Copilot advised me to install the wrong three packages. Second, when I informed it that didn’t work, it advised me to uninstall and reinstall the packages. Third, it then suggested if that still didn’t work - which it won’t - that it can give me information on ‘alternatives’. Two responses and it has wasted my time and rapidly led me further and further away from the simple quick solution for the error.</p>
+<p>Indeed, if you review <a href="../04-Lab04.qmd">Lab 4</a>, you will find that the solution to the problem was easy - install and load the package we used in the lab that provided the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function -</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Run in Console</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vtable"</span><span class="op">)</span></span>
+<span><span class="co"># Load in preamble code chunk</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As seen in this short example, if you put too much faith into genAI bullshit you risk needless frustration - and potentially losing hours of time - that a 5-minute review of the teaching materials would have helped solve.</p>
+<p>As a reminder, whilst I have setup a custom GPT / saved prompt - <a href="../help/rstudio_helper.html">RStudio Helper GPT</a> - that aims to mitigate the worst aspects of standard genAI responses on R, it remains genAI with all the flaws that entails.</p>
+<p><strong>Critically</strong>, not only will uncritical use of genAI often lead you down the wrong path, prompting genAI to write code to copy and paste for your summative assignment will be treated as academic misconduct. You should only be using genAI to get textbook examples and explanations, and nothing that can be copied and pasted into your assignment. Please see the <a href="../assessments/assessments.html#genai-and-the-assessments">GenAI and the Assessments</a> section for more information on what genAI use is permitted for the summative assessments.</p>
 </div>
 </div>
 </section></section><section id="regression-results-table-issues" class="level2"><h2 class="anchored" data-anchor-id="regression-results-table-issues">Regression Results Table Issues</h2>
 <p>If variables go missing from your regression results table or the regression results are different to how they originally appeared when you knitted the template, you may have unintentionally replaced the data included with the template.</p>
 <p>The preamble code block at the top of the R Markdown file provided with the template reads in the ‘fullnilt_2012.rds’ dataset and assigns it to the ‘nilt’ data frame object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read data</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read data</span></span>
 <span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/fullnilt_2012.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You therefore do not need to download and read in another dataset, this is all setup for you already within the preamble code block. To resolve the issue, remove all additional code where you downloaded and assign another dataset to the <code>nilt</code> data frame. Then re-run the preamble code chunk.</p>
@@ -362,7 +383,7 @@ GenAI Misinformation
 <p>The <code>select()</code> function keeps variables passed to it and drops the others. The first argument is always the dataframe being selected from, <code>select(dataframe, ...)</code>, with variables to keep from it listed after, <code>select(dataframe, variable1, variable2, ...)</code>. Assigning, <code>&lt;-</code>, select() to the same dataframe, <code>dataframe &lt;- select(dataframe, ..)</code>, is effectively saying, ‘from this dataframe keep these variables and permanently remove the others’. Unless your whole analysis is only going to use that selection, always assign it to a new dataframe instead, <code>dataframe_subset &lt;- select(dataframe, ...)</code>.</p>
 <p><strong>Important</strong>: the preamble code chunk in the R Markdown file provided in the project template already has a line of code for creating an <code>nilt_subset</code> object with only the variables that are used in the regression model.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset with variables used in regression model</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset with variables used in regression model</span></span>
 <span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">persinc2</span>, <span class="va">rsex</span>, <span class="va">religcat</span>, <span class="va">orient</span>, <span class="va">uninatid</span>, <span class="va">tunionsa</span>, <span class="va">rsuper</span>, <span class="va">rage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
