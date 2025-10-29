@@ -334,21 +334,21 @@ GenAI Misinformation
 <figure class="figure"><p><img src="../images/sumtable_wrong.png" class="img-fluid figure-img"></p>
 <figcaption>Copilot bullshit response</figcaption></figure>
 </div>
-<p>The <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function, as we covered in <a href="../04-Lab04.qmd">Lab 4</a>, doesn’t come from the <code>stargazer</code>, <code>modelsummary</code>, nor <code>summarizer</code> packages. Instead, it comes from <code>vtable</code>. Yet, after telling Copilot that I still receive an error after installing the packages it advised:</p>
+<p>The <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function, as we covered in <a href="../04-Lab4.html">Lab 4</a>, doesn’t come from the <code>stargazer</code>, <code>modelsummary</code>, nor <code>summarizer</code> packages. Instead, it comes from <code>vtable</code>. Yet, after telling Copilot that I still receive an error after installing the packages it advised:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="../images/copilot_fail.png" class="img-fluid figure-img"></p>
 <figcaption>Copilot continuing to bullshit</figcaption></figure>
 </div>
-<p>So - First, Copilot advised me to install the wrong three packages. Second, when I informed it that didn’t work, it advised me to uninstall and reinstall the packages. Third, it then suggested if that still didn’t work - which it won’t - that it can give me information on ‘alternatives’. Two responses and it has wasted my time and rapidly led me further and further away from the simple quick solution for the error.</p>
-<p>Indeed, if you review <a href="../04-Lab04.qmd">Lab 4</a>, you will find that the solution to the problem was easy - install and load the package we used in the lab that provided the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function -</p>
+<p>So - First, Copilot advised me to install the wrong three packages. Second, when I informed it that didn’t work, it advised me to try various things, including uninstalling and reinstalling the packages. Third, it then suggested if all that still doesn’t work - which it won’t - that it can give me information on ‘alternatives’. Two responses and it has wasted my time and rapidly led me further and further away from the simple quick solution for the error.</p>
+<p>Indeed, if you review <a href="../04-Lab4.html">Lab 4</a>, you will find that the solution to the problem was easy - install and load the package we used in the lab that provided the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function -</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Run in Console</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vtable"</span><span class="op">)</span></span>
 <span><span class="co"># Load in preamble code chunk</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As seen in this short example, if you put too much faith into genAI bullshit you risk needless frustration - and potentially losing hours of time - that a 5-minute review of the teaching materials would have helped solve.</p>
-<p>As a reminder, whilst I have setup a custom GPT / saved prompt - <a href="../help/rstudio_helper.html">RStudio Helper GPT</a> - that aims to mitigate the worst aspects of standard genAI responses on R, it remains genAI with all the flaws that entails.</p>
+<p>As seen in this short example, if you put too much faith into genAI bullshit you risk needless frustration - and potentially losing hours of time - that quick review of the teaching materials would have helped solve.</p>
+<p>As a reminder, whilst I have setup a custom GPT / saved prompt - <a href="../help/rstudio_helper.html">RStudio Helper GPT</a> - that aims to mitigate the worst aspects of standard genAI responses on R, it remains genAI with all the flaws that entails. You should still treat all its responses as what they are - bullshit.</p>
 <p><strong>Critically</strong>, not only will uncritical use of genAI often lead you down the wrong path, prompting genAI to write code to copy and paste for your summative assignment will be treated as academic misconduct. You should only be using genAI to get textbook examples and explanations, and nothing that can be copied and pasted into your assignment. Please see the <a href="../assessments/assessments.html#genai-and-the-assessments">GenAI and the Assessments</a> section for more information on what genAI use is permitted for the summative assessments.</p>
 </div>
 </div>
