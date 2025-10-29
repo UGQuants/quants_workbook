@@ -745,7 +745,7 @@ Female
 <p>The result displays the number of observations used (N), the mean, the standard deviation, minimum, the 1st (same as ‘Pctl. 25’) and 3rd quartile (same as ‘Pctl. 75’), as well as the maximum (i.e., eldest respondent).</p>
 <p>Note, despite passing <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> categorical variables previously to get percentages, when passing it numeric values it calculates the mean, standard deviation, and so on instead. As we coerced our variables last week, <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> knows which are categorical (i.e.&nbsp;factor) and which are numeric, calculating the relevant stats for each without us having to tell it which to do.</p>
 <section id="categorical-and-numeric-data" class="level4"><h4 class="anchored" data-anchor-id="categorical-and-numeric-data">Categorical and numeric data</h4>
-<p>Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
+<p>There will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let’s take the following example to compute the summary of the respondent’s age (<code>rage</code>) by gender:</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="st">"rage"</span>, group <span class="op">=</span> <span class="st">"rsex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -795,6 +795,365 @@ Female
 </div>
 </div>
 <p>In the code above, we are simply specifying the variable <code>rage</code> and grouping the summary by <code>rsex</code>. This produces a small summary with the number of observations in and the main measure of centrality and spread, namely the mean and the standard deviation, for each of the categories.</p>
+</section><section id="creating-a-table-with-all-variables-in-a-subset" class="level4"><h4 class="anchored" data-anchor-id="creating-a-table-with-all-variables-in-a-subset">Creating a table with all variables in a subset</h4>
+<p>We ended the <a href="./04-Lab4.html#setting-up-an-r-markdown-file">Setting up an R Markdown file</a> section at the start of today’s session by showing the power of subsetting our data. There we did a comparison between <code>glimpse(nilt)</code> and <code>glimpse(nilt_subset)</code>. Creating the <code>nilt_subset</code> meant that we could pass it to <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> and receive output for just our selected 8 variables rather than all 133 variables in the NILT dataset.</p>
+<p>In the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> examples above, we looked at creating a table for 1 or more variables - or one variable broken down by another variable - where we have to call each of our variables by name.</p>
+<p>What if we want the descriptive statistics for all our variables of interest? We could write <code>nilt_subset |&gt; sumtable(vars = c("rsex", "rage", ...</code> and so on, listing the names for all our variables one by one. However, thanks to the wonders of coding, we don’t need to repeat ourselves. We already specified our variables of interest when creating the <code>nilt_subset</code> data frame. Fortunately, <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> if you pass it a data frame without specifying any variables, assumes you want a table for all the variables in the provided data frame -</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Summary Statistics</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Std. Dev.</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pctl. 25</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pctl. 75</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Max</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rsex</td>
+<td style="text-align: left;">1204</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Male</td>
+<td style="text-align: left;">537</td>
+<td style="text-align: left;">45%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Female</td>
+<td style="text-align: left;">667</td>
+<td style="text-align: left;">55%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rage</td>
+<td style="text-align: left;">1201</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">97</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">highqual</td>
+<td style="text-align: left;">1204</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Degree level or higher</td>
+<td style="text-align: left;">230</td>
+<td style="text-align: left;">19%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Higher education</td>
+<td style="text-align: left;">102</td>
+<td style="text-align: left;">8%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... GCE A level or equiv</td>
+<td style="text-align: left;">243</td>
+<td style="text-align: left;">20%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... GCSE A-C or equiv</td>
+<td style="text-align: left;">185</td>
+<td style="text-align: left;">15%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... GCSE D-G or equiv</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">7%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... No qualifications</td>
+<td style="text-align: left;">281</td>
+<td style="text-align: left;">23%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Other, level unknown</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">2%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Unclassified</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">4%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">religcat</td>
+<td style="text-align: left;">1168</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Catholic</td>
+<td style="text-align: left;">491</td>
+<td style="text-align: left;">42%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Protestant</td>
+<td style="text-align: left;">497</td>
+<td style="text-align: left;">43%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... No religion</td>
+<td style="text-align: left;">180</td>
+<td style="text-align: left;">15%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">uninatid</td>
+<td style="text-align: left;">1183</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Unionist</td>
+<td style="text-align: left;">348</td>
+<td style="text-align: left;">29%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Nationalist</td>
+<td style="text-align: left;">255</td>
+<td style="text-align: left;">22%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Neither</td>
+<td style="text-align: left;">580</td>
+<td style="text-align: left;">49%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ruhappy</td>
+<td style="text-align: left;">1195</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Very happy</td>
+<td style="text-align: left;">404</td>
+<td style="text-align: left;">34%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Fairly happy</td>
+<td style="text-align: left;">656</td>
+<td style="text-align: left;">55%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Not very happy</td>
+<td style="text-align: left;">95</td>
+<td style="text-align: left;">8%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... Not at all happy</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">1%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Can't choose</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">2%</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rhourswk</td>
+<td style="text-align: left;">566</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">persinc2</td>
+<td style="text-align: left;">897</td>
+<td style="text-align: left;">16395</td>
+<td style="text-align: left;">13466</td>
+<td style="text-align: left;">260</td>
+<td style="text-align: left;">6760</td>
+<td style="text-align: left;">22100</td>
+<td style="text-align: left;">75000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="adding-labels" class="level4"><h4 class="anchored" data-anchor-id="adding-labels">Adding labels</h4>
+<p>Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what <code>rsex</code>, <code>rage</code>, and so on represent.For that reason, it is good practice to also add labels. With <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> you can use the <code>labels =</code> keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.</p>
+<p>To keep things relatively simple, let’s create a table with labels for <code>rage</code> and <code>persinc2</code></p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span>, <span class="st">"persinc2"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Age"</span>, <span class="st">"Annual Personal Income"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Summary Statistics</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Std. Dev.</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pctl. 25</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pctl. 75</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Max</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">1201</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Annual Personal Income</td>
+<td style="text-align: left;">897</td>
+<td style="text-align: left;">16395</td>
+<td style="text-align: left;">13466</td>
+<td style="text-align: left;">260</td>
+<td style="text-align: left;">6760</td>
+<td style="text-align: left;">22100</td>
+<td style="text-align: left;">75000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Note, we need to use the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function again - <code>c("Age", "Annual Personal Income")</code>. Also, if you wanted to create a table with labels for all variables in the data frame, you do not need to include the <code>vars =</code> part. However, you need to then ensure you list the labels in the correct order. When you create a subset with <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> the variables in the subset are put into the same order as the code you used. So, if you are unsure what order variables in your subset are in, take a look back at the code you used to create the subset.</p>
+<p>As a final wee note, you can also customise the title of tables created with <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> using the <code>title =</code> keyword argument.</p>
 </section></section><section id="activity-2" class="level3"><h3 class="anchored" data-anchor-id="activity-2">Activity 2</h3>
 <p>Can money buy happiness?</p>
 <p>Using the data in the <code>nilt_subset</code> dataset, complete the following activities. This will be a good practice run for doing the research report when you run your own analysis on the NILT teaching dataset. Handy!</p>
