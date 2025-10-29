@@ -320,13 +320,39 @@ Note, despite passing `sumtable()` categorical variables previously to get perce
 
 #### Categorical and numeric data
 
-Lastly, there will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let's take the following example to compute the summary of the respondent's age (`rage`) by gender:
+There will be times in which you will need to compute a summary combining categorical and numeric data, to compare groups for example. The good news is that we can use exactly the same function and syntax to do this. Let's take the following example to compute the summary of the respondent's age (`rage`) by gender:
 
 ```{r}
 nilt_subset |> sumtable(vars = "rage", group = "rsex")
 ```
 
 In the code above, we are simply specifying the variable `rage` and grouping the summary by `rsex`. This produces a small summary with the number of observations in and the main measure of centrality and spread, namely the mean and the standard deviation, for each of the categories.
+
+#### Creating a table with all variables in a subset
+
+We ended the [Setting up an R Markdown file](04-Lab4.qmd#setting-up-an-r-markdown-file) section at the start of today's session by showing the power of subsetting our data. There we did a comparison between `glimpse(nilt)` and `glimpse(nilt_subset)`. Creating the `nilt_subset` meant that we could pass it to `glimpse()` and receive output for just our selected 8 variables rather than all 133 variables in the NILT dataset.
+
+In the `sumtable()` examples above, we looked at creating a table for 1 or more variables - or one variable broken down by another variable - where we have to call each of our variables by name.
+
+What if we want the descriptive statistics for all our variables of interest? We could write `nilt_subset |> sumtable(vars = c("rsex", "rage", ...` and so on, listing the names for all our variables one by one. However, thanks to the wonders of coding, we don't need to repeat ourselves. We already specified our variables of interest when creating the `nilt_subset` data frame. Fortunately, `sumtable()` if you pass it a data frame without specifying any variables, assumes you want a table for all the variables in the provided data frame -
+
+```{r}
+nilt_subset |> sumtable()
+```
+
+#### Adding labels
+
+Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what `rsex`, `rage`, and so on represent.For that reason, it is good practice to also add labels. With `sumtable()` you can use the `labels =` keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.
+
+To keep things relatively simple, let's create a table with labels for `rage` and `persinc2`
+
+```{r}
+nilt_subset |> sumtable(vars = c("rage", "persinc2"), labels = c("Age", "Annual Personal Income"))
+```
+
+Note, we need to use the `c()` function again - `c("Age", "Annual Personal Income")`. Also, if you wanted to create a table with labels for all variables in the data frame, you do not need to include the `vars = ` part. However, you need to then ensure you list the labels in the correct order. When you create a subset with `select()` the variables in the subset are put into the same order as the code you used. So, if you are unsure what order variables in your subset are in, take a look back at the code you used to create the subset.
+
+As a final wee note, you can also customise the title of tables created with `sumtable()` using the `title =` keyword argument.
 
 ### Activity 2
 

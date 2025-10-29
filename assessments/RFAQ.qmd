@@ -4,7 +4,12 @@ This page contains information for solving common issues students have reported 
 
 Updates will continue being added to this page with information for any new issues being reported. So, if you experience an issue, this page will be a good first port of call to check for any existing solution.
 
-## Reporting R Issues {.unnumbered}
+
+## Please Read
+
+### How to Report Issues
+
+:::{.callout-note title="Reporting R Issues"}
 
 When making a Moodle post or emailing about an issue it is vital to provide sufficient context to enable others to help find a solution. This includes:
 
@@ -23,6 +28,66 @@ Additionally, when emailing, please also include:
 
 -   Your lab group number.
 -   If already made a Moodle post about the issue, a link to the post.
+
+:::
+
+### How to Avoid Most Common Issues
+
+:::{.callout-important title="Important"}
+
+An underlying cause to many issues reported each year is believing more code needs to be written for the assessments than is actually required.
+
+The formative and summative assessment template projects we provide already have key things setup for you. Please ensure to follow **all** the instructions to [setup the assessment projects](creating-assessment-projects.qmd) correctly.
+
+A copy of the NILT dataset is already included in the template projects. After following the instructions, your formative/summative assessment projects will also have:
+
+- Every package you will need - *except one* - installed **and** loaded.
+- An `nilt_subset` data frame setup with only the variables used in the regression model.
+- (Summative only) a code chunk with the code to produce the regression results table you need to interpret.
+
+This means:
+
+- You do not need to add any additional code to download the NILT dataset.
+- You do not need to add any additional code that assigns new data to the `nilt` and `nilt_subset` data frame objects (e.g. do not add any new lines with `nilt <- ...` or `nilt_subset <- ...`).
+- (Summative only) you do not need to add any additional code to create the regression model nor a regression results table.
+
+You also should not remove any of the existing code chunks in the template as these are essential for initially setting everything up and when knitting your HTML file.
+
+As the key things are already setup in the template for you, **you only have to write a few lines of code** overall.
+
+For the formative, at its most basic, after following the setup instructions, all you need in terms of coding is -
+
+- Install the `vtable` package.
+- Load the `vtable` package.
+- Use the `sumtable()` function - which is provided by the `vtable` package - to create a descriptive statistics table for the variables included in the model.
+
+That's it. It's no more complex than that. At its most basic, **for the formative all you need to write is 3 lines of code**. One in the Console, and two added to your R Markdown file. One can be added to the existing preamble code chunk, the other you'll need to create a new code chunk for.
+
+With the summative, alongside the above, the only additional thing you need to do in relation to coding is -
+
+- Present data visualisations using `ggplot`, where for each plot you will need to create a code chunk and write 3 - on rare occassions 4 - lines of code.
+
+As long as you followed the setup instructions, the `tidyverse` package - which includes `ggplot` - will already be installed and loaded. This means you **do not** need to install nor load any other packages for your plots.
+
+Overall then, at its most basic **for the summative assessment all you need to write is the same 3 lines as the formative to create the descriptive statistics table and then an additional 3 lines of code per ggplot you want to create**.
+
+You may want to write some additional code when initially exploring the data or to calculate / present some additional stats. In rare cases, a plot may need *one* additional line of code to fix an issue, like overlapping text labels. However, **it is perfectly possible to receive an A for the interpretive report with just the code outlined above**.
+
+So, if you find yourself downloading and wrangling data, running a multitude of functions beyond `sumtable()` and `ggplot` functions, or writing dozens and dozens of lines of code, you are doing more than is actually necessary. You will also likely run into issues if any of this code replaces what is already setup in the assessment template.
+
+:::
+
+### Don't Believe GenAI's Lies
+
+:::{.callout-caution title="GenAI Misinformation"}
+
+Another common cause of issues each year is genAI leading people astray. GenAI is useful when you have a general understanding of the area / topic you are using it for. However, it is nowhere near as competent as the genAI companies and online grifters make it out to be. If you do not understand the area / topic you are prompting it about, you will not know when its responses contain inaccuracies or outright misinformation.
+
+This problem is especially true when it comes to R. GenAI when prompted about R will often respond with needlessly complex and over convoluted code. Even where it works, it will regualarly spit out 20+ lines of code for something that could be achieved with 1-4 lines of code. As a rule of thumb then, whenever genAI is advising you to install various packages and/or write dozens of lines of code, it is likely spouting absolute nonsense. Do not believe it's lies - and instead go back through the info on the assessments and the relevant lab workbook weeks for what it is you are trying to do.
+
+**Critically**, not only will uncritical use of genAI often lead you down the wrong path, prompting genAI to write code to copy and paste for your summative assignment will be treated as academic misconduct. You should only be using genAI to get textbook examples and explanations, and nothing that can be copied and pasted into your assignment. Please see the [GenAI and the Assessments](assessments.qmd#genai-and-the-assessments) section for more information on what genAI is permitted for the summative assessments.
+
+:::
 
 ## Regression Results Table Issues
 

@@ -1,11 +1,5 @@
 # Visual exploratory analysis
 
-:::{.callout-important title="Update In Progress"}
-
-We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
-
-:::
-
 ```{r}
 #| include: false
 library(tidyverse)
@@ -37,11 +31,13 @@ Different plot types serve different types of data. In the last lab, we introduc
 | **Numeric** 	|  Histogram / boxplot	| Scatter plot  	|
 | **Categorical** + **Numeric** 	|  -	| Box plot 	|
 
-<!-- Note that it is possible to include more than two variables in one plot. Perhaps more than 3 would add complexity and can make the plot difficult to interpret. In the next section we will talk in more detail about these plots using the 2012 NILT survey. -->
+Note that it is possible to include more than two variables in one plot. However, as more variables are added, careful considerations are needed on whether they are actually adding more useful information or instead making the graph difficult - or impossible - to interpret.
 
 ### Setup a new R Markdown file
 
-As we did in the last session, let's learn by doing. We will continue working in the same project called *NILT* in [Posit Cloud](https://rstudio.cloud/). Set up your session as follows:
+We will continue working in the same project called *NILT* in [Posit Cloud](https://rstudio.cloud/).
+
+Set up your session as follows:
 
 1. Go to your 'Lab Group ##' in [Posit Cloud](https://rstudio.cloud/) (log in if necessary);
 2. Open your own copy of the 'NILT' project from the 'Lab Group';
@@ -76,7 +72,7 @@ Once you have modified the YAML, we next need our setup code chunk with the knit
 
 ```{r}
 #| eval: false
-knit::opts_chunk$set(message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
 Then, create another code chunk and name it `preamble` and again `include=FALSE`.
@@ -97,17 +93,53 @@ nilt_subset <- nilt |>
 
 Run both of the previous chunks individually by clicking on the green arrow located on the top-right of the chunk.
 
+As wee reminder, despite in Lab 4 loading the tidyverse and setting up the nilt and nilt_subset data frame objects, we still need to do this again in each new R Markdown file. The reason for this is whilst they are available in our Global Environment, the top-right pane, each time you 'knit' your document it starts with a clean Global Environment. It does this as for reproducibility anyone with a copy of the R Markdown file and data being used should be able to run the code and receive the exact same results.
+
 Now that we have read the data in, we are ready to start creating our own plots using the 2012 NILT survey. 
+
+## ggplot Syntax
+
+Fortunately, `ggplot` is part of the Tidyverse set of packages, which places strong emphasis on simplicity, readability, and consistency. As covered in the online lecture for this week, the `gg` in `ggplot` stands for "grammar of graphics". This breaks down graphs into different components that - similar to using grammar to compose words together in a sentence - you compose together to create graphs. This combination of Tidyverse's overall design philosophy and Wilkinson's [Grammar of Graphics](https://en.wikipedia.org/wiki/Wilkinson%27s_Grammar_of_Graphics) approach, makes `ggplot` incredibly powerful. We can create complex plots with only a few lines of (relatively) simple code.
+
+At its most basic, `ggplot` always takes at least three layers, namely _**data**_, _**aesthetics**_ and _**geometry**_. It is good practice though to also include text labels - such as a title and labels for x and y axes - to make clear what is being visualised in your plot. In general then, with `ggplot` we use the general format -
+
+```{r}
+#| eval: false
+data_frame |> ggplot(aes(x = column_name1, ...)) +
+  geom_...() +
+  labs(title = "Title text", x = "Label for x-axis", ...)
+```
+
+To break this down:
+
+- `data_frame` is the data frame object we want to use for our plot, such as `nilt_subset`.
+- `ggplot()` is the main function to create a new plot and is always the first layer we add.
+- `aes()`, short for "aesthetic mappings", is used inside the `ggplot()` function to specify which variables from our data frame we want to use. For univariate plots, we can just specify the x or y axis (e.g. `data_frame |> ggplot(aes(x = column_name))`. It can also take other arguments, which we will cover in sections below.
+- `+` is used between each `function()` to 'compose' them together. It is basically the equivalent of saying "after this function ADD this function". If you encounter error messages when using ggplot, it is always best to first check whether you are missing any `+` symbols between functions.
+- `geom_...()`, with "geom" being short for "geometry", is used to specify the type of plot, such as `geom_boxplot()`, `geom_histogram()`, and so on. We will cover each of these plot types in more detail further into the lab.
+- `labs()` is then used to add our text labels, with main ones to be aware of being `title = ""`, `x = ""`, and `y = ""`.
+
+And that's it! With often just three lines of code we can construct most plots we will want for our analysis. Importantly, despite all the different plot types we might want to construct, the code we need to write all follow this same basic 'grammar'. The main bits that will change based on plot type are the precise arguments within the `aes()` function, which specific `geom_...()` function we use, and the labels we set using the `labs()` function. So, pay attention to how those change across the plot types covered below and you'll have a good sense of all you will need when creating your own plots.
 
 ## Categorical variables
 
-Let's start using the same variables we summarised in **Lab 4**. We started by computing the total number of respondents by gender in a one-way contingency table. We can easily visualize this using a bar plot with `ggplot`. This package always takes at least three layers, namely _**data**_, _**aesthetics**_ and _**geometry**_. Here, we define the _data_ as the first argument of the `ggplot()`function with the `nilt_subset`. The second argument, _aesthetics_, is separated by a comma and is introduced using the function `aes()`. In this case we define the X axis `x = ` of the plot by the categories included in the variable `rsex`. The geometry is specified with the function `geom_bar()` without arguments for now. Note that we added the geometry using the plus sign `+` at the end of the previous line code. As an extra, I included the main title and the name of the x axis using the `labs()` function (you don't need to copy or run the following code chunks in your .Rmd. This is only for demonstration purposes).
+Let's start using the same variables we summarised in **Lab 4**. In Lab 4, we started by computing the total number of respondents by gender in a [one-way contingency table](04-Lab4.qmd#categorical-data). We can easily visualize this using a bar plot with `ggplot` -
 
 ```{r}
-ggplot(nilt_subset, aes(x = rsex)) +
+nilt_subset |> ggplot(aes(x = rsex)) +
   geom_bar() +
   labs(title = "Gender", x = "Gender of respondent")
 ```
+
+(Note: Remember you will need to create a code chunk for adding this code within your R Markdown file.)
+
+Here:
+
+- We pass our data frame object, `nilt_subset`, using the pipe operator. Without a pipe, we would need to write `ggplot(nilt_subset, aes(...`.
+- Inside the `ggplot()` function, we then use the `aes()`, _aesthetics_, function. In this case, within it we define the X axis `x = ` of the plot by the categories included in the variable `rsex`.
+- After `ggplot()` we add a `+` symbol to compose our functions together.
+- The geometry is specified with the function `geom_bar()` without arguments for now. Again we add `+` after it so R knows to compose the functions we are using together to construct the plot.
+- Finally, we use the `labs()` function to provide labels for the main title - `title = "Gender"` - and the name of the x axis - `x = "Gender of respondent"`. Note, as this is our last function for constructing the plot, we **do not** need a `+` after it.
 
 From the plot above, we can graphically see what we found out previously: there are more female respondents than males in our sample. The advantage is that we can have a sense of the magnitude of the difference by visualising it.
 
@@ -118,39 +150,40 @@ In **Lab 4**, we computed a Two-Way contingency table, which included the count 
 If we wanted to know how gender is split by religion, we can add the `fill` argument with a second variable in aesthetics, as shown below.
 
 ```{r}
-ggplot(nilt_subset, aes(x = rsex, fill = religcat)) +
+nilt_subset |> ggplot(aes(x = rsex, fill = religcat)) +
   geom_bar() +
   labs(title = "Gender by religion", x = "Gender of respondent")
 ```
 
+
 This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents' sex. A plot can show us the magnitudes and composition by respondents' sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable `religcat` on the `x` axis and `fill` with gender `rsex`.
 
 ```{r}
-ggplot(nilt_subset, aes(x = religcat, fill = rsex)) +
+nilt_subset |> ggplot(aes(x = religcat, fill = rsex)) +
   geom_bar() +
   labs(title = "Religion by gender", x = "Religion")
 ```
 
-As we can see, catholic and protestant religion are equally popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in the last lab. However, we have the advantage that we can graphically reprsent and inspect the magnitude of these differences.  
+As we can see, Catholic and Protestant religion are similarly popular among the respondents. Also, we can see that these are composed by similar proportions of males and females. One interesting thing is that there are more male respondents with no religion than female participants. Again, we found this out with the descriptive statistics computed in Lab 4. However, we have the advantage that we can graphically represent and inspect the magnitude of these differences.  
 
 ## Numeric variables
 
 ### Univariate numeric
 
-Last time we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot; the difference is that it splits the numeric range into fixed "bins" and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. At this time, we set the `x` aesthetic with the numeric variable age `rage`. Also, the geometry is defined as a histogram using the `geom_histogram()` function.
+In Lab 4, we talked about some measures of centrality and spread for numeric variables. The histogram plot is similar to the bar plot; the difference is that it splits the numeric range into fixed "bins" and computes the frequency/count for each bin instead of counting the number of respondents for each numeric value. The syntax is practically the same as the simple bar plot. This time, we will set the `x` aesthetic with the numeric variable age `rage`. Also, the geometry is defined as a histogram using the `geom_histogram()` function.
 
 ```{r}
-ggplot(nilt_subset, aes(x = rage)) +
+nilt_subset |> ggplot(aes(x = rage)) +
   geom_histogram() +
   labs(title = "Age distribution")
 ```
 
 From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent's age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group. 
 
-A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this time, `rage` is defined in the `y` axis. This is just a personal preference. The geometry is set by the `geom_boxplot()` function.
+A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this plot, `rage` is defined in the `y` axis. This is just a personal preference. The geometry is set by the `geom_boxplot()` function.
 
 ```{r}
-ggplot(nilt_subset, aes(y = rage)) +
+nilt_subset |> ggplot(aes(y = rage)) +
   geom_boxplot() +
   labs(title = "Age boxplot")
 ```
@@ -167,10 +200,10 @@ A useful plot to explore the relationship between two numeric variables is the s
 
 <!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
 
-To generate a scatter plot, we need to define `x` and `y` in aesthetics `aes()`. The geometry is a point, expressed by `geom_point()`. Note that we are specifying some further optional arguments. First, in `aes()` `alpha` regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in `geom_point()` we defined `position` as `jitter`. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands are overlapped. Adding some transparency and _noise_ to their position, can allow to visualize possible patterns easily.
+To generate a scatter plot, we need to define `x` and `y` in aesthetics `aes()`. The geometry is a point, that we can specify using the `geom_point()` function. Note that we are specifying some further optional arguments within `geom_point()`. First, `alpha` regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in we defined `position` as `jitter`. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly ontop of each other. Adding some transparency and _noise_ to their position with `jitter` (i.e. shifts dots slightly apart), can make it easier to visualize possible patterns.
 
 ```{r}
-ggplot(nilt_subset, aes(x = rage, y = persinc2)) +
+nilt_subset |> ggplot(aes(x = rage, y = persinc2)) +
   geom_point(alpha = 0.7, position = "jitter") +
   labs(title = "Personal income vs age", x = "Age", y = "Personal income (£)")
 ```
@@ -182,26 +215,54 @@ There is not a clear pattern in our previous plot. However, it is interesting to
 Very often we want to summarise central or spread measure by categories or groups. For example, let's go back to the example of age and respondents' sex. We can visualize these two variables (which include one numeric and one categorical) using a box plot. To create this, we need to specify the `x` and `y` value in `aes()` and include the `geom_boxplot()` geometry.
 
 ```{r}
-ggplot(nilt_subset, aes(y = rage, x = rsex)) +
+nilt_subset |> ggplot(aes(y = rage, x = rsex)) +
   geom_boxplot() +
   labs(title = "Age by sex")
 ```
 
 From this, we can visualize that female participants are slightly younger than their male counterparts in the sample. 
 
-## Activity
-
-Using the `nilt_subset` object, complete the tasks below in the Rmd file `Lab_6`, which you created earlier. Insert a new code chunk for each of these activities and include brief comments as text (outside the chunk) in the Rmd document to introduce or describe the plots. Feel free to copy and adapt the code to create the plots in the examples above.
-
-* Create a first-level header to start a section called "Categorical analysis";
-* Create simple bar plot using the `geom_bar()` geometry to visualize the political affiliation reported by the respondents using the variable `uninatid`;
-* Based on the plot above, create a 'stacked bar plot' to visualize the political affiliation by religion, using the `uninatid` and `religcat` variables;
-* Create a new first-level header to start a section called "Numeric analysis";
-* Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
-* Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results.
-* Add your own (brief) comments to each of the plots as text in your Rmd file;
-* Knit the .Rmd document as HTML or PDF. The knitted file will be saved automatically in your project. You can come back to the Rmd file to make changes if needed and knit it again as many times as you wish.
-
-### R Cheatsheets
+## R Cheatsheets
 
 There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don't have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the [Data Visualization with ggplot2 Cheat Sheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html). An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). Another interesting site is the [The R Graph Gallery](https://www.r-graph-gallery.com/), which includes a comprehensive showcase of plot types and their respective code.
+
+As a quick example of how simply themeing is, let's take the last graph and apply a minimal theme. All we need to do is add `+` after `labs()` followed by `theme_minimal()`.
+
+```{r}
+nilt_subset |> ggplot(aes(y = rage, x = rsex)) +
+  geom_boxplot() +
+  labs(title = "Age by sex") +
+  theme_minimal()
+```
+
+Rather than adding `+ theme_...()` to each plot individually, you can also set a global theme using `theme_set()`. As this is setting a theme to use for all plots, by convention the code for this would be added to your "preamble" code chunk at the top of your R Markdown document.
+
+```{r}
+#| eval: false
+# Set ggplot theme
+theme_set(theme_minimal())
+```
+
+After adding (and running) the code, any code you run to create a plot will use the minimal theme.
+
+:::{.callout-important}
+
+**Important**. If you are interested in applying a theme to your plots please look at the linked resources above. Themeing plots is easy with `ggplot`, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.
+
+As a general rule of thumb, if genAI responses have code we did not cover in the labs, 99% of the time you can be confident it is spouting out absolute nonsense. As seen above, the built-in `ggplot` themes can be applied with a single line of code, and more complex customisation - that you will rarely, if ever, need - can be set once globally or used only when absolutely needed for a specific plot. GenAI will mislead you into thinking that creating plots with R requires 20+ lines of code rather than 3-4. It has similar issue with tables, sometimes giving 40+ lines of code to create a table that could instead be created with a single line of code.
+
+:::
+
+## Activity
+
+Using the `nilt_subset` object, complete the tasks below in your R Markdown file. Insert a new code chunk for each of these activities and include brief comments as regular text (i.e. outside the code chunk) to introduce or describe the plots. Feel free to copy and adapt the code to create the plots in the examples above. As covered in the lectures, you do not need to memorise the exact code. The important thing is that you understand what the code does and how to modify it for what you are trying to achieve.
+
+* Create a first-level header to start a section called "Categorical analysis";
+* Create simple bar plot using the `geom_bar()` geometry to visualize the view on unionist/nationalist/neither affiliation reported by the respondents using the variable `uninatid`;
+* Based on the plot above, create a 'stacked bar plot' to visualize this affiliation by religion, using the `uninatid` and `religcat` variables;
+* Create a new first-level header to start a section called "Numeric analysis";
+* Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
+* Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis ... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results.
+* Add your own (brief) comments to each of the plots as text in your R Markdown file;
+* Knit the .Rmd document as HTML. The knitted file will be saved automatically in your project.
+
