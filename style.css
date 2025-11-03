@@ -1,14 +1,31 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
+.navbar-logo {
+  max-height: 50px;
+  padding-right: 20px;
 }
-p code {
-  white-space: inherit;
+
+/* Bold the left navigation items */
+.navbar-nav.me-auto .nav-link,
+.navbar-nav.me-auto .menu-text {
+  font-weight: bold;
 }
-pre {
-  word-break: normal;
-  word-wrap: normal;
+
+/* Bold the navigation bar title */
+.navbar-title {
+  font-weight: bold;
+  color: #dce0e8;
 }
-pre code {
-  white-space: inherit;
+
+.nav-link .menu-text {
+  color: #dce0e8;
+}
+
+.blockquote {
+}
+
+.callout.callout-style-simple > div.callout-header {
+  opacity: 85%;
+}
+
+.sidebar-menu-container .menu-text {
+  opacity: 90%;
 }

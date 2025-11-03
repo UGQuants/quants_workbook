@@ -1,0 +1,164 @@
+---
+title: "Summative Assessments"
+---
+
+## Overview
+
+::: {.callout-important title="Summative Submission Deadline"}
+12 noon, Monday 15th December 2025
+:::
+
+There is one summative assessment, split into two parts:
+
+- **Reflective Course Summary**. 500 words, worth 30% of your total grade
+- **Interpreting Quantitative Findings Report**. 2500 words, worth the remaining 70% of your total grade.
+
+**These are submitted together as one document**: with the report first; and summary second.
+
+There is no end-of-course examination for this course. All assessment is based on the summative assessment components that must be completed.
+
+## Interpreting Quantitative Findings Report
+
+**This component is worth 70% of your total grade.**
+
+You must prepare the report in R Markdown (which you will learn to do through the lab workbook) and submit your file as a knitted HTML. You will get used to working in R Markdown in the labs each week, but remember you can always refer to the handy R Markdown [cheatsheet](https://rmarkdown.rstudio.com/lesson-15.HTML) if you need to.
+
+You are required to write a 2,500-word report in R Markdown interpreting a regression model. The model has been prepared for you; you will find it in lab workbook 10’s instructions. **You are not being asked to conduct your own regression therefore**, but to show you can interpret the results *from the model prepared for you* and use the skills you have learned through the labs.
+
+The aim is to give you some practical experience of designing and carrying out quantitative research in social science, including designing research questions and hypothesis based on theory and literature, preparing and wrangling data, running descriptive statistics and other statistical methods, reporting and interpreting findings, and showing reflexivity on your experience of working with quantitative data. **You will have to decide what research questions should be asked and define and test your own hypothesis**.
+
+**The report should be all your own work, but guidance will be provided in the lab sessions to discuss the statistical tests, visualisations, and other techniques that can be further conducted on the data for your report**. It will give you experience in what it is like to analyse quantitative data for research.
+
+Satisfactory completion of this assignment demonstrates achievement of the following ILOs:
+
+- demonstrate an understanding of the basic principles of quantitative research design and strategy.
+- construct research hypotheses and demonstrate basic skills in question formulation and questionnaire design.
+- demonstrate practical skills in the computer analysis and presentation of quantitative data (descriptive statistical analysis, tabulation, graphical presentation of numerical data).
+- critically assess social research from a methodological standpoint.
+
+In what follows you will find a guide to writing the report. This is in the form of a list of questions. **If you answer each of these questions you will have all of the content needed for a good report**. Remember to take care with referencing and bibliographies, it can be easy to forget the basics when you are learning advanced statistical methods, but bibliographies are very important. There is reading material assigned for this class and you are expected to cite it, thereby demonstrating that you kept up with the reading, and using them to inform your understanding of relevant concepts and techniques.
+
+### How to write my research report?
+
+First, make sure you follow the instructions in lab workbook chapter 10 to download the report template we prepared for you in RStudio Cloud, which includes the regression model and R Markdown set up.
+
+#### Part 1: Introduction (approx. 350 words)
+
+Look at the regression model included in the template. Based on this choose and state your own research question and hypothesis. Remember a hypothesis needs at least two variables.
+
+#### Part 2: Data and Method (approx. 600 words)
+
+In this section your goal is to demonstrate that you can describe data and that you understand research design and data collection. Therefore, you should make sure to cite the mandatory textbooks in support of your answers. The general rules of good scholarship apply to quantitative research as much as any other subject, so do take care with your references and bibliography. As in any other class you need to demonstrate you’ve kept up with reading and can use the reading to inform your understanding of the relevant concepts and data analytics.
+
+- What is the data set? Who collected the data and for what purpose? What does the data describe?
+- What is the sample size? How was the data collected? Why is this reliable and are there any potential shortcomings that could limit the interpretation of the data? Note that the sample size for the model is reduced compared to the data set overall. Account for this in preparing visualisations.
+- Present an appropriate visualisation of the dependent variable. Remember to number and label figures and tables. Describe the distribution. What does this plot tell us as a descriptive finding, and does it have any implications for the model?
+- Present a table of descriptive statistics for the variables included in the model. Discuss the descriptive findings, does the distribution of any variables have any implications for the model?
+
+#### Part 3: Results and Discussion (approx. 1200 words)
+
+In this section your goal is to demonstrate that you can interpret quantitative results. You are likely to get a higher grade if you are able to relate these findings to social science theories and literature or if you can put the findings in context.
+
+- What kind of model is this? (clue: is the dependent variable quantitative or dichotomous?) What is it a model of? Provide a very brief summary of your understanding of the whole model. 
+- Which variables are significant? Which are insignificant?
+- Of the significant results, discuss the coefficients. Which are negative, which are positive? You can focus on variables of your own choice from here, selected based on your hypothesis, and explain the numbers to your reader.
+- Do any of the uncertainty estimates give you any cause for concern? Which and why?
+- How does the model fit? How do you account for the model fit?
+- Present and discuss appropriate visualizations of particularly interesting relationships in the model. You may choose your own variable to focus on, based on your hypothesis.
+- Are any of these findings surprising? What do they mean for your hypothesis?
+
+#### Part 4: Conclusion (Approx. 350 words)
+
+Clearly state your findings. Do the findings raise any questions for future research? The tone you are trying to achieve here is one of a confident researcher. Be proud of your findings and your interpretation. Throughout the paper, if you have addressed each of the questions above then you have already acknowledged shortcomings with the research, you still need to persuade your readers of your findings despite these limitations. That’s what a conclusion is for. A good start to a conclusion is with the phrase “in conclusion…” Be explicit in your conclusion, a reader should be able to read only the conclusion and know the research question, the findings and the importance of those findings.
+
+**In writing your report, bear in mind you will be assessed based on your ability to do the following**:
+
+- Introduce the context of your research topic (albeit briefly).
+- Clearly articulate your research questions, hypothesis, and identification of variable(s) and how the literature guided this process.
+- Justify choices made in the research design and analysis, and how these are informed by your understanding of a social science research methodology.
+- Explain what technique and tests are run in R to produce your analysis, and what purposes they served to extract insights and/or ensure your analysis is robust.
+- Report the results of your analysis accurately. This means interpreting coefficients, significance, and uncertainty estimates, as well as model fit statistics (also, e.g., use of tables, graphs, and visualisations) and provide a meaningful discussion of the results, based on a critical engagement with the literature, theories, and concepts, e.g., how have the results confirmed/contested the existing theories and concepts in the literature.
+- Identify potential limitations and weaknesses in your analysis, e.g., what statistical tests for significance are used? What extra questions/variables you would have liked to have included in the dataset and how could the dataset be improved?
+- Drawing convincing conclusions based on an accurate analysis of the data and demonstrate a command of the relevant academic literature, theories, or concepts to explain the results and any emerging trends.
+- Articulate any lessons and assumptions you learned as a researcher in this process, and/or identify suggestions of future avenues for research, policy, or theoretical debates, if appropriate.
+- Your work should be consistently and fully referenced, with a complete bibliography.
+
+## Reflective Course Summary
+
+**This component is worth 30% of your total grade.**
+
+You will be required to submit a 500-word reflective summary, reflecting on your use of feedback from across the course. Learning quantitative methods can be new and challenging and require new ways of approaching how you learn. To recognise this, the Reflective Course summary asks you to capture this learning process, demonstrating how you used feedback on the course: proactively sought it out, and utilised these various sources to improve your learning. It therefore demonstrates your participation and learning journey.
+
+There will be various sources of feedback you get on a course like this, both formal and informal. For example:
+
+- The Formative Assessment
+- Tutor feedback in labs
+- Exchanges with teaching staff: via email, during/after class, office hours, and on Moodle
+- Questions asked to or discussed with other students, informal chats with students in labs and outside classrooms
+- DataCamp, if you choose to use this
+- Learning process feedback:
+	- Feedback from R Studio: error messages, code not working or not working as you thought it might.
+	- Realising when you did not quite understand something like you thought.
+
+These are suggestions and you do not need to include them all.
+
+### What do I learn by doing a reflective summary?
+
+To know what you have learned is an important a valuable metacognitive skill—to understand how you have learned. Feedback, and using feedback effectively, is also an important part of the learning process.
+
+### What do you mean by ‘reflective’?
+
+Here it means therefore how you reflect on the use of feedback in the learning process.
+
+How you sought it out, used it, and any differences it made. To show how you used feedback, you should use concrete, analytical examples rather than general description. You can – and should – then draw more general conclusions from these concrete examples.
+
+A reflective summary therefore means analytical reflection (thinking about what/why/how) rather than mere description (I had Problem X where I found issues with A, B, C but I used feedback to help me solve it). It’s fine to describe the issue but the reflective element comes from analysing (a) specifically you identified an issue (b) where/why/how you sought feedback (c) how you used the feedback (perhaps from several sources and through several attempts to use it) and (d) the concrete difference it made to the result or outcome. You should minimize description and focus on reflective analysis.
+
+Since you have 500 words, you should focus on those core issues which made the most difference to your learning journey. Specifically, you will want to demonstrate how feedback shaped your learning journey on the course:
+
+- highlight the main or core issues you encountered
+- explain how you used feedback to diagnose these
+- explain how you used feedback to improve and develop through the course: reflecting on what your main improvements were and how the use of feedback helped these take place
+
+**Prioritise discussing issues about your reflections on**:
+
+- How you utilize feedback in the core learning issues for you: this might involve learning how to code in the Labs, or learn new statistical concepts for example.
+- How you adapt the ways you learn based on feedback from other students and/or tutors, and other sources highlighted above. Your traditional approaches to learning might not be as effective when learning to code, say,
+- The ways and extent you used feedback: this the ability to reflect on your own strengths and weaknesses in quantitative methods, and how you adapted your learning based on feedback and your active use of feedback,
+
+### How do I reflect on my learning? 
+
+**The aim of reflective learning is to think about and demonstrate what and how you have learned from feedback on the course.**
+
+You can do this by asking yourself a series of guiding questions as soon as possible
+
+- after each lab session.
+- after each lecture
+- after each study session
+
+It might be helpful to jot down some brief notes on a regular basis (e.g., on paper, your phone, or in a computer). **You can just write one or two bullet points or even do voice notes** on your phone/device if you want.
+
+You can then use these notes to complete your reflective summary. It is important that these notes are honest and authentic, otherwise the point of the exercise is lost.
+
+You can use the following **guiding questions as prompts** to structure your reflective log entry:
+
+1. What did I do in the lab and what did I learn from what I did today? (e.g., what are the key “take home” points or “notes to self”?)
+2. How did the course content (e.g., readings, lectures) and other resources help me to learn and complete the activities in the lab workbook?
+3. How did I respond to feedback given by other students and/or tutors?
+4. Looking back, how could I have done better or what could I have done more efficiently?
+5. What else might I have done (before, in, or after the lab)?
+6. How will this shape my actions for learning next week and in the future?
+
+If you do this short exercise regularly it will provide you with a strong evidence base for summarising the progress you have made throughout this course and how you used feedback to inform this.
+
+### How will my Reflective Summary be assessed?
+
+Your completed Reflective Summary will be graded as a summative assessment at the end of the course. It will submitted with the Interpreting Quantitative Findings report.
+
+It will be written in the same R Markdown document as one final Summative submission of 3,000 words:
+
+**Overall Summative Submission (3,000 words)**
+
+You will be assessed based on the *extent, depth, and quality* of the reflection demonstrated in your learning log.
+
+Because the word count is small, focus on the issues that are most relevant and pertinent.

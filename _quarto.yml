@@ -1,0 +1,136 @@
+project:
+  type: website
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+callout-appearance: simple
+
+website:
+  title: "Lab Workbook"
+  page-navigation: true
+  bread-crumbs: false
+  reader-mode: true
+  site-url: https://ugquants.github.io/quants_workbook/
+  repo-url: https://github.com/UGQuants/quants_workbook
+  issue-url: https://github.com/UGQuants/quants_workbook/issues/new
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    pinned: false
+    logo: "brand/uofg-keyline.png"
+    background: "#011451"
+    tools:
+      - icon: github
+        href: https://github.com/UGQuants/quants_workbook
+        text: Workbook GitHub
+      - icon: pin-fill
+        href: "#"
+        aria-label: "Toggle navbar (Alt+Shift+H)"
+    right:
+      #- text: "Help!"
+      #href: help/help.qmd
+      #- text: "Reference"
+      #href: reference/reference.qmd
+      - text: "Assessments"
+        href: assessments/assessments.qmd
+
+  sidebar:
+    - title: "Lab Workbook"
+      style: "floating"
+      align: left
+      border: false
+      contents:
+        - text: "Welcome"
+          href: index.qmd
+        - text: "---"
+        - text: "**Lab 1** Introduction to R"
+          href: 01-intro.qmd
+        - text: "**Lab 2** Data in R"
+          href: 02-Lab2.qmd
+        - text: "**Lab 3** Data Wrangling"
+          href: 03-Lab3.qmd
+        - text: "**Lab 4** Exploratory Data Analysis"
+          href: 04-Lab4.qmd
+        - text: "**Lab 5** Reporting in R Markdown"
+          href: 05-Lab5.qmd
+        - text: "**Lab 6** Visual Exploratory Analysis"
+          href: 06-Lab6.qmd
+        - text: "**Lab 7** Correlation"
+          href: 07-Lab7.qmd
+        - text: "**Lab 8** Simple Linear Regression"
+          href: 08-Lab8.qmd
+        - text: "**Lab 9** Multiple Linear Regression (part 1)"
+          href: 09-Lab9.qmd
+        - text: "**Lab 10** Multiple Linear Regression (part 2)"
+          href: 10-Lab10.qmd
+        - text: "**Lab 11** Interpretive Report Assessment"
+          href: 11-Lab11.qmd
+        - text: "---"
+        - Answers.qmd
+        - References.qmd
+
+    - title: "Help!"
+      contents:
+        - help/help.qmd
+        - help/RFAQ.qmd
+        - help/InterpretiveReportStructure.qmd
+        - help/SummativeTemplateBreakdown.qmd
+        - text: "**Back to Lab Workbook**"
+          href: index.qmd
+
+    - title: "Reference"
+      contents:
+        - reference/reference.qmd
+        - reference/r basics.qmd
+        - reference/r markdown.qmd
+        - reference/rstudio.qmd
+        - text: "**Back to Lab Workbook**"
+          href: index.qmd
+
+    - title: "Assessments"
+      contents:
+        - assessments/assessments.qmd
+        - text: "---"
+        - assessments/formative.qmd
+        - assessments/summative.qmd
+        - text: "---"
+        - assessments/creating-assessment-projects.qmd
+        - assessments/export.qmd
+        - assessments/assessment-faq.qmd
+        - assessments/RFAQ.qmd
+        - text: "---"
+        - text: "**Back to Lab Workbook**"
+          href: index.qmd
+
+  page-footer:
+    left: "Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)"
+    right: "Licensed under {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}} {{< fa brands creative-commons-sa >}} [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+
+bibliography:
+  - book.bib
+  - packages.bib
+
+format:
+  html:
+    respect-user-color-scheme: true
+    toc: true
+    toc-expand: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    link-citations: true
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
+    theme:
+      light: [cosmo]
+      dark: [cosmo, theme-dark.scss]
+    css:
+      - style.css
+      - css/nav-toggle.css
+    include-after-body:
+      - _includes/scripts.html

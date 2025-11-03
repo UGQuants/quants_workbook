@@ -1,0 +1,57 @@
+# Setup Assessment Projects
+
+We have created GitHub repositories which contain RStudio projects with all the essentials you need to start working on the formative and summative assessments.
+
+Within the project templates, the `nilt` dataset has already been loaded, variables coerced, and an `nilt_subset` dataframe created for you. The `nilt_subset` dataframe has the same variables that are used in the regression model in the Summative Assessment.
+
+There are separate templates for the formative and summative assessments. The general steps to follow to set them up are the same, just ensure to use the correct link for each. (Provided in blue callout boxes below.)
+
+## Steps to Follow
+
+1. From the left-hand side pane, make sure you are in your 'Lab Group ...' workspace. (Where '...' is your Lab Group number).
+2. Click the blue 'New Project' button on the right of the screen.
+3. From the menu list that opens select 'New Project from Git Repository'
+
+![Create New Project From Git Repository](../images/assess_git.png)\
+
+4. Within the dialogue box that opens, copy and paste the relevant link below into the 'URL of your Git Repository' field.
+
+::: {.callout-note appearance="minimal"}
+
+**Formative Assessment** RStudio project template link:
+
+```
+https://github.com/UGQuants/Formative
+```
+
+:::
+
+::: {.callout-note appearance="minimal"}
+
+**Summative Assessment** RStudio project template link:
+
+```
+https://github.com/UGQuants/Summative
+```
+
+:::
+
+5. Click 'OK' to create the new project.
+
+![Copy/paste URL for template project](../images/assess_link.png)\
+
+After your poject loads -
+
+6. In the Files tab (bottom-right), click 'Formative-template.Rmd' / 'Summative-template.Rmd'.
+7. Within the Sources pane (top-left), click 'Install' in the yellow banner. (Note - it can take a few seconds to appear after opening your file.)
+
+![Open Rmd file and Install packages](../images/assess_install1.png)\
+
+After the packages are finished installing, within the Sources pane (top-left) -
+
+8. Click the 'Run' button in the toolbar.
+9. From the options, select 'Run All'.
+
+!['Run All' to install additional packages and run preamble code](../images/assess_install2.png)\
+
+This will install additional packages and setup the `nilt_subset` dataframe. After it finishes your project is all setup for the assessment.

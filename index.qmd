@@ -1,0 +1,25 @@
+---
+title: "Quantitative Methods in the Social Sciences"
+subtitle: "A step-by-step guide for conducting quantitative research with R"
+author:
+  - J Rafael Verudzco Torres
+  - Alasdair B R Stewart
+  - Mark Wong
+  - Colin Mack
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "left", eval = TRUE, message = FALSE, warning = FALSE, out.width = "100%")
+library(tidyverse)
+```
+
+# Welcome {-#Welcome}
+
+Welcome to the Quantitative Methods in the Social Sciences lab workbook!
+
+![](./images/quant_methods_hex.svg){fig-alt="Hexsticker for UofG UG Hons Quants Methods."}
+
+This workbook is for University of Glasgow students enrolled in the undergraduate **Quantitative Methods in the Social Sciences** course within the School of Social and Political Sciences. The activities are designed for [Posit Cloud](https://posit.cloud/).
+
+These webpages are made with {{< fa brands r-project >}} and [Quarto](https://quarto.org) and licensed under the {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}} {{< fa brands creative-commons-sa >}} [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

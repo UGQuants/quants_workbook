@@ -1,0 +1,12 @@
+{
+  "hash": "5d9c081d2d2b9f1b1c46643989ecd36f",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Setup Assessment Projects\n---\n\n\n\nTemplate projects are avilable for both the formative and summative assessments via GitHub repositories.\n\nWithin the project templates, the `nilt` dataset has already been loaded, variables coerced, and an `nilt_subset` dataframe created for you. The `nilt_subset` dataframe has the same variables that are used in the regression model in the Summative Assessment.\n\n### Formative\n\nPlease use this link to create your RStudio Project for the formative assessment:\n\n\n\n\n```{markdown}\nhttps://github.com/UGQuants/Formative\n```\n\n\n\n\n### Summative\n\nPlease use this link to create your RStudio Project for the summative assessment:\n\n```\nhttps://github.com/UGQuants/Summative\n```\n\n\n",
+    "supporting": [
+      "creating-assessment-projects_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

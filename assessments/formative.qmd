@@ -1,0 +1,88 @@
+---
+title: "Formative Assessment"
+---
+
+## Setting up a Quantitative Project
+
+::: {.callout-important title="Formative Submission Deadline"}
+12 noon, Friday 31st October 2025
+:::
+
+For the Formative Assessment, you will be asked to consolidate the main elements of the course across Weeks 1-5 in the form of a short report (500 words maximum, requiring the use of R Markdown). This should be submitted as an R Markdown report. You will learn how to do this in the Labs.
+
+By Week 6, you will have become familiar with the NILT Northern Ireland Life and Times 2012 dataset. You will be using this dataset, and for the final summative assessment report we are going to be using the following variables:
+
+- Annual Personal Income
+- Sex
+- Religion
+- Sexual Orientation
+- NI Constitutional View
+- Trade Union Membership
+- Supervisor 
+- Age 
+
+This formative assessment is designed to help you get some initial practice on and feedback on the summative assessment. Although it is not graded therefore, it will help directly inform your final summative assessment grade.  
+
+You will be asked to write a report with the following headings: 
+
+### Part 1: Introduction
+
+In this part you need to set up your Research Question and explain its rationale. And then break the Research Question down into a hypothesis or hypotheses that can be tested in a quantitative research design.
+
+#### Research Question and hypotheses
+
+State your research question clearly here. Remember from the lectures, that the research question tends to have two elements:
+
+- a relationship
+- a specific context
+
+Next, break your Research Question down into a hypothesis or, if relevant, hypotheses. Again from the lectures, these need to be in a specific form. Please revisit the guidance here to help form your hypothesis/hypotheses correctly.
+
+#### Rationale and literature to support
+
+Why is your Research Question necessary to ask in the first place? Give some context and background to help the reader understand the rationale for your study and use some literature to help you establish this: 2-3 references are fine as a minimum for the formative assessment.
+
+Don’t worry overly about being original. You are using a dataset from 2012 with restricted number of variables already chosen for you. The main thing is to demonstrate you can contextualize your Research Question by explaining its background and by using some relevant literature to support this.
+
+#### Key Independent Variable and Dependent Variable operationalised from Research Question and clearly stated.
+
+Your Research Question will contain a dependent variable and an independent variable (or possibly two maximum). These need to be identified:
+
+- Dependent variable: Be clear on what your dependent variable is: state it for the reader.
+- Independent variable: You also should have one key independent variable (two maximum), which you want to focus on in your study. Again, state what this variable is, clearly, for the reader.
+
+### Part 2: Data Collection and Descriptive Statistics
+
+You have now set up your Research Question and explained its background. You have identified the key variables (dependent and independent variables) contained within it. And you have then used these to break your Research Question down into a hypothesis i.e. into a relationship between variables that you can now go onto test.
+
+To do so though, you now need a dataset which collects data on these variables of interest. For our course, this dataset is NILT 2012.
+
+#### A description of the dataset
+
+Describe the dataset you are using:
+
+- What is the data set? Who collected the data and for what purpose? What does the data describe?
+- What is the sample size? How was the data collected? Why is this reliable and are there any potential shortcomings that could limit the interpretation of the data?
+
+As per the lectures, think of the general details, technical details and any limitations we need to know.
+
+#### Summary statistics of the model variables.
+
+- Present a table of descriptive statistics for the variables included in the model.
+- Discuss the descriptive findings for your dependent variable and independent variable(s).
+- Does the distribution of the dependent variable have any implications for the model?
+
+You should submit this formative assessment report as an R Markdown report.
+
+Finally, this formative is designed to help you practice the summative assessment. Specifically, note both:
+
+- **Part 1: Introduction** and **Part 2: Data Collection and Descriptive Statistics** of this formative assessment
+
+Relate directly to:
+
+- **Part 1: Introduction** and **Part 2: Data and Method** of the summative report (Interpreting Quantitative Findings).
+
+Make sure you utilise the feedback given to you on your Formative Assessment report therefore in your final Summative Assessment report:
+
+- by using it to inform your *Interpreting Quantitative Findings report*
+- and explaining in your *Reflective Course Summary* how you used this important source of formative feedback to help your learning on the course
