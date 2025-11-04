@@ -1,11 +1,5 @@
 # Correlation
 
-:::{.callout-important title="Update In Progress"}
-
-We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
-
-:::
-
 ```{r}
 #| include: false
 library(tidyverse)
@@ -14,9 +8,9 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ## What is correlation?
 
-When conducting empirical research, we are often interested in associations between two variables, for example, personal income and attitudes towards migrants. In this lab we will focus on visualizing relationship between variables and how to measure it. In quantitative research, the main variable of interest in an analysis is called the _dependent_ or _response variable_, and the second is known as the _independent_ or _explanatory_. In the example above, we can think of personal income as the independent variable and attitudes as the dependent.
+When conducting empirical research, we are often interested in associations between two variables, for example, personal income and attitudes towards migrants. In this lab we will focus on visualizing relationship between variables and how to measure it. In quantitative research, the main variable of interest in an analysis is called the _dependent_ or _response variable_, and the second is known as the _independent_ or _explanatory variable_. In our example, we can think of personal income as the independent variable and attitudes as the dependent.
 
-The relationship between variables can be positive, negative or non-existent. The figure below shows these type of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.
+The relationship between variables can be positive, negative, or non-existent. The figure below shows these types of relationships to different extents. The association is positive when one of the variables increases and the second variable tends to go in the same direction (that is increasing as well). The first plot on the left-hand side shows a strong positive relationship. As you can see, the points are closely clustered around the straight line. The next plot also shows a positive relationship. This time the relationship is moderate. Therefore, the points are more dispersed in relation to the line compared to the previous one.
 
 ```{r fig.width=12, fig.height=3, echo = FALSE, fig.cap="\\label{fig:figs} Types of correlation."}
 # library(MASS)
@@ -81,59 +75,98 @@ The plot in the middle, shows two variables that are not correlated. The locatio
 
 ### Data and R environment
 
-We will continue working on the same RStudio Cloud project as in the previous session and using the 2012 [Northern Ireland Life and Times Survey (NILT)](https://www.ark.ac.uk/nilt/) data. To set the `R` environment please follow the next steps:
+We will continue working on the same 'NILT' Posit Cloud project with the the 2012 [Northern Ireland Life and Times Survey (NILT)](https://www.ark.ac.uk/nilt/) data.
 
-1. Please go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/) (log in if necessary);
-2. Open your own copy of the 'NILT' project from the 'Quants lab group';
-3. Create a new Rmd file, type 'Correlation analysis' in the 'Title' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
-4. Save the Rmd document under the name 'Lab7_correlation'.
-5. Delete all the contents in the Rmd default example with the exception of the first bit which contains the YAML and the first chunk, which contains the default chunk options (that is all from line 12 and on).
-6. In the setup chunk, change `echo` from `TRUE` to `FALSE` in line 9 (this will hide the code for all chunks in your final document).
-7. Within the first chunk, copy and paste the following code below line 9 `knitr::opts_chunk$set(message = FALSE, warning = FALSE)`. This will hide the warnings and messages when you load the packages.
+As usual, we will need to setup an R Markdown file for today's lab. I have kept the steps brief this week. However, if you are unsure about anything, take a look back at [Lab 6](06-Lab6.qmd) which has more detailed explanation of the steps.
 
-In the Rmd document insert a new a chunk, copy and paste the following code. Then, run the individual chunk by clicking on the green arrow on the top-right of the chunk.
+To set up a new R Markdown file for this lab, please use the following steps:
 
-```{r }
+1. Please go to your 'Lab Group ##' in [Posit Cloud](https://Posit.cloud/) (log in if necessary);
+2. Open your own copy of the 'NILT' project from the 'Lab Group ##';
+3. Within the Files tab (bottom-right pane) click 'New File', then 'R Markdown' from the drop-down list of options;
+4. Within the 'Create a New File in Current Directory' dialogue, name it 'Lab-7-Correlation.Rmd' and click OK.
+5. Feel free to make any adjustments to the YAML header.
+6. Create a new code chunk, with ```` ```{r setup, include=FALSE}```` and in the chunk:
+
+```{r}
+#| eval: false
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+7. Create another code chunk, named `premable` and again with `include=FALSE`. Then add the following in the chunk:
+
+```{r}
 # Load the packages
 library(tidyverse)
 library(haven)
-# Load the data from the .rds file we created in lab 3
+
+# Read NILT
 nilt <- readRDS("data/nilt_r_object.rds")
 ```
 
-This time we will use new variables from the survey. Therefore, we need to coerce them into their appropriate type first. Insert a second chunk, copy and paste the code below. Then, run the individual chunk.
+Please note that we are loading the `haven` package again this week as we will be coercing more variables. As a reminder, we need to load `haven` as the initial dataset we started with was in the SPSS file format. Whilst we coerced variables and saved it in R's file format, the file still maintains info from SPSS. We will be using this info in coercing more variables in this session, so need to have the `haven` package loaded.
+
+8. Run the `preamble` code chunk and if no errors, then everything is setup for this session.
+
+### Perception of Migrants Variables
+
+We opened this lab with example of attitude towards migrants. Let's continue with this example by using new variables from the NILT survey. As this is the first time we are using them, we will need to coerce them into their appropriate variable type first.
+
+Create a new code chunk, add the code below, and then run the chunk:
 
 ```{r}
 # Age of respondent’s spouse/partner
 nilt$spage <- as.numeric(nilt$spage)
-# Migration
-nilt <- mutate_at(nilt, vars(mil10yrs, miecono, micultur), as.numeric)
+
+# Perception of migrants
+nilt <- nilt |> mutate_at(vars(mil10yrs, miecono, micultur), as.numeric)
 ```
 
-Also, we will create a new variable called `mig_per` by summing the respondent's opinion in relation to migration using the following variables: `mil10yrs`, `miecono` and `micultur` (see the documentation p. 14 [here](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf) to know more about these variables). Again, insert a new chunk, copy and paste the code below, and run the individual chunk.
+We used `as.numeric()` previously in [Lab 2](02-Lab2.qmd) and [Lab 3](03-Lab3.qmd) for coercing numeric variables. Since this is a base R function, we pass our variable of interest to the function in the form `dataframe$column`. Here, we are coercing `nilt$spage`. If you look at page 7 of the [NILT Teaching Resources documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf), you will see this variable is for the age of the respondent's spouse or partner.
+
+Next, we use the `mutate_at()` function. As it comes from the Tidyverse, we can use `dataframe |> function()` and name our variables directly - `mil10yrs` rather than `nilt$mil10yrs`. You can read more about `mil10yrs`, `miecono`, and `micultur` on page 14 of the [NILT Teaching Resources documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf).
+
+The `mutate_at()` function is similar to the `mutate()` function we used in Labs 2 and 3. However, this function has the nice feature of letting us apply the same transformation to multiple columns. It's basic usage is `data_frame |> mutate_at(variables, function)`, where `variables` is the variables to transform and `function` the function to apply to them. The `vars()` function is just a nice Tidyverse way to do similar as `c("variable1", "variable2", ...)` that we used with `sumtable()`. Then `as.numeric()` is the function that will be applied to our variables.
+
+**Bonus activity** - In our code chunk above, we used base R style code to coerce our `spage` variable and then Tidyverse for the rest. However, as we are applying the same transformation - coercing the variables as numeric - we could actually do coerce all four with a single line of code. Can you see how?
+
+Again as wee reminder - whilst these slight differences between base R, Tidyverse, and other packages - such as vtable - can be confusing at first, it is just different design philosophies behind the packages and functions. The general rule of thumb is that base R functions tend to require `dataframe$column` as the functions work with multiple object types, so do not have separate arguments for the dataframe and the variables of interest. In contrast, the Tidyverse as it is built around using dataframes has functions with separate arguments for the dataframe and variables of interest. Most Tidyverse functions then use `dataframe |> function(...` format to specify the dataframe and then let you specify the variables directly - `column` rather than `dataframe$column`. Functions from packages outwith the Tidyverse can vary, with some following the Tidyverse approach or others - like vtable - have functions that have similar arguments but with slightly different syntax. Again - to re-emphasise - you do not need to memorise all this. Instead, this is why it is important to learn how to find and read package/function documentation. Similarly, this is another reason why it can be invaluable to curate your own notes containing working code examples with comments for future reference.
+
+OK back to our variables. We will also create a new variable called `mig_per` by summing the respondent's opinion in relation to migration using the three variables we just coerced: `mil10yrs`, `miecono` and `micultur`. This then let's us have an overall perception value by combining the individual values for each of the variables. 
+
+To create the variable - insert a new chunk, add the code below, and then run the chunk:
 
 ```{r}
 # overall perception towards migrants
-nilt <- rowwise(nilt) %>%
+nilt <- rowwise(nilt) |>
   # sum values
-  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T)) %>%
-  ungroup() %>%
+  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = TRUE)) |>
+  ungroup() |>
   # assign NA to values that sum 0
   mutate(mig_per = na_if(mig_per, 0))
 ```
+
+This code again mixes new functions with ones we have previously used:
+
+- `rowwise()` is a Tidyverse function that is the equivalent of saying 'for each row'. We are using it here as we are wanting to calculate a value for each row for the new column we are creating. Without `rowwise()` the `sum()` function below, adding the values for the three existing variables, would add the values for *all rows* for the three columns together rather than calculating the value for each row individually.
+- `mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = TRUE))` uses the - hopefully - now familar `mutate()` function, specifying we are creating a new `mig_per` variable that is equal to the value of our three existing variables summed together - using the `sum()` function. The `na.rm = TRUE` tells `sum()` to ignore NA values.
+- `ungroup()` is a Tidyverse function that signals that we are ending our `rowwise()`. So, it is basically the equivalent to saying 'OK stop doing this for each row individually'.
+- `mutate(mig_per = na_if(mig_per, 0))` then goes through our new `mig_per` variable and sets any row where the value is 0 to NA instead.
 
 ### Visualising correlation
 
 Visualizing two or more variables can help to uncover or understand the relationship between these variables. As briefly introduced in the previous session, different types of plots are appropriate for different types of variables. Therefore, we split the following sections according to the type of data to be analysed.
 
-You do not need to run or reproduce the examples shown in the following sections in your R session with the exception of exercises that are under the _activity_ headers.
+Within your R Markdown file, remember to create a new code chunk for each example and you can use `## Heading 2`, `### Heading 3`, and so on to help structure it into sections.
 
 #### Numeric vs numeric 
 
-To illustrate this type of correlation, let's start with a relatively obvious but useful example. Suppose we are interested in how people choose their spouse or partner. The first characteristic that we might look at is age. We might suspect that there is a correlation between the `nilt` respondents' own age and their partner's age. Since both ages are numeric variables, a scatter plot is appropriate to visualise the correlation. To do this, let's use the functions `ggplot()` and `geom_point()`. In aesthetics `aes()`, define the respondent's age `rage` on the X axis and the respondent's spouse/partner age `spage` on the Y axis. As a general convention in quantitative research, the response/dependent variable is visualised on the Y axis and the independent on the X axis (you do not need to copy and reproduce the example below).
+To illustrate this type of correlation, let's start with a relatively obvious but useful example. Suppose we are interested in how people choose their spouse or partner. The first characteristic that we might look at is age. We might suspect that there is a correlation between the `nilt` respondents' own age and their partner's age.
+
+Since both ages are numeric variables, a scatter plot is appropriate to visualise the correlation. To do this, let's construct a ggplot. 
 
 ```{r}
-ggplot(nilt, aes(x = rage, y = spage)) +
+nilt |> ggplot(aes(x = rage, y = spage)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   labs(
@@ -142,14 +175,14 @@ ggplot(nilt, aes(x = rage, y = spage)) +
   )
 ```
 
-Note that in this plot the function `geom_smooth()` was used. This is to plot a straight line which describes the best all the points in the graph. 
+As covered last week, we start with the function `ggplot()`, and use `+` at the end of each line to *compose* our functions for the plot together. In aesthetics `aes()`, define the respondent's age `rage` on the X axis and the respondent's spouse/partner age `spage` on the Y axis. As a general convention in quantitative research, the response/dependent variable is visualised on the Y axis and the independent on the X axis. Here we are using the `geom_point()` function to specify the plot type. In contrast to the usual 3 line minimum pattern for constructing a plot, we have four here, with `geom_smooth()` added after `geom_point()`. This adds a straight line which describes the best fit between all the points in the graph.
 
 From the plot above, we see that there is a strong positive correlation between the respondent's age and their partner's age. We see that for some individuals their partner's age is older, whereas others is younger. Also, there are some dots that are far away from the straight line. For example, in one case the respondent is around 60 years old and the age of their partner is around 30 years old (can you find that dot on the plot?). These extreme values are known as _outliers_.
 
-We may also suspect that the respondents' sex is playing a role in this relationship. We can include this as a third variable in the plot by colouring the dots by the respondents' sex. To do this, let's specify the `colour` argument in aesthetics `aes()` with a categorical variable `rsex`.
+We may also suspect that the respondents' gender is playing a role in this relationship. We can include this as a third variable in the plot by colouring the dots by the respondents' sex. To do this, let's specify the `colour` argument in aesthetics `aes()` with a categorical variable `rsex`.
 
 ```{r}
-ggplot(nilt, aes(x = rage, y = spage, colour = rsex)) +
+nilt |> ggplot(aes(x = rage, y = spage, colour = rsex)) +
   geom_point() +
   geom_abline(slope = 1, intercept = 0, colour = "gray20") +
   labs(
@@ -158,24 +191,24 @@ ggplot(nilt, aes(x = rage, y = spage, colour = rsex)) +
   )
 ```
 
-In the previous plot, we included a line that describes what it would look like if the partner's age were exactly the same as the respondent's age. We observe a clear pattern in which female participants are on one side of the line and males on the other. As we can see, most female respondents tend to choose/have partners who are older, whereas males choose/have younger partners.
+This time rather than `geom_smooth()`, we have used `geom_abline()` to add a line showing where we would expect to see dots if the respondent and their spouse/partner were exactly the same age - the `slope` and `intercept` part of this code will become clearer when we cover simple linear regression next week. We observe a clear pattern in which most female participants are on one side of the line and most males on the other. As we can see, most female respondents tend to choose/have partners who are older, whereas males choose/have younger partners.
 
 ### Activity 1
 
-In the `Lab7_correlation` file, use the `nilt` data object to visualise the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you observe from the result as text (outside the code chunks).
+In your R Markdown file, use the `nilt` data object to visualise the relationship of the following variables by creating a new chunk.
 
 * Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function set the `method` argument to `'lm'`.
-* What type of relationship do you observe? Comment as text in the Rmd the overall result of the plot and whether this is in line with your previous expectation.
+* Run the code chunk. What type of relationship do you observe? Comment as regular text (i.e. as text not inside the code chunk) in your R Markdown file the overall result of the plot and whether this is in line with your previous expectation.
 
 #### Numeric vs categorical
 
-As briefly introduced in the last lab, correlations often occur between categorical and numeric data. A good way to observe the relationship between these type of variables is using a box plot. Which essentially shows the distribution of the numeric values by category/group.
+As briefly introduced in the last lab, correlations often occur between categorical and numeric data. A good way to observe the relationship between these types of variables is using a box plot. Which essentially shows the distribution of the numeric values by category/group.
 
-Let's say we are interested in the relationship between education level and perception of migration. The variable `highqual` contains the respondent's highest education qualification. Using `ggplot()`, we can situate `mig_per` on the X axis and `highqual` on the Y axis, and plot it with the `geom_boxplot()` function. Note that before passing the dataset to `ggplot`, we can filter out two categories of the variable `highqual` where education level is unknown (i.e. "Other, level unknown" or "Unclassified").
+Let's say we are interested in the relationship between education level and perception of migration. The variable `highqual` contains the respondent's highest education qualification. Using `ggplot()`, we can situate `mig_per` on the X axis and `highqual` on the Y axis, and plot it with the `geom_boxplot()` function. Note that before passing the dataset to `ggplot`, we can filter out two categories of the variable `highqual` where education level is unknown (i.e. "Other, level unknown" or "Unclassified"). Also notice how we can do both filter `highqual` and use the result of that filtering in a ggplot using pipes - `|>`.
 
 ```{r}
-nilt %>%
-  filter(highqual != "Other, level unknown" & highqual != "Unclassified") %>%
+nilt |>
+  filter(highqual != "Other, level unknown" & highqual != "Unclassified") |>
   ggplot(aes(x = mig_per, y = highqual)) +
   geom_boxplot()
 ```
@@ -184,16 +217,16 @@ From the plot above, we see that respondents with higher education level (on the
 
 ### Activity 2
 
-Using the `nilt` data object, visualize the relationship of the following variables by creating a new chunk. Run the chunk individually and comment on what you can observe from the results as text in the Rmd file to introduce the plot. 
+Using the `nilt` data object, visualize the relationship of the following variables by creating a new chunk.
 
 * Create a boxplot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the political party which the respondent identify with `uninatid`. Use `ggplot()` in combination with `geom_boxplot()`. Make sure to specify `mig_per` on the Y axis and `uninatid` on the X axis in `aes()`.
-* Do you think the opinion towards migration differs among the groups in the plot? Comment on the overall results in the Rmd document. 
+* Do you think the opinion towards migration differs among the groups in the plot? Comment on the overall results in regular text of your R Markodwn document. 
 
 ## Measuring correlation
 
 So far we have examined correlation by visualizing variables only. A useful practice in quantitative research is to actually measure the magnitude of the relationship between these variables. One common measure is the _Pearson_ correlation coefficient. This measure results in a number that goes from -1 to 1. A coefficient below 0 implies a negative correlation whereas a coefficient over 0 a positive one. When the coefficient is close to positive one (1) or negative one (-1), it implies that the relationship is strong. By contrast, coefficients close to 0 indicate a weak relationship. This technique is appropriate to measure linear numeric relationships, which is when we have numeric variables with a normal distribution, e.g. age in our dataset. 
 
-Let's start measuring the relationship between the respondent's age and their partner's age. To do this in R, we should use the `cor()` function. In the R syntax, first we specify the variables separated by a comma. We need to be explicit by specifying the object name, the dollar sign, and the name of the variable, as shown below. Also, I set the `use` argument as `'pairwise.complete.obs'`. This is because one or both of the variables contain more than one missing value. Therefore, we are telling R to use complete observations only.
+Let's start measuring the relationship between the respondent's age and their partner's age. To do this in R, we should use the `cor()` function. In the R syntax, first we specify the variables separated by a comma. As `cor()` is a base R function, we need to be explicit when specifying our variable names, using `dataframe$column`, as shown below. Also, I set the `use` argument as `'pairwise.complete.obs'`. This is because one or both of the variables contain more than one missing value. Therefore, we are telling R to use complete observations only.
 
 ```{r}
 cor(nilt$rage, nilt$spage, use = "pairwise.complete.obs")
@@ -207,14 +240,14 @@ What about the relationship between `age` and `mig_per` that you plotted earlier
 cor(nilt$rage, nilt$mig_per, use = "pairwise.complete.obs")
 ```
 
-The coefficient is very close to 0, which means that the correlation is practically non-existent. The absence of correlation is also interesting in research. For instance, one might expect that younger people would be more open to migration. However, it seems that age does not play a role on people's opinion about migration in NI according to this data.
+The coefficient is very close to 0, which means that the correlation is practically non-existent. The absence of correlation is also interesting in research. For instance, one might expect that younger people would be more open to migration. However, it seems that age does not play a role on people's opinion about migration in Northern Ireland according to this data.
 
-Let's say that we are interested in the correlation between `mig_per` and all other numeric variables in the dataset. Instead of continuing computing the correlation one by one, we can run a correlation matrix. The code syntax can be read as follows: from the `nilt` data select these variables, then compute the correlation coefficient using complete cases, and then round the result to 3 decimals.
+Let's say that we are interested in the correlation between `mig_per` and all other numeric variables in the dataset. Instead of continuing computing the correlation one by one, we can run a correlation matrix. The code below combines Tidyverse's `select()` function, the `cor()` function we just covered, and a new function `round()`. It can be read as follows: from the `nilt` data select these variables, then compute the correlation coefficient using only complete cases, and then round the results to 3 decimals. Notice as we specify our variables using the Tidyverse `select()` function, we specify our dataframe with `dataframe |> function(...` and can then name our variables directly without `dataframe$...`.
 
 ```{r}
-nilt %>%
-  select(mig_per, rage, spage, rhourswk, persinc2) %>%
-  cor(use = "pairwise.complete.obs") %>%
+nilt |>
+  select(mig_per, rage, spage, rhourswk, persinc2) |>
+  cor(use = "pairwise.complete.obs") |>
   round(3)
 ```
 
@@ -222,10 +255,10 @@ From the result above, we have a correlation matrix that computes the _Person_ c
 
 ### Activity 3
 
-* Insert a new chunk in your Rmd file;
+* Insert a new chunk in your R Markdown file;
 * Using the `nilt` data object, compute a correlation matrix using the following variables: `rage`, `persinc2`, `mil10yrs`, `miecono` and `micultur`, setting the `use` argument to `'pairwise.complete.obs'` and rounding the result to 3 decimals;
-* Run the chunk individually and comment whether personal income or age is correlated with the perception of migrants in relation to the specific aspects asked in the variables measured (consult the documentation in p. 14 to get a description of these variables);
-* Knit the `Lab7_correlation` Rmd document to `.html` or `.pdf`. The output document will automatically be saved in your project.
+* Run the chunk individually and comment whether personal income or age is correlated with the perception of migrants in relation to the specific aspects asked in the variables measured (consult page 14 of the [NILT Teaching Resources documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf) to get a description of these variables);
+* Knit your R Markdown document to `.html`. The output document will automatically be saved in your project.
 * Discuss your previous results with your neighbour or tutor.
 
 

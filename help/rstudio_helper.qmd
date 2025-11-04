@@ -25,6 +25,8 @@ To be clear, your GenAI use on this course is not limited to RStudio Helper. Ins
 
 Whilst this GPT is also set up with instructions to mitigate GenAI's predilection towards undermining learning and disregard for academic integrity, due to the inherent limitations with GenAI care still needs to be taken when using it. Please ensure to read the information about permitted [GenAI use for the assessments](../assessments/assessments.qmd#genai-and-the-assessments) and the SLD's [Quick Guidance for Students](https://www.gla.ac.uk/myglasgow/sld/ai/students/) page.
 
+Please also read the [Don't Believe GenAI Bullshit](../assessments/RFAQ.qmd#dont-believe-genai-bullshit) section of the R Issues FAQ page. GenAI is useful but inherently flawed. When generating its responses it does not distinguish between fiction and fact. As a result, if you do not have a general understanding of the area / topic you are using it for, you will not have a sense of when its responses are nonsense. 
+
 ### Using Copilot to Create Saved Prompts
 
 **Note**: You have free access to Copilot with your University of Glasgow student account. This has enterprise level encryption and your data is not used to train models. The Copilot Saved Prompt link at the top of the page uses a new feature in Copilot that lets users saved prompts so they can be quickly reused again in new chats. I have created a page with steps to follow to [create and access saved prompts in Copilot](copilot.qmd). When using the RStudio Helper saved prompt, click the 'Try GPT-5' button on the top-right of Copilot. By default, Copilot still uses GPT-4o, where you will get better responses using GPT-5 instead.

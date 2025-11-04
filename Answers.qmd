@@ -193,7 +193,7 @@ Using the `nilt` data object, visualize the relationship of the following variab
 -   Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use the `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function, set the `method` argument to `'lm'`.
 
 ```{r}
-ggplot(nilt, aes(x = rage, mig_per)) +
+nilt |> ggplot(aes(x = rage, mig_per)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(
