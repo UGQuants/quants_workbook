@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>lab2 – Lab Workbook</title>
 <style>
@@ -18,8 +18,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -30,7 +31,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -82,17 +83,21 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./03-Lab3.html" rel="next">
 <link href="./01-intro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1efbf008e2baeeb4cb205a51dd9b7791.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c1e19c279b1c7e82165a3f66195d40d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -122,13 +127,184 @@ div.csl-indent {
 }</script><link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/nav-toggle.css">
 </head>
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo"></a>
+    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo light-content"><img src="./brand/uofg-keyline.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Lab Workbook</span>
     </a>
@@ -166,7 +342,11 @@ div.csl-indent {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -298,7 +478,7 @@ div.csl-indent {
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><section id="data-in-r" class="level1"><h1>Data in R</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="data-in-r" class="level1"><h1>Data in R</h1>
 <section id="welcome-back" class="level2"><h2 class="anchored" data-anchor-id="welcome-back">Welcome back!</h2>
 <p>In the previous lab, we set up an RStudio session in Posit Cloud and we got familiar with the RStudio environment and the purpose and contents of RStudio’s panes. In this Lab we will learn about R packages, how to install them and load them. We will also use different types of data. You will have the chance to practice with additional <code>R</code> operators. Lastly, we will load a real-world data set and put in practice your new skills.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Overview">
@@ -307,7 +487,7 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Overview
+<span class="screen-reader-only">Note</span>Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -373,7 +553,7 @@ Overview
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More R Operators
+<span class="screen-reader-only">Caution</span>More R Operators
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -392,7 +572,7 @@ More R Operators
 <li>Once you have the Lab 2 R Markdown file open, type the following in the Console (bottom-right pane) and hit ‘Enter’ to run it:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Wait until you get the message ‘The downloaded source packages are in …’. The install process can take a couple of minutes to finish.</li>
@@ -402,7 +582,7 @@ More R Operators
 <li>Once the package is installed, you next need to load it using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. In the <code>preamble</code> code chunk already setup in the R Markdown file, add the following in the line under the <code># Load packages</code> comment:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="4" type="1">
 <li>Now run the code chunk. Either by pressing <code>Ctrl+Shift+Enter</code> with your text cursor within the code chunk, or by clicking the green triangle in the top-right of the code chunk.</li>
@@ -422,7 +602,7 @@ More R Operators
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-New Terms
+<span class="screen-reader-only">Tip</span>New Terms
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -444,7 +624,7 @@ New Terms
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -460,7 +640,7 @@ New Terms
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -521,7 +701,7 @@ New Terms
 <li>We will start with a classic dataset example in R called <code>iris</code>. (For more info about the dataset, you can type <code><a href="https://rdrr.io/r/datasets/iris.html">?iris</a></code> or <code><a href="https://rdrr.io/r/datasets/iris.html">help(iris)</a></code> in the Console). Please go to the “iris-glimpse” code chunk in your R Markdown file and run it.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -538,7 +718,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <li>Now you know that each iris flower belongs to a species, but what are the specific categories in this data set? To find out, add the following in the ‘iris-levels’ code chunk and then run it.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(If you receive ‘NULL’ when running the chunk, it because you have <strong>s</strong>pecies and not <strong>S</strong>pecies.)</p>
 <p>As you can see, there are three categories, or <code>levels</code> as they are called in R factor variables, which are three types of iris flower species. Notice here we used the <code>$</code> component operator mentioned earlier. Here it basically means, from the iris data frame select the Species column/variable. <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> is then a nice little utility function that shows all the levels for a column given to it as an argument.</p>
@@ -561,8 +741,8 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <li>First, run the ‘starwars-glimpse’ code chunk to create a reduced version of the data set named <code>starwars2</code> and then glimpse the Star Wars characters in that reduced data set:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span> <span class="op">&lt;-</span> <span class="va">starwars</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span> <span class="op">&lt;-</span> <span class="va">starwars</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Creating a reduced version of the data frame uses another <strong>selection operator</strong>, <code>[...]</code>. The basic format is <code>data_frame[rows, columns]</code>. Here <code>starwars[, 1:11]</code> leaves the <code>rows</code> argument blank, which effectively means select all rows, and the <code>columns</code> argument has <code>1:11</code>, which effectively means select columns 1 to 11. So, the code returns a copy of the data frame with all rows but only the first 11 columns.</p>
 <p>What do you observe this time?</p>
@@ -579,15 +759,15 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <li>Let’s coerce the species variable from character to factor and assign the result to the same column in the dataset. Add the following to the ‘starwars-factor’ code chunk and run it.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note, most functions in R for data analysis do not directly change the object -such as a data frame - passed to it. Instead, the functions return a new object with the changes. An explicit assignment back to the original object is required if you want to change it. For example, if you run <code>factor(starwars2$species</code> on its own in the Console, it will return all the values for <code>species</code> and the levels created. However, for the species column in starwars2 to be updated with the results returned by <code>factor(starwars2$species)</code> we need the <code>starwars2$species &lt;- ...</code> assignment as well. What the code is effectively saying is “replace the species column in starwars2 with the version returned by the factor function”.</p>
 <ol start="3" type="1">
 <li>Let’s check if the type of variable really changed by glimpsing the data and checking the levels of <code>species</code>. Add the following to the ‘starwars-glimpse2’ chunk and run it.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">starwars2</span><span class="op">$</span><span class="va">species</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The glimpse result now is telling us that <code>species</code> is a <code>&lt;fct&gt;</code>, as expected. Furthermore, the <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function reveals that there are 37 types of species, including Human, Ewok, Droid, and more.</p>
 <p>Hopefully, these examples will help you to identify the main vector types and, more importantly, an initial understanding of how to coerce them into an appropriate type. Be aware that many data sets represent categories with numeric values without the labels, for example, using ‘0’ for male and ‘1’ for female - and as part of the initial process turning these variables into factors you will also need to provide a list mapping these numbers to the labels to use. Usually, large data sets are accompanied by extra information in a <em>code book</em> or <em>documentation</em> file, which specifies the values for the numeric code and their respective meaning. It’s important to read the code book/documentation of every data set rather than assuming what the numbers stand for as the conventions and meanings can vary. For example, some surveys now put gender in alphabetical order, with 0 for female and 1 for male.</p>
@@ -597,7 +777,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -617,7 +797,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -641,7 +821,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -657,23 +837,23 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <p>A useful operator is the pipe <code>|&gt;</code>. This is the base R version of the pipe. This operator is what is known in programming as <code>syntactic sugar</code>. It is syntax which helps make code easier to read and write without changing any functionality. The pipe operator passes the result of one function as the first argument to the next (left to right).</p>
 <p>Run the ‘pipe-1’ code chunk and check its results.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fl">1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function adds the value of two numbers in format <code>sum(x, y)</code>. Using a pipe for <code>1 |&gt; sum(1)</code> is the equivalent to <code>sum(1, 1)</code>. If we were to write <code>sum(x, y)</code> with a pipe, it would be <code>x |&gt; sum(y)</code>. So, in our example code chunk, the pipe let’s us ‘unpack’ the first argument in each function, whereby line 1 reads equivalent to saying ‘take 1, then add it with 1’ and line 2 ‘take 1, then add it with 1, then add it with 5’.</p>
 <p>This may seem as if it is overcomplicating things, but as the code becomes more complex the value of the pipe operator becomes clearer. The second line, <code>1 |&gt; sum(1) |&gt; sum(5)</code> would be written as <code>sum(sum(1,1), 5)</code> without pipes. Going left to right, <code>1 |&gt; sum(1)</code> would be <code>sum(1,1)</code> and then <code>sum(1,1) |&gt; sum(5)</code> would be <code>sum(sum(1,1), 5)</code>.</p>
 <p>Pipes then help us avoid <code>foo(foo(foo(...), ...) ...)</code> monstrosities in our code. In coding examples, you will often see words like <code>foo</code>, <code>bar</code> and <code>baz</code> used as placeholder names when explaining how coding syntax works rather than using real functions. Similarly, <code>x</code>, <code>y</code>, and <code>z</code> often get used as placeholder names for variables / arguments.</p>
 <p>As we will cover in examples in the next section below, plenty of functions take more than two arguments. Let’s imagine we had a data frame named <code>df</code> and we were updating it by using - in order - <code>foo</code>, <code>bar</code>, and <code>baz</code> functions that each take arguments <code>x</code>, <code>y</code>, and <code>z</code>. Without pipes our code would be:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">baz</span><span class="op">(</span><span class="fu">bar</span><span class="op">(</span><span class="fu">foo</span><span class="op">(</span><span class="va">df</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">baz</span><span class="op">(</span><span class="fu">bar</span><span class="op">(</span><span class="fu">foo</span><span class="op">(</span><span class="va">df</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is a tangled mess, we want the result from <code>foo</code> passed to <code>bar</code> and its result in turn passed to <code>baz</code>. This ordering though gets visually reversed when nesting each function within the other - we have to read it inside out for it to make sense.</p>
 <p>With pipes, it instead becomes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;</span> <span class="op">-</span> <span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;</span> <span class="op">-</span> <span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">foo</span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">bar</span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">baz</span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">baz</span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now it is easy to read and the ordering of the functions matches how we could verbally describe what the code does, “we are updating a data frame called <code>df</code> by running the functions <code>foo</code>, <code>bar</code> and <code>baz</code> on it in turn”. In the code chunk above, we make use of another wonderful thing about pipes - it let’s us break complex code over multiple lines. To do so you add the pipe at the end of the line before each function, then start each new line with an indent followed by the function. If you type <code>|&gt;</code> at the end of a line and hit enter, RStudio will add the spaces at the start of the new line for you.</p>
 <p>Note, in the readings and other materials, you may come across another <code>%&gt;%</code> pipe. This pipe comes from the <code>tidyverse</code>. The tidyverse pipe came before the base R one, where due to its popularity an equivalent was added to base R. Whilst you will still see it in use, and it remains supported in the tidyverse, the tidyverse itself recommends people start using the base R <code>|&gt;</code> pipe. To see that they work the same, run the ‘pipe-2’ chunk.</p>
@@ -683,21 +863,21 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <p>As with installing packages, we only want to download the data once. For this lab, we will download the data running code in the Console. Next week though, we will go through how to set up an R script for downloading data. This is a common strategy for sharing the code used to download data whilst still keeping it separate to your main R Markdown file.</p>
 <p>First, we will create a new folder in our project directory to store the data. To do it from the Console, run this line. (Don’t worry if you get a warning. This appears because you already have a folder with this name):</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that in the ‘Files’ tab of Pane 4, the bottom-right pane, there is a new folder called <code>data</code>.</p>
 <p><img src="./images/rstudio_lab2_data-folder.png" class="img-fluid" alt="Files tab showing the newly created ‘data’ folder."><br></p>
 <p>Now, download the data from the GitHub repository using the function <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code>. This function takes two arguments separated by a comma: (1) the URL and (2) the destination (including the directory, file name, and file extension), as shown below.</p>
 <p>Copy and paste the following lines into the Console:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/fivethirtyeight/data/raw/master/police-killings/police_killings.csv"</span>, <span class="st">"data/police_killings.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/fivethirtyeight/data/raw/master/police-killings/police_killings.csv"</span>, <span class="st">"data/police_killings.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(Note, to avoid any issues typing out the URL, you can click the clipboard icon in the top-right of the code above to copy the full contents to your clipboard.)</p>
 <p>After that, we are ready to read the data. As the data comes as a <code>.csv</code> file, we can use the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function included in the <code>tidyverse</code> package (make sure the package is loaded in your session as explained in a <a href="#installing-packages">previous section</a>).</p>
 <p>The <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> reads the data in the file and returns it as a data frame in R. We need then to assign this data frame to a named object so we can continue working with it. In our example below we will do this by assigning it to a named object <code>police</code>. So, in effect, our new <code>police</code> named object will be a data frame containing the data from the <code>.csv</code> file we downloaded.</p>
 <p>Importantly, as with loading packages, when loading data it is good practice to do so at the top of the file. So, go all the way back up to the preamable code chunk and add the following line after the ‘# Read data’ comment.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/police_killings.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/police_killings.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You should now have:</p>
 <p><img src="./images/rstudio_lab2_preamble2.png" class="img-fluid" alt="Preamble chunk with line added to read csv file."><br></p>
@@ -718,39 +898,39 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 </section><section id="glimpsing-the-data" class="level3"><h3 class="anchored" data-anchor-id="glimpsing-the-data">Glimpsing the data</h3>
 <p>Back to the data. Let’s first glimpse the <code>police</code> data. Create a code chunk then add and run the following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As you can see, there are several variables included in the dataset, such as age, gender, law enforcement agency (<code>lawenforcementagency</code>), or whether the victim was armed (<code>armed</code>). You will see some of these variables are not in the appropriate type. For instance, some are categorical and should be a factor (<code>&lt;fct&gt;</code>) instead of character (<code>&lt;chr&gt;</code>).</p>
 </section><section id="data-wrangling" class="level3"><h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>Before coercing these variables, we will create a smaller subset of the data frame by selecting only the variables that we are interested in. To do so, we can use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function. The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function takes the name of the data frame as the first argument and then the names of the variables we want to keep separated by commas (no quotation marks needed).</p>
 <p>Remember with pipes we can replace <code>select(data_frame, variable1, variable2, ...)</code> with <code>data_frame |&gt; select(variable1, variable2, ...</code> making it easier to read as “from our data frame select the following variables”. Let’s create a code chunk to select a few variables and assign the result to a new object called <code>police_2</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">raceethnicity</span>, <span class="va">lawenforcementagency</span>, <span class="va">armed</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">raceethnicity</span>, <span class="va">lawenforcementagency</span>, <span class="va">armed</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function is from the <code>dplyr</code> tidyverse package. Many tidyverse functions that take a data frame as the first argument, <code>foo(date_frame, ...)</code> or when using a pipe <code>data_frame |&gt; foo(...)</code>, will assume all variables listed are from that data frame. Within the function, this then let’s us type <code>age</code> and <code>gender</code> rather than <code>police$age</code> and <code>police$gender</code>.</p>
 <p>If you look again to the ‘Environment’ tab, there is now a second data frame with the same number of observations but only 5 variables. Create a new code chunk, then add and run the following code to glimpse its contents.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Having a closer look at the reduced version, we can see that in fact all the variables are of type <code>&lt;chr&gt;</code> (character), including <code>age</code>.</p>
 <p>Let’s coerce the variables into their correct type. Start by creating a code chunk and naming it ‘coerce-police_2’ or similar.</p>
 <p>Then within the chunk, let’s start with age, coercing it from character to numeric by adding the following lines:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce numeric</span></span>
-<span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce numeric</span></span>
+<span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code># Coerce numeric</code> line let’s us add a comment to our code. Any text within an R code chunk after a <code>#</code> is treated as a comment and is not run as part of the code. This is useful for recording the ‘why’ behind the code, so future-you (and others) can quickly read and understand it.</p>
 <p>(You may be wondering though why outside the code chunks there are <code>#</code> but these become headers when knitting the document. The reason is within Markdown syntax <code>#</code> at the start of a line is used for Headings, with the number of <code>#</code> denoting the Heading level - <code>#</code> for Heading 1, <code>##</code> for Heading 2, and so on. As R and Markdown developed separately before the creation of R Markdown brought the two together, they both had by that point decided to use <code>#</code> for different things. Whilst confusing at first, it all boils down to “# inside code chunk = comments” and “# outside code chunks = headers”.)</p>
 <p>Age is not known for some cases. Thus, it is recorded as ‘Unknown’ in the dataset. Since this is not recognized as a numeric value in the coercion process, <code>R</code> automatically sets it as a missing value, <code>NA</code>. This is why it will give you a warning message. (Though you will not see a warning message if you ran the knitr setup chunk that disabled warning messages.)</p>
 <p>We can continue coercing <code>raceethnicity</code> and <code>gender</code> from character to a factor by adding the following lines to our chunk:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce factors</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce factors</span></span>
 <span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>raceethnicity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">raceethnicity</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the chunk and then create and run a new chunk with the following to glimpse the data frame again:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You should hopefully see the three coerced variables now have the correct types:</p>
 <ul>
@@ -763,13 +943,13 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 </ul>
 <p>Now, let’s run a summary of the data using the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function. This shows the number of observations in each category or a summary of a numeric variable. Create a code chunk, then add and run the following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>There are some interesting figures coming out from the summary. For instance, in age you can see that the youngest (Min.) is… 16 years old(?!), and the oldest (Max.) 87 years old. Also, the vast majority are male (445 vs 22). In relation to race/ethnicity, roughly half are ‘White’, whereas ‘Black’ individuals represent an important share. One may question the proportion of people killed in terms of race/ethnicity compared to the composition of the total population (considering Black is a minority group in the US).</p>
 <p>Let’s suppose that we only want observations in which race/ethnicity is not unknown. To ‘remove’ <em>undesired</em> observation we can use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function. Remember, to make changes to an object we need to assign the result of a function back to it. We will then need to assign the result of <code>filter</code> back to the <code>police_2</code> object.</p>
 <p>Create a chunk, then add and run the following:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">"Unknown"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police_2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">"Unknown"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So, what just happened in the code above? First, the pipe operator, <code>|&gt;</code>: What we are doing verbally is <em>take the object <code>police_2</code>, THEN filter raceethnicity based on a condition</em>.</p>
 <p>Then, what is happening inside the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function? Let’s have a look at what <code>R</code> does in the background for us (Artwork by @alison_horst):</p>
@@ -785,7 +965,7 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <p>Importantly, the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function returns a data frame with only the rows from the data frame that was passed to it that meet the conditions specified. In our example then, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> returns a data frame that only has the rows from the <code>police_2</code> data frame where the row’s value in the <code>raceethnicity</code> column is NOT EQUAL (<code>!=</code>) to ‘Unknown’. When we then assign the result to an object named the same as our existing object, <code>police_2 &lt;- ...</code>, we replace the <em>old</em> <code>police_2</code> data frame with the new filtered version. In effect, our <code>police_2</code> data frame is updated to a version with all rows where the value for <code>raceethnicity</code> was “Unknown” removed.</p>
 <p>Finally then, create another code chunk to get a glimpse and summary of the data frame again:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 452
 Columns: 5
@@ -795,7 +975,7 @@ $ raceethnicity        &lt;fct&gt; Black, White, White, Hispanic/Latino, White, 
 $ lawenforcementagency &lt;chr&gt; "Millbrook Police Department", "Rapides Parish Sh…
 $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Firearm…</code></pre>
 </div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">police_2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      age           gender                   raceethnicity lawenforcementagency
  Min.   :16.00   Female: 20   Asian/Pacific Islander: 10   Length:452          
@@ -832,7 +1012,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -856,7 +1036,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -872,7 +1052,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -893,7 +1073,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -915,7 +1095,7 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function
+<span class="screen-reader-only">Caution</span><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -934,14 +1114,14 @@ $ armed                &lt;chr&gt; "No", "No", "No", "Firearm", "No", "No", "Fir
 </section></section><section id="code-formatting" class="level2"><h2 class="anchored" data-anchor-id="code-formatting">Code Formatting</h2>
 <p>As a final side note - and a wee preview of code you will see in later labs and in R textbooks - all the steps we did above for creating and modifying <code>police_2</code> can also be written in a single code chunk. The code chunk below does all the same steps. It creates a <code>police_2</code> data frame by first selecting variables from the <code>police</code> data frame, then coerces the types of some variables, and finally filters the data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">police_2</span> <span class="op">&lt;-</span> <span class="va">police</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">raceethnicity</span>, <span class="va">lawenforcementagency</span>, <span class="va">armed</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
 <span>    raceethnicity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">raceethnicity</span><span class="op">)</span>,</span>
 <span>    gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">"Unknown"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">raceethnicity</span> <span class="op">!=</span> <span class="st">"Unknown"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Notice here that we can also pass multiple variables to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and able to create a line for each variable being coerced. We can do this as R also lets us split anything after a bracket or comma onto a new line. With long functions, it is common to start a new line after the <code>(</code>, then add each element that is separated by a comma on a line of its own, then add a final line with the closing <code>)</code>. Notice as well that the elements are indented another two spaces (making the indent for them 4 spaces in total) and the closing <code>)</code> is indented the same as <code>mutate(</code>.</p>
 <p>It may take a while to get the hang of reading code with ease, but this formatting helps a lot. The initial 2 space indent after the first line let’s us know that “all the following lines are still part of the same series of steps”. The additional 2 space indent for the lines between the opening <code>(</code> and closing <code>)</code> for the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function then also visually lets us know, “all the following lines are arguments within the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function”. This code would be incredibly difficult to read at a glance if it was written instead as a single line and without any pipes.</p>
@@ -1087,383 +1267,256 @@ Wickham, Hadley. 2021. <em>Tidyverse: Easily Install and Load the Tidyverse</em>
     : start();
 })();
 </script><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ugquants\.github\.io\/quants_workbook\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ugquants\.github\.io\/quants_workbook\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1471,185 +1524,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./01-intro.html" class="pagination-link" aria-label="**Lab 1** Introduction to R">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Lab 1</strong> Introduction to R</span>
       </a>          
