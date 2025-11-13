@@ -8,46 +8,36 @@ We are refreshing the contents of the lab workbook this year. The newest version
 
 ## Introduction
 
-This is our final practical session. Thank you for tuning in and all your hard work! Today, we will discuss some practical aspects of the summative assessment *Interpreting Quantitative Findings Report*. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!
+This is our final practical session. Thank you for tuning in and all your hard work!
 
-Before proceeding, please take about 10 minutes to read the instructions for the assignment available in Moodle.
+Today, we will discuss some practical aspects of the summative assessment *Interpreting Quantitative Findings Report*. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!
 
+:::{.callout-note title="Setup Assessment Project"}
 
-## Create your research report template from GitHub
+You can find the step-by-step guide for how to setup a Posit Cloud project for the summative assessment using the provided template on the [Setup Assessment Projects](assessments/creating-assessment-projects.qmd) page.
 
-We've created a GitHub repository which contains an RStudio project and all the essentials you need to start writing your report. There are two options for you. One is writing in **RStudio Cloud**, as we have been doing all along this course. Alternatively, you can also use the **RStudio Desktop** version (this requires having `R` and RStudio installed locally on your device). The result will be the same and the process is very similar. So, the choice is totally up to you and what your preference is. Here, we explain how to start your own project for both options. 
+After following the steps, you will have a project with every package you need - *except one* - installed and loaded. The NILT data set is already downloaded, cleaned, and loaded. There is a `nilt_subset` data frame object already created that contains just the variables used in the regression model. The regression model and regression table results are also already setup for you.
 
-For this session, try only _one_ of these. Don't worry about which one you choose now, you can change your mind later. If you can't make up your mind, then try the **RStudio Cloud** route first, as it means you can work on your assignment on any devices, regardless of the computational power of your device, but it does mean you need to work on the assignment online using a web browser. If online connection is an issue for you, then choose the **RStudio Desktop** route. 
+In terms of coding, all you need to do is create code chunks for any visualisations and tables or other additional stats. You should not remove any of the code from the template. In particular, you should not replace the code that sets up the regression model and creates the regression results table.
 
-### RStudio Cloud version
+Do not worry about the code in the template that creates the regression results table. The code for it is more complex than usual solely because we have customised the table to more closely match the output from the `summary()` function that we cover in the labs and align more clearly with what we ask you to do for the assessment. For the assessment, you only need to interpret the regression results table. A page will be made available that breaks down the code, but that will be entirely optional to read and understanding the code that produces the regression results table is not required for the assessment.
 
-If you wish to write your project using RStudio Cloud, please follow the next steps:
+:::
 
-1. Access [RStudio Cloud](https://rstudio.cloud/) as usual.
-2. Make sure you are in your Quants lab group (not in 'Your Workspace').
-3. Click on the 'New Project' button and select 'New Project from Git Repository'.
+Before proceeding, please take about 10 minutes to read the [guidance for the Summative Assessments](assessments/summative.qmd).
 
-```{r fig.cap="New project from GitHub.", echo=FALSE}
-knitr::include_graphics("./images/research_rep_2.PNG")
-```
+Other lab workbook pages that will be useful to check are:
 
-4. Paste the following URL in the box and click 'OK': https://github.com/UGQuants/UGQuant-assignment2.
-5. You are all set! Just click on the project to access the contents.
+- [Exporting HTML Files for Submission](assessments/export.qmd) - which covers how to export your HTML file for submitting to Turnitin. Importantly, please follow and read the instructions all the way to the end. On some browsers after hitting 'Download' it will auto-open your file in the browser. If you 'Save as...' the file, you will experience the same issue when uploading to Turnitin as would if didn't export your file.
+- [Interpretive Report Q&A](assessments/assessment-faq.qmd) - that includes additional information based on questions from previous years.
+- [R Issues FAQ](assessments/RFAQ.qmd) - covering solutions to common issues you might encounter when wroking on your interpretive findings report.
 
-### RStudio Desktop version
+:::{.callout-important}
 
-If alternately you decide to write your assessment using the RStudio Desktop version, consider the following steps:
+Please note - the rest of the content below has not yet been updated for this year. The above though provides you with all you will need for setting up your summative and making a start if you want to do so before the lab itself. As always, please get in touch if you experience any issues or are unsure about anything.
 
-1. Access the following GitHub repository copying and pasting the following URL in your browser: <https://github.com/UGQuants/UGQuant-assignment2>.
-2. Click on the 'Code' button and select the 'Download ZIP' option, as shown below.
+:::
 
-```{r fig.cap="Downlowad ZIP from GitHub.", echo=FALSE}
-knitr::include_graphics("./images/research_rep_4.PNG")
-```
-
-3. Go to your local downloads folder, right click on the `UGQuant-assignment2-main.zip` and choose the 'Extract all' option (here, you can also chose the folder where you want to store the RStudio project and write your assignment). 
-4. Click on the 'Extract' button.
-5. As you can see, this folder contains an RStudio project. Open the `UGQuant-assignment2.Rproj` which will initialize a new RStudio session.
 
 ## About the research report template
 
