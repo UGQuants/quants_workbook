@@ -390,13 +390,6 @@ ul.task-list li input[type="checkbox"] {
 <a href="#interpretivereport" id="toc-interpretivereport" class="nav-link active" data-scroll-target="#interpretivereport">UG Quants summative assessment: Interpreting Quantitative Findings Report</a>
   <ul class="collapse">
 <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li>
-<a href="#create-your-research-report-template-from-github" id="toc-create-your-research-report-template-from-github" class="nav-link" data-scroll-target="#create-your-research-report-template-from-github">Create your research report template from GitHub</a>
-  <ul class="collapse">
-<li><a href="#rstudio-cloud-version" id="toc-rstudio-cloud-version" class="nav-link" data-scroll-target="#rstudio-cloud-version">RStudio Cloud version</a></li>
-  <li><a href="#rstudio-desktop-version" id="toc-rstudio-desktop-version" class="nav-link" data-scroll-target="#rstudio-desktop-version">RStudio Desktop version</a></li>
-  </ul>
-</li>
   <li><a href="#about-the-research-report-template" id="toc-about-the-research-report-template" class="nav-link" data-scroll-target="#about-the-research-report-template">About the research report template</a></li>
   <li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity 1</a></li>
   <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a></li>
@@ -421,48 +414,45 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This is our final practical session. Thank you for tuning in and all your hard work! Today, we will discuss some practical aspects of the summative assessment <em>Interpreting Quantitative Findings Report</em>. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!</p>
-<p>Before proceeding, please take about 10 minutes to read the instructions for the assignment available in Moodle.</p>
-</section><section id="create-your-research-report-template-from-github" class="level2"><h2 class="anchored" data-anchor-id="create-your-research-report-template-from-github">Create your research report template from GitHub</h2>
-<p>We’ve created a GitHub repository which contains an RStudio project and all the essentials you need to start writing your report. There are two options for you. One is writing in <strong>RStudio Cloud</strong>, as we have been doing all along this course. Alternatively, you can also use the <strong>RStudio Desktop</strong> version (this requires having <code>R</code> and RStudio installed locally on your device). The result will be the same and the process is very similar. So, the choice is totally up to you and what your preference is. Here, we explain how to start your own project for both options.</p>
-<p>For this session, try only <em>one</em> of these. Don’t worry about which one you choose now, you can change your mind later. If you can’t make up your mind, then try the <strong>RStudio Cloud</strong> route first, as it means you can work on your assignment on any devices, regardless of the computational power of your device, but it does mean you need to work on the assignment online using a web browser. If online connection is an issue for you, then choose the <strong>RStudio Desktop</strong> route.</p>
-<section id="rstudio-cloud-version" class="level3"><h3 class="anchored" data-anchor-id="rstudio-cloud-version">RStudio Cloud version</h3>
-<p>If you wish to write your project using RStudio Cloud, please follow the next steps:</p>
-<ol type="1">
-<li>Access <a href="https://rstudio.cloud/">RStudio Cloud</a> as usual.</li>
-<li>Make sure you are in your Quants lab group (not in ‘Your Workspace’).</li>
-<li>Click on the ‘New Project’ button and select ‘New Project from Git Repository’.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/research_rep_2.PNG" class="img-fluid figure-img"></p>
-<figcaption>New project from GitHub.</figcaption></figure>
+<p>This is our final practical session. Thank you for tuning in and all your hard work!</p>
+<p>Today, we will discuss some practical aspects of the summative assessment <em>Interpreting Quantitative Findings Report</em>. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Setup Assessment Project">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Setup Assessment Project
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can find the step-by-step guide for how to setup a Posit Cloud project for the summative assessment using the provided template on the <a href="./assessments/creating-assessment-projects.html">Setup Assessment Projects</a> page.</p>
+<p>After following the steps, you will have a project with every package you need - <em>except one</em> - installed and loaded. The NILT data set is already downloaded, cleaned, and loaded. There is a <code>nilt_subset</code> data frame object already created that contains just the variables used in the regression model. The regression model and regression table results are also already setup for you.</p>
+<p>In terms of coding, all you need to do is create code chunks for any visualisations and tables or other additional stats. You should not remove any of the code from the template. In particular, you should not replace the code that sets up the regression model and creates the regression results table.</p>
+<p>Do not worry about the code in the template that creates the regression results table. The code for it is more complex than usual solely because we have customised the table to more closely match the output from the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function that we cover in the labs and align more clearly with what we ask you to do for the assessment. For the assessment, you only need to interpret the regression results table. A page will be made available that breaks down the code, but that will be entirely optional to read and understanding the code that produces the regression results table is not required for the assessment.</p>
+</div>
+</div>
+<p>Before proceeding, please take about 10 minutes to read the <a href="./assessments/summative.html">guidance for the Summative Assessments</a>.</p>
+<p>Other lab workbook pages that will be useful to check are:</p>
+<ul>
+<li>
+<a href="./assessments/export.html">Exporting HTML Files for Submission</a> - which covers how to export your HTML file for submitting to Turnitin. Importantly, please follow and read the instructions all the way to the end. On some browsers after hitting ‘Download’ it will auto-open your file in the browser. If you ‘Save as…’ the file, you will experience the same issue when uploading to Turnitin as would if didn’t export your file.</li>
+<li>
+<a href="./assessments/assessment-faq.html">Interpretive Report Q&amp;A</a> - that includes additional information based on questions from previous years.</li>
+<li>
+<a href="./assessments/RFAQ.html">R Issues FAQ</a> - covering solutions to common issues you might encounter when wroking on your interpretive findings report.</li>
+</ul>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Please note - the rest of the content below has not yet been updated for this year. The above though provides you with all you will need for setting up your summative and making a start if you want to do so before the lab itself. As always, please get in touch if you experience any issues or are unsure about anything.</p>
 </div>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Paste the following URL in the box and click ‘OK’: https://github.com/UGQuants/UGQuant-assignment2.</li>
-<li>You are all set! Just click on the project to access the contents.</li>
-</ol></section><section id="rstudio-desktop-version" class="level3"><h3 class="anchored" data-anchor-id="rstudio-desktop-version">RStudio Desktop version</h3>
-<p>If alternately you decide to write your assessment using the RStudio Desktop version, consider the following steps:</p>
-<ol type="1">
-<li>Access the following GitHub repository copying and pasting the following URL in your browser: <a href="https://github.com/UGQuants/UGQuant-assignment2" class="uri">https://github.com/UGQuants/UGQuant-assignment2</a>.</li>
-<li>Click on the ‘Code’ button and select the ‘Download ZIP’ option, as shown below.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="./images/research_rep_4.PNG" class="img-fluid figure-img"></p>
-<figcaption>Downlowad ZIP from GitHub.</figcaption></figure>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Go to your local downloads folder, right click on the <code>UGQuant-assignment2-main.zip</code> and choose the ‘Extract all’ option (here, you can also chose the folder where you want to store the RStudio project and write your assignment).</li>
-<li>Click on the ‘Extract’ button.</li>
-<li>As you can see, this folder contains an RStudio project. Open the <code>UGQuant-assignment2.Rproj</code> which will initialize a new RStudio session.</li>
-</ol></section></section><section id="about-the-research-report-template" class="level2"><h2 class="anchored" data-anchor-id="about-the-research-report-template">About the research report template</h2>
+</section><section id="about-the-research-report-template" class="level2"><h2 class="anchored" data-anchor-id="about-the-research-report-template">About the research report template</h2>
 <p>Once in your <strong>UGQuant-assignment2</strong> project, open the <code>Assignmet2-template.Rmd</code> file in Pane 4 under the ‘Files’ tab, as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
