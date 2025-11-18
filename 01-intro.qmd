@@ -1,5 +1,5 @@
 
-# Introduction to R {#lab-intro}
+# Introduction to R
 
 ::: {.callout-note title="Overview"}
 By the end of this lab you will:
