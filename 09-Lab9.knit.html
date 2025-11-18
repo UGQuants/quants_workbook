@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>lab9 – Lab Workbook</title>
+
+
+<title>lab9.knit – Lab Workbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -61,8 +65,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-Lab10.html" rel="next">
-<link href="./08-Lab8.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -79,7 +81,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-dark-c1e19c279b1c7e82165a3f66195d40d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,7 +107,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -129,10 +137,13 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="style.css">
+</script>
+
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/nav-toggle.css">
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -306,10 +317,14 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo light-content"><img src="./brand/uofg-keyline.png" alt="" class="navbar-logo dark-content"></a>
+    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo light-content">
+    <img src="./brand/uofg-keyline.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Lab Workbook</span>
     </a>
@@ -320,12 +335,12 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="./assessments/assessments.html"> 
 <span class="menu-text">Assessments</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/UGQuants/quants_workbook" title="Workbook GitHub" class="quarto-navigation-tool px-1" aria-label="Workbook GitHub"><i class="bi bi-github"></i></a>
     <a href="./#" title="" class="quarto-navigation-tool px-1" aria-label="Toggle navbar (Alt+Shift+H)"><i class="bi bi-pin-fill"></i></a>
@@ -337,147 +352,51 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
-        </a>     
-    </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 1</strong> Introduction to R</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02-Lab2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 2</strong> Data in R</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./03-Lab3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 3</strong> Data Wrangling</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04-Lab4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 4</strong> Exploratory Data Analysis</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-Lab5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 5</strong> Reporting in R Markdown</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-Lab6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 6</strong> Visual Exploratory Analysis</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-Lab7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 7</strong> Correlation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-Lab8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 8</strong> Simple Linear Regression</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-Lab9.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><strong>Lab 9</strong> Multiple Linear Regression (part 1)</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-Lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 10</strong> Multiple Linear Regression (part 2)</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11-Lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Lab 11</strong> Interpretive Report Assessment</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Answers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workbook suggested answers</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
-    </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#moving-from-simple-to-multiple-regression" id="toc-moving-from-simple-to-multiple-regression" class="nav-link active" data-scroll-target="#moving-from-simple-to-multiple-regression">Moving from Simple to Multiple Regression</a>
+  <li><a href="#moving-from-simple-to-multiple-regression" id="toc-moving-from-simple-to-multiple-regression" class="nav-link active" data-scroll-target="#moving-from-simple-to-multiple-regression">Moving from Simple to Multiple Regression</a>
   <ul class="collapse">
-<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li>
-<a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
   <ul class="collapse">
-<li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a></li>
   <li><a href="#dataframe-setup" id="toc-dataframe-setup" class="nav-link" data-scroll-target="#dataframe-setup">Dataframe Setup</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#multiple-linear-regresion" id="toc-multiple-linear-regresion" class="nav-link" data-scroll-target="#multiple-linear-regresion">Multiple Linear Regresion</a>
+  </ul></li>
+  <li><a href="#multiple-linear-regresion" id="toc-multiple-linear-regresion" class="nav-link" data-scroll-target="#multiple-linear-regresion">Multiple Linear Regresion</a>
   <ul class="collapse">
-<li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
   <li><a href="#fitting-multiple-linear-regression-in-r" id="toc-fitting-multiple-linear-regression-in-r" class="nav-link" data-scroll-target="#fitting-multiple-linear-regression-in-r">Fitting multiple linear regression in R</a></li>
   <li><a href="#interpreting-coefficients" id="toc-interpreting-coefficients" class="nav-link" data-scroll-target="#interpreting-coefficients">Interpreting Coefficients</a></li>
   <li><a href="#multiple-linear-regression-model-specification" id="toc-multiple-linear-regression-model-specification" class="nav-link" data-scroll-target="#multiple-linear-regression-model-specification">Multiple linear regression model specification</a></li>
   <li><a href="#r-syntax" id="toc-r-syntax" class="nav-link" data-scroll-target="#r-syntax">R syntax</a></li>
   <li><a href="#second-mlr-model-example" id="toc-second-mlr-model-example" class="nav-link" data-scroll-target="#second-mlr-model-example">Second MLR model example</a></li>
   <li><a href="#interpreting-our-second-model-results" id="toc-interpreting-our-second-model-results" class="nav-link" data-scroll-target="#interpreting-our-second-model-results">Interpreting our second model results</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#lab-activities" id="toc-lab-activities" class="nav-link" data-scroll-target="#lab-activities">Lab activities</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="moving-from-simple-to-multiple-regression" class="level1"><h1>Moving from Simple to Multiple Regression</h1>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="moving-from-simple-to-multiple-regression" class="level1">
+<h1>Moving from Simple to Multiple Regression</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This week we move from simple linear regression (one independent variable) to multiple linear regression (two or more independent variables). In simple terms, multiple regression lets us compare like with like, we can interpret the coefficient for one independent variable while controlling for - that is, regardless of - the other independent variables we include.</p>
 <p>It is rare for quantitative social research to rely only on simple linear models. Social phenomena are complex, without one single clear variable associated with them. Instead, we need analysis approaches that recognise and - key word for this week - ‘control’ for other variables.</p>
 <p>Because it is so central, we will split the topic over two labs. This week we will focus on why how multiple linear regression differs from simple linear regression and interpreting coefficients. Next week we look at how number of observations can change as you add variables and interpreting model fit statistics.</p>
@@ -517,8 +436,11 @@ window.Quarto = {
 <p>As wee final reminder: Please do let me (Alasdair) know though where anything in the content for this lab is unclear or confusing. I am keen that the lab workbook helps reduce some of the initial difficulty, and I will make further updates to the content this year based on any initial feedback and questions.</p>
 </div>
 </div>
-</section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<section id="r-markdown" class="level3"><h3 class="anchored" data-anchor-id="r-markdown">R Markdown</h3>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<section id="r-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="r-markdown">R Markdown</h3>
 <p>We will continue using the NILT project on Posit Cloud.</p>
 <p>As usual, we will need to setup an R Markdown file for today’s lab. Remember if you are unsure about any of the steps below you can take a look back at <a href="./06-Lab6.html">Lab 6</a> which has more detailed explanation of each of the steps.</p>
 <p>To set up a new R Markdown file for this lab, please use the following steps:</p>
@@ -531,50 +453,57 @@ window.Quarto = {
 <li>Create a new code chunk, with <code>```{r setup, include=FALSE}</code> and in the chunk:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>message <span class="op">=</span> <span class="cn">FALSE</span>, warning <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="7" type="1">
 <li>Create another code chunk, named <code>preamble</code> and again with <code>include=FALSE</code>. Then add the following in the chunk:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read NILT</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/nilt_r_object.rds"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read NILT</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/nilt_r_object.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Please note, we are loading the <code>haven</code> <em>and</em> <code>moderndive</code> packages this week. (<code>moderndive</code> provides a handy wee function we can use with ggplot for illustrating our example this week.)</p>
 <ol start="8" type="1">
 <li>As this is the first time using moderndive, remember to also run in the Console:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"moderndive"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"moderndive"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="9" type="1">
 <li>After installing <code>moderndive</code>, run the <code>preamble</code> code chunk and if no errors, then everything is setup for this session.</li>
-</ol></section><section id="dataframe-setup" class="level3"><h3 class="anchored" data-anchor-id="dataframe-setup">Dataframe Setup</h3>
+</ol>
+</section>
+<section id="dataframe-setup" class="level3">
+<h3 class="anchored" data-anchor-id="dataframe-setup">Dataframe Setup</h3>
 <p>We will revisit the example from last week of the relationship between a respondent’s age and their spouse or partner’s age. To ensure out document can knit, we will need to coerce the variables for the age of the respondent’s spouse/partner:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Age of Respondent's Spouse / Partner</span></span>
-<span><span class="va">nilt</span><span class="op">$</span><span class="va">spage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">spage</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age of Respondent's Spouse / Partner</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nilt<span class="sc">$</span>spage <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(nilt<span class="sc">$</span>spage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(Note: If you completed the ‘Bonus Activity’ last week you won’t need to coerce <code>spage</code> again.)</p>
-</section></section><section id="multiple-linear-regresion" class="level2"><h2 class="anchored" data-anchor-id="multiple-linear-regresion">Multiple Linear Regresion</h2>
+</section>
+</section>
+<section id="multiple-linear-regresion" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-linear-regresion">Multiple Linear Regresion</h2>
 <p>Multiple linear regression is based on the same principles as simple linear regression. As with simple linear regression, it is appropriate to use only with a numeric (interval/ratio) dependent variable, such as age or income. Our independent variables though can be categorical and numeric. With multiple linear regression, our independent variables do not have to be all be of the same type either, and can be a mix of categorical and numeric variables.</p>
 <!-- However, as a general rule-of-thumb, a variable can be treated as numeric when you have at least 7 ordered categories (Fogarty, 2019). -->
-<section id="scatter-plots" class="level3"><h3 class="anchored" data-anchor-id="scatter-plots">Scatter Plots</h3>
+<section id="scatter-plots" class="level3">
+<h3 class="anchored" data-anchor-id="scatter-plots">Scatter Plots</h3>
 <p>OK, so we have a rough ‘why’ for multiple regression - social phenomena are complex and cannot be explained by one variable alone. We can use our good friend <code>ggplot</code> to help illustrate an example of how considering more variables aids explanations - and what can get missed if we only considered one independent variable.</p>
 <!-- still missing important "how do you choose additional variables", here we picked easy example of respondent age and their partner/spouses age. That men tend to be older than women in relationships is often reported. It makes sense then to include as a 'control' variable. -->
 <p>Once again, to help make it easier to visualise key concepts, let’s create a minimal random sample for the following example using the code below:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># select a small random sample</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co"># Filter where partner's age is not NA and take a random sample of 40</span></span>
-<span><span class="va">nilt_sample</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">spage</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">40</span><span class="op">)</span></span>
-<span><span class="co"># Select only respondent's age and spouse/partner's age</span></span>
-<span><span class="va">nilt_sample</span> <span class="op">&lt;-</span> <span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">rage</span>, <span class="va">spage</span>, <span class="va">rsex</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select a small random sample</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter where partner's age is not NA and take a random sample of 40</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>nilt_sample <span class="ot">&lt;-</span> nilt <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(spage)) <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">40</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only respondent's age and spouse/partner's age</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>nilt_sample <span class="ot">&lt;-</span> nilt_sample <span class="sc">|&gt;</span> <span class="fu">select</span>(rage, spage, rsex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-caution">
 <div class="callout-body d-flex">
@@ -587,37 +516,39 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>With <code>ggplot</code> we can now again draw a scatter plot with respondent’s age, <code>rage</code>, on the X axis and their partner/spouse’s age, <code>spage</code>, on the Y axis. However, this time, let’s add gender, <code>rsex</code> as a third variable, passing it in for the <code>color</code> keyword argument in the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function. This will then colour the data points in our scatter plot by the respondent’s gender.</p>
+<p>With <code>ggplot</code> we can now again draw a scatter plot with respondent’s age, <code>rage</code>, on the X axis and their partner/spouse’s age, <code>spage</code>, on the Y axis. However, this time, let’s add gender, <code>rsex</code> as a third variable, passing it in for the <code>color</code> keyword argument in the <code>aes()</code> function. This will then colour the data points in our scatter plot by the respondent’s gender.</p>
 <p>Why add <code>rsex</code> here? In practice, you would want to ensure your decisions are grounded with relevant existing literature for your research question. Assuming here that we are basing it on the literature, we may start with our question on relation between respondent age and their partner/spouse age. That gave us our chosen independent and dependent variables. We need though to consider what else might influence partner/spouse age that we should control for. As age gaps often differ based on gender, then <code>rsex</code> would be a variable to consider controlling for. Controlling for <code>rsex</code> lets us compare respondent age and partner/spouse age regardless of the respondents’ gender.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, color <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nilt_sample <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> spage, <span class="at">color =</span> rsex)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Respondent's age"</span>, <span class="at">y =</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="09-Lab9_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="09-Lab9_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Right, what can we observe in this plot?</p>
 <p>First, we can see that the observations for male and female respondents go in the same direction. When the respondent’s age increases, the age of their partner/spouse increases as well. Female respondents also tend to be located higher on the Y axis (their partner/spouse’s age) compared to male respondents. So it does look like not only the respondents’ age that is involved in how people choose their partner, but also the respondents’ gender.</p>
-<p>We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function from <code>moderndive</code> can be used to draw lines for a ‘parellel slopes model’. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. “Parallel” just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.</p>
-<p>Looking at the documentation for <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> - reminder, you can click the link on any function to jump to its documentation - we can see that it will use the variable we passed into the <code>color</code> keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, <code>se = FALSE</code>. The <code>se</code> argument is whether to display confidence intervals and is <code>TRUE</code> by default. We set it to <code>FALSE</code> as for the illustrations we are wanting to focus on just the lines.</p>
+<p>We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The <code>geom_parallel_slopes()</code> function from <code>moderndive</code> can be used to draw lines for a ‘parellel slopes model’. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. “Parallel” just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.</p>
+<p>Looking at the documentation for <code>geom_parallel_slopes()</code> - reminder, you can click the link on any function to jump to its documentation - we can see that it will use the variable we passed into the <code>color</code> keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, <code>se = FALSE</code>. The <code>se</code> argument is whether to display confidence intervals and is <code>TRUE</code> by default. We set it to <code>FALSE</code> as for the illustrations we are wanting to focus on just the lines.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, color <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nilt_sample <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> spage, <span class="at">color =</span> rsex)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_slopes</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Respondent's age"</span>, <span class="at">y =</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="09-Lab9_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="09-Lab9_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -628,13 +559,16 @@ window.Quarto = {
 <ol type="1">
 <li>The partner/spouses’ age are positively associated with our male and female respondents’ ages.</li>
 <li>This association is different for males and females. In general, females choose older partners compared to males.</li>
-</ol></section><section id="fitting-multiple-linear-regression-in-r" class="level3"><h3 class="anchored" data-anchor-id="fitting-multiple-linear-regression-in-r">Fitting multiple linear regression in R</h3>
+</ol>
+</section>
+<section id="fitting-multiple-linear-regression-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-multiple-linear-regression-in-r">Fitting multiple linear regression in R</h3>
 <p>OK, we can see from our illustrated example that there is a difference, but how would we more rigorously analyse these relationships? For instance, how can we calcualte the magnitude of these relationships?</p>
 <p>To do that, we can extend on the code we used for simple linear regression last week.</p>
 <p>As a reminder, last week we fitted and run a model with:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">m1_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">spage</span> <span class="op">~</span> <span class="va">rage</span>, data <span class="op">=</span> <span class="va">nilt_sample</span><span class="op">)</span></span>
-<span><span class="va">m1_simple</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m1_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(spage <span class="sc">~</span> rage, <span class="at">data =</span> nilt_sample)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>m1_simple</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -651,14 +585,16 @@ Coefficients:
 <div class="code-with-filename-file">
 <pre><strong>Example Code - do not run</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dependent_variable</span> <span class="op">~</span> <span class="va">independent_variable1</span> <span class="op">+</span> <span class="va">independent_variable2</span> <span class="op">+</span> <span class="va">...</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(dependent_variable <span class="sc">~</span> independent_variable1 <span class="sc">+</span> independent_variable2 <span class="sc">+</span> ..., data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-</section><section id="interpreting-coefficients" class="level3"><h3 class="anchored" data-anchor-id="interpreting-coefficients">Interpreting Coefficients</h3>
+</section>
+<section id="interpreting-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-coefficients">Interpreting Coefficients</h3>
 <p>With our example this week then, all we need to do is <code>+ rsex</code> and run the model, as so -</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">spage</span> <span class="op">~</span> <span class="va">rage</span> <span class="op">+</span> <span class="va">rsex</span>, data <span class="op">=</span> <span class="va">nilt_sample</span><span class="op">)</span></span>
-<span><span class="va">m1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(spage <span class="sc">~</span> rage <span class="sc">+</span> rsex, <span class="at">data =</span> nilt_sample)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>m1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -672,12 +608,9 @@ Coefficients:
 <p>Within the results, we can see that there are three coefficients - the first is the intercept, and the other two are our slope coefficients for <code>rage</code> and <code>rsexFemale</code>.</p>
 <p>Within the formal model specification - which we will return to - these would would be represented as:</p>
 <ul>
-<li>intercept, <span class="math inline">\(\beta_0\)</span>
-</li>
-<li>slope coefficient one, <span class="math inline">\(\beta_1\)</span>
-</li>
-<li>slope coefficient two, <span class="math inline">\(\beta_2\)</span>
-</li>
+<li>intercept, <span class="math inline">\(\beta_0\)</span></li>
+<li>slope coefficient one, <span class="math inline">\(\beta_1\)</span></li>
+<li>slope coefficient two, <span class="math inline">\(\beta_2\)</span></li>
 </ul>
 <p>You may have noticed something though which may seem odd. We have <code>rsexFemale</code> rather than <code>rsex</code>. Two questions often spring up when people first encounter this - Why the change to our variable? Why do we have <code>rsexFemale</code> but no <code>rsexMale</code>?</p>
 <p>The reason for this is within multiple linear regression the way categorical variables are handled is to select one category as the ‘reference’ and the other categories are then in relation to that reference category. By default, if a category is not specified, R will treat the first category as the reference category. As our <code>nilt_sample</code> has only female and male respondents, we then have <code>rsexFemale</code> with the coefficient of our female respondents in relation to our male reference category.</p>
@@ -693,7 +626,8 @@ Coefficients:
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="09-Lab9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="09-Lab9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -703,17 +637,18 @@ Coefficients:
 <p>This is a clear example of potential missing variable bias. If a relevant variable is left out and it is related to both the explanatory independent variable and the dependent variable, the estimated slope is pulled away from the “within‑group” relationship. Here, gender appears to be related to both respondent age and spouse/partner age. Ignoring it mixes the two groups together and gives a compromise line with a higher intercept and shallower slope. Including gender lets us compare like with like and recovers the within‑gender slope - or, in other words, our slope for <code>rage</code> controlling for gender / regardless of gender.</p>
 <p>We can also add a line to our ggplot to include the simple linear regression line similar to last week. Our parellel slopes though will now let us see how the coefficient for <code>rage</code> in the simple linear regression model was impacted by missing variable bias:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, color <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nilt_sample <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rage, <span class="at">y =</span> spage, <span class="at">color =</span> rsex)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_slopes</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Respondent's age"</span>, <span class="at">y =</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="09-Lab9_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="09-Lab9_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -721,7 +656,9 @@ Coefficients:
 <p>Given the age of respondents and partners/spouses, the lines aren’t drawn all the way to X = 0. However, knowing that the red line shown is based on same intercept value as shown in the results when we ran our model (1.7383) helps us visually compare our simple and multiple linear regression models.</p>
 <p>As can roughly see, with more female respondents in bottom-left and only males as approach top-right, the simple linear regression model in aiming to draw best fit through the observations ends up with a higher intercept and smaller slope. Once we control for gender though we can see how the slope coeffecient for <code>rage</code> was being lowered by not controlling for gender.</p>
 <p>(Wee aside, as noted above, this parallel slopes model gpplot only works when we have one numeric independent variable and one categorical independent variable. As we add in more variables, we would not be able - at least with any meaingful clarity - visualise the coefficients for multiple linear regression with a scatter plot.)</p>
-</section><section id="multiple-linear-regression-model-specification" class="level3"><h3 class="anchored" data-anchor-id="multiple-linear-regression-model-specification">Multiple linear regression model specification</h3>
+</section>
+<section id="multiple-linear-regression-model-specification" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-linear-regression-model-specification">Multiple linear regression model specification</h3>
 <p>After the introduction of the simple linear model, the formal definition of the multiple linear model should not look that scary, right? In essence, this equation tells us how <span class="math inline">\(\hat{y}\)</span> is described/explained by other variables.</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -730,46 +667,46 @@ Coefficients:
 \]</span></p>
 <p>We can break down the equation above in smaller pieces as follows:</p>
 <ul>
-<li>
-<span class="math inline">\(\hat{y}\)</span> is the dependent variable, which is explained by</li>
-<li>
-<span class="math inline">\(\hat{\beta_0}\)</span> the intercept, plus</li>
-<li>
-<span class="math inline">\(\hat{\beta_1}\)</span> the slope coefficient for the first independent variable times the value of <span class="math inline">\(x_1\)</span> variable 1, plus</li>
-<li>
-<span class="math inline">\(\hat{\beta_2}\)</span> the slope coefficient for the second independent variable times the value of <span class="math inline">\(x_2\)</span>, plus</li>
-<li>
-<span class="math inline">\(...\)</span> any number of independent variables, plus</li>
-<li>
-<span class="math inline">\(\hat{\epsilon}\)</span> the error/residual term.</li>
-<li>
-<span class="math inline">\(\epsilon ~ N(0, \sigma)\)</span> this bit tell us that the residuals are normally distributed.</li>
-</ul></section><section id="r-syntax" class="level3"><h3 class="anchored" data-anchor-id="r-syntax">R syntax</h3>
+<li><span class="math inline">\(\hat{y}\)</span> is the dependent variable, which is explained by</li>
+<li><span class="math inline">\(\hat{\beta_0}\)</span> the intercept, plus</li>
+<li><span class="math inline">\(\hat{\beta_1}\)</span> the slope coefficient for the first independent variable times the value of <span class="math inline">\(x_1\)</span> variable 1, plus</li>
+<li><span class="math inline">\(\hat{\beta_2}\)</span> the slope coefficient for the second independent variable times the value of <span class="math inline">\(x_2\)</span>, plus</li>
+<li><span class="math inline">\(...\)</span> any number of independent variables, plus</li>
+<li><span class="math inline">\(\hat{\epsilon}\)</span> the error/residual term.</li>
+<li><span class="math inline">\(\epsilon ~ N(0, \sigma)\)</span> this bit tell us that the residuals are normally distributed.</li>
+</ul>
+</section>
+<section id="r-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="r-syntax">R syntax</h3>
 <p>As a reminder, the general syntax in R for fitting a multiple linear regression model as follows:</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example Code - do not run</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">dependent_variable</span> <span class="op">~</span> <span class="va">independent_variable1</span> <span class="op">+</span> <span class="va">independent_variable2</span> <span class="op">+</span> <span class="va">...</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(dependent_variable <span class="sc">~</span> independent_variable1 <span class="sc">+</span> independent_variable2 <span class="sc">+</span> ..., data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p>We pass into the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function our dependent variable followed by <code>~</code> then list two or more independent variables joined by <code>+</code>. Finally, after a comma, the <code>data = ...</code> argument names the data frame where R should look for those variables.</p>
-</section><section id="second-mlr-model-example" class="level3"><h3 class="anchored" data-anchor-id="second-mlr-model-example">Second MLR model example</h3>
+<p>We pass into the <code>lm()</code> function our dependent variable followed by <code>~</code> then list two or more independent variables joined by <code>+</code>. Finally, after a comma, the <code>data = ...</code> argument names the data frame where R should look for those variables.</p>
+</section>
+<section id="second-mlr-model-example" class="level3">
+<h3 class="anchored" data-anchor-id="second-mlr-model-example">Second MLR model example</h3>
 <p>OK, let’s briefly introduce a second multiple linear regression model to interpret - this time focusing solely on its results rather than comparing it with a simple linear regression model.</p>
 <p>Let’s assume this time we are interested in how gender influences the number of hours someone works. Based on the literature we may decide that age and any health conditions are important variables to control for. Younger people are more likely to be students and in part-time work. We would also expect that hours worked would decrease as people approach and reach retirement age. Similarly, we may expect that people with health conditions may work less hours - which may not necessarily be due to their health, but also lack of reasonable adjustments from employers.</p>
 <p>To setup our second model then, we need to coerce the <code>anyhcond</code> variable which is binary Yes/No categorical variable for those with a physical or mental health condition or illness lasting or expected to last 12 months or more.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce to factor</span></span>
-<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>anyhcond <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">anyhcond</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coerce to factor</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>nilt <span class="ot">&lt;-</span> nilt <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anyhcond =</span> <span class="fu">as_factor</span>(anyhcond))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="interpreting-our-second-model-results" class="level3"><h3 class="anchored" data-anchor-id="interpreting-our-second-model-results">Interpreting our second model results</h3>
-<p>After coercing <code>anyhcond</code> to a factor, we can fit the model and use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to view the regression results -</p>
+</section>
+<section id="interpreting-our-second-model-results" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-our-second-model-results">Interpreting our second model results</h3>
+<p>After coercing <code>anyhcond</code> to a factor, we can fit the model and use <code>summary()</code> to view the regression results -</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># alternative model test</span></span>
-<span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">rhourswk</span> <span class="op">~</span> <span class="va">rsex</span> <span class="op">+</span> <span class="va">rage</span> <span class="op">+</span> <span class="va">anyhcond</span>, data <span class="op">=</span> <span class="va">nilt</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative model test</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(rhourswk <span class="sc">~</span> rsex <span class="sc">+</span> rage <span class="sc">+</span> anyhcond, <span class="at">data =</span> nilt)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -806,22 +743,29 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><code>anyhcondNo</code> is 2.47421 with SE = 1.90816, t = 1.297, p = 0.195. This is comparing respondents without a self-reported health condition to those with one (the reference). The coefficient estimate suggests about 2.47 more hours per week, holding age and gender constant. Here the estimate is modest relative to its standard error, which is why the t value is small and the p‑value above 0.05. At our 0.05 rule this is not statistically significant.</p>
 <p>Side-note, as with our <code>rsexFemale</code> coefficient the results here may also be surprising. For this variable, it may seem surprising based on the existing literature that this variable is not significant. There are different potential reasons for that. One could be that a single “any condition” yes/no lumps too many different health conditions together compared to if we had a variable that had more categories based on say self-reported level of impact any health condition has on daily life.</p>
 <p>Another explanation may be due to the variables we have chosen for the model. Notice the line “638 observations deleted due to missingness”. In other words, compared to our original full data set our model has 638 less observations. This is because the model excludes any observation with missing values for <em>any</em> of the included variables. Here we can see how even three values can have a large impact on the number of observations. We will return to exploring that though as the beginning of next before then turning to assumptions and model fit stats.</p>
-</section></section><section id="lab-activities" class="level2"><h2 class="anchored" data-anchor-id="lab-activities">Lab activities</h2>
+</section>
+</section>
+<section id="lab-activities" class="level2">
+<h2 class="anchored" data-anchor-id="lab-activities">Lab activities</h2>
 <p>OK, let’s setup another multiple linear regression model.</p>
-<p>Note, if you want treat the variables below as ‘suggested variables’ instead, you can use the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">NILT 2012 codebook</a> to find variables to build your own model.</p>
+<p>Note, if you want treat the variables below as ‘suggested variables’ and instead use the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">NILT 2012 codebook</a> to find variables to build your own model.</p>
 <div class="[.callout-important]">
 <p>Remember you might need to coerce some additional variables. You can do that on an ad hoc basis, or by adding code to coerce them to your <code>01_prep_nilt_2012.R</code> script. If doing the latter, remember to run the full script again and then run all the code chunks in this week’s R Markdown file.</p>
 </div>
 <ol type="1">
-<li>Print a table for the highest level of qualification <code>highqual</code> using the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function.</li>
-<li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
-<li>Fit a linear model using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to analyse the personal income <code>persinc2</code> using the number of hours worked a week <code>rhourswk</code>, the highest level of qualification <code>highqual</code>, and the age of the respondent <code>rage</code> as independent variables. Store the model in an object called <code>m3</code> and print the summary.</li>
+<li>Print a table for the highest level of qualification <code>highqual</code> using the <code>table()</code> function.</li>
+<li>Generate a scatter plot using <code>ggplot</code>. Within <code>aes()</code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code>geom_point()</code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code>geom_parallel_slopes()</code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
+<li>Fit a linear model using the <code>lm()</code> function to analyse the personal income <code>persinc2</code> using the number of hours worked a week <code>rhourswk</code>, the highest level of qualification <code>highqual</code>, and the age of the respondent <code>rage</code> as independent variables. Store the model in an object called <code>m3</code> and print the summary.</li>
 <li>Comment on the results of the model, including which of the variables is significant and consideration of the standard errors.</li>
 <li>Discuss your answers with your neighbour or tutor.</li>
 </ol>
 
 
-</section></section></main><!-- /main --><script>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
 (function () {
   function installShim() {
     const H = window.Headroom;
@@ -847,7 +791,9 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
     window.addEventListener("DOMContentLoaded", () => clearInterval(t), { once: true });
   }
 })();
-</script><script>
+</script>
+
+<script>
 (function () {
   function headerEl() { return document.querySelector("#quarto-header"); }
   function headroomInst() { const h = headerEl(); return h && h._headroom ? h._headroom : null; }
@@ -924,7 +870,8 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
     ? document.addEventListener("DOMContentLoaded", start)
     : start();
 })();
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1336,19 +1283,10 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./08-Lab8.html" class="pagination-link" aria-label="**Lab 8** Simple Linear Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Lab 8</strong> Simple Linear Regression</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./10-Lab10.html" class="pagination-link" aria-label="**Lab 10** Multiple Linear Regression (part 2)">
-        <span class="nav-page-text"><strong>Lab 10</strong> Multiple Linear Regression (part 2)</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
+  </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org">Quarto</a></p>
 </div>   
@@ -1360,6 +1298,8 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

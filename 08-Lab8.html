@@ -464,7 +464,12 @@ window.Quarto = {
 <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
   <li><a href="#was-this-a-good-guess" id="toc-was-this-a-good-guess" class="nav-link" data-scroll-target="#was-this-a-good-guess">Was this a good guess?</a></li>
   <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
-  <li><a href="#using-a-linear-model" id="toc-using-a-linear-model" class="nav-link" data-scroll-target="#using-a-linear-model">Using a Linear Model</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#key-this-and-expand---could-work-as-initial-return-to-example-from-last-week" id="toc-key-this-and-expand---could-work-as-initial-return-to-example-from-last-week" class="nav-link" data-scroll-target="#key-this-and-expand---could-work-as-initial-return-to-example-from-last-week">KEY THIS AND EXPAND - could work as initial return to example from last week</a>
+  <ul class="collapse">
+<li><a href="#using-a-linear-model" id="toc-using-a-linear-model" class="nav-link" data-scroll-target="#using-a-linear-model">Using a Linear Model</a></li>
   </ul>
 </li>
   <li><a href="#formal-specification" id="toc-formal-specification" class="nav-link" data-scroll-target="#formal-specification">Formal specification</a></li>
@@ -707,6 +712,7 @@ window.Quarto = {
 <p>Coming back once again to the question, is my line good enough?</p>
 <p>We could sum all these residuals as an overall measure to know how good our line is. From the previous plot, we see that some of the expected ages are higher than the actual values, whilst others are below. This produces negative and positive residuals. If we simply sum them, they would compensate each other and this would not tell us much about the overall magnitude of the difference.</p>
 <p>To overcome this problem, we square each residual - multiply the residual by itself. This will make all of our values positive - “-3 x -3 = 9” - making it possible to sum them all together.</p>
+</section></section><section id="key-this-and-expand---could-work-as-initial-return-to-example-from-last-week" class="level2"><h2 class="anchored" data-anchor-id="key-this-and-expand---could-work-as-initial-return-to-example-from-last-week">KEY THIS AND EXPAND - could work as initial return to example from last week</h2>
 <p>This is known as the <em>sum of squared residuals</em> (SSR) and we can use this as the criterion to measure how good our line is with respect to the overall trend of the points.</p>
 <p>For line 1, we can easily calculate the SSR as follows:</p>
 <div class="cell">
@@ -717,7 +723,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The sum of squared residuals for line 1 is 1,325.</p>
-</section><section id="using-a-linear-model" class="level3"><h3 class="anchored" data-anchor-id="using-a-linear-model">Using a Linear Model</h3>
+<section id="using-a-linear-model" class="level3"><h3 class="anchored" data-anchor-id="using-a-linear-model">Using a Linear Model</h3>
 <p>How does our line though compare to other potential lines we could have drawn to describe the trend? We can try different lines to find the combination of intercept and slope that produces the smallest error (SSR). How can we find the best line to describe the trend?</p>
 <p>To our luck, we can find the best values using a well established technique called <em>Ordinary Least Squares</em> (OLS). Ordinary Least Squares chooses the line that minimises the Sum of Squared Residuals (SSR). We do not need to know the details for now. The important thing is that this procedure guarantees to find a line that produces the smallest possible error (SSR).</p>
 <p>In <code>R</code>, it is very simple to fit a linear model and we do not need to go through each of the steps above <strong>manually</strong> nor to memorise all the steps.</p>
