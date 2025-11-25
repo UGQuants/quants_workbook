@@ -17,6 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -69,7 +104,8 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="style.css">
+}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/nav-toggle.css">
 </head>
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -387,376 +423,432 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#regression-assumptions-and-model-fit" id="toc-regression-assumptions-and-model-fit" class="nav-link active" data-scroll-target="#regression-assumptions-and-model-fit">Regression Assumptions and Model Fit</a></li>
+<li>
+<a href="#regression-assumptions-and-model-fit" id="toc-regression-assumptions-and-model-fit" class="nav-link active" data-scroll-target="#regression-assumptions-and-model-fit">Regression Assumptions and Model Fit</a>
+  <ul class="collapse">
+<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#small-bit-of-setup" id="toc-small-bit-of-setup" class="nav-link" data-scroll-target="#small-bit-of-setup">Small Bit of Setup</a></li>
+  <li><a href="#drop-in-observations" id="toc-drop-in-observations" class="nav-link" data-scroll-target="#drop-in-observations">Drop In Observations</a></li>
+  <li>
+<a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model Evaluation</a>
+  <ul class="collapse">
+<li><a href="#model-fit-statistics" id="toc-model-fit-statistics" class="nav-link" data-scroll-target="#model-fit-statistics">Model Fit Statistics</a></li>
+  <li><a href="#comparing-models" id="toc-comparing-models" class="nav-link" data-scroll-target="#comparing-models">Comparing Models</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  </ul>
+</li>
+  <li><a href="#lab-activities" id="toc-lab-activities" class="nav-link" data-scroll-target="#lab-activities">Lab activities</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="regression-assumptions-and-model-fit" class="level1"><h1>Regression Assumptions and Model Fit</h1>
-<div class="callout callout-style-simple callout-important callout-titled" title="Update In Progress">
+<!--
+
+- It would be good to have an example of multicollinearity! Can create a model with some independent variables that would expect to be correlated.
+- 
+
+Definite cover
+
+- [ ] Also need to return to explaining standard error when explaining residual standard error.
+
+-->
+<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Welcome back! This week we are continuing with multiple linear regression. Last week we ended on the mystery of why our model had fewer observations than in the full <code>nilt</code> data frame. We will start by exploring what contributed to the drop in observations, and how the example illustrates important things to be aware of when analysing data.</p>
+<p>After that, we will shift our focus to the model as a whole. This includes interpreting <strong>model fit statistics</strong>, which we first introduced when exploring simple linear regression, but will now expand upon in relation to multiple linear regression. We will also briefly cover the main <strong>assumptions</strong> that our model needs to satisfy.</p>
+<p>You will see in the recommended chapter from Fogarty for this week’s reading list that there is a vast diversity of checks you can do for whether assumptions are satisfied or violated. Do not worry, we do not expect you to go through all of those checks in the assessment. Similarly, all the possible ways to address any issues with assumptions not being satisfied goes beyond what is covered on this module - and you’ll see Fogarty says the same for his book. For the assignment, it is more important to recognise any implications and limitations for your interpretation rather than proposing the exact specific ways it could be addressed.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Overview">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Update In Progress
+<span class="screen-reader-only">Note</span>Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.</p>
+<p>By the end of this week’s lab, you will know how to:</p>
+<ul>
+<li>Explain why a regression model has fewer observations than the total number of observations in the data frame.</li>
+<li>Use model fit statistics to assess how well the regression model fits the data overall.</li>
+<li>Recognise the main assumptions of linear regression and how residuals can be used to check whether the normality assumption is satisfied.</li>
+</ul>
 </div>
 </div>
-<!-- lab 9 to do
-
-- [x] ggplot graph with 3 lines
-- [x] explanation of graph
-- [x] compare m1_simple and m1
-- [x] explain new model being setup
-- [x] interpretation of coefficeitns etc
-- [x] end re curious drop in observations, which we will return to next week...
-
--->
-<!--
-
-Will need an example of multicollinearity! Can create a model with some independent variables that would expect to be correlated.
-
-Also need to return to explaining standard error when explaining residual standard error.
-
-Potential model could introduce for this week.
-
-- Understand why the number of observations can change based on which variables you add, and implications for interpreting results.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# alternative model test
-m3 <- lm(rhourswk ~ rsex + shourswk + nkids + rage + tunionsa + work, data = nilt)
-summary(m3)
-```
-:::
-
-
-## Introduction
-
-In the last lab we mentioned that one of the advantages of linear regression is that we can include more than one independent (explanatory) variable to evaluate their relationship with the dependent variable. This technique is known as multivariate linear regression. In practice, few studies in quantitative social research rely only on simple linear models. This is because often in reality there is more than one variable associated to a social phenomenon. This is why it is important to familiarise yourself with the multivariate linear model.
-
-## Multivariate model
-
-The multivariate linear model is based on the same principles as the simple linear model. It is worth remembering that this model is appropriate only when we have a numeric (interval/ratio) dependent variable. As a rule-of-thumb, a variable can be treated as numeric when you have at least 7 ordered categories (Fogarty, 2019). As mentioned before, we can use any type of independent variables, such as ordinal, categorical and numeric. More than one and a combination of these can be analysed simultaneously.
-
-### Paralell slopes
-
-We will follow-up with the example we used before introducing the simple linear model to further illustrate the advantages of using more than one variable. To do so, please set your RStudio environment as follows:
-
-1. Go to your 'Quants lab group' in [RStudio Cloud](https://rstudio.cloud/);
-2. Open your own 'NILT2' project from your 'Quants lab group';
-3. Once in the project, create a new R Script file (a simple R Script, NOT an `.Rmd` file).
-4. Save the script document as 'multivariate_linear_model'.
-
-Reproduce the code below, by copying, pasting and running it from your new script.
-
-First, install the `moderndive`package. 
-
-
-::: {.cell}
-
-```{.r .cell-code}
-install.packages("moderndive")
-```
-:::
-
-
-Load the `tidyverse` and `moderndive` libraries (`tidyverse` was pre-installed for you before, you do not need to re-install it in this project) and read the `nilt_r_object.rds` file which is stored in the 'data' folder and contains the NILT survey.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-## Load the packages
-library(tidyverse)
-library(haven)
-library(moderndive)
-
-# Read the data from the .rds file
-nilt <- readRDS("data/nilt_r_object.rds")
-```
-:::
-
-
-Once again, create a minimal random sample for the following example using the code below:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# select a small random sample
-set.seed(3)
-# Filter where partner's age is not NA and take a random sample of 40
-nilt_sample <- filter(nilt, !is.na(spage)) %>% sample_n(40)
-# Select only respondent's age and spouse/partner's age
-nilt_sample <- select(nilt_sample, rage, spage, rsex)
-```
-:::
-
-
-As a follow-up, we will draw a scatter plot using `ggplot` specifying the age of the respondent `rage` on the X axis and the respondent's partner/spouse age `spage` on the Y axis. This time, we will add sex `rsex` as a third variable defining the `color` argument.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# plot
-ggplot(nilt_sample, aes(x = rage, y = spage, color = rsex)) +
-  geom_point(position = "jitter") +
-  labs(
-    title = "Respondent's age vs respondent’s spouse/partner age",
-    x = "Respondent's age", y = "Respondent’s spouse/partner age"
-  )
-```
-:::
-
-
-What do you observe in the plot above? ... 
-
-The first thing to note is that females and males go in the same direction. When the respondent's age increases the age of the partner increases as well. An interesting thing is that females tend to be located higher with respect to the Y axis compared to the male dots.
-
-Therefore, we can imagine that not only the age of the respondent is involved in the decision on how people choose their partner, but also the respondents' sex. We can draw two lines, one for male and the other for female respondents, instead of only a general one as we did in the previous lab. To do this we will use the `ggplot` function in combination with the `geom_parallel_slopes` function from the `moderndive` package:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# plot
-ggplot(nilt_sample, aes(x = rage, y = spage, color = rsex)) +
-  geom_point(position = "jitter") +
-  geom_parallel_slopes(se = FALSE) +
-  labs(
-    title = "Respondent's age vs respondent’s spouse/partner age",
-    x = "Respondent's age", y = "Respondent’s spouse/partner age"
-  )
-```
-:::
-
-
-Well, our suspicion that the points representing female respondents were generally above the male ones is turning out to be true. What we have in the plot above are the optimal parallel lines that describe our points the best for each group. The interpretation of our visualizations so far is: 
-
-1. both males and females partner's age is positively associated with respondent's age. 
-2. This association is different for males and females. Overall, females choose older partners compared to males.
-
-But what is the magnitude of these relationships? We can easily extend the simple linear model by adding `rsex` as a second explanatory variable as follows:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-m1 <- lm(spage ~ rage + rsex, nilt_sample)
-m1
-```
-:::
-
-
-From the output, we see that there is one intercept $\beta_0$, one slope coefficient $\beta_1$ for the numeric variable `rage`, and another coefficient $\beta_2$ for the categorical variable. If you observe closer, the output appended only one of the two categories for `rsex`. This is because categorical variables take one of the categories as the reference. The variable that is not shown is the reference, 'Male', in this case.
-
-Being more precise with our previous interpretation, we can say there is a positive relationship between both males and female participants' age and their partner's age by a factor of 0.91 for every additional year in age. Also, female respondent's partners are expected to be 4.9 years older compared to male respondents.
-
-## KEEP THIS BUT EXAMPLE - COULD USE IT NEAR START
-
-Before we move on, it is worth mentioning that the criterion to fit the coefficient is the same as in the linear model. This procedure guarantees to produce the smallest possible sum of squared residuals (SSR) using the ordinary least square method (OLS). We can check if the SSR was reduced by adding this extra variable by computing the SSR as we did before:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-sum(residuals(m1)^2)
-```
-:::
-
-
-Yes, it improved! Before, it was about 1,175, as we saw in the last lab workbook.
-
-### Multivariate model specification
-
-After the introduction of the simple linear model, the formal definition of the multivariate linear model should not look that scary, right? In essence, this equation tells us how $\hat{y}$ is described/explained by other variables.
-
-$$
-\begin{aligned}
-\hat{y} = \hat{\beta_0} + \hat{\beta_1}*x_1 + \hat{\beta_2}*x_2 + ... +  \hat{\epsilon}, && \epsilon ~ N(0, \sigma)  
-\end{aligned}
-$$
-
-We can break down the equation above in smaller pieces as follows: 
-
-* $\hat{y}$ is the dependent variable, which is explained by
-* $\hat{\beta_0}$ the intercept, plus
-* $\hat{\beta_1}$ the slope coefficient for the first independent variable times the value of $x_1$ variable 1, plus
-* $\hat{\beta_2}$ the slope coefficient for the second independent variable times the value of $x_2$, plus
-* $...$ any number of independent variables, plus
-* $\hat{\epsilon}$ the error/residual term.
-* $\epsilon ~ N(0, \sigma)$ this bit tell us that the residuals are normally distributed.
-
-## R syntax for the multivariate linear model
-
-(You don't need to reproduce the code of this section in your script).
-
-The general syntax in R is as follows:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-lm(formula, data)
-```
-:::
-
-
-Where the formula is given by a dependent variable which is followed by `~` one or more independent variables joined by a plus sign `+`:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-dependent_variable ~ independent_variable1 + independent_variable2 ...
-```
-:::
-
-
-In the previous section, we used a small random sample of 40 people only. Now, let's fit a multivariate linear model using all the observations in the `nilt` dataset. In addition to the respondent age `rage` and `rsex`, we might be interested to know whether the type of place where they live (e.g. big city, village, farm/country, etc.) `placeliv` plays a role in how people choose their partner.
-
-First, we need to coerce the `placeliv` variable as factor. And we will have a quick look at a table of this variable to have an idea of how respondents are distributed and see how the factor levels are ordered.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# Coerce to factor
-nilt <- nilt %>%
-  mutate(placeliv = as_factor(placeliv))
-# Create table
-table(nilt$placeliv)
-```
-:::
-
-
-We see that most of the respondents live in 'a small city or town'. Also, note that the category 'Dont know' contains 0 observations. Let's use the function `droplevels()` to remove the unused category in our variables. This also means that the first level in this variable will be 'a big city'. Then, we will fit the model and store it in an object called `m2`.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# remove unused levels
-nilt <- droplevels(nilt)
-# boxplot
-m2 <- lm(spage ~ rage + rsex + placeliv, nilt)
-m2
-```
-:::
-
-
-From the result:
-
-1. We confirm the positive relationship between the respondent's age and their partner by a factor of 0.94. 
-2. The difference in years by sex now is smaller. We see that the age of a female respondent's partner is expected to be 3.8 years older compared to males.
-3. As before, we see that the result appended the name of the categories to the `placeliv` variables. This is because it is comparing each of the categories with the category of reference, in this case, 'a big city'. The interpretation must be in comparative terms. For instance, the age of the respondent's partner in 'the suburbs or outskirts of a big city' is expected to be 0.02 years older than the partner of someone living in a 'a big city'. Overall, the coefficients do not differ much as a function of the type of place of where they live. The largest expected difference is for people living in 'a small city or town', where partner's age is expected to be -0.7 years old compared to those living in 'a big city'.
-
-In general, our model can be expressed as:
-
-$$ \hat{spage}_i = \hat{\beta_0} + \hat{\beta_1}*rage_i + \hat{\beta_2}*rsex_i + \hat{\beta_3} *  placeliv_i $$
-So, if we wanted to know the expected age of the partner of a 40 years old female who lives in a small city or town, we can use and apply the formula above:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-1.34 + 0.94 * 40 + 3.80 * 1 + -0.7 * 1
-```
-:::
-
-
-The expected age of a 40 year old female's partner is, therefore, 41.7 years old.
-
-### Model evaluation
-
-We can obtain more details from our model using the `summary()` function.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-summary(m2)
-```
-:::
-
-
-From the summary, we note that the 1st and 3rd quartile of residuals are symmetric (-2.18 to 2.21). This means that 50% of the estimated/predicted ages are approximately $\pm$ 2.2 years away from the observed partner's age. Though, the minimum and the maximum residuals are not symmetric, this could be due to some extreme observed values. We can have a look to a histogram of the residuals to have a clearer idea.
-
-
-::: {.cell}
-
-```{.r .cell-code}
-hist(m2$residuals)
-```
-:::
-
-
-Overall they seem normally distributed with the exception of the negative value to the left.
-
-Secondly, from the summary we can see that respondent age `rage` and respondent sex `rsex` have a significant association with the dependent variable (indicated by the p-value < 0.001). You can confirm this in the fourth column of the coefficients ('Pr(>|t|) '). Also, the std. error for the coefficients of this variables is small. However, the std. error for the categories of the place of where they live `placeliv` is large when compared to the estimated coefficients in the first column. In fact, when we look at the fourth column we see that the p-values are much larger than 0.05, which means that there is not a significant relationship between any of the type of places where they live and the partner's respondent age. What this means is that the place where people live does not play a role in the age of the respondent's partner.
-
-Third, this time we see that the multiple R-squared is slightly different from the adjusted R-squared. This is because the adjusted considers the number of independent variables included in the model. This is why the adjusted r-squared is preferred for multivariate models. This shows our model explains 91.34% of the variance of the respondent's partner age.
-
-Lastly, it is important to note that even though we use the full `nilt` data set, 614 of the observations were not considered in the analysis. This is because we do not have information for these respondents. Probably some do not have a partner or preferred not to say their sex, for example. 
-
-## Assumptions
-
-You need to know that these estimates are backed by well-established patterns studied in probability and statistics. Therefore, the linear model, as many other statistical techniques, provides reliable estimates if the data follows certain characteristics. These are known as assumptions. We will not go into detail with these. However, it is important that you have them in mind when you evaluate your results and also evaluate others.
-
-There are many assumption for the linear regression model, but we will introduce four of the most commonly assessed (Boston University School of Public Health, 2016):
-
-* Linearity: The relationship between X and the mean of Y is linear.
-* Homoscedasticity: The variance of residual is the same for any value of X.
-* Independence: Observations are independent of each other.
-* Normality: For any fixed value of X, Y is normally distributed.
-
-A first step to identify potential violations of the points above is to assess the distribution of the residuals by looking to the quartiles, mean and histogram. There are many other specific tests and techniques that can help us to know whether we met the assumptions and more importantly that can help to correct them.
-
-For the moment, we will leave it here. The important thing is to be aware of the existence of these potential problems and to be transparent with the results you produce. For now, I would suggest you to acknowledge the limitations of your assumptions checks.
-
-## Lab activities
-
-Set an R Markdown document in your 'NILT2' project as following:
-
-1. Create a new `Rmd` file, type 'Multivariate linear model' in the 'Title' section and your name in the 'Author' box. Leave the 'Default Output Format' as `HTML`.
-2. Save the Rmd document as 'Multivariate_lab'.
-3. Erase all the contents in the Rmd default example with the exception of the first bit (that contains the YAML) and the first R chunk (which contains the default chunk options), that is all from line 12 and on.
-
-Using the `nilt` object do the following by inserting a new chunk for each bullet points below (remember to write the comments and observations for the results as simple text outside the chunks):
-
-1. Load the packages, and  the data that you will need in your file using the code below:
-
-
-::: {.cell}
-
-```{.r .cell-code}
-## Load the packages
-library(tidyverse)
-library(moderndive)
-# Read the data from the .rds file
-nilt <- readRDS("data/nilt_r_object.rds")
-```
-:::
-
-
-2. Print a table for the highest level of qualification `highqual` using the `table()` function.
-3. Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
-4. Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary. 
-5. Comment on the results of the model by mentioning which of the variables is significant and their respective p-value, the adjusted r-squared of the model, and the number of observations used to fit the model.
-6. Plot a histogram of the residuals for model `m4`. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?
-7. Discuss your answers with your neighbour or tutor.
-
--->
-
-
-</section></main><!-- /main --><script>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Warning - typo mine-field">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Warning - typo mine-field
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alasdair: The content for the lab workbook this week is almost entirely new. In previous years we only had 10 rather than 11 labs. Unfortunately, due to this - especially given time available to proof read - the full extent of my dyslexia may be more apparent than usual. Apologies for any glaring spelling mistakes, substituted words, and diabolical use of grammar.</p>
+</div>
+</div>
+</section><section id="small-bit-of-setup" class="level2"><h2 class="anchored" data-anchor-id="small-bit-of-setup">Small Bit of Setup</h2>
+<p>We will continue using our same ‘Lab-9-10-Multiple-Linear-Regression.Rmd’ file we created last week. If you missed <a href="09-Lab9-qmd">Lab 9</a>, use the time in the lab today to catch up with it as what we are covering today is ‘part 2’ on the same topic.</p>
+<p>The only setup then for this week is installing a package:</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Run in Console</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"lindia"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Lindia extends ggplot2 to add a diverse variety of plots that can be used in linear model diagnostics. As it is a smaller package, the usual auto-generated links we use in the lab workbook are not working for it. However, the documentation is available on <a href="https://www.rdocumentation.org/packages/lindia/versions/0.10">R Documentation</a>.</p>
+<p>You might also want to take a quick skim of the <a href="https://github.com/yeukyul/lindia">GitHub page</a> to see all it is capable of. Do not worry though we are not expecting you to use all of these. Indeed, there would not be room either to include all of these within the assessment. In terms of the assessment a key model diagnostic would be a histogram of residuals. Due to that, within the space and time available in the lab workbook, we will cover that specific diagnostic. Within the key Fogarty chapter reading for this week you will find explanations and examples of the rest as well as other packages and functions can use for model diagnostics.</p>
+<p>Back to our setup then. We also want to add the following to our <code>preamble codechunk</code> at the top of our RMarkdown file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yeukyul/lindia">lindia</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="drop-in-observations" class="level2"><h2 class="anchored" data-anchor-id="drop-in-observations">Drop In Observations</h2>
+<p>Let’s pick up then where we left off last week. Within Lab 9 we ended on a small puzzle. Our multiple regression model despite only containing three independent variables (age, gender, any self-reported health condition) and one dependent variable (number of hours work per week) had “638 observations deleted due to missingness”.</p>
+<p>As a wee reminder, we had started with the question of whether gender influences the number of hours worked per week. Based on our imaginary reading of the literature we had also decided to include age and any self-reported health condition as control variables.</p>
+<p>This gave us the following model and results:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">rhourswk</span> <span class="op">~</span> <span class="va">rsex</span> <span class="op">+</span> <span class="va">rage</span> <span class="op">+</span> <span class="va">anyhcond</span>, data <span class="op">=</span> <span class="va">nilt</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rhourswk ~ rsex + rage + anyhcond, data = nilt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-27.812  -5.346  -0.923   6.972  58.848 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  39.82244    2.60505  15.287   &lt;2e-16 ***
+rsexFemale  -11.05924    0.92931 -11.901   &lt;2e-16 ***
+rage         -0.03270    0.03827  -0.854    0.393    
+anyhcondNo    2.47421    1.90816   1.297    0.195    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.02 on 562 degrees of freedom
+  (638 observations deleted due to missingness)
+Multiple R-squared:  0.205, Adjusted R-squared:  0.2007 
+F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>This drop in observations is common with regression modelling. In calculating the results R does ‘listwise deletion’, dropping all rows for the variables that contain missing values. This can happen for perfectly valid reasons, and if we had read through the documentation for our selected variables and explored the data before building our model large drops, even as large as we have here, may not have come as a surprise.</p>
+<p>However, when we are surprised by the drop in observations, how can we start checking the reasons behind it? The most immediate thing to check is the number of missing values for the variables in the model -</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">rhourswk</span>, <span class="va">rsex</span>, <span class="va">rage</span>, <span class="va">anyhcond</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    rhourswk          rsex          rage                       anyhcond  
+ Min.   :  4.00   Male  :537   Min.   :18.00   Not answered/refused:  0  
+ 1st Qu.: 25.25   Female:667   1st Qu.:35.00   Yes                 :289  
+ Median : 37.00                Median :48.00   No                  :909  
+ Mean   : 35.09                Mean   :49.62   NA's                :  6  
+ 3rd Qu.: 40.00                3rd Qu.:64.00                             
+ Max.   :100.00                Max.   :97.00                             
+ NA's   :638                   NA's   :3                                 </code></pre>
+</div>
+</div>
+<p>We can see that <code>rhourswk</code> has 638 missing values. Why is this the case? We can find the answer on page 9 in the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">NILT Teaching Resources documentation</a> and page 40 of the <a href="https://www.ark.ac.uk/nilt/2012/main12.pdf">NILT Main Questionnaire</a>.</p>
+<p>The question used to collect data for the <code>rhourswk</code> variable was “How many hours per week do you normally work <strong>in your job</strong>?” and was only asked if the participant said they were in employment in response to an earlier question. In other words, everyone who was not in employment will have an NA value for <code>rhourswk</code>.</p>
+<p>As highlighted last week, it may have seemed odd based on the literature that whether someone had a self-identified health condition or not was not significantly correlated with number of hours worked per week. Now that we know <code>rhourswk</code> was the main contributor to the drop in observations, we can also take a quick look at what impact this had on our <code>anyhcond</code> variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a new variable for whether NA for rhourswk</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    rhourswk_missing <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">rhourswk</span><span class="op">)</span>,</span>
+<span>      <span class="st">"Yes"</span>,</span>
+<span>      <span class="st">"No"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Table showing whether NA for rhourswk grouped by any health condition</span></span>
+<span><span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="st">"rhourswk_missing"</span>, group <span class="op">=</span> <span class="st">"anyhcond"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Summary Statistics</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+anyhcond
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Yes
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+No
+</div></th>
+</tr>
+<tr class="even">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Percent</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rhourswk_missing</td>
+<td style="text-align: left;">289</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">909</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">... No</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">12%</td>
+<td style="text-align: left;">530</td>
+<td style="text-align: left;">58%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">... Yes</td>
+<td style="text-align: left;">253</td>
+<td style="text-align: left;">88%</td>
+<td style="text-align: left;">379</td>
+<td style="text-align: left;">42%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>What we can see is of those with a health condition, 88% were dropped from our model as their value for <code>rhourswk</code> was NA (missing data), with only 36 respondents with a health condition actually included in the model.</p>
+<p>How would we address such issues in our analysis? A question that may have sprung to mind is - Could we not just modify the missing values for <code>rhourswk</code> to ‘0’? That may initially seem sensible given we are interested in number of hours worked not whether someone is in work. However, whilst that may seem intuitive, depending on the data - and as will see especially here - it can often be a mistake.</p>
+<p>(You’ll also notice from page 9 of the <a href="https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf">NILT Teaching Resources</a> that <code>rhourswk</code> has two NA values, “-9 Non Applicable” and “-999 Not answered/refused”. In practice, you would want to only modify “-9 Non Applicable” - the value used if the question was not asked - but as we are demonstrating here why modifying NA to 0 is a bad idea for variables like <code>rhourswk</code> we will put that to the side for the moment.)</p>
+<p>From a sneaky wee test I ran of the regression results after changing NA to 0 in <code>rhourswk</code>, I can confirm that making such a change does produce a model where all the coefficients are significant. And yet, that only adds to reasons for suspecting there is an issue in making such a change - and a good example of why not to make simplistic good/bad assessments of models based on whether the results are significant or not.</p>
+<p>Whether your results are significant is entirely separate from whether your model is good/bad. It is always possible for even research following best practice to have results that are not significant, whereas it is very easy through bad practice - whether intentional or not - to get apparently significant results.</p>
+<p>Throughout all stages of the research, researchers need to maintain awareness of how any actions they perform on the data impacts and shapes the results, and what implications that has for the analysis and findings.</p>
+<p>If we start thinking through what happens if we modify the data the problem starts to become clear: We had 638 observations removed from our model, more than the number remaining within it. What are we then effectively doing by including those not in employment as ‘0’ within <code>rhourswk</code>? …</p>
+<p>We are heavily skewing our data - to a comical level. Recall how in Labs 4 and 6 that we emphasised the importance of checking the distribution of our data. Let’s see how changing NA to 0 would impact the distribution of <code>rhourswk</code>.</p>
+<p>Before:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Histogram of our dependent variable</span></span>
+<span><span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">rhourswk</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>After:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coerce missing values to 0</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    rhourswk2 <span class="op">=</span> <span class="fu">replace_na</span><span class="op">(</span><span class="va">rhourswk</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="co"># Histogram of our dependent variable</span></span>
+<span><span class="va">nilt</span> <span class="op">|&gt;</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">rhourswk2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We have effectively turned our dependent numeric variable into a messy categorical + numeric variable - “is the respondent in work or not” <strong>and</strong> “if so, how many hours per week are they working”. As a result, we do not have a variable that is suitable to be a dependent variable for linear regression. It does not matter whether our regression results are significant then if we use data not suitable for linear regression.</p>
+<p>Here, I deliberately picked variables where I suspected the choice of one variable would have a large effect on another. In practice though this can happen in much more subtle ways and the impact easier to miss if you are not being careful in the decisions you are making. As covered in the lecture on Critical Quants, there are more insidious ways that modelling decisions may look innocuous enough, but have profound and misleading impacts on the results and their interpretation.</p>
+<p>Well, could we not then add in a variable for work? Again that may seem the intuitive and obvious solution, and yet the issue actually remains. As the drop in observations is due to the ‘listwise deletion’, it does not matter what variables we add. Because <code>rhourswk</code>’s NA values will always result in our model only including respondents who are in work, if we added a variable for work status or similar it would not add back in respondents.</p>
+<p>How then would we handle this in a more rigorous way? There are more advanced techniques not covered on the course that could potentially be used, though considerations would still need to made of their suitability. To give the simple ‘high-level’ overview though of one set of options, some of these additional techniques would involve a two-step process of first looking at whether someone was in work or not, and then looking at the number of hours worked.</p>
+<p>If sticking with multiple linear regression though, this would not be a problem if our research was concerned with how gender influences number of hours worked for those in employment. Importantly, it would not be a problem if we made clear in our reporting that the model only includes those in employment and a limitation of our model is our findings cannot speak to how the variables are associated with whether someone is in employment or not. It only becomes a problem if we had built this model on the false assumption that it included those who were not in employment as well - especially if our interpretation continued in making that assumption.</p>
+<p>As emphasised across the module, there is no perfect data and stats. There are always various forms of compromises to be made and limitations for the analysis. Limitations are not a sign of bad research, instead it would be poor practice not to consider any limitations. The importance is in knowing what your data actually represents and measures and being clear and transparent about these alongside the decisions you made, and taking them into consideration within your interpretation and reporting of the findings.</p>
+<p>Also, whilst I set this up as a ‘mystery’ this is also something that in practice you would want to identify before building your model. Sorry to sound like a broken record: It is a reason why it is crucial to read through the dataset documentation and explore the data rather than make assumptions about it. Importantly, in practice, changing your research question <em>after</em> running your results and realising the mistake would be a subtle form of <a href="https://en.wikipedia.org/wiki/HARKing">HARKing</a> that undermines the analysis and findings.</p>
+</section><section id="model-evaluation" class="level2"><h2 class="anchored" data-anchor-id="model-evaluation">Model Evaluation</h2>
+<section id="model-fit-statistics" class="level3"><h3 class="anchored" data-anchor-id="model-fit-statistics">Model Fit Statistics</h3>
+<p>Now that we understand why we saw a drop in observations in our model, let’s return to the rest of the statistics we can see in the output from the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</p>
+<p>Let’s quickly rerun the code to see the output again:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rhourswk ~ rsex + rage + anyhcond, data = nilt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-27.812  -5.346  -0.923   6.972  58.848 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  39.82244    2.60505  15.287   &lt;2e-16 ***
+rsexFemale  -11.05924    0.92931 -11.901   &lt;2e-16 ***
+rage         -0.03270    0.03827  -0.854    0.393    
+anyhcondNo    2.47421    1.90816   1.297    0.195    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.02 on 562 degrees of freedom
+  (638 observations deleted due to missingness)
+Multiple R-squared:  0.205, Adjusted R-squared:  0.2007 
+F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Our key remaining statistics are all within what are called “model fit statistics”. These are residual standard error, R2, Adjusted R2, and the F-statistic.</p>
+<p>Residual standard error is a way to estimate how much our model’s predictions are, on average, from the actual observed values of our dependent variable. Recall we ‘fit’ a regression model, where our function used finds the intercept and coefficents that result in the lowest possible residuals. We will never have a residual standard error of 0, especially given the complexity of social phenomena. With all the factors that influence social phenomena, we would not expect any model to explain the observations without any error. On its own it is not all that useful, but we will come back to its value in comparing models.</p>
+<p>In terms of the commonly reported and more informative statistics for model fit, especially when we are interpeting a single model, R2 and Adjusted R2 are key ones to interpet. R2 takes values between 0 and 1. An R2 of 0 would mean our model does not explain any of the variation - the differences in our dependent variable. An R2 of 1 would mean our model perfectly fits our sample, which again we will never see in practice.</p>
+<p>Of crucial importance is what is considered ‘good’ model fit based on R2 varies by topic of research. In fields where researchers are able to control variables and there are fewer factors that influence the dependent variable, it would more often be the case that the expectation would be for a model to explain a higher proportion of the variation. Within the social sciences whilst we include control variables in our models, there remains a lot more outwith our control and diversity of factors involved. Therefore what would be considered a low R2 within a field like chemistry, could be considered a high level of variation for a model to predict within the social sciences.</p>
+<p>There are no hard and fast rules for what is considered a good amount of variation for the model to explain, and even within the social sciences this can vary by research topic. It is always good to check the literature instead. The crucial thing is to avoid ‘pop science’ that makes broad-brush claims about ‘good’ model fit. Often such claims are based on results more common in the natural sciences, and which are also inaccurate broad-brush claims to use across all fields within the natural sciences. Instead, we always interpret our statistics within the context of the field of study and topic of research.</p>
+<p>What we can see in our results is our R2 is 0.205, which we can also phrase as taken together the variables in our model explain around 20.5% of the variation in the number of hours worked per week amongst our sample. As we will come onto in a sec, with multiple linear regression we would use adjusted R2 when reporting the % of variation explained by our model. Further care also needs to be taken in interpretation. Our R2 indicates the variation our model statistically accounts for; our model can describe and account for 20.5% of the variation but that does not mean 20.5% of the number of hours worked per week amongst our sample is caused by our independent variables. To repeat the usual trope, association is not causation. As we saw when moving from simple to multiple regression, our results could be impacted by missing variable bias. This is why we use the language of ‘explains’.</p>
+<p>A key issue with using R2 to report the variation explained with multiple linear regression is that as we add more variables to our model it can only ever increase. Even where an additional variable to our model is not associated with our dependent variable at all, R2 will stay roughly the same or increase slightly.</p>
+<p>R2 on its own then can be misleading, and this is why it is always paired with adjusted R2. As can tell from the name, adjusted R2 does some further calculation based on our intial R2. It is used to address the problem of R2 increasing as we add more variables by penalising the model for including more variables. In other words, it is a measure of the proportion of variation in the dependent variable explained by the model, after adjusting for the number of independent variables and the sample size.</p>
+<p>Adjusted R2 is always less than or equal to R2 because it builds in a penalty for including more predictors relative to the sample size. When we add predictors that do not substantially improve how well the model fits the data, the adjusted R2 for the larger model can fall, even though R2 stays the same or increases slightly. For this reason, adjusted R2 is often highlighted when we discuss how much variation the model explains, especially when comparing models with different numbers of predictors. In practice, we usually report both R2 and adjusted R2. We pay particular attention to how adjusted R2 changes as we add or remove predictors. If adjusted R2 increases, the additional variables are improving the model’s ability to account for variation. If it instead stays the same or decreases, the extra variables add complexity without much gain in explanatory power.</p>
+<p>As we can see in the results for our model our adjusted R2 is close to our R2; 0.2007 and 0.205 respectively. That would suggest our variables included are not adding complexity without improving explanatory power. Though as we only have a few variables here it is also not that surprising, given that adjusted R2 penalises for the number of variables added that do not improve the model fit.</p>
+<p>As an important side-note, we also would not based on an initial model keep adding and removing variables trying to find a higher R2 and adjusted R2 close in value alongside our coefficients being statistically significant. That would be a prime example of ‘p-hacking’, where rather than testing a hypothesis we are brute-forcing our data. With any sufficiently large dataset if we were to try every possible combination of variables we would expect to find ‘significant’ values, but we would not know whether this is due to random chance or not. Where we are comparing models, we would still want to build these based on the literature - such as competing theories and explanations - and not by adding and removing variables until we find statistics we like.</p>
+<p>That leaves us with our F-statistic. This stat is a way of testing whether our model as a whole provides a better fit for the data than a model that had no explanatory power at all. In other words, it is asking the question - do the independent variables included in the model help explain variation in the dependent variable? While individual coefficient t-tests examine each variable separately, the F-statistic considers them all together. In gives us then a test of whether our regression model is statistically useful overall.</p>
+<p>For our model we have an F-statistic of 48.3 with statistically significant p-value. This means it is unlikely that the variation our independent variables explain is not merely due to chance. We can then reject the null hypothesis - that gender is not associated with the number of hours worked. However, the usual cautions still apply. We do not interpret the F-statistic on its own. It tells us whether our model as a whole is statistically significant, we still need to interpet our individual coefficients to see which variables matter and how. Importantly, in contrast to our model here, it can be entirely possible to have a F-statistic with a significant p-value, but our coefficient for gender being incredibly small and/or not statistically significant.</p>
+</section><section id="comparing-models" class="level3"><h3 class="anchored" data-anchor-id="comparing-models">Comparing Models</h3>
+<p>OK, let’s do a <em>very</em> quick comparison of two different models. Again whilst we will pick another couple of variables, we will do so on assumption that we could justify these in relation to the literature.</p>
+<p>Say from our reading of the literature we also decide that work status and number of kids are also important to control for. We may then select the variables <code>work</code> - which is a computed value from multiple questions in the NILT survey with values of employee, foreperson or supervisor, self-employed, and manager - and <code>nkids</code> - the number of children aged under 18 years living in the household.</p>
+<p>First we will need to coerce the variables -</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># alternative model test</span></span>
+<span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>work <span class="op">=</span> <span class="fu">as_factor</span><span class="op">(</span><span class="va">work</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">nilt</span><span class="op">$</span><span class="va">spage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">nilt</span><span class="op">$</span><span class="va">spage</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then we can fit our model and use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to view the regression results:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">rhourswk</span> <span class="op">~</span> <span class="va">rsex</span> <span class="op">+</span> <span class="va">rage</span> <span class="op">+</span> <span class="va">anyhcond</span> <span class="op">+</span> <span class="va">nkids</span> <span class="op">+</span> <span class="va">work</span>, data <span class="op">=</span> <span class="va">nilt</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rhourswk ~ rsex + rage + anyhcond + nkids + work, 
+    data = nilt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-27.430  -5.922  -0.113   5.971  56.474 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                  39.93414    2.75752  14.482  &lt; 2e-16 ***
+rsexFemale                   -9.95454    1.00312  -9.924  &lt; 2e-16 ***
+rage                         -0.11569    0.04121  -2.807 0.005190 ** 
+anyhcondNo                    3.56892    1.93087   1.848 0.065129 .  
+nkids                        -0.50914    0.47625  -1.069 0.285541    
+workForeperson or supervisor  4.13297    1.18399   3.491 0.000523 ***
+workSelf-employed             5.48390    1.50409   3.646 0.000294 ***
+workManager                   7.09491    1.77025   4.008 7.04e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 10.75 on 512 degrees of freedom
+  (684 observations deleted due to missingness)
+Multiple R-squared:  0.252, Adjusted R-squared:  0.2418 
+F-statistic: 24.65 on 7 and 512 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>What can we see comparing the models? Our coefficient for women has decreased slightly, but remains statistically significant. Within the context of our overall model, it would suggest there was some ‘hidden variable bias’ in our first model with fewer variables. Age is also now significant given we are controlling for other variables that explain variation in the data. Whether a respondent has a health condition is still not statistically significant - again likely due to our relatively small sample of those reporting a health condition and in employment. The number of kids is also not significant, which may seem surprising at first. Again though as it is a measure of number of children <strong>under 18</strong> may be a reason compared to if we had a variable such as number of children <strong>under 5</strong>.</p>
+<p>Our residual standard error is lower, 10.75 on 512 degrees of freedom compared to 11.02 on 562 degrees of freedom. Though to continue impersonating a broken record, we should not interpret that on its own. Residual standard error - as with R2, which is calculated using the residual standard error - will stay the same or reduce in value. Looking then at our R2 and adjusted R2, our second model is 25.2% and 24.18% respectively, whereas our first model was 20.5% and 20.07% respectively. We can say then that our second model fits teh data better in terms of variance explained.</p>
+<p>Although our F-statistic is ‘lower’ this does not mean it is ‘worse’ than our first model. The F-statistic depends on how many independent variables there are and the sample size. So, it is not surprising to see it change as we add more independent variables, which may also cause a further drop in the number of observations. Instead, we look at whether it is statistically significant and interpret it in context with the rest of the results, such as the coefficents and whether they are statistically significant and our R2 and adjusted R2. Overall then, we can see how the inclusion of more variables has improved the fit of our model, and likely reduced some hidden variable bias in the first model.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>We have only done this <em>very</em> quick and rough comparison of another regression model to help illustrate and explain the model fit statistics. Whether and when to compare regression models would depend on your overall research question and research design. Importantly, you are not expected to make a comparison regression model in the assignment. All you need to do for the assignment is interpret the regression results in the model provided in the template.</p>
+</div>
+</div>
+</div>
+</section><section id="assumptions" class="level3"><h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<p>Before we move to the assumptions themselves, a wee reminder that this lab workbook aims to be an accessible introduction to key concepts. Due to space and time we are unable to cover everything, nor go into full detail of the things that we do cover. It is important to also go through the essential reading. For multiple linear regression, that is chapters 11 - Linear Regression and Model Building - and 12 - OLS Assumptions and Diagnostic Testing - in Fogarty’s Quantitative Social Science Data with R. Finally, just to repeat, whilst there are various diagnostic tests, we are not expecting you go use all of these in the assignment - especially as there isn’t the word count to interpret them.</p>
+<p>OK, let’s turn to assumptions then. Like all statistical models, multiple linear regression is built on a set of assumptions. As seen with our example of making the poor decision to manipulate the missing values in <code>rhourswk</code>, that resulted in a heavily skewed distribution of our dependent variable, it does not matter what our regression results are if the assumptions are not satisfied. In other words, the reason the assumptions are important is because our results can be misleading if we do not consider whether the assumptions for linear regression are satisfied.</p>
+<p>There are many assumption for the linear regression model, but there are four that are commmonly assessed (Boston University School of Public Health, 2016):</p>
+<p>Linearity: The relationship between X and the mean of Y is linear.</p>
+<p>Homoscedasticity: The variance of residual is the same for any value of X.</p>
+<p>Independence: Observations are independent of each other.</p>
+<p>Normality: For any fixed value of X, Y is normally distributed.</p>
+<p>A first step to identify potential violations of the points above is to assess the distribution of the residuals by looking to the quartiles - which can find in the output of <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> - and a histogram.</p>
+<p>We could use the base R <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function, but I managed to accidentally stumble upon a limitation of using it here - at least without providing any further arguments within the function.</p>
+<p>Here is our histogram using <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">m2</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, if we produce a histogram using <code><a href="https://rdrr.io/pkg/lindia/man/gg_reshist.html">gg_reshist()</a></code> from the <code>lindia</code> package:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lindia/man/gg_reshist.html">gg_reshist</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is an important example of where need to take care in choice of visualisations. Both of these are histograms from the same data. Whilst the Q-Q plot - which we’ll cover below - would still have help more clearly show the issues, our initial histogram may have given a misleading impression of the distribution of our residuals.</p>
+<p>The difference between the two visualisations is the bin sizes, with the base R <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> having bins of 10 (1-10, 11-20, and so on) and the <code>gg_reshit()</code> using around 3. There are pros and cons to larger and small bin sizes, and there is no fixed ‘good’ size to use. The smaller your bin sizes the more you may notice spikes between values, that would not necessarily mean there are any issues. No residuals are ever perfectly normally distributed. However, what we can see with our residuals here is our distribution is skewed and there are some quite noticeable unevenness in the distribution. The assumption of normality then is not satisfied.</p>
+<p>(The eagle-eyed may have noticed the frequency/counts are different too. This is also a result of the bin sizes. Because more values are being grouped together in the base R, each bin has a higher count. This isn’t necessarily a problem, and is expected when grouping values.)</p>
+<p>(As a further aside, you may have also noticed how the <code>lindia</code> package in providing functions for additional ggplots also continues in the tidyverse tradition. Notice how with <code>gg_rehist()</code> we did not need to specify the <code>$residuals</code>. The function is to plot a histogram of residuals, so it knows to use the residuals for whichever model we pass in. The plot is similarly setup with sensible defaults for the title and axis labels.)</p>
+<p>What then if we compare the residuals from our first model - that had three independent variables - with our second model - where we added in work status and number of kids -</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lindia/man/gg_reshist.html">gg_reshist</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here there is a a more normal distribution to the residuals, though still with a noticeable skew that raises questions for whether the assumption of normality is satisfied.</p>
+<p>Very quickly - and final reminder that you will find further explanation of this in the Fogarty essential reading - let’s look at a Q-Q plot. This is another way for checking the normality of our residuals. This draws a 45 degree diagonal line and plots our residuals for each quantile. What we are then assessing is how close or apart are our residuals from this line.</p>
+<p>For our first model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lindia/man/gg_qqplot.html">gg_qqplot</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And our second model for comparison:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lindia/man/gg_qqplot.html">gg_qqplot</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="10-Lab10_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here we can further see the skew and unevenness in the distribution of the residuals for our first model. Even if we had relied on the base R <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> for our histogram our Q-Q plot makes clear how the assumption of normality is not satisfied. With our second model we can see our residuals are closer in following the diagonal, but still with substantial divergence at the tails - in particualr look at the points on the top-right. This suggests some violation of the normality assumption and indicates that some observations are poorly fitted by the model. These observations and the model may need further investigation.</p>
+<p>As noted at the start, within the assignment do not worry about proposing specific statistical techniques that could be used to address any issues identified. The important thing is to be aware of the existence of these potential problems and to be transparent with the results in your interpretation. For example, acknowledge the limitations of your assumptions checks.</p>
+</section></section><section id="lab-activities" class="level2"><h2 class="anchored" data-anchor-id="lab-activities">Lab activities</h2>
+<p>Returning to the model you put together in the activities at the end of the lab last week, whether that was using the suggested variables or ones you selected:</p>
+<ol type="1">
+<li>Comment on the R2, adjusted R2, and F-statistic to interpret the model fit.</li>
+<li>How many observations were removed due to missing values? Can you find which variables are contributing to this and whether this has any implications for the model?</li>
+<li>Plot a histogram of the residuals. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?</li>
+<li>Discuss your answers with your neighbour or tutor.</li>
+</ol>
+
+
+</section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;
