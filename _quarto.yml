@@ -75,18 +75,8 @@ website:
     - title: "Help!"
       contents:
         - help/help.qmd
-        - help/RFAQ.qmd
         - help/InterpretiveReportStructure.qmd
         - help/SummativeTemplateBreakdown.qmd
-        - text: "**Back to Lab Workbook**"
-          href: index.qmd
-
-    - title: "Reference"
-      contents:
-        - reference/reference.qmd
-        - reference/r basics.qmd
-        - reference/r markdown.qmd
-        - reference/rstudio.qmd
         - text: "**Back to Lab Workbook**"
           href: index.qmd
 

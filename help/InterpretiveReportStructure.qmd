@@ -6,12 +6,12 @@ This appendix provides additional information on using R Markdown and an overvie
 
 Please ensure to review the relevant lab materials:
 
--   [Lab 5 session on R Markdown](05-Lab5.qmd) for an intro to R Markdown.
--   [Lab 10 Session for Interpreting Quantitative Findings Report summative assessment](10-Lab10.qmd) for instructions on how to create a project on RStudio Cloud for your interpretive report using the provided template.
+-   [Lab 5 session on R Markdown](../05-Lab5.qmd) for an intro to R Markdown.
+-   [Lab 11 session for the Interpreting Quantitative Findings Report summative assessment](../11-Lab11.qmd) and the [Setup Assessment Projects](../assessments/creating-assessment-projects.qmd) page for instructions on how to create a project on Posit Cloud for your interpretive report using the provided template.
 
-Similarly, if you encounter any errors, please ensure to check the [R Issues FAQ](13-RFAQ.qmd) first for any existing solutions.
+Similarly, if you encounter any errors, please ensure to check the [R Issues FAQ](../assessments/RFAQ.qmd) first for any existing solutions.
 
-The first half of this page provides an overview of R Markdown and the second half covers the [Interpretive Report Template](12-InterpretiveReportStructure.qmd#interpretive-report-template) in more detail. **Importantly**, please ensure you at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.
+The first half of this page provides an overview of R Markdown and the second half covers the [Interpretive Report Template](InterpretiveReportStructure.qmd#interpretive-report-template) in more detail. **Importantly**, please ensure you at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.
 
 ## R Basics {.unnumbered}
 
@@ -301,7 +301,7 @@ knitr::include_graphics("./images/templatepreamble.png")
 3.  **Load packages**, outlined in yellow. This is where all packages used in the analysis are loaded.
 4.  **Read data**, outlined in red. The dataset used for the assignment in read in and assigned to the `nilt` dataframe object.
 
-**Important**, as a dataset is provided with the project template and read in already for you, you do not need to download or read in any other dataset. The assignment uses a version of the NILT dataset that includes more variables than the version of the data we used in the lab sessions. Downloading and reading in the dataset used in the labs will result in variables disappearing from the regression results table. Please see the [R Issues FAQ](13-RFAQ.qmd) for more info.
+**Important**, as a dataset is provided with the project template and read in already for you, you do not need to download or read in any other dataset. The assignment uses a version of the NILT dataset that includes more variables than the version of the data we used in the lab sessions. Downloading and reading in the dataset used in the labs will result in variables disappearing from the regression results table. Please see the [R Issues FAQ](../assessments/RFAQ.qmd) for more info.
 
 If you require additional packages, the best way to add this would be:
 
@@ -406,4 +406,4 @@ Below is how your regression results table should look in the knitted HTML file:
 knitr::include_graphics("./images/knittedresultstable.png")
 ```
 
-If it doesn't, please see the [R Issues FAQ](13-RFAQ.qmd).
+If it doesn't, please see the [R Issues FAQ](../assessments/RFAQ.qmd).

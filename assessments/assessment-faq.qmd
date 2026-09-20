@@ -79,7 +79,7 @@ When modelling a categorical variable as an independent / control variable, one 
 
 ## Can we see an interpretive report that got a good grade? The Moodle example got a C.
 
-Within the [University of Glasgow's Code of Assessment](https://www.gla.ac.uk/myglasgow/apg/policies/uniregs/regulations2024-25/feesandgeneral/assessmentandacademicappeals/reg16/#schedulea), a C is a good grade. A = Excellent, B = Very Good, C = Good, D = Satisfactory.
+Within the [University of Glasgow's Assessment Regulations (Glasgow Grading Scheme 1)](https://www.gla.ac.uk/myglasgow/policy/regulations-current/general/assessment-reg/), a C is a good grade. A = Excellent, B = Very Good, C = Good, D = Satisfactory.
 
 Due to data protection regulations, in order to share previous student work on Moodle the university requires us to have students sign a form providing permission. As this is an honours level course and we need to wait until after the Exam Board takes place before approaching students, we tend to have a very low response rate to such requests.
 

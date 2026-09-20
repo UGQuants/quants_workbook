@@ -60,7 +60,7 @@ knitr::include_graphics("./images/templatepreamble.png")
 3.  **Load packages**, outlined in yellow. This is where all packages used in the analysis are loaded.
 4.  **Read data**, outlined in red. The dataset used for the assignment in read in and assigned to the `nilt` dataframe object.
 
-**Important**, as a dataset is provided with the project template and read in already for you, you do not need to download or read in any other dataset. The assignment uses a version of the NILT dataset that includes more variables than the version of the data we used in the lab sessions. Downloading and reading in the dataset used in the labs will result in variables disappearing from the regression results table. Please see the [R Issues FAQ](13-RFAQ.qmd) for more info.
+**Important**, as a dataset is provided with the project template and read in already for you, you do not need to download or read in any other dataset. The assignment uses a version of the NILT dataset that includes more variables than the version of the data we used in the lab sessions. Downloading and reading in the dataset used in the labs will result in variables disappearing from the regression results table. Please see the [R Issues FAQ](../assessments/RFAQ.qmd) for more info.
 
 If you require additional packages, the best way to add this would be:
 
@@ -165,4 +165,4 @@ Below is how your regression results table should look in the knitted HTML file:
 knitr::include_graphics("./images/knittedresultstable.png")
 ```
 
-If it doesn't, please see the [R Issues FAQ](13-RFAQ.qmd).
+If it doesn't, please see the [R Issues FAQ](../assessments/RFAQ.qmd).

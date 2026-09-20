@@ -6,6 +6,7 @@ author:
   - Alasdair B R Stewart
   - Mark Wong
   - Colin Mack
+  - Qunshan Zhao
 date: "`r Sys.Date()`"
 ---
 

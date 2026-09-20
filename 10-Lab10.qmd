@@ -62,15 +62,9 @@ By the end of this week's lab, you will know how to:
 
 :::
 
-:::{.callout-tip title="Warning - typo mine-field"}
-
-Alasdair: The content for the lab workbook this week is almost entirely new. In previous years we only had 10 rather than 11 labs. Unfortunately, due to this - especially given time available to proof read - the full extent of my dyslexia may be more apparent than usual. Apologies for any glaring spelling mistakes, substituted words, and diabolical use of grammar.
-
-:::
-
 ## Small Bit of Setup
 
-We will continue using our same 'Lab-9-10-Multiple-Linear-Regression.Rmd' file we created last week. If you missed [Lab 9](09-Lab9-qmd), use the time in the lab today to catch up with it as what we are covering today is 'part 2' on the same topic.
+We will continue using our same 'Lab-9-10-Multiple-Linear-Regression.Rmd' file we created last week. If you missed [Lab 9](09-Lab9.qmd), use the time in the lab today to catch up with it as what we are covering today is 'part 2' on the same topic.
 
 The main setup then for this week is installing a package:
 

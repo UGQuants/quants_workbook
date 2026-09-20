@@ -1,81 +1,68 @@
 # UG Quants summative assessment: Interpreting Quantitative Findings Report {#interpretivereport}
 
-:::{.callout-important title="Update In Progress"}
-
-We are refreshing the contents of the lab workbook this year. The newest version of this page for 2025/2026 will be uploaded nearer the time for the lab.
-
-:::
-
 ## Introduction
 
 This is our final practical session. Thank you for tuning in and all your hard work!
 
 Today, we will discuss some practical aspects of the summative assessment *Interpreting Quantitative Findings Report*. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!
 
+## About the research report template
+
 :::{.callout-note title="Setup Assessment Project"}
 
 You can find the step-by-step guide for how to setup a Posit Cloud project for the summative assessment using the provided template on the [Setup Assessment Projects](assessments/creating-assessment-projects.qmd) page.
 
-After following the steps, you will have a project with every package you need - *except one* - installed and loaded. The NILT data set is already downloaded, cleaned, and loaded. There is a `nilt_subset` data frame object already created that contains just the variables used in the regression model. The regression model and regression table results are also already setup for you.
+After following **all** the steps, you will have a project with every package you need - *except one* - installed and loaded. The NILT data set is already downloaded, cleaned, and loaded. There is a `nilt_subset` data frame object already created that contains just the variables used in the regression model. The regression model and regression table results are also already setup for you.
 
 In terms of coding, all you need to do is create code chunks for any visualisations and tables or other additional stats. You should not remove any of the code from the template. In particular, you should not replace the code that sets up the regression model and creates the regression results table.
 
-Do not worry about the code in the template that creates the regression results table. The code for it is more complex than usual solely because we have customised the table to more closely match the output from the `summary()` function that we cover in the labs and align more clearly with what we ask you to do for the assessment. For the assessment, you only need to interpret the regression results table. A page will be made available that breaks down the code, but that will be entirely optional to read and understanding the code that produces the regression results table is not required for the assessment.
+Do not worry about the code in the template that creates the regression results table. The code for it is more complex than usual solely because we have customised the table to more closely match the output from the `summary()` function that we covered in the labs and align more clearly with what we ask you to do for the assessment. For the assessment, you only need to interpret the regression results table. You do not need to create another table of regression results nor include the output of `summary()`.
 
 :::
+
+The interpretive report template also contains the following:
+
+- Suggested structure of the report.
+- Suggested word count for each section.
+
+In essence, this is the basic structure to start writing your assignment. Each section also has a short comment providing overview of what the section should cover. This is just a generic high-level suggestion and you should still [cover what is set out in the guidance](assessments/summative.qmd#how-to-write-my-research-report). **Remember: There are no hard and fast rules to say what's right or wrong.** You are the one who can determine and justify why you did what you did. There are also many ways to write and approach this assignment, so make choices based on your own interest(s) and disciplinary background. It is truly your time to shine! The [guidance](assessments/summative.qmd#how-to-write-my-research-report) also gives important pointers on how your report will be assessed, offering some guiding questions to tackle the report--don't skip this crucial step.
+
+## Additional Guidance and Help Pages
 
 Before proceeding, please take about 10 minutes to read the [guidance for the Summative Assessments](assessments/summative.qmd).
 
-Other lab workbook pages that will be useful to check are:
+We have a [whole section of pages](assessments/assessments.qmd) dedicated to the assessments. Other lab workbook pages that will be useful to check are:
 
-- [Exporting HTML Files for Submission](assessments/export.qmd) - which covers how to export your HTML file for submitting to Turnitin. Importantly, please follow and read the instructions all the way to the end. On some browsers after hitting 'Download' it will auto-open your file in the browser. If you 'Save as...' the file, you will experience the same issue when uploading to Turnitin as would if didn't export your file.
+- [Exporting HTML Files for Submission](assessments/export.qmd) - which covers how to export your HTML file for submitting to Turnitin. Importantly, please follow and read the instructions all the way to the end. On some browsers after hitting 'Download' it will auto-open your file in the browser. If you 'Save as...' the file, you will experience the same issue when uploading to Turnitin as would if you hadn't exported your file.
 - [Interpretive Report Q&A](assessments/assessment-faq.qmd) - that includes additional information based on questions from previous years.
-- [R Issues FAQ](assessments/RFAQ.qmd) - covering solutions to common issues you might encounter when wroking on your interpretive findings report.
-
-:::{.callout-important}
-
-Please note - the rest of the content below has not yet been updated for this year. The above though provides you with all you will need for setting up your summative and making a start if you want to do so before the lab itself. As always, please get in touch if you experience any issues or are unsure about anything.
-
-:::
-
-
-## About the research report template
-
-Once in your **UGQuant-assignment2** project, open the `Assignmet2-template.Rmd` file in Pane 4 under the 'Files' tab, as shown below.
-
-```{r fig.cap="Template.", echo=FALSE}
-knitr::include_graphics("./images/research_rep_3.PNG")
-```
-
-This template contains the following:
-
-* Suggested structure of the report.
-* Suggested word count for each section.
-* The code necessary to run and present the results of a multivariate linear regression.
-
-In essence, this is the basic structure to start writing your assignment. Of course, you can add, edit, and customize as much as you consider appropriate. Remember, this is just a generic suggestion and you should still address all the points to the best of your abilities. **Remember: There are no hard and fast rules to say what's right or wrong.** You are the one who can determine and justify why you did what you did. There are also many ways to write and approach this assignment, so make choices based on your own interest(s) and disciplinary background. It is truly your time to shine! The course handbook also gives important pointers on how your report will be assessed, offering some guiding questions to tackle the report--don't skip this crucial step. 
-
+- [R Issues FAQ](assessments/RFAQ.qmd) - covering solutions to common issues you might encounter when working on your interpretive findings report.
 
 ## Activity 1
 
-1. In the template, fill in the 'author' and 'date' space in the YAML at the top of the file with your student number and appropriate information using quotation marks.
-2. Knit the `Rmd` file as `html` (RStudio may ask to install some packages; click 'Yes').
+After following **all** the instructions in the [Setup Assessment Projects](assessments/creating-assessment-projects.qmd) page:
+
+1. In the template, fill in the 'author' and 'date' space in the YAML at the top of the file with your student number and appropriate information using quotation marks. (Please do not add YAML code for creating a table of contents. Whilst we covered it as example of how you can theme knitted documents in lab 5, Turnitin is ridiculously fussy and complains about files submitted with a table of contents.)
+2. Knit the R Markdown file (RStudio may ask to install some packages; click 'Yes').
 3. In the output, look at the results of the table under the 'Results' section and identify the *dependent* and the *independent* variables. You can learn about the meaning of these variables in the NILT documentation ([click here to access the documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf)).
 4. Identify the variables that are significant in this model and the direction of the relationship.
-5. Discuss your interpretations with your neighbour or tutor. You can refer back to [Lab 8](08-Lab8.qmd) and [Lab 9](09-Lab9.qmd) to refresh your memory.
+5. Discuss your interpretations with your neighbour or tutor. You can refer back to [Lab 9](09-Lab9.qmd) and [Lab 10](10-Lab10.qmd) to refresh your memory.
 
 ## Activity 2
 
-1. Write one introductory paragraph in the 'Introduction' section of the template according to the guidance provided and your preliminary insights.
-2. Knit the document again.
+1. Write one introductory paragraph in the 'Introduction' section of the template according to the guidance provided.
+2. Install and load the package you will need to create the table of descriptive statistics. (Hint: see [Lab 4](04-Lab4.qmd))
+3. Create a table of descriptive statistics for **all** variables in the model. Add labels for your table. (Hint: see bottom of [Lab 4](04-Lab4.qmd#creating-a-table-with-all-variables-in-a-subset))
+4. Create an appropriate visualisation of the dependent variable. (Hint: Consider what type of variable it is, then check [Lab 6](06-Lab6.qmd) for what would be an appropriate visualisation of its distribution)
+5. Knit the document again.
 
-
-## Conclusion 
+## Conclusion
 
 You are on the right track now!
 
 We hope that by getting familiar with this setting, you will easily succeed in writing your research report using all the knowledge and skills acquired during this course. Take this session to ask questions about the assignment or the course in general as much as possible. This is the right time to have specialized one-to-one support from your tutors.
 
-We wish you the best of luck! Get in touch with your tutors via email or, even better, post any questions you have about the assignment on your lab group discussion forum on Moodle, if you don't know where to start or get stuck. Don't suffer in silence. Remember your Tutors, lab group mates, and the teaching and admin team are here for you. Also don't forget coding is _all_ about **trial and error**, so it's completely normal to write / copy and paste some code, then get an error message, and basically for your code to not work. Keep chipping at it, which sometimes can take hours (if not days), until you can get it to work. That's a normal process even for professional data scientists and quantitative researchers! So do persevere and don't panic if you don't get it to work right away, because troubleshooting your code is part of the work, in addition to making your own choices in the analysis and reporting. For the code, the error message you get often gives you clues about, well, where the error is. So read the error message carefully, it might be you haven't loaded the package required to run the code (remember to do this every time you open RStudio) or you might have missed a parentheses, or you might have not capitalised a word in the R syntax when you need to. Double check the R cheatsheets or previous sections in the lab workbook to ensure you have specified R syntax/arguments correctly. Again, trial and error is your friend, unlike writing an essay/doing an exam. 
+We wish you the best of luck! Get in touch with your tutors via email or, even better, post any questions you have about the assignment on your lab group discussion forum on Moodle, if you don't know where to start or get stuck. Don't suffer in silence. Remember your Tutors, lab group mates, and the teaching and admin team are here for you. Also don't forget coding is *all* about **trial and error**, so it's completely normal to write some code, then get an error message, and basically for your code to not work. Keep chipping at it, which sometimes can take hours until you can get it to work. That's a normal process even for professional data scientists and quantitative researchers!
 
-Good luck and have fun! You got this. 
+So do persevere and remember don't panic if you don't get it to work right away, because troubleshooting your code is part of the work, in addition to making your own choices in the analysis and reporting. For the code, the error message you get often gives you clues about, well, where the error is. So read the error message carefully, it might be you haven't loaded the package required to run the code or you might have missed a comma or parentheses, or you might have not capitalised a word in the R syntax when you need to. Double check the R cheatsheets or previous sections in the lab workbook to ensure you have specified R syntax/arguments correctly. Again, trial and error is your friend, unlike writing an essay/doing an exam.
+
+Good luck! You got this.

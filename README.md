@@ -1,10 +1,10 @@
 # UG Quantitative Methods in the Social Sciences: Lab workbook
 
-A step-by-step guide for conducting quantitative research in R by [Rafael Verudzco Torres](https://github.com/rafavdz) and Dr. Mark Wong.
+A step-by-step guide for conducting quantitative research in R by [Rafael Verudzco Torres](https://github.com/rafavdz) and Prof. Mark Wong. This Lab Workbook has been further developed by Dr. Alasdair Stewart, Dr. Colin Mack, and Prof. Qunshan Zhao. 
 
 The online book is available: <https://ugquants.github.io/quants_workbook/>.
 
-This workbook is for University of Glasgow students enrolled in the undergraduate Quantitative Methods in the Social Sciences course within the School of Social and Political Sciences. The activities are designed for [RStudio Cloud](https://rstudio.cloud/).
+This workbook is for University of Glasgow students enrolled in the undergraduate Quantitative Methods in the Social Sciences course within the School of Social and Political Sciences. The activities are designed for [Posit Cloud](https://posit.cloud/).
 
 Made with R and Quarto.
 

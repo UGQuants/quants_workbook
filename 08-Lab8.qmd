@@ -23,9 +23,9 @@ However, **independent** variables can be **categorical**, **ordinal**, or **num
 
 We will be covering linear regression over three weeks. Do not worry if everything this week doesn't immediately make sense. We will revisit and build upon key ideas over labs 9 and 10 as well.
 
-Please also do let me (Alasdair) know where anything is unclear or is confusing. We have been updating the lab content this year based on student feedback from previous years and value any feedback on the newest version so we can continue to make improvements.
+Please also do let us know where anything is unclear or is confusing. We update the lab content each year based on student feedback and value any feedback on the newest version so we can continue to make improvements.
 
-As they cover some key concepts relevant for the summative assignment, I will aim to make further updates this year to Labs 8 - 10 based on any initial feedback.
+As they cover some key concepts relevant for the summative assignment, we will aim to make further updates to Labs 8 - 10 based on any initial feedback.
 
 :::
 

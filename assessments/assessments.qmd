@@ -2,11 +2,11 @@
 title: "Assessments"
 ---
 
-Remember to also check the [Assessment section on Moodle](https://moodle.gla.ac.uk/course/section.php?id=746339), which contains further information and the Turnitin submission areas.
+Remember to also check the [Assessment section on Moodle](https://moodle.gla.ac.uk/course/view.php?id=55033), which contains further information and the Turnitin submission areas.
 
 ::: {.callout-important title="Deadlines"}
-- [Formative Assessment](formative.qmd) – 12 noon, Friday 31st October 2025
-- [Summative Assessments](summative.qmd) ([Reflective Summary](summative.qmd#reflective-course-summary) + [Interpreting Quantitative Findings Report](summative.qmd#interpreting-quantitative-findings-report)) - 12 noon, Monday 15th December 2025.
+- [Formative Assessment](formative.qmd) – 12 noon, Friday 30th October 2026
+- [Summative Assessments](summative.qmd) ([Reflective Summary](summative.qmd#reflective-course-summary) + [Interpreting Quantitative Findings Report](summative.qmd#interpreting-quantitative-findings-report)) - 12 noon, Monday 14th December 2026.
 :::
 
 ### Setting Up RStudio Projects for the Assessments

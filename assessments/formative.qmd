@@ -5,7 +5,7 @@ title: "Formative Assessment"
 ## Setting up a Quantitative Project
 
 ::: {.callout-important title="Formative Submission Deadline"}
-12 noon, Friday 31st October 2025
+12 noon, Friday 30th October 2026
 :::
 
 For the Formative Assessment, you will be asked to consolidate the main elements of the course across Weeks 1-5 in the form of a short report (500 words maximum, requiring the use of R Markdown). This should be submitted as an R Markdown report. You will learn how to do this in the Labs.
