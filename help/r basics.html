@@ -2,14 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>r-basics – Lab Workbook</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -63,19 +69,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-c1e19c279b1c7e82165a3f66195d40d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fd793d3792e5f2396fb7b3e8c845769.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -336,12 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Please ensure to review the relevant lab materials:</p>
 <ul>
 <li>
-<a href="05-Lab5.qmd">Lab 5 session on R Markdown</a> for an intro to R Markdown.</li>
+<a href="../05-Lab5.html">Lab 5 session on R Markdown</a> for an intro to R Markdown.</li>
 <li>
-<a href="10-Lab10.qmd">Lab 10 Session for Interpreting Quantitative Findings Report summative assessment</a> for instructions on how to create a project on RStudio Cloud for your interpretive report using the provided template.</li>
+<a href="../11-Lab11.html">Lab 11 session for the Interpreting Quantitative Findings Report summative assessment</a> and the <a href="../assessments/creating-assessment-projects.html">Setup Assessment Projects</a> page for instructions on how to create a project on Posit Cloud for your interpretive report using the provided template.</li>
 </ul>
-<p>Similarly, if you encounter any errors, please ensure to check the <a href="13-RFAQ.qmd">R Issues FAQ</a> first for any existing solutions.</p>
-<p>The first half of this page provides an overview of R Markdown and the second half covers the <a href="12-InterpretiveReportStructure.qmd#interpretive-report-template">Interpretive Report Template</a> in more detail. <strong>Importantly</strong>, please ensure you at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.</p>
+<p>Similarly, if you encounter any errors, please ensure to check the <a href="../assessments/RFAQ.html">R Issues FAQ</a> first for any existing solutions.</p>
+<p>The first half of this page provides an overview of R Markdown and the second half covers the <a href="../help/InterpretiveReportStructure.html#interpretive-report-template">Interpretive Report Template</a> in more detail. <strong>Importantly</strong>, please ensure you at least read the [Preamble Code Chunk] section for information on best practice for installing and loading any additional packages.</p>
 <section id="r-basics" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="r-basics">R Basics</h2>
 <p>R is a programming language used for data analysis and visualisation. A large community has built up around R through the combination of it being free and open-source software and a full featured programming language. This makes it possible for the community to contribute to and extend upon what it is possible to do with R. The Comprehensive R Archive Network, where packages are downloaded from when you <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>, helps illustrate the power that comes from an open-source community. It now lists <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">21,810 packages</a> created by the R community.</p>
 <p>These benefits are behind the rapid adoption of R within the social sciences, and academia and data analysis more broadly. However, compared to expensive closed source software where most analysis could be done through menus and mouse-clicks, using R requires learning the programming language. This is not the disadvantage it may at first seem. It does add an additional hurdle at the very start, but it also provides a far more powerful and flexible way to do data analysis. Menus are also not as simple and accessible as may first seem. A graph that can be created with a few lines of code in R may require going through multiple menus with 20+ mouse-clicks and entering text into multiple fields.</p>

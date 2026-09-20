@@ -2,14 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>answers – Lab Workbook</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -64,19 +70,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./References.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-c1e19c279b1c7e82165a3f66195d40d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7fd793d3792e5f2396fb7b3e8c845769.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -322,11 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -996,12 +997,12 @@ Degree level or higher       Higher education   GCE A level or equiv
 </div>
 </div>
 <ol start="3" type="1">
-<li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
+<li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">nilt</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rhourswk</span>, y <span class="op">=</span> <span class="va">persinc2</span>, color <span class="op">=</span> <span class="va">highqual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">moderndive</span><span class="fu">::</span><span class="fu"><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">moderndive</span><span class="fu">::</span><span class="fu"><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Personal income"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"Personal income and number of hours worked a week by education level"</span>,</span>

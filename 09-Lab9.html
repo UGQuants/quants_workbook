@@ -2,14 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>lab9 – Lab Workbook</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -65,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./08-Lab8.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-c1e19c279b1c7e82165a3f66195d40d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-8eac3228050af7a73983e45baba5544d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7fd793d3792e5f2396fb7b3e8c845769.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6fd105c7ebdb5cbfb74dca3acdb685c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -104,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -347,11 +352,7 @@ window.Quarto = {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -514,7 +515,7 @@ window.Quarto = {
 <p>“Don’t Panic. It’s the first helpful or intelligible thing anybody’s said to me all day.”</p>
 <p>Arthur Dent (in Douglas Adams’ phenomenal The Hitchhiker’s Guide to the Galaxy - absolutely <em>essential reading</em>, but not for this course.)</p>
 </blockquote>
-<p>As wee final reminder: Please do let me (Alasdair) know though where anything in the content for this lab is unclear or confusing. I am keen that the lab workbook helps reduce some of the initial difficulty, and I will make further updates to the content this year based on any initial feedback and questions.</p>
+<p>As wee final reminder: Please do let us know though where anything in the content for this lab is unclear or confusing. We are keen that the lab workbook helps reduce some of the initial difficulty, and we will make further updates to the content based on any initial feedback and questions.</p>
 </div>
 </div>
 </section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
@@ -605,12 +606,12 @@ window.Quarto = {
 </div>
 <p>Right, what can we observe in this plot?</p>
 <p>First, we can see that the observations for male and female respondents go in the same direction. When the respondent’s age increases, the age of their partner/spouse increases as well. Female respondents also tend to be located higher on the Y axis (their partner/spouse’s age) compared to male respondents. So it does look like not only the respondents’ age that is involved in age differences with their partners/spouses, but also the respondents’ gender could help explain those differences.</p>
-<p>We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function from <code>moderndive</code> can be used to draw lines for a ‘parellel slopes model’. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. “Parallel” just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.</p>
-<p>Looking at the documentation for <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> - the auto-generated link for it doesn’t work so <a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">use this link instead</a> - we can see that it will use the variable we passed into the <code>color</code> keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, <code>se = FALSE</code>. The <code>se</code> argument is whether to display confidence intervals and is <code>TRUE</code> by default. We set it to <code>FALSE</code> as for the illustrations we are wanting to focus on just the lines.</p>
+<p>We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The <code><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function from <code>moderndive</code> can be used to draw lines for a ‘parellel slopes model’. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. “Parallel” just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.</p>
+<p>Looking at the documentation for <code><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> - the auto-generated link for it doesn’t work so <a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">use this link instead</a> - we can see that it will use the variable we passed into the <code>color</code> keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, <code>se = FALSE</code>. The <code>se</code> argument is whether to display confidence intervals and is <code>TRUE</code> by default. We set it to <code>FALSE</code> as for the illustrations we are wanting to focus on just the lines.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, color <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Respondent's age vs respondent’s spouse/partner age"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent’s spouse/partner age"</span></span>
@@ -707,7 +708,7 @@ Coefficients:
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_sample</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">spage</span>, color <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Respondent's age vs respondent's spouse/partner age"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Respondent's age"</span>, y <span class="op">=</span> <span class="st">"Respondent's spouse/partner age"</span></span>
@@ -816,7 +817,7 @@ F-statistic:  48.3 on 3 and 562 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <ol type="1">
 <li>Print a table for the highest level of qualification <code>highqual</code> using the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function.</li>
-<li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
+<li>Generate a scatter plot using <code>ggplot</code>. Within <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, locate the number of hours worked a week <code>rhourswk</code> on the X axis and the personal income <code>persinc2</code> on the Y axis, and specify the <code>color</code> of the dots by the highest level of qualification <code>highqual</code>. Use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function and ‘jitter’ the points using the argument <code>position</code>. Add the parallel slopes using the <code><a href="https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function and set the standard error <code>se</code> to <code>FALSE</code>. What is your interpretation of the plot? Write down your comments to introduce the plot.</li>
 <li>Fit a linear model using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to analyse the personal income <code>persinc2</code> using the number of hours worked a week <code>rhourswk</code>, the highest level of qualification <code>highqual</code>, and the age of the respondent <code>rage</code> as independent variables. Store the model in an object called <code>m3</code> and print the summary.</li>
 <li>Comment on the results of the model, including which of the variables is significant and consideration of the standard errors.</li>
 <li>Discuss your answers with your neighbour or tutor.</li>
