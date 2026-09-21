@@ -1,4 +1,6 @@
-# Moving from Simple to Multiple Regression
+---
+title: "Moving from Simple to Multiple Regression"
+---
 
 ```{r}
 #| include: false
@@ -11,7 +13,7 @@ This week we move from simple linear regression (one independent variable) to mu
 
 It is rare for quantitative social research to rely only on simple linear models. Social phenomena are complex, without one single clear variable associated with them. Instead, we need analysis approaches that recognise and - key word for this week - 'control' for other variables.
 
-Because it is so central, we will split the topic over two labs. This week we will focus on why how multiple linear regression differs from simple linear regression and interpreting coefficients. Next week we look at how number of observations can change as you add variables and interpreting model fit statistics.
+Because it is so central, we will split the topic over two labs. This week we will focus on how multiple linear regression differs from simple linear regression and interpreting coefficients. Next week we look at how number of observations can change as you add variables and interpreting model fit statistics.
 
 :::{.callout-note title="Overview"}
 
@@ -27,11 +29,11 @@ By the end of this week's lab, you will know how to:
 
 As said last week, don't worry where things don't immediately make full sense. With quantitative analysis, there are 'spikes' in difficulty. Moving to linear regression is one of those spikes, and you are definitely not alone in any difficulty experienced getting to grips with it. Each of the 'spikes' though will follow a similar pattern. Just as getting to grips with the basics of R code may have initially felt difficult - or even impossible - it is, hopefully, now easier to understand. As you bit by bit get to grips with the basics of linear regression you won't experience that same level of difficulty again each time you need to interpret a linear regression model.
 
-> "Don't Panic. It's the first helpful or intelligible thing anybody's said to me all day.”
+> “Don't Panic. It's the first helpful or intelligible thing anybody's said to me all day.”
 >
 > Arthur Dent (in Douglas Adams' phenomenal The Hitchhiker's Guide to the Galaxy - absolutely *essential reading*, but not for this course.)
 
-As wee final reminder: Please do let us know though where anything in the content for this lab is unclear or confusing. We are keen that the lab workbook helps reduce some of the initial difficulty, and we will make further updates to the content based on any initial feedback and questions.
+As a wee final reminder: Please do let us know though where anything in the content for this lab is unclear or confusing. We are keen that the lab workbook helps reduce some of the initial difficulty, so your feedback and questions are very welcome.
 
 :::
 
@@ -82,7 +84,7 @@ install.packages("moderndive")
 
 ### Dataframe Setup
 
-We will revisit the example from last week of the relationship between a respondent's age and their spouse or partner's age. To ensure out document can knit, we will need to coerce the variables for the age of the respondent's spouse/partner:
+We will revisit the example from last week of the relationship between a respondent's age and their spouse or partner's age. To ensure our document can knit, we will need to coerce the variables for the age of the respondent's spouse/partner:
 
 ```{r}
 # Age of Respondent's Spouse / Partner
@@ -91,7 +93,7 @@ nilt$spage <- as.numeric(nilt$spage)
 
 (Note: If you completed the 'Bonus Activity' last week you won't need to coerce `spage` again.)
 
-## Multiple Linear Regresion
+## Multiple Linear Regression
 
 Multiple linear regression is based on the same principles as simple linear regression. As with simple linear regression, it is appropriate to use only with a numeric (interval/ratio) dependent variable, such as age or income. Our independent variables though can be categorical and numeric. With multiple linear regression, our independent variables do not have to be all be of the same type either, and can be a mix of categorical and numeric variables.
 
@@ -139,9 +141,9 @@ Right, what can we observe in this plot?
 
 First, we can see that the observations for male and female respondents go in the same direction. When the respondent's age increases, the age of their partner/spouse increases as well. Female respondents also tend to be located higher on the Y axis (their partner/spouse's age) compared to male respondents. So it does look like not only the respondents' age that is involved in age differences with their partners/spouses, but also the respondents' gender could help explain those differences.
 
-We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The `geom_parallel_slopes()` function from `moderndive` can be used to draw lines for a 'parellel slopes model'. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. "Parallel" just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.
+We can again draw lines on our graph to help illustrate that. Last week we drew our initial guesstimate line, then compared it to a line for a fitted linear model. The `geom_parallel_slopes()` function from `moderndive` can be used to draw lines for a 'parallel slopes model'. This draws the fitted lines from a multiple regression with one numeric and one categorical independent variable. "Parallel" just means the categories share the same slope for the numeric variable, but the lines have different intercepts (vertical shift) based on differences between the categories.
 
-Looking at the documentation for `geom_parallel_slopes()` - the auto-generated link for it doesn't work so [use this link instead](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html) - we can see that it will use the variable we passed into the `color` keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, `se = FALSE`. The `se` argument is whether to display confidence intervals and is `TRUE` by default. We set it to `FALSE` as for the illustrations we are wanting to focus on just the lines.
+Looking at the [documentation for `geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.html), we can see that it will use the variable we passed into the `color` keyword argument as the categorical variable to use. So, we can simply add it as another component to our ggplot from above, only needing to add, as did in our illustrations last week, `se = FALSE`. The `se` argument is whether to display confidence intervals and is `TRUE` by default. We set it to `FALSE` as for the illustrations we are wanting to focus on just the lines.
 
 
 ```{r}
@@ -167,7 +169,7 @@ Based on our quick visualisations, our initial working interpretation so far is:
 
 ### Fitting multiple linear regression in R
 
-OK, we can see from our illustrated example that there is a difference, but how would we more rigorously analyse these relationships? For instance, how can we calcualte the magnitude of these relationships?
+OK, we can see from our illustrated example that there is a difference, but how would we more rigorously analyse these relationships? For instance, how can we calculate the magnitude of these relationships?
 
 To do that, we can extend on the code we used for simple linear regression last week.
 
@@ -196,7 +198,7 @@ m1
 
 Within the results, we can see that there are three coefficients - the first is the intercept, and the other two are our slope coefficients for `rage` and `rsexFemale`.
 
-Within the formal model specification - which we will return to - these would would be represented as:
+Within the formal model specification - which we will return to - these would be represented as:
 
 - intercept, $\beta_0$
 - slope coefficient one, $\beta_1$
@@ -232,13 +234,13 @@ ggplot(nilt_sample, aes(x = rage, y = spage, color = rsex)) +
   )
 ```
 
-We can now understand better what it shows. The lines are increasing by the coefficient for `rage` of 0.9138 for each 1 year increase in respondent age, but with varying intercepts so the lines are separate by the 4.9190 coefficent for `rsexFemale` compared to the `rsexMale` reference category.
+We can now understand better what it shows. The lines are increasing by the coefficient for `rage` of 0.9138 for each 1 year increase in respondent age, but with varying intercepts so the lines are separate by the 4.9190 coefficient for `rsexFemale` compared to the `rsexMale` reference category.
 
 Now compare this to last week's simple model, also included in above section as `m1_simple`, which does not control for gender. In that model the slope for `rage` was lower - 0.875 - and the intercept higher - 6.299. In our multiple regression that now includes `rsex` the slope becomes 0.9138.
 
-This is consistent pattern  we would see with potential missing variable bias. If a relevant variable is left out of our model, the estimated slope can be pulled away from the "within‑group" relationship. Here, ignoring gender mixes the differences between female and male respondents together and gives a compromise line in our simple linear regression for `rage` with a higher intercept and shallower slope. Using a multiple linear regression that including gender lets us compare like with like and recovers the within‑gender slope - or, in other words, our slope for `rage` controlling for gender.
+This is a consistent pattern we would see with potential missing variable bias. If a relevant variable is left out of our model, the estimated slope can be pulled away from the "within‑group" relationship. Here, ignoring gender mixes the differences between female and male respondents together and gives a compromise line in our simple linear regression for `rage` with a higher intercept and shallower slope. Using a multiple linear regression that including gender lets us compare like with like and recovers the within‑gender slope - or, in other words, our slope for `rage` controlling for gender.
 
-We can also add a line to our ggplot to include the simple linear regression line similar to last week. Our parellel slopes though will now let us see how the coefficient for `rage` in the simple linear regression model was impacted by missing variable bias:
+We can also add a line to our ggplot to include the simple linear regression line similar to last week. Our parallel slopes though will now let us see how the coefficient for `rage` in the simple linear regression model was impacted by missing variable bias:
 
 ```{r}
 nilt_sample |> ggplot(aes(x = rage, y = spage, color = rsex)) +
@@ -253,9 +255,9 @@ nilt_sample |> ggplot(aes(x = rage, y = spage, color = rsex)) +
 
 Given the age of respondents and partners/spouses, the lines aren't drawn all the way to X = 0. However, knowing that the red line shown is based on the intercept value as shown in our multiple linear regression model results (1.7383) helps us visually compare our simple and multiple linear regression models.
 
-As can roughly see, with more female respondents in bottom-left and only males as approach top-right, the simple linear regression model in aiming to draw best fit through the observations ends up with a higher intercept and smaller slope. Once we control for gender though we can see how the slope coeffecient for `rage` was being lowered by not controlling for gender.
+As we can roughly see, with more female respondents in bottom-left and only males as approach top-right, the simple linear regression model in aiming to draw best fit through the observations ends up with a higher intercept and smaller slope. Once we control for gender though we can see how the slope coefficient for `rage` was being lowered by not controlling for gender.
 
-(Wee aside, as noted above, this parallel slopes model gpplot only works when we have one numeric independent variable and one categorical independent variable. As we add in more variables, we would not be able - at least with any meaingful clarity - visualise the coefficients for multiple linear regression with a scatter plot.)
+(Wee aside, as noted above, this parallel slopes model ggplot only works when we have one numeric independent variable and one categorical independent variable. As we add in more variables, we would not be able - at least with any meaningful clarity - visualise the coefficients for multiple linear regression with a scatter plot.)
 
 ### Multiple linear regression model specification
 
@@ -263,7 +265,7 @@ After the introduction of the simple linear model, the formal definition of the 
 
 $$
 \begin{aligned}
-\hat{y} = \hat{\beta_0} + \hat{\beta_1}*x_1 + \hat{\beta_2}*x_2 + ... +  \hat{\epsilon}, && \epsilon ~ N(0, \sigma)  
+\hat{y} = \hat{\beta_0} + \hat{\beta_1}*x_1 + \hat{\beta_2}*x_2 + ... +  \hat{\epsilon}, && \epsilon \sim N(0, \sigma)  
 \end{aligned}
 $$
 
@@ -275,7 +277,7 @@ We can break down the equation above in smaller pieces as follows:
 * $\hat{\beta_2}$ the slope coefficient for the second independent variable times the value of $x_2$, plus
 * $...$ any number of independent variables, plus
 * $\hat{\epsilon}$ the error/residual term.
-* $\epsilon ~ N(0, \sigma)$ this bit tell us that the residuals are normally distributed.
+* $\epsilon \sim N(0, \sigma)$ this bit tell us that the residuals are normally distributed.
 
 ### R syntax
 
@@ -316,13 +318,13 @@ For this week let's focus in on the "Coefficients:" table - we will return to ot
 
 Right, so the coefficient (Estimate) we have already covered in lab 8 and again at start of this lab. To repeat once more though when we move from simple to multiple linear regression the coefficient describes the association between an independent variable and the dependent variable **while holding the other variables constant** - by controlling for the other variables.
 
-To then briefly introduce our other key statistics here. The standard error (SE) next to a coefficient is the model's estimate of how much that coefficient would vary across samples - in other words, the uncertainty around that estimate. Imagine repeating the same survey with the same design numerous times. Each time we'd get a different sample and dataset, so the coefficient would vary from one sample to the next. The standard error is the estimate of that. The t value is then the coefficient divided by its standard error; with larger absolute t values - given the model's degrees of freedom - providing strong evience that the coefficient differs from zero.
+To then briefly introduce our other key statistics here. The standard error (SE) next to a coefficient is the model's estimate of how much that coefficient would vary across samples - in other words, the uncertainty around that estimate. Imagine repeating the same survey with the same design numerous times. Each time we'd get a different sample and dataset, so the coefficient would vary from one sample to the next. The standard error is the estimate of that. The t value is then the coefficient divided by its standard error; with larger absolute t values - given the model's degrees of freedom - providing strong evidence that the coefficient differs from zero.
 
 The p-value is paired with the t value. As covered last week, there are different codes used for significance, indicated with asterisks next to the p-value. In the social sciences due to the complexity of phenomena and difficulty of controlling factors to the same extent as in other fields, 0.05 is a common significance level to use. We use it in interpreting whether a variable *is* significant rather than *how* significant it is; in other words, we do not say a variable with two asterisks is 'more significant' than a variable with one asterisk. Both would be significant based on our chosen significance of 0.05.
 
 <!-- Traditionally, there was 1-3 asterisks, but you'll also see a '.' in the 'Signif. codes' line for 0.1. (Aside: It is sometimes also represented by a '+' instead. A reason for this visual distinction is that it tends to be used more in exploratory research, where it is interpreted as indicating a potential 'trend'. Whilst there are three asterisks, in research we make a decision of what level we are testing and base our interpretation around it. -->
 
-OK, let's turn to a quick initial interpretation row by row. I'll repeat the stats in full for each row to save you scrolling up/down and be a bit more verbose than necessarily would in practice. This is just to re-emphasise key info and help with getting to grips with how we can interpret these stats:
+OK, let's turn to a quick initial interpretation row by row. The stats are repeated in full for each row to save you scrolling up and down, and the interpretation is a bit more verbose than would be necessary in practice. This is just to re-emphasise key info and help with getting to grips with how we can interpret these stats:
 
 The intercept is 39.82244 with SE = 2.60505, t = 15.287, p < 2e−16. This is the expected weekly hours at age 0 for the reference categories in the model - which for us is male and with a health condition. Because age 0 is not meaningful for our context - it doesn't make sense to speak of number of hours worked per week for a newborn - we do not give the intercept a substantive interpretation. As before, it is a starting point and becomes meaningful in context with our other results. For instance, for when speak about "for a female participant, without a health condition, who is 32 years old, we would expect their hours worked to be ..." we would include the intercept in that calculation.
 
@@ -344,7 +346,7 @@ OK, let's setup another multiple linear regression model.
 
 Note, if you want treat the variables below as 'suggested variables' instead, you can use the [NILT 2012 codebook](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf) to find variables to build your own model.
 
-:::[.callout-important]
+:::{.callout-important}
 
 Remember you might need to coerce some additional variables. You can do that on an ad hoc basis, or by adding code to coerce them to your `01_prep_nilt_2012.R` script. If doing the latter, remember to run the full script again and then run all the code chunks in this week's R Markdown file.
 
@@ -352,6 +354,6 @@ Remember you might need to coerce some additional variables. You can do that on 
 
 1. Print a table for the highest level of qualification `highqual` using the `table()` function.
 2. Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
-3. Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m3` and print the summary. 
+3. Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary. 
 4. Comment on the results of the model, including which of the variables is significant and consideration of the standard errors.
 5. Discuss your answers with your neighbour or tutor.

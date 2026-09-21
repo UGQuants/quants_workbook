@@ -1,4 +1,6 @@
-# Workbook suggested answers {#answers .unnumbered}
+---
+title: "Workbook suggested answers"
+---
 
 ```{r}
 #| include: false
@@ -7,24 +9,28 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ## Introduction {.unnumbered}
 
-This chapter presents the suggested `R` code to answer the workbook activities and exercises throughout the course labs in Quantitative Research Methods for Social Sciences. This covers from Lab 3 to Lab 9.
+This chapter presents the suggested `R` code to answer the workbook activities and exercises throughout the course labs in Quantitative Methods in the Social Sciences. This covers Lab 3 to Lab 10.
 
-Before looking at the answers, try asking your tutor for help. Also, we strongly recommend web resources, such as <https://stackoverflow.com/> or <https://community.rstudio.com/>. By solving the issues, you will learn a lot! ;)
+Before looking at the answers, try asking your tutor for help. Also, we strongly recommend web resources, such as <https://stackoverflow.com/> or <https://forum.posit.co/>. By solving the issues, you will learn a lot! ;)
 
 ## Lab 3. Data wrangling {.unnumbered}
 
 ```{r eval = FALSE}
 ## Load the packages
 library(tidyverse)
+library(haven)
 
-# Read the data from the .rds file
-clean_data <- readRDS("data/nilt_r_object.rds")
-# Glimpse clean_data
-glimpse(clean_data)
+# Read the cleaned data from the .rds file
+cleaned_nilt <- readRDS("data/nilt_r_object.rds")
+# Read the original .sav file
+unclean_nilt <- read_sav("data/nilt2012.sav")
 
-# Glimpse the nilt data
-glimpse(nilt)
+# Glimpse both
+glimpse(cleaned_nilt)
+glimpse(unclean_nilt)
 ```
+
+The two data frames should *not* look the same. In `cleaned_nilt` the eight variables we coerced (`rsex`, `highqual`, `religcat`, `uninatid` and `ruhappy` as `<fct>`; `rage`, `rhourswk` and `persinc2` as `<dbl>`) show their category labels or plain numbers, whereas in `unclean_nilt` every variable is still `<dbl+lbl>`. If they look identical, the coerced version was not saved.
 
 ## Lab 4. Exploratory data analysis {.unnumbered}
 
@@ -43,9 +49,9 @@ nilt_subset <- nilt |>
   select(rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
-### Activity #1
+### Activity 1
 
-From your RStudio Cloud script, do the following activities using the data stored in the `nilt_subset` object:
+In your R Markdown file, do the following activities using the data stored in the `nilt_subset` object:
 
 -   Create a One-Way contingency table for `uninatid` in the `nilt_subset` dataset using the `sumtable()` function;
 
@@ -62,7 +68,7 @@ sumtable(nilt_subset, vars = c("uninatid"))
 sumtable(nilt_subset, vars = c("religcat"), group = "uninatid")
 ```
 
-### Activity #2
+### Activity 2
 
 Using the data in the `nilt_subset` object, complete the following activities.
 
@@ -99,14 +105,14 @@ nilt_subset <- nilt |>
   select(rsex, rage, highqual, religcat, uninatid, ruhappy, rhourswk, persinc2)
 ```
 
-### Excercices
+### Activity
 
-Using the `nilt_subset` object, complete the tasks below in the Rmd file 'Lab_4', which you created earlier. Insert a new chunk for each of these activities and include brief comments as text in the Rmd document to introduce the plots and discuss the results (tip ---leave an empty line between your text and the next chunk to separate the description and the plots):
+Using the `nilt_subset` object, complete the tasks below in the 'Lab-6-Visual.Rmd' file, which you created earlier. Insert a new chunk for each of these activities and include brief comments as text in the Rmd document to introduce the plots and discuss the results (tip ---leave an empty line between your text and the next chunk to separate the description and the plots):
 
 -   Create a first-level header to start a section called "Categorical analysis";
 
-```{r}
-## Categorical analysis
+```markdown
+# Categorical analysis
 ```
 
 -   Create a simple bar plot using the `geom_bar()` geometry to visualize the political affiliation reported by the respondents using the variable `uninatid`;
@@ -114,7 +120,7 @@ Using the `nilt_subset` object, complete the tasks below in the Rmd file 'Lab_4'
 ```{r}
 ggplot(nilt_subset, aes(x = uninatid)) +
   geom_bar() +
-  labs(title = "Political afiliation", x = "Party")
+  labs(title = "Political affiliation", x = "Party")
 ```
 
 -   Based on the plot above, create a 'stacked bar plot' to visualize the political affiliation by religion, using the `uninatid` and `religcat` variables;
@@ -130,8 +136,8 @@ ggplot(nilt_subset, aes(x = uninatid, fill = religcat)) +
 
 -   Create a new first-level header to start a section called "Numeric analysis";
 
-```{r}
-## Numeric analysis
+```markdown
+# Numeric analysis
 ```
 
 -   Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
@@ -145,7 +151,7 @@ ggplot(nilt_subset, aes(x = rhourswk, y = persinc2)) +
   )
 ```
 
--   Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results on Zoom (live) or your Lab Group on Teams (online anytime);
+-   Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis... Interesting result, Isn't it? Talk to your neighbour or tutor about your results;
 
 ```{r}
 ggplot(nilt_subset, aes(x = ruhappy, y = persinc2)) +
@@ -157,7 +163,7 @@ ggplot(nilt_subset, aes(x = ruhappy, y = persinc2)) +
 ```
 
 -   Briefly comment each of the plots as text in your Rmd file;
--   Knit the .Rmd document as HTML or PDF. The knitted file will be saved automatically in your project. You can come back to the Rmd file to make changes if needed and knit it again as many times as you wish.
+-   Knit the .Rmd document as HTML. The knitted file will be saved automatically in your project. You can come back to the Rmd file to make changes if needed and knit it again as many times as you wish.
 
 ## Lab 7. Correlation {.unnumbered}
 
@@ -178,10 +184,10 @@ nilt <- mutate_at(nilt, vars(mil10yrs, miecono, micultur), as.numeric)
 
 ```{r}
 # overall perception towards migrants
-nilt <- rowwise(nilt) %>%
+nilt <- rowwise(nilt) |>
   # sum values
-  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T)) %>%
-  ungroup() %>%
+  mutate(mig_per = sum(mil10yrs, miecono, micultur, na.rm = T)) |>
+  ungroup() |>
   # assign NA to values that sum 0
   mutate(mig_per = na_if(mig_per, 0))
 ```
@@ -193,7 +199,7 @@ Using the `nilt` data object, visualize the relationship of the following variab
 -   Create a scatter plot to visualize the correlation between the respondent's overall opinion in relation to migration `mig_per` and the respondent's age `rage`. Remember that we just created the `mig_per` variable by summing three variables which were in a 0-10 scale (the higher the value, the better the person's perception is). In `aes()`, specify `rage` on the X axis and `mig_per` on the Y axis. Use the `ggplot()` function and `geom_point()`. Also, include a straight line describing the points using the `geom_smooth()` function. Within this function, set the `method` argument to `'lm'`.
 
 ```{r}
-nilt |> ggplot(aes(x = rage, mig_per)) +
+nilt |> ggplot(aes(x = rage, y = mig_per)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(
@@ -203,6 +209,34 @@ nilt |> ggplot(aes(x = rage, mig_per)) +
 ```
 
 -   What type of relationship do you observe? Comment the overall result of the plot and whether this is in line with your previous expectation.
+
+### Activity 2
+
+-   Create a boxplot to visualize the relationship between the respondent's overall opinion in relation to migration `mig_per` (Y axis) and constitutional view `uninatid` (X axis).
+
+```{r}
+nilt |> ggplot(aes(x = uninatid, y = mig_per)) +
+  geom_boxplot() +
+  labs(
+    title = "Perception of migration by constitutional view",
+    x = "Constitutional view", y = "Perception of migration (0-30)"
+  )
+```
+
+-   Do you think the opinion towards migration differs among the groups? Re: The boxes overlap considerably, but unionist respondents have a slightly lower median (15) than nationalist respondents and those identifying with neither (17 for both). So there is a modest difference in the overall perception of migration between the groups, with a lot of variation within each group.
+
+### Activity 3
+
+-   Compute a correlation matrix for `rage`, `persinc2`, `mil10yrs`, `miecono` and `micultur`, using `'pairwise.complete.obs'` and rounding to 3 decimals.
+
+```{r}
+nilt |>
+  select(rage, persinc2, mil10yrs, miecono, micultur) |>
+  cor(use = "pairwise.complete.obs") |>
+  round(3)
+```
+
+-   Is personal income or age correlated with the perception of migrants? Re: Age is not correlated with any of the three migration variables (all coefficients are close to 0, between -0.02 and -0.10). Personal income shows a weak positive correlation with all three (around 0.17 to 0.20): respondents with higher incomes tend to report slightly more positive views of the effects of migration on the economy (`miecono`), on culture (`micultur`) and on Northern Ireland over the last ten years (`mil10yrs`). The three migration variables are strongly correlated with each other (0.63 to 0.72), which is why combining them into `mig_per` is reasonable.
 
 ## Lab 8. Linear model. Simple linear regression {.unnumbered}
 
@@ -219,7 +253,7 @@ m3 <- lm(persinc2 ~ rhourswk, data = nilt)
 
 ### Lab activities
 
-Use the `nilt` data set object in your `linear_model_intro` file to:
+Use the `nilt` data set object in your 'Lab-8-Simple-Linear-Regression.Rmd' file to:
 
 1.  Plot a scatter plot using `ggplot`. In the aesthetics, locate `rhourswk` in the X axis, and `persinc2` in the Y axis. In the `geom_point()`, jitter the points by specifying the `position = 'jitter'`. Also, include the best fit line using the `geom_smooth()` function, and specify the `method = 'lm'` inside.
 
@@ -252,11 +286,11 @@ hist(residuals(m3))
 
 Overall, the residuals look normally distributed with the exception of the values to the right-hand side of the plot (between 40000 and 60000).
 
-## Lab 9. Multivariate linear model {.unnumbered}
+## Lab 9. Multiple linear regression (part 1) {.unnumbered}
 
 ### Lab activities
 
-1.  Load the packages, and the data that you will need in your file using the code below:
+Load the packages and the data that you will need in your file using the code below:
 
 ```{r eval=FALSE}
 ## Load the packages
@@ -266,13 +300,13 @@ library(tidyverse)
 nilt <- readRDS("data/nilt_r_object.rds")
 ```
 
-2.  Print a table for the highest level of qualification `highqual` using the `table()` function.
+1.  Print a table for the highest level of qualification `highqual` using the `table()` function.
 
 ```{r}
 table(nilt$highqual)
 ```
 
-3.  Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
+2.  Generate a scatter plot using `ggplot`. Within `aes()`, locate the number of hours worked a week `rhourswk` on the X axis and the personal income `persinc2` on the Y axis, and specify the `color` of the dots by the highest level of qualification `highqual`. Use the `geom_point()` function and 'jitter' the points using the argument `position`. Add the parallel slopes using the `geom_parallel_slopes()` function and set the standard error `se` to `FALSE`. What is your interpretation of the plot? Write down your comments to introduce the plot.
 
 ```{r}
 ggplot(nilt, aes(x = rhourswk, y = persinc2, color = highqual)) +
@@ -286,106 +320,34 @@ ggplot(nilt, aes(x = rhourswk, y = persinc2, color = highqual)) +
   )
 ```
 
-4.  Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary.
+3.  Fit a linear model using the `lm()` function to analyse the personal income `persinc2` using the number of hours worked a week `rhourswk`, the highest level of qualification `highqual`, and the age of the respondent `rage` as independent variables. Store the model in an object called `m4` and print the summary.
 
 ```{r}
 m4 <- lm(persinc2 ~ rhourswk + rage + highqual, nilt)
 summary(m4)
 ```
 
-5.  Comment on the results of the model by mentioning which of the variables is significant and their respective p-value, the adjusted r-squared of the model, and the number of observations used to fit the model. Re: All the independent variables including the number of hours worked a week, age, and all the categories of highest qualification level compared to 'Degree or higher' are significant to predict personal income in the model 'm4', considering that the p-value is lower than 0.05. We can confirm this from the fourth column of the 'Coefficients' table. The adjusted R-squared of the model is 0.37. This means that 37.6% of the variance in personal income can be explained by these variables. The size of the sample used to fit this model is 457, considering that the 'nilt' data set contains 1204 observations but 747 were deleted due to missingness (1204 - 747).
-6.  Plot a histogram of the residuals for model `m4`. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?
+4.  Comment on the results of the model by mentioning which of the variables is significant and their respective p-value, the adjusted r-squared of the model, and the number of observations used to fit the model. Re: All the independent variables including the number of hours worked a week, age, and all the categories of highest qualification level compared to 'Degree level or higher' are significant to predict personal income in the model 'm4', considering that the p-value is lower than 0.05. We can confirm this from the fourth column of the 'Coefficients' table. The adjusted R-squared of the model is 0.38 (0.3764 in the output). This means that 37.6% of the variance in personal income can be explained by these variables. The size of the sample used to fit this model is 457, considering that the 'nilt' data set contains 1204 observations but 747 were deleted due to missingness (1204 - 747).
+
+## Lab 10. Multiple linear regression (part 2) {.unnumbered}
+
+Returning to the model `m4` from the Lab 9 activities:
+
+1.  Comment on the R2, adjusted R2, and F-statistic to interpret the model fit. Re: The R2 is 0.389 and the adjusted R2 is 0.376, so the number of hours worked, age and highest qualification together explain around 38% of the variation in personal income among the respondents in the model. The F-statistic is 31.6 on 9 and 447 degrees of freedom with a p-value far below 0.05, so the model as a whole is statistically significant - the independent variables explain more variation than would be expected by chance.
+2.  How many observations were removed due to missing values? Which variables are contributing to this? Re: 747 observations were deleted due to missingness, leaving 457 of the 1,204 respondents. We can check where the missing values come from by counting the NAs in each variable:
+
+```{r}
+nilt |>
+  select(persinc2, rhourswk, rage, highqual) |>
+  summary()
+```
+
+Most of the missing values come from `rhourswk` (638 NAs, as the question was only asked of respondents in work) and `persinc2` (307 NAs), with only 3 missing ages and no missing qualifications. As discussed in Lab 10, this means the model only describes respondents who are in work and reported their income, which needs to be borne in mind when interpreting the results.
+
+3.  Plot a histogram of the residuals for model `m4`. Do they look normally distributed? Can we trust our estimates or would you advise to carry out further actions to verify the adequate interpretation of this model?
 
 ```{r}
 hist(residuals(m4))
 ```
 
-The distribution of the residuals in 'm4' look overall normally distributed. However, the distribution is not perfectly symmetric. Therefore, we would advice to conduct further checks to test the linear model assumptions.
-
-<!-- ## Logistic regression -->
-
-<!-- ```{r} -->
-
-<!-- ## Load the packages -->
-
-<!-- library(tidyverse) -->
-
-<!-- library(jtools) -->
-
-<!-- # Read the data from the .rds file -->
-
-<!-- nilt <- readRDS("data/nilt_r_object.rds") -->
-
-<!-- ``` -->
-
-<!-- ### Lab activities -->
-
-<!-- You will explore the interreligious relations in Northern Ireland measured by the acceptance of a close relative marrying someone of a different religion in the variable `smarrrlg`. This variable asks _Would you mind or not mind if one of your close relatives were to marry someone of a different religion?_. The possible answers are three: _1 Would mind a lot_ / _2 Would mind a little_ / _3 Would not mind_. -->
-
-<!-- Using the `nilt` object complete the following activities in your `logit_model.R` R Script: -->
-
-<!-- 1. Coerce the variable `smarrrlg` to factor using the `as_factor()` function. -->
-
-<!-- ```{r} -->
-
-<!-- nilt$smarrrlg <- as_factor(nilt$smarrrlg) -->
-
-<!-- ``` -->
-
-<!-- 2. Print a simple table of this variable using the `table()` function. -->
-
-<!-- ```{r} -->
-
-<!-- table(nilt$smarrrlg) -->
-
-<!-- ``` -->
-
-<!-- 3. From the three possible options, create a new binary variable called `marr_mix` using the `ifelse()` function. Assign '1' if the response is _Would mind a lot_ or _2 Would mind a little_ and '0' otherwise. You can copy and run the code below. -->
-
-<!-- ```{r} -->
-
-<!-- nilt$marr_mix <- ifelse(nilt$smarrrlg == 'Would mind a lot' | nilt$smarrrlg == 'Would mind a little', 1, 0) -->
-
-<!-- ``` -->
-
-<!-- 4. Create a stacked bar plot using `ggplot()`, in `aes()` set `marr_mix` in the x axis, and `fill` to `religcat`. Use the `geom_bar()` function, and within this specify the `position` argument to 'fill'. Filter out the missing values for `marr_mix` before passing the data to ggplot. -->
-
-<!-- ```{r} -->
-
-<!-- nilt %>%  -->
-
-<!--   filter(!is.na(marr_mix)) %>%  -->
-
-<!--   ggplot(aes(x= marr_mix, fill = religcat)) + -->
-
-<!--     geom_bar(position = 'fill') -->
-
-<!-- ``` -->
-
-<!-- 5. Fit a logit model using the `marr_mix` as the dependent variable, `persinc2` and `religcat` as the independent variables. Assign it to and object called `m9`. -->
-
-<!-- ```{r} -->
-
-<!-- m9 <- glm(marr_mix ~ persinc2 + religcat, data = nilt, family = 'binomial') -->
-
-<!-- ``` -->
-
-<!-- 6. Use the `jtools::summ()` function to print the summary of the results, setting the `exp` argument to `TRUE`. -->
-
-<!-- ```{r} -->
-
-<!-- jtools::summ(m9, exp = TRUE) -->
-
-<!-- ``` -->
-
-<!-- 7. Which of the independent variables is/are significant?  -->
-
-<!-- Re: From the results of 'm9', personal income and being protestant are significant to study who is more likely to mind if a respondent's close relative were to marry someone of a different religion. -->
-
-<!-- 8. Do you think personal income is playing a role? -->
-
-<!-- Re: Although personal income p-value is equal to 0.05, which can be consider as significant, we cannot expect this is playing a role, since the odds ratio are the same regardless of changes in personal income. We can confirm this from the first column of the coefficients table (persinc2 = 1). -->
-
-<!-- 9. How do you interpret the coefficient for protestant respondents?  -->
-
-<!-- Re: The odds ratio of a respondent minding about a close relative marring someone of a different religion are 3.1 times higher for Protestant respondents compared to Catholic ones. -->
+The distribution of the residuals in 'm4' looks overall normally distributed. However, the distribution is not perfectly symmetric. Therefore, we would advise conducting further checks to test the linear model assumptions.

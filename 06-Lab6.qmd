@@ -1,4 +1,6 @@
-# Visual exploratory analysis
+---
+title: "Visual exploratory analysis"
+---
 
 ```{r}
 #| include: false
@@ -8,14 +10,12 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 ## Introduction
 
-In this lab, we will extend your skills to explore data by visualizing it... and `R` is great for this! It is actually a highly-demand skill in the job market.
+In this lab, we will extend your skills to explore data by visualizing it... and `R` is great for this! It is actually a highly in-demand skill in the job market.
 
 Visualizing data is an important process in at least two stages in quantitative research: First, for you as a researcher to get familiar with the data; and second, to communicate your findings. `R` includes two important tools to achieve this: First, the wonderful `ggplot2` package (included in `tidyverse`), a powerful tool to explore and plot data. Second, [R Markdown](https://rmarkdown.rstudio.com/) which allows you to create integrated quantitative reports. Combining and mastering the two can create very effective results. 
 
 
 ## Data visualization
-
-Visual data exploration with `ggplot2` (Artwork by \@alison_horst).
 
 ```{r fig.cap="Visual data exploration. Source: @Horst", echo=FALSE}
 knitr::include_graphics("./images/lab4_ggplot2_exploratory.jpg")
@@ -23,7 +23,7 @@ knitr::include_graphics("./images/lab4_ggplot2_exploratory.jpg")
 
 Visualizations are important for any quantitative analysis. These are helpful to identify overall trends, problems, or extreme values in your data at an initial stage. Additionally, visualizations are key to communicate your results at the final stage of the research process. These two stages are known as *exploratory* and *explanatory* visualizations, respectively. Base R includes some functionalities to create basic plots. These are often used to generate quick exploratory visualizations. In addition, `ggplot2`, which is one of the most popular data visualization tools for R, allows you to extend the base R capabilities and create publishable high-quality plots. In this lab we will focus on `ggplot2`.
 
-Different plot types serve different types of data. In the last lab, we introduced some functions to summarise your data and to generate summaries for specific types of variable. This will help you to decide what the most suitable plot is for your data or variable. The table below presents a minimal guide to choose the type of plot as a function of the type of data you intend to visualize. In addition, it splits the type of plot by the number of variables included in the visualization, one for *univariate*, or two for *bivariate*.  Bivariate plots are useful to explore the relationship between variables.
+Different plot types serve different types of data. In Lab 4, we introduced some functions to summarise your data and to generate summaries for specific types of variable. This will help you to decide what the most suitable plot is for your data or variable. The table below presents a minimal guide to choose the type of plot as a function of the type of data you intend to visualize. In addition, it splits the type of plot by the number of variables included in the visualization, one for *univariate*, or two for *bivariate*.  Bivariate plots are useful to explore the relationship between variables.
 
 |  	|**Univariate**  	|  **Bivariate**	|  
 |-	|--------------	|----------	|
@@ -35,11 +35,11 @@ Note that it is possible to include more than two variables in one plot. However
 
 ### Setup a new R Markdown file
 
-We will continue working in the same project called *NILT* in [Posit Cloud](https://rstudio.cloud/).
+We will continue working in the same project called *NILT* in [Posit Cloud](https://posit.cloud/).
 
 Set up your session as follows:
 
-1. Go to your 'Lab Group ##' in [Posit Cloud](https://rstudio.cloud/) (log in if necessary);
+1. Go to your 'Lab Group ##' in [Posit Cloud](https://posit.cloud/) (log in if necessary);
 2. Open your own copy of the 'NILT' project from the 'Lab Group';
 
 Within your 'NILT' project, ensure you are in the top-level project directory. You can tell by checking in the 'Files' tab in the bottom-right pane. Near the top of the tab you'll see "Cloud > project". If that's all you see, you are already in the top-level folder. If instead you see "Cloud > project > R" or "Cloud > project > data" then click on the text for "project" to navigate back to the top-level folder.
@@ -156,7 +156,7 @@ nilt_subset |> ggplot(aes(x = rsex, fill = religcat)) +
 ```
 
 
-This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents' sex. A plot can show us the magnitudes and composition by respondents' sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable `religcat` on the `x` axis and `fill` with gender `rsex`.
+This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if we think it is worthwhile visualizing the religion by respondents' sex. A plot can show us the magnitudes and composition by respondents' sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable `religcat` on the `x` axis and `fill` with gender `rsex`.
 
 ```{r}
 nilt_subset |> ggplot(aes(x = religcat, fill = rsex)) +
@@ -178,6 +178,8 @@ nilt_subset |> ggplot(aes(x = rage)) +
   labs(title = "Age distribution")
 ```
 
+(When you run this chunk you may see messages such as `stat_bin()` using `bins = 30` and 'Removed 3 rows containing non-finite values'. These are expected: ggplot picks a default number of bins and drops the respondents with a missing age. You will see similar messages for the scatter plot below.)
+
 From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent's age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group. 
 
 A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this plot, `rage` is defined in the `y` axis. This is just a personal preference. The geometry is set by the `geom_boxplot()` function.
@@ -188,7 +190,7 @@ nilt_subset |> ggplot(aes(y = rage)) +
   labs(title = "Age boxplot")
 ```
 
-What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the `quantile()` function. The lower edge of the box represents the 2nd quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.
+What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the `quantile()` function. The lower edge of the box represents the 1st quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.
 
 ```{r}
 quantile(nilt_subset$rage, na.rm = TRUE)
@@ -200,7 +202,7 @@ A useful plot to explore the relationship between two numeric variables is the s
 
 <!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
 
-To generate a scatter plot, we need to define `x` and `y` in aesthetics `aes()`. The geometry is a point, that we can specify using the `geom_point()` function. Note that we are specifying some further optional arguments within `geom_point()`. First, `alpha` regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in we defined `position` as `jitter`. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly ontop of each other. Adding some transparency and _noise_ to their position with `jitter` (i.e. shifts dots slightly apart), can make it easier to visualize possible patterns.
+To generate a scatter plot, we need to define `x` and `y` in aesthetics `aes()`. The geometry is a point, that we can specify using the `geom_point()` function. Note that we are specifying some further optional arguments within `geom_point()`. First, `alpha` regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, we defined `position` as `jitter`. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly on top of each other. Adding some transparency and _noise_ to their position with `jitter` (i.e. shifts dots slightly apart), can make it easier to visualize possible patterns.
 
 ```{r}
 nilt_subset |> ggplot(aes(x = rage, y = persinc2)) +
@@ -226,7 +228,7 @@ From this, we can visualize that female participants are slightly younger than t
 
 There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don't have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the [Data Visualization with ggplot2 Cheat Sheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html). An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). Another interesting site is the [The R Graph Gallery](https://www.r-graph-gallery.com/), which includes a comprehensive showcase of plot types and their respective code.
 
-As a quick example of how simply themeing is, let's take the last graph and apply a minimal theme. All we need to do is add `+` after `labs()` followed by `theme_minimal()`.
+As a quick example of how simple theming is, let's take the last graph and apply a minimal theme. All we need to do is add `+` after `labs()` followed by `theme_minimal()`.
 
 ```{r}
 nilt_subset |> ggplot(aes(y = rage, x = rsex)) +
@@ -247,7 +249,7 @@ After adding (and running) the code, any code you run to create a plot will use 
 
 :::{.callout-important}
 
-**Important**. If you are interested in applying a theme to your plots please look at the linked resources above. Themeing plots is easy with `ggplot`, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.
+**Important**. If you are interested in applying a theme to your plots please look at the linked resources above. Theming plots is easy with `ggplot`, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.
 
 As a general rule of thumb, if genAI responses have code we did not cover in the labs, 99% of the time you can be confident it is spouting out absolute nonsense. As seen above, the built-in `ggplot` themes can be applied with a single line of code, and more complex customisation - that you will rarely, if ever, need - can be set once globally or used only when absolutely needed for a specific plot. GenAI will mislead you into thinking that creating plots with R requires 20+ lines of code rather than 3-4. It has similar issue with tables, sometimes giving 40+ lines of code to create a table that could instead be created with a single line of code.
 
@@ -262,7 +264,7 @@ Using the `nilt_subset` object, complete the tasks below in your R Markdown file
 * Based on the plot above, create a 'stacked bar plot' to visualize this affiliation by religion, using the `uninatid` and `religcat` variables;
 * Create a new first-level header to start a section called "Numeric analysis";
 * Create a scatter plot about the relationship between personal income `persinc2` on the Y axis and number of hours worked a week `rhourswk` on the X axis;
-* Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis ... Interesting result, Isn't it? Talk to your lab group-mates and tutors about your results.
+* Finally, create a box plot to visualize personal income `persinc2` on the Y axis and self-reported level of happiness `ruhappy` on the x axis ... Interesting result, isn't it? Talk to your lab group-mates and tutors about your results.
 * Add your own (brief) comments to each of the plots as text in your R Markdown file;
 * Knit the .Rmd document as HTML. The knitted file will be saved automatically in your project.
 

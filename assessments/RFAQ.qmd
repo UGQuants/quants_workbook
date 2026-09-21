@@ -1,4 +1,6 @@
-# R Issues FAQ
+---
+title: "R Issues FAQ"
+---
 
 This page contains information for solving common issues students have reported when working on their interpretive findings report.
 

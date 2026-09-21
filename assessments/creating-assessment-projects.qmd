@@ -1,4 +1,6 @@
-# Setup Assessment Projects
+---
+title: "Setup Assessment Projects"
+---
 
 We have created GitHub repositories which contain RStudio projects with all the essentials you need to start working on the formative and summative assessments.
 

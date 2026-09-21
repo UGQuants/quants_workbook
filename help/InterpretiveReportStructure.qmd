@@ -1,4 +1,6 @@
-# RMarkdown & the Interpretive Report Template {#InterpretiveReportTemplate .unnumbered}
+---
+title: "R Markdown & the Interpretive Report Template"
+---
 
 ## Introduction {.unnumbered}
 
@@ -346,7 +348,7 @@ We use this addin as the built-in RStudio word count, accessed via the 'Edit' me
 knitr::include_graphics("./images/rstudiowordcount.png")
 ```
 
-**Important**, the '- 10' in the code is so "Word count:" and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to `wordcountaddin::word_count("Assignmet2-template.Rmd") - 193`.
+**Important**, the '- 14' in the code is so "Word count:" and each of the headers "Introduction", "Data and method", etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to `wordcountaddin::word_count("Summative-template.Rmd") - 198`.
 
 ### Template Outline {.unnumbered}
 

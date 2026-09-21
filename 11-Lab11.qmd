@@ -1,8 +1,10 @@
-# UG Quants summative assessment: Interpreting Quantitative Findings Report {#interpretivereport}
+---
+title: "UG Quants summative assessment: Interpreting Quantitative Findings Report"
+---
 
 ## Introduction
 
-This is our final practical session. Thank you for tuning in and all your hard work!
+This is our final practical session. Thank you for coming along and for all your hard work!
 
 Today, we will discuss some practical aspects of the summative assessment *Interpreting Quantitative Findings Report*. You will actually start working on the assignment today by creating a template you can use to write your report in RStudio. Also, you will get familiar with the structure and the contents of the template. Remember, this is the perfect time to clarify as many questions as possible. Your tutor will be more than happy to help!
 
@@ -41,9 +43,9 @@ We have a [whole section of pages](assessments/assessments.qmd) dedicated to the
 
 After following **all** the instructions in the [Setup Assessment Projects](assessments/creating-assessment-projects.qmd) page:
 
-1. In the template, fill in the 'author' and 'date' space in the YAML at the top of the file with your student number and appropriate information using quotation marks. (Please do not add YAML code for creating a table of contents. Whilst we covered it as example of how you can theme knitted documents in lab 5, Turnitin is ridiculously fussy and complains about files submitted with a table of contents.)
+1. In the template, replace `[Your student number here]` in the `author` line of the YAML at the top of the file with your student number, keeping the quotation marks. Leave the `date` line as it is - it already contains code that fills in the date automatically - and do not rename the `Summative-template.Rmd` file, as the word count code refers to it by name. (Please do not add YAML code for creating a table of contents. Whilst we covered it as example of how you can theme knitted documents in lab 5, Turnitin is ridiculously fussy and complains about files submitted with a table of contents.)
 2. Knit the R Markdown file (RStudio may ask to install some packages; click 'Yes').
-3. In the output, look at the results of the table under the 'Results' section and identify the *dependent* and the *independent* variables. You can learn about the meaning of these variables in the NILT documentation ([click here to access the documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf)).
+3. In the output, look at the results of the table under the 'Results and discussion' section and identify the *dependent* and the *independent* variables. You can learn about the meaning of these variables in the NILT documentation ([click here to access the documentation](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf)).
 4. Identify the variables that are significant in this model and the direction of the relationship.
 5. Discuss your interpretations with your neighbour or tutor. You can refer back to [Lab 9](09-Lab9.qmd) and [Lab 10](10-Lab10.qmd) to refresh your memory.
 

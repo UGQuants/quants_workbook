@@ -1,5 +1,6 @@
-
-# Exploratory data analysis
+---
+title: "Exploratory data analysis"
+---
 
 ```{r}
 #| include: false
@@ -7,13 +8,13 @@ library(tidyverse)
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
-In our previous session we learned about setting up an RStudio project and wrangling data in `R` by implementing useful function such as `filter()`, `select()`, and `mutate()`. In this session we will continue working with the NILT 2012 dataset and focus on descriptive statistics. This includes the exploration and description of quantitative data.
+In our previous session we learned about setting up an RStudio project and wrangling data in `R`, coercing variables with functions such as `mutate()` and `as_factor()`. In this session we will continue working with the NILT 2012 dataset and focus on descriptive statistics. This includes the exploration and description of quantitative data.
 
 ## Getting started
 
 We will continue working on the same NILT RStudio project and dataset that you created in the last lab on Posit Cloud. To get started, please follow the usual steps:
 
-1. Go to your 'Lab Group' in [Posit Cloud](https://rstudio.cloud/).
+1. Go to your 'Lab Group' in [Posit Cloud](https://posit.cloud/).
 2. Open your existing project called 'NILT' located in your lab group.
 
 (If you missed Lab 3, quickly run through setting up an [NILT RStudio Project](03-Lab3.qmd#nilt-rstudio-project) and [Read the clean dataset](03-Lab3.qmd#read-the-clean-dataset) sections. Ensure to make time later to go through the section on the [NILT Documentation](03-Lab3.qmd#the-nilt-documentation) though.)
@@ -25,7 +26,7 @@ Then we need to create an R Markdown file for today. Within the Files pane (bott
 
 ![Create a new Rmd file](images/lab4-new-rmd.png)\
 
-Then within the 'Create a New File in Currect Directory' dialogue that pops up:
+Then within the 'Create a New File in Current Directory' dialogue that pops up:
 
 5. Give it an appropriate name, such as 'Lab-4-Exploratory.Rmd'
 6. Click the 'OK' button to confirm creation of the file.
@@ -43,7 +44,7 @@ The R Markdown file will automatically open in the Sources pane (top-left). It j
 
 ```{r}
 #| eval: false
-`r format(Sys.time(), '%d/%m/%y)`
+`r format(Sys.time(), '%d/%m/%y')`
 ```
 
 ![Your YAML should now look like this.](images/lab4_yaml.png)\
@@ -88,11 +89,11 @@ library(tidyverse)
 nilt <- readRDS("data/nilt_r_object.rds")
 ```
 
-We do not need to `install.packages("tidyverse")` as we are working within the same RStudio project as last week, so the tidyverse is already installed. Whilst we also `libary(tidyverse)` to load the tidyverse last week, remember that when we knit files it creates a clean R environment. Whilst it can access packages that are installed on the device - or in our case within a Posit Cloud RStudio Project - it has no packages loaded nor data frames read in. So, for each R Markdown file we created within a project, we need this premable.
+We do not need to `install.packages("tidyverse")` as we are working within the same RStudio project as last week, so the tidyverse is already installed. Whilst we also `library(tidyverse)` to load the tidyverse last week, remember that when we knit files it creates a clean R environment. Whilst it can access packages that are installed on the device - or in our case within a Posit Cloud RStudio Project - it has no packages loaded nor data frames read in. So, for each R Markdown file we created within a project, we need this preamble.
 
 Now, as we are going to work with the variables we coerced last week, let's setup a subset with just those variables. A subset is merely a copy of our NILT data frame, but with just the rows and columns we are interested in.
 
-To do this add the following at the end of your premable code chunk -
+To do this add the following at the end of your preamble code chunk -
 
 ```{r}
 # Create subset
@@ -104,7 +105,7 @@ Your full code chunk should now look like the below.
 
 ![Full preamble code chunk.](images/lab4_preamble.png)\
 
-Click the green triangle to run the code chunk and you'll see the `nilt_subset` appear in the Environment pane (top-left).
+Click the green triangle to run the code chunk and you'll see the `nilt_subset` appear in the Environment pane (top-right).
 
 ![Environment pane with nilt_subset highlighted.](images/lab4_sub-env.png)\
 
@@ -114,9 +115,9 @@ Why do this? With *very* large datasets this helps reduce the compute required w
 
 To illustrate, within the Console run in turn `glimpse(nilt)` and then `glimpse(nilt_subset)`. 
 
-![Glimping the nilt_subset object.](images/lab4_glimpse-sub.png)\
+![Glimpsing the nilt_subset object.](images/lab4_glimpse-sub.png)\
 
-As can see, whilst glimping the nilt data frame outputs lines for all 133 variables, glimpsing the nilt_subset data frame gives us lines for just the 8 variables we selected.
+As can see, whilst glimpsing the nilt data frame outputs lines for all 133 variables, glimpsing the nilt_subset data frame gives us lines for just the 8 variables we selected.
 
 ## Exploratory analysis
 
@@ -142,7 +143,7 @@ install.packages("vtable")
 
 Once it is installed, we also need to load it within the R Markdown file. Remember, it is best practice to load all your packages at the top, making it clear to anyone looking at the file which packages are being used and ensuring the packages are available for all the code chunks after it.
 
-So within the preamable code chunk, add the following line after `library(tidyverse)`.
+So within the preamble code chunk, add the following line after `library(tidyverse)`.
 
 ```{r}
 library(vtable)
@@ -170,7 +171,7 @@ Before looking at the output in more detail, you may be wondering why the way we
 
 The simple format of `sumtable()` is `sumtable(data_frame, vars = ...)`, or with pipe `data_frame |> sumtable(vars = ...)`. If you check out `help(sumtable)` you will see sumtable has a lot more arguments we could use. Any argument that has `word = ...` is what is known as a 'keyword argument'. By default, arguments are read in order that they are listed. However, in practice, you often do not want to specify all arguments when using a function. Keyword arguments then let you specify exactly which arguments you are using despite the order they appear in.
 
-We did not need to specify a `vars = ...` equivalent with the tidyverse functions as they all assume a data frame as the first argument, or passed in via a pipe, followed by a list of columns. It is only if you want to use any additional options provided by the tidyverse functions that you then need to add any keyword arguments. This let's the code remain must more simple and direct, also making it easier to read. Importantly, for `sumtable()` note how we specify `"rsex"` in quotation marks, rather than `rsex` without as we did with tidyverse functions.
+We did not need to specify a `vars = ...` equivalent with the tidyverse functions as they all assume a data frame as the first argument, or passed in via a pipe, followed by a list of columns. It is only if you want to use any additional options provided by the tidyverse functions that you then need to add any keyword arguments. This lets the code remain much simpler and direct, also making it easier to read. Importantly, for `sumtable()` note how we specify `"rsex"` in quotation marks, rather than `rsex` without as we did with tidyverse functions.
 
 Let's turn back to the actual table we created. From the result, we see that there are more female respondents than males. Specifically, we see that males respondents represent 45% and females 55%.
 
@@ -192,9 +193,9 @@ Now, what if we want to know the religious affiliation breakdown by males and fe
 nilt_subset |> sumtable(vars = "religcat", group = "rsex")
 ```
 
-There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 44% vs 40% and 44% vs 40%, respectively. We also see that there are 19% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.
+There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 44% vs 40% and 44% vs 41%, respectively. We also see that there are 19% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.
 
-As an important final note, `sumtable()` by default rounds to 2 decimal places. With percentages this rounds to whole numbers as `sumtable()` applying rounding before converting to percentage. To get a percentage we take the number of observations for a category, divide by the total number of observations, and multiple by 100. If we have a percentage 14.6%, before the multiplying by 100 it would be 0.146, which rounded to 2 decimal places would become 0.15, or 15%.
+As an important final note, `sumtable()` by default rounds to 2 decimal places. With percentages this rounds to whole numbers as `sumtable()` applies rounding before converting to percentage. To get a percentage we take the number of observations for a category, divide by the total number of observations, and multiple by 100. If we have a percentage 14.6%, before the multiplying by 100 it would be 0.146, which rounded to 2 decimal places would become 0.15, or 15%.
 
 We can change the default with the `digits` keyword argument:
 
@@ -208,7 +209,9 @@ Sticking with the default rounding to 2 decimal places is perfectly OK to do, an
 
 Right, let's put what we have covered so far into practice, and help get used to working with the `sumtable()` function.
 
-In your R Markdown file, do the following activities using the `nilt_subset` data frame. * Create a One-Way contingency table for `uninatid` in the `nilt_subset` dataset using the `sumtable()` function;
+In your R Markdown file, do the following activities using the `nilt_subset` data frame.
+
+* Create a One-Way contingency table for `uninatid` in the `nilt_subset` dataset using the `sumtable()` function;
 
 * Using the variables `religcat` and `uninatid`, generate a Two-Way contingency table;
 * Are your summary statistics hiding something interesting? Discuss your results with your neighbour or your tutor.
@@ -245,7 +248,7 @@ median(nilt_subset$rage, na.rm = TRUE)
 
 The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.
 
-Note that we also include the argument `na.rm` equal `TRUE` in the function. The 'na' bit stands for 'not available' and refers to what is more commmonly known as "missing values". The `.rm` stands for remove. So, we are telling R to remove the missing values when computing the median. We do this here for `rage` because we do not know the age of 3 of the respondents in the sample.
+Note that we also include the argument `na.rm` equal `TRUE` in the function. The 'na' bit stands for 'not available' and refers to what is more commonly known as "missing values". The `.rm` stands for remove. So, we are telling R to remove the missing values when computing the median. We do this here for `rage` because we do not know the age of 3 of the respondents in the sample.
 
 To compute the _mean_ manually, we need to sum all our values and divide it by the total number of the observations as follows:
 $$ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} $$
@@ -280,7 +283,7 @@ $$ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } $$
 
 To decipher the formula above, the Σ (capital sigma) means sum the values from the following. Here we have $x$ rather than $x_1$ and so on as the Σ tells us we are repeating this for all our observations. The $\bar{x}$ represents the mean, a shorthand for the formula we covered before.
 
-So, to put what we have so far together, for each of our $x$ values we substract the _mean_ $\bar{x}$. The result of the subtraction is then squared - i.e. multiply the number by itself - and represented by the %^2%. We are interested in the sum of the differences from the mean, regardless of whether it is positive or negative. As some numbers will be lower than the mean, the result of the substraction with be negative. By squaring all numbers, any negatives also become positive (-2 multipled by -2 is 4). Finally, we divide the sum by the size/length of the numeric sequence $n$ minus 1.
+So, to put what we have so far together, for each of our $x$ values we subtract the _mean_ $\bar{x}$. The result of the subtraction is then squared - i.e. multiply the number by itself - and represented by the $^2$. We are interested in the sum of the differences from the mean, regardless of whether it is positive or negative. As some numbers will be lower than the mean, the result of the subtraction will be negative. By squaring all numbers, any negatives also become positive (-2 multiplied by -2 is 4). Finally, we divide the sum by the size/length of the numeric sequence $n$ minus 1.
 
 Thankfully, in R to estimate the variance, we only need the `var()` function.
 
@@ -306,7 +309,7 @@ This measure is more _human readable_ than the variance. Don't worry too much ab
 
 Phew, that was a lot! ...
 
-... Luckily, as another beatiful example of the power of coding, we can use the `sumtable()` function to compute all these measures for our numeric variables at the same time!
+... Luckily, as another beautiful example of the power of coding, we can use the `sumtable()` function to compute all these measures for our numeric variables at the same time!
 
 It is very simple. You can compute a quick summary for age as following:
 
@@ -342,7 +345,7 @@ nilt_subset |> sumtable()
 
 #### Adding labels
 
-Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what `rsex`, `rage`, and so on represent.For that reason, it is good practice to also add labels. With `sumtable()` you can use the `labels =` keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.
+Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what `rsex`, `rage`, and so on represent. For that reason, it is good practice to also add labels. With `sumtable()` you can use the `labels =` keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.
 
 To keep things relatively simple, let's create a table with labels for `rage` and `persinc2`
 
@@ -358,7 +361,7 @@ As a final wee note, you can also customise the title of tables created with `su
 
 Can money buy happiness?
 
-Using the data in the `nilt_subset` dataset, complete the following activities. This will be a good practice run for doing the research report when you run your own analysis on the NILT teaching dataset. Handy! 
+Using the data in the `nilt_subset` dataset, complete the following activities. This will be a good practice run for the Interpreting Quantitative Findings report, when you run your own analysis on the NILT teaching dataset. Handy! 
 
 * Using the `hist()` function plot a histogram of personal income `persinc2`. From the NILT documentation this variable refers to annual personal income in £ before taxes and other deductions (Hint: with base R functions you need to use `dataframe$variable` format to specify the variable the function should use);
 * Create a summary of the personal income `persinc2` variable, using the `sumtable()` function;

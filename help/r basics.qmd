@@ -1,3 +1,7 @@
+---
+title: "R Basics"
+---
+
 This appendix provides additional information on using R Markdown and an overview of the structure of the R Markdown document provided with the interpretive report project template.
 
 Please ensure to review the relevant lab materials:

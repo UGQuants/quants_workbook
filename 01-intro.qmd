@@ -1,5 +1,6 @@
-
-# Introduction to R
+---
+title: "Introduction to R"
+---
 
 ::: {.callout-note title="Overview"}
 By the end of this lab you will:
@@ -15,7 +16,7 @@ By the end of this lab you will:
 
 For this course we will be using [R](https://www.r-project.org/) [@R-base] and [RStudio](https://rstudio.com/) as the main tools for conducting quantitative analysis.
 
-`R` and the basic versions of `RStudio` are free and open-source software. There are 'free' as in cost, but - more importantly - they are free software that guarantee users four foundamental freedoms. As explained on the FSFE's [What is Free Software?](https://fsfe.org/freesoftware/index.en.html) page, these are:
+`R` and the basic versions of `RStudio` are free and open-source software. They are 'free' as in cost, but - more importantly - they are free software that guarantee users four fundamental freedoms. As explained on the FSFE's [What is Free Software?](https://fsfe.org/freesoftware/index.en.html) page, these are:
 
 > - **Use**: Free Software can be used for any purpose and is free of restrictions such as licence expiry or geographic limitations.
 > - **Study**: Free Software and its code can be studied by anyone, without non‐disclosure agreements or similar restrictions.
@@ -23,10 +24,6 @@ For this course we will be using [R](https://www.r-project.org/) [@R-base] and [
 > - **Improve**: Free Software can be modified by anyone, and these improvements can be shared publicly. 
 
 Even though `R` appeared in the early 90s, it has been gaining a lot of popularity in recent years. A main contributor to its success is being free software, with a large community of people contributing improvements to `R` directly as well as extending it with further additional software packages. In fact, it is now one of the most common software for doing statistics in academia.
-
-```{r fig.cap="Source: www.https://tiobe.com/.", include=FALSE}
-knitr::include_graphics("images/r-lang-popularity-increase.png")
-```
 
 ![Source: https://tiobe.com](images/r-lang-popularity-increase.png){fig-alt="Line chart showing the dramatic increase in R's popularity over time."}
 
@@ -50,7 +47,7 @@ The broad application of R is due to its flexibility which allows it to perform 
 
 Lastly, `R` is powerful to communicate and share information and documents. There are several extensions (called _**packages**_ in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.
 
-`R` works in a command-based `Console` environment. This means that you need to call the commands (or _**functions**_, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexible. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.
+`R` works in a command-based `Console` environment. This means that you need to call the commands (or _**functions**_, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexibility. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.
 
 ::: {.callout-tip title="New terms"}
 
@@ -109,7 +106,7 @@ To get started with Posit Cloud, follow the next steps:
 
 ![Posit SSO Login Page](images/sso_login.png)\
 
-4. Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;
+4. Done! After logging in with your University of Glasgow account, you will be taken to your personal Posit Cloud workspace;
 
 #### **Part 2** Join your lab group
 
@@ -123,7 +120,7 @@ You will have received a link via email to join your lab group on Posit Cloud (t
 
 #### **Part 3** Create a New Project
 
-1. Open the shared space form the left-hand side pane called 'Lab Group ...' (where ... is your Lab Group number).
+1. Open the shared space from the left-hand side pane called 'Lab Group ...' (where ... is your Lab Group number).
 2. Click the blue 'New Project' button on the right of the screen.
 3. From the menu list that opens select 'New Project from Git Repository'.
 
@@ -152,9 +149,9 @@ https://github.com/UGQuants/Labs-1-2
 
 #### Getting started
 
-After your new 'Labs 1-2' project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:
+After your new 'Labs-1-2' project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:
 
-![Screen after creating 'Labs 1-2' project](images/posit_cloud_lab1_start.png)\
+![Screen after creating 'Labs-1-2' project](images/posit_cloud_lab1_start.png)\
 
 1. In the bottom-right 'Files' pane, click "Lab-01.Rmd".
 2. That will open a new pane in the top-left, within the yellow banner in it click 'Install'.
@@ -197,9 +194,9 @@ This is where you will see most of the results of the code you run (pane 1). You
 
 - Finally, in **Pane 4** (yellow) you have multiple useful tabs.
 
-In the `File` tab you can see the files and directories that you have in your R project.
+In the `Files` tab you can see the files and directories that you have in your R project.
 
-In the `Plot` tab you will see a preview of the static plots/charts you will be producing from your script.
+In the `Plots` tab you will see a preview of the static plots/charts you will be producing from your script.
 
 In `Packages`, you have a list of the extensions or plug-ins (called 'packages' in R) that are installed in your working environment.
 
@@ -239,7 +236,7 @@ Of course, you can also go to the **Console**, write a simple calculation, and r
 
 ![Running simple calculations in the Console](./images/rstudio_console_calc.png)\
 
-It's also possible to run multiple calculations in a single chunk. Add a line for `5 * 5` and `21 -4` in the empty "sum-2" chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)
+It's also possible to run multiple calculations in a single chunk. Add a line for `5 * 5` and `21 - 4` in the empty "sum-2" chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)
 
 ![Adding simple calculations to sum-2 code chunk](./images/rstudio_lab1_sum-2.png)\
 
@@ -264,13 +261,13 @@ Now, in the "logical-2" code chunk, add the following and then run it:
 - `'this' == 'that'`
 - `'this' != 'that'`
 
-(Note, if you receive an "Error: object 'this' not found'" message, check you are using single quotes and have `'this'` rather than `this`.)
+(Note, if you receive an "Error: object 'this' not found" message, check you are using single quotes and have `'this'` rather than `this`.)
 
 What do you see running the code chunks? Why is R outputting these results? ...
 
 When you use the double equal sign `==` you are _asking_ R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark `!` with another operator, you get the reversed result. For example, `!=` is interpreted as "is not equal to", that is why `10 != 10` returns `FALSE`, but `10 == 10` returns `TRUE`. 
 
-`R` can process different classes of inputs. In this case we used a letters and we _asked_ R whether 'this' was equal to 'this', and of course the result is `TRUE`. Note that when you want to input text (referred as `character` values in R), you need quotation marks, `'text'`. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as `numeric` 'class' values.
+`R` can process different classes of inputs. In this case we used letters and we _asked_ R whether 'this' was equal to 'this', and of course the result is `TRUE`. Note that when you want to input text (referred as `character` values in R), you need quotation marks, `'text'`. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as `numeric` 'class' values.
 
 You can use the `class()` function to check what something is in R. For example, try running `class(42)`, `class('42')`, and `class(TRUE)` in the Console.
 
@@ -340,7 +337,7 @@ It is also possible to use an object in a calculation and assign the result of t
 
 Go to the "order-2" code chunk and run it multiple times, looking at the result underneath the chunk and the value for `a` in the Environment pane.
 
-!['Increased value of `a` after running "order-2" chunk multiple times](./images/rstudio_lab1_order-2.png)\
+![Increased value of `a` after running "order-2" chunk multiple times](./images/rstudio_lab1_order-2.png)\
 
 Again, you can 'Run All Chunks Above' (downwards grey arrow/triangle, green line) and 'Run Current Chunk' (green arrow/triangle) to restore `a` to value it would be if only ran each code chunk once top to bottom.
 
@@ -392,7 +389,7 @@ Again, you can 'Run All Chunks Above' (downwards grey arrow/triangle, green line
 
 This is a good start, great job! 
 
-Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterisk at the end, `Lab-01.Rmd*`. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.
+Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterisk at the end, `Lab-01.Rmd*`. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the Posit Cloud tab in your browser.
 
 ::: {.callout-tip title="New Terms"}
 - `object`: any data or function that exists in the R session's memory; usually accessed via a name.
@@ -405,11 +402,11 @@ Note that the changes made in your R Markdown file are saved automatically withi
 Discuss the following questions with your neighbour or tutor, and write notes from your discussion in your R Markdown file:
 
 1. What are the main differences between working in a `R Markdown` file (pane 1) and directly on the console (pane 3)?
-2. Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)
+2. Can you describe what happens when you run the following code? (tip: look at the environment tab in pane 2)
 
 ```{r}
 object1 <- 10
-object1 <- 30
+object2 <- 30
 ```
 
 3. Click the 'Knit' button in the bar at the top of the R Markdown file (pane 1). This will turn your R Markdown file into an HTML document.

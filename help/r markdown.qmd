@@ -1,4 +1,6 @@
-## RMarkdown {#rmarkdown .unnumbered}
+---
+title: "R Markdown"
+---
 
 RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with [Code Chunks] that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.
 

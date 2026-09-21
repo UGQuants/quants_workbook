@@ -1,4 +1,6 @@
-# Interpretive Report Q&A
+---
+title: "Interpretive Report Q&A"
+---
 
 Please find below answers to questions about the summitive [interpreting quantitative findings report](summative.qmd#interpreting-quantitative-findings-report) assessment. For FAQ about R issues in relation to the summative assessment, please see the separate [R Issues FAQ](RFAQ.qmd) page.
 

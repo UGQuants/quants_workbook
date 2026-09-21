@@ -1,4 +1,6 @@
-# Regression Assumptions and Model Fit
+---
+title: "Regression Assumptions and Model Fit"
+---
 
 ```{r}
 #| include: false
@@ -32,17 +34,6 @@ nilt <- nilt |>
 
 m2 <- lm(rhourswk ~ rsex + rage + anyhcond, data = nilt)
 ```
-
-<!--
-
-- It would be good to have an example of multicollinearity! Can create a model with some independent variables that would expect to be correlated.
-- 
-
-Definite cover
-
-- [ ] Also need to return to explaining standard error when explaining residual standard error.
-
--->
 
 ## Introduction
 
@@ -129,13 +120,15 @@ nilt <- nilt |>
 nilt |> sumtable(vars = "rhourswk_missing", group = "anyhcond")
 ```
 
+(You may see a note that 'Some labelled variables have unlabeled values'. It can be ignored.)
+
 What we can see is of those with a health condition, 88% were dropped from our model as their value for rhourswk was NA (missing data), with only 36 respondents with a health condition actually included in the model.
 
-How would we address such issues in our analysis? A question that may have sprung to mind is - Could we not just modify the missing values for `rhourswk` to '0'? That may initially seem sensible given we are interested in number of hours worked not whether someone is in work. However, whilst that may seem intuitive, depending on the data - and as will see especially here - it can often be a mistake.
+How would we address such issues in our analysis? A question that may have sprung to mind is - Could we not just modify the missing values for `rhourswk` to '0'? That may initially seem sensible given we are interested in number of hours worked not whether someone is in work. However, whilst that may seem intuitive, depending on the data - and as we will see especially here - it can often be a mistake.
 
 (You'll also notice from page 9 of the [NILT Teaching Resources](https://www.ark.ac.uk/teaching/NILT2012TeachingResources.pdf) that `rhourswk` has two NA values, "-9 Non Applicable" and "-999 Not answered/refused". In practice, you would want to only modify "-9 Non Applicable" - the value used if the question was not asked - but as  we are demonstrating here why modifying NA to 0 is a bad idea for variables like `rhourswk` we will put that to the side for the moment.)
 
-From a sneaky wee test I ran of the regression results after changing NA to 0 in `rhourswk`, I can confirm that making such a change does produce a model where all the coefficients are significant. And yet, that only adds to reasons for suspecting there is an issue in making such a change - and a good example of why not to make simplistic good/bad assessments of models based on whether the results are significant or not. 
+A quick test of the regression results after changing NA to 0 in `rhourswk` confirms that making such a change does produce a model where all the coefficients are significant. And yet, that only adds to reasons for suspecting there is an issue in making such a change - and a good example of why not to make simplistic good/bad assessments of models based on whether the results are significant or not. 
 
 Whether your results are significant is entirely separate from whether your model is good/bad. It is always possible for even research following best practice to have results that are not significant, whereas it is very easy through bad practice - whether intentional or not - to get apparently significant results.
 
@@ -168,17 +161,17 @@ nilt |> ggplot(aes(x=rhourswk2)) +
 
 We have effectively turned our dependent numeric variable into a messy categorical + numeric variable - "is the respondent in work or not" **and** "if so, how many hours per week are they working". As a result, because it is now mixing two different types of variable, the variable becomes much less appropriate as a dependent variable for linear regression. It does not matter whether our regression results are significant if we use data not suitable for linear regression.
 
-Here, I deliberately picked variables where I suspected the choice of one variable would have a large effect on another. In practice though this can happen in much more subtle ways and the impact easier to miss if you are not being careful in the decisions you are making. As covered in the lecture on Critical Quants, there are more insidious ways that modelling decisions may look innocuous enough, but have profound and misleading impacts on the results and their interpretation.
+Here, we deliberately picked variables where we suspected the choice of one variable would have a large effect on another. In practice though this can happen in much more subtle ways and the impact easier to miss if you are not being careful in the decisions you are making. As covered in the lecture on Critical Quants, there are more insidious ways that modelling decisions may look innocuous enough, but have profound and misleading impacts on the results and their interpretation.
 
 Well, could we not then add in a variable for work? Again that may seem the intuitive and obvious solution, and yet the issue actually remains. As the drop in observations is due to the 'listwise deletion', it does not matter what variables we add. Because `rhourswk`'s NA values will always result in our model only including respondents who are in work, if we added a variable for work status or similar it would not add back in respondents.
 
-How then would we handle this in a more rigorous way? There are more advanced techniques not covered on the course that could potentially be used, though considerations would still need to made of their suitability. To give the simple 'high-level' overview though of one set of options, some of these additional techniques would involve a two stage process of first looking at whether someone was in work or not, and then looking at the number of hours worked.
+How then would we handle this in a more rigorous way? There are more advanced techniques not covered on the course that could potentially be used, though considerations would still need to be made of their suitability. To give the simple 'high-level' overview though of one set of options, some of these additional techniques would involve a two stage process of first looking at whether someone was in work or not, and then looking at the number of hours worked.
 
 If sticking with multiple linear regression though, this would not be a problem if our research was concerned with how gender influences number of hours worked for those in employment. Importantly, it would not be a problem if we made clear in our reporting that the model only includes those in employment and a limitation of our model is our findings cannot speak to how the variables are associated with whether someone is in employment or not. It only becomes a problem if we had built this model on the false assumption that it included those who were not in employment as well - especially if our interpretation continued in making that assumption.
 
 As emphasised across the module, there is no perfect data and stats. There are always various forms of compromises to be made and limitations for the analysis. Limitations are not a sign of bad research, instead it would be poor practice not to consider any limitations. The importance is in knowing what your data actually represents and measures and being clear and transparent about these alongside the decisions you made, and taking them into consideration within your interpretation and reporting of the findings.
 
-Also, whilst I set this up as a 'mystery' this is also something that in practice you would want to identify before building your model. Sorry to sound like a broken record: It is a reason why it is crucial to read through the dataset documentation and explore the data rather than make assumptions about it. Importantly, in practice, changing your research question *after* running your results and realising the mistake would be a subtle form of [HARKing](https://en.wikipedia.org/wiki/HARKing) that undermines the analysis and findings.
+Also, whilst this was set up as a 'mystery' this is also something that in practice you would want to identify before building your model. Sorry to sound like a broken record: It is a reason why it is crucial to read through the dataset documentation and explore the data rather than make assumptions about it. Importantly, in practice, changing your research question *after* running your results and realising the mistake would be a subtle form of [HARKing](https://en.wikipedia.org/wiki/HARKing) that undermines the analysis and findings.
 
 ## Model Evaluation
 
@@ -194,21 +187,21 @@ summary(m2)
 
 Our key remaining statistics are all within what are called "model fit statistics". These are residual standard error, R2, Adjusted R2, and the F-statistic.
 
-Residual standard error is a way to estimate how much our model's predictions are, on average, from the actual observed values of our dependent variable. Recall we 'fit' a regression model, where our function used finds the intercept and coefficents that result in the lowest possible residuals. With data used in the social sciences we will not see a residual standard error of 0, especially given the complexity of social phenomena. With all the factors that influence social phenomena, we would not expect any model to explain the observations without any error. On its own it is not all that useful, but we will come back to its value in comparing models.
+Residual standard error is a way to estimate how much our model's predictions are, on average, from the actual observed values of our dependent variable. Recall we 'fit' a regression model, where our function used finds the intercept and coefficients that result in the lowest possible residuals. With data used in the social sciences we will not see a residual standard error of 0, especially given the complexity of social phenomena. With all the factors that influence social phenomena, we would not expect any model to explain the observations without any error. On its own it is not all that useful, but we will come back to its value in comparing models.
 
-In terms of the commonly reported and more informative statistics for model fit, especially when we are interpeting a single model, R2 and Adjusted R2 are key ones to interpet. For the kind of regression model we are using to fit our data, R2 takes values between 0 and 1. An R2 of 0 would mean our model does not explain any of the variation - the different values of our dependent variable. An R2 of 1 would mean our model perfectly fits our sample, which again we will never see in practice.
+In terms of the commonly reported and more informative statistics for model fit, especially when we are interpreting a single model, R2 and Adjusted R2 are key ones to interpret. For the kind of regression model we are using to fit our data, R2 takes values between 0 and 1. An R2 of 0 would mean our model does not explain any of the variation - the different values of our dependent variable. An R2 of 1 would mean our model perfectly fits our sample, which again we will never see in practice.
 
 Of crucial importance is what is considered 'good' model fit based on R2 varies by topic of research. In fields where researchers are able to control variables and there are fewer factors that influence the dependent variable, it would more often be the case that the expectation would be for a model to explain a higher proportion of the variation. Within the social sciences whilst we include control variables in our models, there remains a lot more outwith our control and diversity of factors involved. Therefore what would be considered a low R2 within a field like chemistry, could be considered a high level of variation for a model to predict within the social sciences.
 
 There are no hard and fast rules for what is considered a good amount of variation for the model to explain, and even within the social sciences this can vary by research topic. It is always good to check the literature instead. The crucial thing is to avoid 'pop science' that makes broad-brush claims about 'good' model fit. Often such claims are based on results more common in the natural sciences, and which are also inaccurate broad-brush claims to use across all fields within the natural sciences. Instead, we always interpret our statistics within the context of the field of study and topic of research.
 
-What we can see in our results is our R2 is 0.205, which we can also phrase as: taken together the variables in our model explain around 20.5% of the variation in the number of hours worked per week amongst our sample. As we will come onto in a sec, with multiple linear regression we would also use adjusted R2 when reporting the % of variation explained by our model. Further care also needs to be taken in interpretation. Our R2 indicates the variation our model statistically accounts for; our model can describe and account for 20.5% of the variation but that does not mean 20.5% of the variance in the number of hours worked per week amongst our sample is caused by our independent variables. To repeat the usual trope, association is not causation. As we saw when moving from simple to multiple regression, our results could be impacted by ommitted variable bias. This is why we use the language of 'explains'.
+What we can see in our results is our R2 is 0.205, which we can also phrase as: taken together the variables in our model explain around 20.5% of the variation in the number of hours worked per week amongst our sample. As we will come onto in a sec, with multiple linear regression we would also use adjusted R2 when reporting the % of variation explained by our model. Further care also needs to be taken in interpretation. Our R2 indicates the variation our model statistically accounts for; our model can describe and account for 20.5% of the variation but that does not mean 20.5% of the variance in the number of hours worked per week amongst our sample is caused by our independent variables. To repeat the usual trope, association is not causation. As we saw when moving from simple to multiple regression, our results could be impacted by omitted variable bias. This is why we use the language of 'explains'.
 
 A key issue with using R2 to report the variation explained with multiple linear regression is that as we add more variables to our model it can only ever increase. Even where an additional variable to our model is not associated with our dependent variable at all, R2 will stay roughly the same or increase slightly.
 
 R2 on its own then can be misleading, and this is why it is always paired with adjusted R2. As can tell from the name, adjusted R2 does some further calculation based on our initial R2. It is used to address the problem of R2 increasing as we add more variables by penalising the model for including more variables. In other words, it is a measure of the proportion of variation in the dependent variable explained by the model, after adjusting for the number of independent variables and the sample size.
 
-Adjusted R2 is always less than or equal to R2 because it builds in a penalty for including more independent variables relative to the sample size. When we add independent variables that do not substantially improve how well the model fits the data, the adjusted R2 for the larger model can fall, even though R2 stays the same or increases slightly. For this reason, adjusted R2 is often highlighted when we discuss how much variation the model explains, especially when comparing models with different numbers of independent variables In practice, we usually report both R2 and adjusted R2. We pay particular attention to how adjusted R2 changes as we add or remove independent variables. If adjusted R2 increases, the additional variables are improving the model’s ability to account for variation. If it instead stays the same or decreases, the extra variables add complexity without much gain in explanatory power.
+Adjusted R2 is always less than or equal to R2 because it builds in a penalty for including more independent variables relative to the sample size. When we add independent variables that do not substantially improve how well the model fits the data, the adjusted R2 for the larger model can fall, even though R2 stays the same or increases slightly. For this reason, adjusted R2 is often highlighted when we discuss how much variation the model explains, especially when comparing models with different numbers of independent variables. In practice, we usually report both R2 and adjusted R2. We pay particular attention to how adjusted R2 changes as we add or remove independent variables. If adjusted R2 increases, the additional variables are improving the model’s ability to account for variation. If it instead stays the same or decreases, the extra variables add complexity without much gain in explanatory power.
 
 As we can see in the results for our model our adjusted R2 is close to our R2; 0.2007 and 0.205 respectively. That would suggest our variables included are not adding complexity without improving explanatory power. Though as we only have a few variables here it is also not that surprising, given that adjusted R2 penalises for the number of variables added that do not improve the model fit.
 
@@ -224,13 +217,12 @@ OK, let's do a *very* quick comparison of two different models. Again whilst we 
 
 Say from our reading of the literature we also decide that work status and number of kids are also important to control for. We may then select the variables `work` - which is a computed value from multiple questions in the NILT survey with values of employee, foreperson or supervisor, self-employed, and manager - and `nkids` - the number of children aged under 18 years living in the household.
 
-First we will need to coerce the variables -
+First we will need to coerce `work` to a factor -
 
 ```{r}
 # alternative model test
 nilt <- nilt |>
   mutate(work = as_factor(work))
-nilt$spage <- as.numeric(nilt$spage)
 ```
 
 Then we can fit our model and use `summary()` to view the regression results:
@@ -240,11 +232,11 @@ m3 <- lm(rhourswk ~ rsex + rage + anyhcond + nkids + work, data = nilt)
 summary(m3)
 ```
 
-What can we see comparing the models? Our coefficient for women has decreased slightly, but remains statistically significant. Within the context of our overall model, it would suggest there was some 'ommitted variable bias' in our first model with fewer variables. Age is also now significant given we are controlling for other variables that explain variation in the data. Whether a respondent has a health condition is still not statistically significant - again likely due to our relatively small sample of those reporting a health condition and in employment. The number of  kids is also not significant, which may seem surprising at first. Again though as it is a measure of number of children **under 18** may be a reason compared to if we had a variable such as number of children **under 5**.
+What can we see comparing the models? Our coefficient for women has decreased slightly, but remains statistically significant. Within the context of our overall model, it would suggest there was some 'omitted variable bias' in our first model with fewer variables. Age is also now significant given we are controlling for other variables that explain variation in the data. Whether a respondent has a health condition is still not statistically significant - again likely due to our relatively small sample of those reporting a health condition and in employment. The number of kids is also not significant, which may seem surprising at first. Again though as it is a measure of number of children **under 18** may be a reason compared to if we had a variable such as number of children **under 5**.
 
 Our residual standard error is lower, 10.75 on 512 degrees of freedom compared to 11.02 on 562 degrees of freedom. Though to continue impersonating a broken record, we should not interpret that on its own. Residual standard error summarises the overall size of the residuals, taking account of sample size and number of independent variables - it can increase or decrease when we add more variables, which is why we should not look at it in isolation. Looking then at our R2 and adjusted R2, our second model is 25.2% and 24.18% respectively, whereas our first model was 20.5% and 20.07% respectively. We can say then that our second model fits the data better in terms of variance explained. 
 
-Although our F-statistic is 'lower' this does not mean it is 'worse' than our first model. The F-statistic depends on how many independent variables there are and the sample size. So, it is not surprising to see it change as we add more independent variables, which may also cause a further drop in the number of observations. Instead, we look at whether it is statistically significant and interpret it in context with the rest of the results, such as the coefficents and whether they are statistically significant and our R2 and adjusted R2. Overall then, we can see how the inclusion of more variables has improved the fit of our model, and likely reduced some ommitted variable bias in the first model.
+Although our F-statistic is 'lower' this does not mean it is 'worse' than our first model. The F-statistic depends on how many independent variables there are and the sample size. So, it is not surprising to see it change as we add more independent variables, which may also cause a further drop in the number of observations. Instead, we look at whether it is statistically significant and interpret it in context with the rest of the results, such as the coefficients and whether they are statistically significant and our R2 and adjusted R2. Overall then, we can see how the inclusion of more variables has improved the fit of our model, and likely reduced some omitted variable bias in the first model.
 
 :::{.callout-note}
 
@@ -254,11 +246,11 @@ We have only done this *very* quick and rough comparison of another regression m
 
 ### Assumptions
 
-Before we move to the assumptions themselves, a wee reminder that this lab workbook aims to be an accessible introduction to key concepts. Due to space and time we are unable to cover everything, nor go into full detail of the things that we do cover. It is important to also go through the essential reading. For multiple linear regression, that is chapters 11 - Linear Regression and Model Building - and 12 - OLS Assumptions and Diagnostic Testing - in Fogarty's Quantitative Social Science Data with R. Finally, just to repeat, whilst there are various diagnostic tests, we are not expecting you go use all of these in the assignment - especially as there isn't the word count to interpret them.
+Before we move to the assumptions themselves, a wee reminder that this lab workbook aims to be an accessible introduction to key concepts. Due to space and time we are unable to cover everything, nor go into full detail of the things that we do cover. It is important to also go through the essential reading. For multiple linear regression, that is chapters 11 - Linear Regression and Model Building - and 12 - OLS Assumptions and Diagnostic Testing - in Fogarty's Quantitative Social Science Data with R. Finally, just to repeat, whilst there are various diagnostic tests, we are not expecting you to use all of these in the assignment - especially as there isn't the word count to interpret them.
 
 OK, let's turn to assumptions then. Like all statistical models, multiple linear regression is built on a set of assumptions. As seen with our example of making the poor decision to manipulate the missing values in `rhourswk`, that resulted in a heavily skewed distribution of our dependent variable, it does not matter what our regression results are if the assumptions are not satisfied. In other words, the reason the assumptions are important is because our results can be misleading if we do not consider whether the assumptions for linear regression are satisfied.
 
-There are many assumption for the linear regression model, but there are four that are commmonly assessed (Boston University School of Public Health, 2016):
+There are many assumptions for the linear regression model, but there are four that are commonly assessed ([Boston University School of Public Health, 2016](https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/R/R5_Correlation-Regression/R5_Correlation-Regression4.html)):
 
 Linearity: The relationship between X and the mean of Y is linear.
 
@@ -268,9 +260,9 @@ Independence: Observations are independent of each other.
 
 Normality: For any fixed value of X, the errors (residuals) are normally distributed.
 
-A first step to identify potential violations of the normality assumption (and to get a rough sense of other problems) is to assess the distribution of the residuals by looking to the quartiles - which can find in the output of `summary()` - and a histogram.
+A first step to identify potential violations of the normality assumption (and to get a rough sense of other problems) is to assess the distribution of the residuals by looking to the quartiles - which you can find in the output of `summary()` - and a histogram.
 
-We could use the base R `hist()` function, but I managed to accidentally stumble upon a limitation of using it here - at least without providing any further arguments within the function.
+We could use the base R `hist()` function, but there is a limitation of using it here - at least without providing any further arguments within the function.
 
 Here is our histogram using `hist()`:
 
@@ -284,9 +276,11 @@ However, if we produce a histogram using `gg_reshist()` from the `lindia` packag
 gg_reshist(m2)
 ```
 
-This is an important example of where need to take care in choice of visualisations. Both of these are histograms from the same data. Whilst the Q-Q plot - which we'll cover below - would still have help more clearly show the issues, our initial histogram may have given a misleading impression of the distribution of our residuals.
+(When you run `gg_reshist()` and `gg_qqplot()` yourself, you may see two warnings from ggplot2 saying that `fortify()` and the `size` aesthetic for lines are deprecated. These come from the `lindia` package, do not affect the plots, and can be ignored.)
 
-The difference between the two visualisations is the bin sizes, with the base R `hist()` having bins of 10 (1-10, 11-20, and so on) and the `gg_reshist()` using around 3. There are pros and cons to larger and smaller bin sizes, and there is no fixed 'good' size to use. The smaller your bin sizes the more you may notice spikes between values, that would not necessarily mean there are any issues. No residuals are ever perfectly normally distributed. However, what we can see with our residuals here is our distribution is skewed and there are some quite noticeable unevenness in the distribution. The assumption of normality then is not satisfied.
+This is an important example of where we need to take care in choice of visualisations. Both of these are histograms from the same data. Whilst the Q-Q plot - which we'll cover below - would still have helped more clearly show the issues, our initial histogram may have given a misleading impression of the distribution of our residuals.
+
+The difference between the two visualisations is the bin sizes, with the base R `hist()` having bins of width 10 (-30 to -20, -20 to -10, and so on) and the `gg_reshist()` using around 3. There are pros and cons to larger and smaller bin sizes, and there is no fixed 'good' size to use. The smaller your bin sizes the more you may notice spikes between values, that would not necessarily mean there are any issues. No residuals are ever perfectly normally distributed. However, what we can see with our residuals here is our distribution is skewed and there is some quite noticeable unevenness in the distribution. The assumption of normality then is not satisfied.
 
 (The eagle-eyed may have noticed the frequency/counts are different too. This is also a result of the bin sizes. Because more values are being grouped together in the base R histogram, each bin has a higher count. This isn't necessarily a problem, and is expected when grouping values.)
 

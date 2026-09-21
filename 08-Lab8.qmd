@@ -1,4 +1,6 @@
-# Simple Linear Regression
+---
+title: "Simple Linear Regression"
+---
 
 ```{r}
 #| include: false
@@ -24,8 +26,6 @@ However, **independent** variables can be **categorical**, **ordinal**, or **num
 We will be covering linear regression over three weeks. Do not worry if everything this week doesn't immediately make sense. We will revisit and build upon key ideas over labs 9 and 10 as well.
 
 Please also do let us know where anything is unclear or is confusing. We update the lab content each year based on student feedback and value any feedback on the newest version so we can continue to make improvements.
-
-As they cover some key concepts relevant for the summative assignment, we will aim to make further updates to Labs 8 - 10 based on any initial feedback.
 
 :::
 
@@ -145,13 +145,13 @@ nilt_sample |> ggplot(aes(x = rage, y = spage)) +
 
 :::{.callout-caution}
 
-As noted in the comment in the code above, we are drawing this line at the moment as a 'guesstimate' a by-eye guess - that assumes the age of the spouse/partner is exactly the same as the respondent's.
+As noted in the comment in the code above, we are drawing this line at the moment as a 'guesstimate' - a by-eye guess - that assumes the age of the spouse/partner is exactly the same as the respondent's.
 
 :::
 
 To draw a line like this, we used 0 as the starting value in the `geom_abline()` function. In statistics, this is known as the _intercept_ and it is often represented with a Greek letter and a zero sub-index as $\beta_0$ (beta-naught) or with $\alpha$ (alpha). The location of the intercept can be found along the vertical axis (in this case it is not visible due to ages of respondents and their spouses/partners being 20+).
 
-The second value we passed to describe the line is the _slope_, which uses the X axis as the reference. The slope value is multiplied by the value of the X axis. Therefore, a slope of 0 is completely horizontal. In this example, a slope of 1 produces a line at 45º. The slope is often represented with the Greek letter beta and a sequential numeric sub-index like this: $\beta_1$ (b.
+The second value we passed to describe the line is the _slope_, which uses the X axis as the reference. The slope value is multiplied by the value of the X axis. Therefore, a slope of 0 is completely horizontal. In this example, a slope of 1 produces a line at 45º. The slope is often represented with the Greek letter beta and a sequential numeric sub-index like this: $\beta_1$ (beta-one).
 
 ### Was this a good guess?
 
@@ -195,7 +195,7 @@ This distance between the observation and the line is known as the residual or t
 
 Formally, the guessed number is called the expected value (also known as predicted/estimated value). Normally, the expected values in statistics are represented by putting a hat like this $\hat{}$ on the letters.
 
-Since the independent variable is usually located on the X axis and the dependent variable on the Y axis. We write write the expected (predicated) value with a hat on the Y like this: $\hat{y}$ (y-hat).
+Since the independent variable is usually located on the X axis and the dependent variable on the Y axis. We write the expected (predicted) value with a hat on the Y like this: $\hat{y}$ (y-hat).
 
 Let's estimate the residuals for each of the observations by subtracting $\hat{y}_i$ from $y_i$ (`spage` - `line1`) and store it in a column called `residuals`. Again we can use the `head()` function to see the first few lines of our dataframe.
 
@@ -207,7 +207,7 @@ nilt_sample <- nilt_sample |>
 head(nilt_sample)
 ```
 
-Coming back once again to the question, is my line good enough?
+Coming back once again to the question, is our line good enough?
 
 We could sum all these residuals as an overall measure to know how good our line is. From the previous plot, we see that some of the expected ages are higher than the actual values, whilst others are below. This produces negative and positive residuals. If we simply sum them, they would compensate each other and this would not tell us much about the overall magnitude of the difference.
 
@@ -310,7 +310,7 @@ m2
 
 The output first displays the formula employed to estimate the model - under `Call:`. Then, it shows us the estimated values for the intercept and the slope for the age of the respondent, these estimated values are called coefficients.
 
-In this model, the coefficients differ from the ones in the example above (m1). This is because as we are now using the full `nilt` dataframe we have more information to fit the line. Despite the difference, we see that the relationship is still in the same direction (positive). In fact, the value of the slope $\beta_1$ did not change much if you look at it carefully (0.87 vs 0.92).
+In this model, the coefficients differ from the ones in the example above (m1). This is because as we are now using the full `nilt` dataframe we have more information to fit the line. Despite the difference, we see that the relationship is still in the same direction (positive). In fact, the value of the slope $\beta_1$ did not change much if you look at it carefully (0.87 vs 0.93).
 
 ### Interpreting results
 
@@ -318,7 +318,7 @@ But what are the slope and intercept telling us? The first thing to note is that
 
 In our model, the intercept does not have a meaningful interpretation on its own. What we mean by saying it is not meaningful is that it would not be logical to say that when the respondent's age is 0 their partner would be expected to be 3.70 years old. Instead, the interpretations should be made only within the range of the values used to fit the model (the youngest age in this data set is 18).
 
-The slope can be interpreted as follows: For every year older the respondent is, the partner's age is expected to change by 0.92. In other words, the respondents are expected to have a partner who is 0.92 times years older than themselves. Or, to put it in more simple terms, for each 1-year increase in the respondent's age, the expected spouse/partner age increases by 0.92 years. On average then, partners are slightly younger than respondents.
+The slope can be interpreted as follows: For every year older the respondent is, the partner's age is expected to change by 0.93. In other words, the respondents are expected to have a partner who is 0.93 times years older than themselves. Or, to put it in more simple terms, for each 1-year increase in the respondent's age, the expected spouse/partner age increases by 0.93 years. On average then, partners are slightly younger than respondents.
 
 In this case, the units of the dependent variable are the same as the independent (age vs age) which make it easy to interpret. In reality, there might be more factors that potentially affect how people select their partners, such as gender, education, race/ethnicity, etc. For now, we are keeping things 'simple' by using only these two variables.
 
@@ -372,9 +372,9 @@ In the fourth area, we have various **goodness-of-fit measures**. Overall, these
 
 R-squared is the proportion of variation in the outcome explained by the model. It ranges from 0 to 1: 0 means none of the variance is explained; 1 means all variance in the sample is explained by the model. Adjusted R-squared penalises adding variables that do not improve the model. In the social sciences, modest R-squared values are common.
 
-Adjusted R-squared then can be understood as the proportion (multiply it by 100 to report a percentage) of variance explained by the model, adjusted for the number of independent variables used. In our age-age example, the model explains 89.88% percent of the total variance. This is a good fit, but this is because we are modelling a quite "obvious" relationship. The R-squared describes the model file, it does not judge the quality of our analysis.
+Adjusted R-squared then can be understood as the proportion (multiply it by 100 to report a percentage) of variance explained by the model, adjusted for the number of independent variables used. In our age-age example, the model explains 89.88% of the total variance. This is a good fit, but this is because we are modelling a quite "obvious" relationship. The R-squared describes the model fit, it does not judge the quality of our analysis.
 
-You may wonder why we do not report the sum of squared residuals (SSR), as we covered in our initial example. This is because the scale of the SSR is in the units used to fit the model, which would make it difficult to compare our model with other models that use different units or different variables. Conversely, the adjusted R-squared is expressed in relative terms which makes it a more suitable measure to compare with other models. An important thing to note is that the output is telling us that this model excluded 613 observations which were missing in our dataset. This is because we do not have the age of the respondent's partner in 613 of the rows. Missing spouse/partner ages can occur for serveral reasons. For example, the respondent may not have a parter, or choose not to answer.
+You may wonder why we do not report the sum of squared residuals (SSR), as we covered in our initial example. This is because the scale of the SSR is in the units used to fit the model, which would make it difficult to compare our model with other models that use different units or different variables. Conversely, the adjusted R-squared is expressed in relative terms which makes it a more suitable measure to compare with other models. An important thing to note is that the output is telling us that this model excluded 613 observations which were missing in our dataset. This is because we do not have the age of the respondent's partner in 613 of the rows. Missing spouse/partner ages can occur for several reasons. For example, the respondent may not have a partner, or choose not to answer.
 
 In academic papers in the social sciences, usually the measures reported are the coefficients, p-values, the adjusted R-squared, and the size of the sample used to fit the model (number of observations).
 
@@ -388,7 +388,7 @@ Do the residuals follow a normal distribution in our model, `m2`? We can go furt
 hist(residuals(m2), breaks = 20)
 ```
 
-Overall, it seems that the residuals follow the normal distribution reasonably well, with the exception of the negative value to the left of the plot. Very often when there is a strange distribution or different to the normal, it is because one of the assumptions is violated. If that is the case we cannot trust the coefficient estimates. In the next lab we will talk more about the assumptions of the linear model. For now, we will leave it here and get some practice. 
+Overall, it seems that the residuals follow the normal distribution reasonably well, with the exception of the negative value to the left of the plot. Very often when there is a strange distribution or different to the normal, it is because one of the assumptions is violated. If that is the case we cannot trust the coefficient estimates. In Lab 10 we will talk more about the assumptions of the linear model. For now, we will leave it here and get some practice. 
 
 ## Lab activities
 
