@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>lab4 – Lab Workbook</title>
+<title>Exploratory data analysis – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -348,7 +348,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Exploratory data analysis</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -450,10 +450,7 @@ window.Quarto = {
    
   <ul>
 <li>
-<a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a>
-  <ul class="collapse">
-<li>
-<a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+<a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
 <li><a href="#setting-up-an-r-markdown-file" id="toc-setting-up-an-r-markdown-file" class="nav-link" data-scroll-target="#setting-up-an-r-markdown-file">Setting up an R Markdown file</a></li>
   </ul>
@@ -469,17 +466,29 @@ window.Quarto = {
   <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a></li>
   </ul>
 </li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="exploratory-data-analysis" class="level1"><h1>Exploratory data analysis</h1>
-<p>In our previous session we learned about setting up an RStudio project and wrangling data in <code>R</code> by implementing useful function such as <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. In this session we will continue working with the NILT 2012 dataset and focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Exploratory data analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>In our previous session we learned about setting up an RStudio project and wrangling data in <code>R</code>, coercing variables with functions such as <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code>. In this session we will continue working with the NILT 2012 dataset and focus on descriptive statistics. This includes the exploration and description of quantitative data.</p>
 <section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
 <p>We will continue working on the same NILT RStudio project and dataset that you created in the last lab on Posit Cloud. To get started, please follow the usual steps:</p>
 <ol type="1">
-<li>Go to your ‘Lab Group’ in <a href="https://rstudio.cloud/">Posit Cloud</a>.</li>
+<li>Go to your ‘Lab Group’ in <a href="https://posit.cloud/">Posit Cloud</a>.</li>
 <li>Open your existing project called ‘NILT’ located in your lab group.</li>
 </ol>
 <p>(If you missed Lab 3, quickly run through setting up an <a href="./03-Lab3.html#nilt-rstudio-project">NILT RStudio Project</a> and <a href="./03-Lab3.html#read-the-clean-dataset">Read the clean dataset</a> sections. Ensure to make time later to go through the section on the <a href="./03-Lab3.html#the-nilt-documentation">NILT Documentation</a> though.)</p>
@@ -489,7 +498,7 @@ window.Quarto = {
 <li>From the list of options select ‘R Markdown’</li>
 </ol>
 <p><img src="images/lab4-new-rmd.png" class="img-fluid" alt="Create a new Rmd file"><br></p>
-<p>Then within the ‘Create a New File in Currect Directory’ dialogue that pops up:</p>
+<p>Then within the ‘Create a New File in Current Directory’ dialogue that pops up:</p>
 <ol start="5" type="1">
 <li>Give it an appropriate name, such as ‘Lab-4-Exploratory.Rmd’</li>
 <li>Click the ‘OK’ button to confirm creation of the file.</li>
@@ -503,7 +512,7 @@ window.Quarto = {
 <li>Add a line for a <code>date</code> key and within quotation marks add the following -</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">`r format(Sys.time(), '%d/%m/%y)`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">`r format(Sys.time(), '%d/%m/%y')`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="images/lab4_yaml.png" class="img-fluid" alt="Your YAML should now look like this."><br></p>
 <p>Remember the back-tick, <code>`</code>, can be found to the left of <code>1</code> on a UK keyboard. Now that we have used some R functions across the labs, the code here should be more readable than when you first encountered it. Enclosing code in single back-ticks allows us to add “inline code” on a single line in our file, similar to how we fence code in three back-ticks to create code chunks that span multiple lines. Then -</p>
@@ -542,9 +551,9 @@ window.Quarto = {
 <span><span class="co"># Read NILT</span></span>
 <span><span class="va">nilt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"data/nilt_r_object.rds"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We do not need to <code>install.packages("tidyverse")</code> as we are working within the same RStudio project as last week, so the tidyverse is already installed. Whilst we also <code>libary(tidyverse)</code> to load the tidyverse last week, remember that when we knit files it creates a clean R environment. Whilst it can access packages that are installed on the device - or in our case within a Posit Cloud RStudio Project - it has no packages loaded nor data frames read in. So, for each R Markdown file we created within a project, we need this premable.</p>
+<p>We do not need to <code>install.packages("tidyverse")</code> as we are working within the same RStudio project as last week, so the tidyverse is already installed. Whilst we also <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> to load the tidyverse last week, remember that when we knit files it creates a clean R environment. Whilst it can access packages that are installed on the device - or in our case within a Posit Cloud RStudio Project - it has no packages loaded nor data frames read in. So, for each R Markdown file we created within a project, we need this preamble.</p>
 <p>Now, as we are going to work with the variables we coerced last week, let’s setup a subset with just those variables. A subset is merely a copy of our NILT data frame, but with just the rows and columns we are interested in.</p>
-<p>To do this add the following at the end of your premable code chunk -</p>
+<p>To do this add the following at the end of your preamble code chunk -</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create subset</span></span>
 <span><span class="va">nilt_subset</span> <span class="op">&lt;-</span> <span class="va">nilt</span> <span class="op">|&gt;</span></span>
@@ -552,13 +561,13 @@ window.Quarto = {
 </div>
 <p>Your full code chunk should now look like the below.</p>
 <p><img src="images/lab4_preamble.png" class="img-fluid" alt="Full preamble code chunk."><br></p>
-<p>Click the green triangle to run the code chunk and you’ll see the <code>nilt_subset</code> appear in the Environment pane (top-left).</p>
+<p>Click the green triangle to run the code chunk and you’ll see the <code>nilt_subset</code> appear in the Environment pane (top-right).</p>
 <p><img src="images/lab4_sub-env.png" class="img-fluid" alt="Environment pane with nilt_subset highlighted."><br></p>
 <p>Notice how our nilt object has “1204 obs. of <strong>133 variables</strong>” and our nilt_subset object “1204 obs. of <strong>8 variables</strong>”.</p>
 <p>Why do this? With <em>very</em> large datasets this helps reduce the compute required when running code. Whilst the NILT dataset we are using is big, with 1,204 observations across 133 variables, it is not large in terms of computing. The other reason to subset data, and pertinent for us, is it simplifies working with our data.</p>
 <p>To illustrate, within the Console run in turn <code>glimpse(nilt)</code> and then <code>glimpse(nilt_subset)</code>.</p>
-<p><img src="images/lab4_glimpse-sub.png" class="img-fluid" alt="Glimping the nilt_subset object."><br></p>
-<p>As can see, whilst glimping the nilt data frame outputs lines for all 133 variables, glimpsing the nilt_subset data frame gives us lines for just the 8 variables we selected.</p>
+<p><img src="images/lab4_glimpse-sub.png" class="img-fluid" alt="Glimpsing the nilt_subset object."><br></p>
+<p>As can see, whilst glimpsing the nilt data frame outputs lines for all 133 variables, glimpsing the nilt_subset data frame gives us lines for just the 8 variables we selected.</p>
 </section></section><section id="exploratory-analysis" class="level2"><h2 class="anchored" data-anchor-id="exploratory-analysis">Exploratory analysis</h2>
 <section id="data-overview" class="level3"><h3 class="anchored" data-anchor-id="data-overview">Data overview</h3>
 <p>Are your summary statistics hiding something interesting?</p>
@@ -578,7 +587,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vtable"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Once it is installed, we also need to load it within the R Markdown file. Remember, it is best practice to load all your packages at the top, making it clear to anyone looking at the file which packages are being used and ensuring the packages are available for all the code chunks after it.</p>
-<p>So within the preamable code chunk, add the following line after <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
+<p>So within the preamble code chunk, add the following line after <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nickch-k.github.io/vtable/">vtable</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -621,7 +630,7 @@ window.Quarto = {
 </div>
 <p>Before looking at the output in more detail, you may be wondering why the way we are specifying our variable of interest is different to how we used <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. The reason is that they are all from the tidyverse and share the same pattern for how to specify variables in function arguments. <code>vtable</code> though is not part of the tidyverse and has a different way to specify variables.</p>
 <p>The simple format of <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> is <code>sumtable(data_frame, vars = ...)</code>, or with pipe <code>data_frame |&gt; sumtable(vars = ...)</code>. If you check out <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">help(sumtable)</a></code> you will see sumtable has a lot more arguments we could use. Any argument that has <code>word = ...</code> is what is known as a ‘keyword argument’. By default, arguments are read in order that they are listed. However, in practice, you often do not want to specify all arguments when using a function. Keyword arguments then let you specify exactly which arguments you are using despite the order they appear in.</p>
-<p>We did not need to specify a <code>vars = ...</code> equivalent with the tidyverse functions as they all assume a data frame as the first argument, or passed in via a pipe, followed by a list of columns. It is only if you want to use any additional options provided by the tidyverse functions that you then need to add any keyword arguments. This let’s the code remain must more simple and direct, also making it easier to read. Importantly, for <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> note how we specify <code>"rsex"</code> in quotation marks, rather than <code>rsex</code> without as we did with tidyverse functions.</p>
+<p>We did not need to specify a <code>vars = ...</code> equivalent with the tidyverse functions as they all assume a data frame as the first argument, or passed in via a pipe, followed by a list of columns. It is only if you want to use any additional options provided by the tidyverse functions that you then need to add any keyword arguments. This lets the code remain much simpler and direct, also making it easier to read. Importantly, for <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> note how we specify <code>"rsex"</code> in quotation marks, rather than <code>rsex</code> without as we did with tidyverse functions.</p>
 <p>Let’s turn back to the actual table we created. From the result, we see that there are more female respondents than males. Specifically, we see that males respondents represent 45% and females 55%.</p>
 <p>We can do this with any categorical variable. Let’s see how the sample is split by religion (<code>religcat</code>). So, we will add it to in the <code>vars</code> keyword argument. However, note how we now need to also use the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function -</p>
 <div class="cell">
@@ -743,8 +752,8 @@ Female
 </table>
 </div>
 </div>
-<p>There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 44% vs 40% and 44% vs 40%, respectively. We also see that there are 19% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.</p>
-<p>As an important final note, <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> by default rounds to 2 decimal places. With percentages this rounds to whole numbers as <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> applying rounding before converting to percentage. To get a percentage we take the number of observations for a category, divide by the total number of observations, and multiple by 100. If we have a percentage 14.6%, before the multiplying by 100 it would be 0.146, which rounded to 2 decimal places would become 0.15, or 15%.</p>
+<p>There are some interesting results from this table. You can see that there are proportionally more female respondents who are either Catholic or Protestant than males, namely 44% vs 40% and 44% vs 41%, respectively. We also see that there are 19% of male respondents who do not self-identify with a religion which contrast to the 12% of female participants.</p>
+<p>As an important final note, <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> by default rounds to 2 decimal places. With percentages this rounds to whole numbers as <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> applies rounding before converting to percentage. To get a percentage we take the number of observations for a category, divide by the total number of observations, and multiple by 100. If we have a percentage 14.6%, before the multiplying by 100 it would be 0.146, which rounded to 2 decimal places would become 0.15, or 15%.</p>
 <p>We can change the default with the <code>digits</code> keyword argument:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="st">"religcat"</span>, group <span class="op">=</span> <span class="st">"rsex"</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -814,10 +823,11 @@ Female
 <p>Sticking with the default rounding to 2 decimal places is perfectly OK to do, and some level of rounding will usually be inevitable to avoid reporting stats like “46.23156260002342%”. The key thing, as with all aspects of quantitative data analysis, is to (1) be transparent that stats are rounded and to which decimal place and (2) remember the stats are rounded in interpretation and avoid misleading phrases like “exactly 22%” because the actual number before rounding could be “22.03%”.</p>
 </section><section id="activity-1" class="level3"><h3 class="anchored" data-anchor-id="activity-1">Activity 1</h3>
 <p>Right, let’s put what we have covered so far into practice, and help get used to working with the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function.</p>
-<p>In your R Markdown file, do the following activities using the <code>nilt_subset</code> data frame. * Create a One-Way contingency table for <code>uninatid</code> in the <code>nilt_subset</code> dataset using the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function;</p>
+<p>In your R Markdown file, do the following activities using the <code>nilt_subset</code> data frame.</p>
 <ul>
-<li>Using the variables <code>religcat</code> and <code>uninatid</code>, generate a Two-Way contingency table;</li>
-<li>Are your summary statistics hiding something interesting? Discuss your results with your neighbour or your tutor.</li>
+<li><p>Create a One-Way contingency table for <code>uninatid</code> in the <code>nilt_subset</code> dataset using the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function;</p></li>
+<li><p>Using the variables <code>religcat</code> and <code>uninatid</code>, generate a Two-Way contingency table;</p></li>
+<li><p>Are your summary statistics hiding something interesting? Discuss your results with your neighbour or your tutor.</p></li>
 </ul>
 <p>Remember, it is perfectly fine to modify working code. Feel free to copy and adapt used above. The important thing is that you understand how the code works and what you need to modify. It is though useful to initially try typing it out manually as even if you make mistakes - like missing quotations marks or misplaced commas - such errors help build an understanding of the correct syntax to use. Where you need to copy and modify previous code as you keep running into errors, remember once you have got it to work to compare your initial code that resulted in error messages with the working code. This will help you identify what the problem was.</p>
 </section><section id="continuous-numeric-data" class="level3"><h3 class="anchored" data-anchor-id="continuous-numeric-data">Continuous (numeric) data</h3>
@@ -846,7 +856,7 @@ Female
 </div>
 </div>
 <p>The median age is 48, that means that 50% (or half) of the respondents are equal or younger than this, and the other 50% is equal or older.</p>
-<p>Note that we also include the argument <code>na.rm</code> equal <code>TRUE</code> in the function. The ‘na’ bit stands for ‘not available’ and refers to what is more commmonly known as “missing values”. The <code>.rm</code> stands for remove. So, we are telling R to remove the missing values when computing the median. We do this here for <code>rage</code> because we do not know the age of 3 of the respondents in the sample.</p>
+<p>Note that we also include the argument <code>na.rm</code> equal <code>TRUE</code> in the function. The ‘na’ bit stands for ‘not available’ and refers to what is more commonly known as “missing values”. The <code>.rm</code> stands for remove. So, we are telling R to remove the missing values when computing the median. We do this here for <code>rage</code> because we do not know the age of 3 of the respondents in the sample.</p>
 <p>To compute the <em>mean</em> manually, we need to sum all our values and divide it by the total number of the observations as follows: <span class="math display">\[ mean =\frac{  x_1 + x_2 + x_3 ...+x_n } {n} \]</span></p>
 <p>Whilst it may look intimidating, such formulas are usually fairly simple once you break it down. <span class="math inline">\(x_1\)</span> just means the value of the first observation (i.e.&nbsp;row) in our data, <span class="math inline">\(x_2\)</span> the second, and so on. The “…” is just the way the ‘and so on’ gets written. The <span class="math inline">\(n\)</span> in <span class="math inline">\(x_n\)</span> stands for our number of observations. So putting that together, we get the equivalent of saying add the first value, second value, third value, and so on for all our observations. Then, as noted, once we have the sum of all our values, we just divide it by the total number of observations, i.e.&nbsp;<span class="math inline">\(n\)</span>.</p>
 <p>The formula above is for you to know that this measure considers the magnitude of all values included in the numeric series. Therefore, the average is sensitive to extreme numbers. Examples of extreme numbers could be a very, very old person or someone with substantially more income than the rest. Imagine if our values were along the lines of “12, 34, 10, 100, 32, 16, …”, that “100” is extreme in comparison to the rest and would bring up the average.</p>
@@ -872,7 +882,7 @@ Female
 <p>The <em>variance</em> is useful to obtain a singe measure of spread (instead of four values, as the above) taking the mean as a reference. This is given by the following formula:</p>
 <p><span class="math display">\[ var = \frac{ \sum(x - \bar{x})^2 }{n-1 } \]</span></p>
 <p>To decipher the formula above, the Σ (capital sigma) means sum the values from the following. Here we have <span class="math inline">\(x\)</span> rather than <span class="math inline">\(x_1\)</span> and so on as the Σ tells us we are repeating this for all our observations. The <span class="math inline">\(\bar{x}\)</span> represents the mean, a shorthand for the formula we covered before.</p>
-<p>So, to put what we have so far together, for each of our <span class="math inline">\(x\)</span> values we substract the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. The result of the subtraction is then squared - i.e.&nbsp;multiply the number by itself - and represented by the %^2%. We are interested in the sum of the differences from the mean, regardless of whether it is positive or negative. As some numbers will be lower than the mean, the result of the substraction with be negative. By squaring all numbers, any negatives also become positive (-2 multipled by -2 is 4). Finally, we divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1.</p>
+<p>So, to put what we have so far together, for each of our <span class="math inline">\(x\)</span> values we subtract the <em>mean</em> <span class="math inline">\(\bar{x}\)</span>. The result of the subtraction is then squared - i.e.&nbsp;multiply the number by itself - and represented by the <span class="math inline">\(^2\)</span>. We are interested in the sum of the differences from the mean, regardless of whether it is positive or negative. As some numbers will be lower than the mean, the result of the subtraction will be negative. By squaring all numbers, any negatives also become positive (-2 multiplied by -2 is 4). Finally, we divide the sum by the size/length of the numeric sequence <span class="math inline">\(n\)</span> minus 1.</p>
 <p>Thankfully, in R to estimate the variance, we only need the <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -893,7 +903,7 @@ Female
 <p>This measure is more <em>human readable</em> than the variance. Don’t worry too much about the formula. As seen, R makes it simple to calculate these stats. The important thing to remember is what the measure represents and how to interpret it. An informal definition of the standard deviation is <em>the average distance from the mean</em>. In essence, it tell us how far the values in our data are from the mean.</p>
 </section></section><section id="putting-it-all-together" class="level3"><h3 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h3>
 <p>Phew, that was a lot! …</p>
-<p>… Luckily, as another beatiful example of the power of coding, we can use the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function to compute all these measures for our numeric variables at the same time!</p>
+<p>… Luckily, as another beautiful example of the power of coding, we can use the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function to compute all these measures for our numeric variables at the same time!</p>
 <p>It is very simple. You can compute a quick summary for age as following:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="st">"rage"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1291,7 +1301,7 @@ Female
 </div>
 </div>
 </section><section id="adding-labels" class="level4"><h4 class="anchored" data-anchor-id="adding-labels">Adding labels</h4>
-<p>Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what <code>rsex</code>, <code>rage</code>, and so on represent.For that reason, it is good practice to also add labels. With <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> you can use the <code>labels =</code> keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.</p>
+<p>Within our tables so far the rows use the variable names from the data frame. However, it may not be clear to a reader what <code>rsex</code>, <code>rage</code>, and so on represent. For that reason, it is good practice to also add labels. With <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> you can use the <code>labels =</code> keyword argument to pass the labels to use. This needs to be the same length and in the same order as the variables used in the table.</p>
 <p>To keep things relatively simple, let’s create a table with labels for <code>rage</code> and <code>persinc2</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rage"</span>, <span class="st">"persinc2"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Age"</span>, <span class="st">"Annual Personal Income"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1337,7 +1347,7 @@ Female
 <p>As a final wee note, you can also customise the title of tables created with <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> using the <code>title =</code> keyword argument.</p>
 </section></section><section id="activity-2" class="level3"><h3 class="anchored" data-anchor-id="activity-2">Activity 2</h3>
 <p>Can money buy happiness?</p>
-<p>Using the data in the <code>nilt_subset</code> dataset, complete the following activities. This will be a good practice run for doing the research report when you run your own analysis on the NILT teaching dataset. Handy!</p>
+<p>Using the data in the <code>nilt_subset</code> dataset, complete the following activities. This will be a good practice run for the Interpreting Quantitative Findings report, when you run your own analysis on the NILT teaching dataset. Handy!</p>
 <ul>
 <li>Using the <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function plot a histogram of personal income <code>persinc2</code>. From the NILT documentation this variable refers to annual personal income in £ before taxes and other deductions (Hint: with base R functions you need to use <code>dataframe$variable</code> format to specify the variable the function should use);</li>
 <li>Create a summary of the personal income <code>persinc2</code> variable, using the <code><a href="https://nickch-k.github.io/vtable/reference/sumtable.html">sumtable()</a></code> function;</li>
@@ -1346,7 +1356,7 @@ Female
 </ul>
 
 
-</section></section></section></main><!-- /main --><script>
+</section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;

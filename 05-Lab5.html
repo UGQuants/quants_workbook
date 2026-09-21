@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>lab5 – Lab Workbook</title>
+<title>Reporting in R Markdown – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Reporting in R Markdown</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -423,10 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#rmarkdown" id="toc-rmarkdown" class="nav-link active" data-scroll-target="#rmarkdown">Reporting in R Markdown</a>
-  <ul class="collapse">
-<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a></li>
   <li>
 <a href="#new-r-markdown-document" id="toc-new-r-markdown-document" class="nav-link" data-scroll-target="#new-r-markdown-document">New R Markdown Document</a>
@@ -452,15 +449,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#moving-files" id="toc-moving-files" class="nav-link" data-scroll-target="#moving-files">Moving Files</a></li>
   </ul>
 </li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="rmarkdown" class="level1"><h1>Reporting in R Markdown</h1>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Reporting in R Markdown</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In the previous labs you were exploring the 2012 <a href="https://www.ark.ac.uk/nilt/">Northern Ireland Life and Times Survey (NILT)</a>. You’ve learnt how to download, read and format the data. Also, you’ve learnt how to explore categorical and numeric data and a mix of them.</p>
-<p>Across the labs we have also been using R Markdown, incrementally introducing aspects of it each week. In this lab, we will consolidate what we have covered and learn about how to efficiently report quantitative results. R Markdown is used by many academics and professionals in a workplace setting to communicate quantitative findings to a wider audience. R Markdown is also what you will use to write your research report assignment for this course - where we are keeping this week’s lab relatively short so you have time to setup and apply what we have covered to your formative assessment. Let’s dive in and learn more!</p>
+<p>Across the labs we have also been using R Markdown, incrementally introducing aspects of it each week. In this lab, we will consolidate what we have covered and learn about how to efficiently report quantitative results. R Markdown is used by many academics and professionals in a workplace setting to communicate quantitative findings to a wider audience. R Markdown is also what you will use to write your formative and summative assessments for this course - where we are keeping this week’s lab relatively short so you have time to setup and apply what we have covered to your formative assessment. Let’s dive in and learn more!</p>
 </section><section id="r-markdown" class="level2"><h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
 <p>To briefly summarise what covered so far - R Markdown allows you to combine your narrative and data analysis in one document, writing <strong>plain-text</strong> documents with code chunks that can be converted to multiple file formats, such as HTML or PDF. This makes R Markdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.</p>
 <p>R Markdown achieves this by combining the power of R, Markdown, and Pandoc. Markdown is a lightweight markup language with simple, human-readable syntax for formatting text. Pandoc is a tool for converting files from one format to another, such as Markdown to PDF or HTML. R Markdown builds on these tools. When you ‘knit’ a document, the code chunks are executed to run your analysis and generate your tables and graphs using R. The output from these are then integrated with the Markdown text is passed to Pandoc to convert into a neat and consistently formatted HTML, PDF, or other specified file format.</p>
@@ -477,17 +486,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">w:r</span>&gt;</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">w:p</span>&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Whilst it can be beneficial then that Word handles all this for you, it can also result in a series of problems. Different versions of Word can display the same document differently. I have collaborated on lengthy documents with colleagues where on one person’s screen a new section begins on page 32 and on someone else’s page 33. When you copy and paste text from elsewhere you need to ensure you “paste without source formatting” to avoid the formatting from other documents being used in your current document. You have likely also experienced the horror when working in large documents of adding an image and all the formatting going awry. With complex formatting, the document can also develop unfixable issues, as issues within the underlying XML accummulate that Word itself is unable to fix and the user is unable to directly edit.</p>
+<p>Whilst it can be beneficial then that Word handles all this for you, it can also result in a series of problems. Different versions of Word can display the same document differently. Anyone who has collaborated on a lengthy Word document will know the experience where on one person’s screen a new section begins on page 32 and on someone else’s page 33. When you copy and paste text from elsewhere you need to ensure you “paste without source formatting” to avoid the formatting from other documents being used in your current document. You have likely also experienced the horror when working in large documents of adding an image and all the formatting going awry. With complex formatting, the document can also develop unfixable issues, as issues within the underlying XML accumulate that Word itself is unable to fix and the user is unable to directly edit.</p>
 </section><section id="new-r-markdown-document" class="level2"><h2 class="anchored" data-anchor-id="new-r-markdown-document">New R Markdown Document</h2>
-<p>For this lab, we will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">Posit Cloud</a>.</p>
+<p>For this lab, we will continue working in the same project called <em>NILT</em> in <a href="https://posit.cloud/">Posit Cloud</a>.</p>
 <ol type="1">
-<li>Please go to your ‘Quants lab group’ in <a href="https://rstudio.cloud/">Posit Cloud</a> (log in if necessary);</li>
+<li>Please go to your ‘Lab Group ##’ in <a href="https://posit.cloud/">Posit Cloud</a> (log in if necessary);</li>
 <li>Open your own copy of the ‘NILT’ project from the ‘Lab Group ##’;</li>
 </ol>
 <p>Note, if you received an error last week when trying to run the code to load the NILT dataset, the most likely cause was that you created your R Markdown file in a subfolder, rather than the top-level project folder. Please see the <a href="./05-Lab5.html#moving-files">final section</a> below for how to check if this was the problem and how to fix it.</p>
 <ol start="3" type="1">
-<li>Create a new Rmd file, from the ‘File’ tab on the top-left: `File&gt;New File&gt;R Markdown…’</li>
-<li>RStudio may display a yellow banner at the top of your file, asking to install some packages, click ‘Yes’. (Don’t worry if this doesn’t show, if followed the instructions last week you will likely not see a yellow banner when creating a new file this week.)</li>
+<li>Create a new Rmd file, from the ‘File’ tab on the top-left: <code>File &gt; New File &gt; R Markdown...</code>
+</li>
+<li>RStudio may display a yellow banner at the top of your file, asking to install some packages, click ‘Yes’. (Don’t worry if this doesn’t show, if you followed the instructions last week you will likely not see a yellow banner when creating a new file this week.)</li>
 <li>Type ‘R Markdown Test’ in the ‘Title’ section, your name in the ‘Author’ box, and tick the checkbox for ‘Use current date when rendering document’. Leave the ‘Default Output Format’ as <code>HTML</code>. Then, click ‘OK’.</li>
 <li>Save the Rmd file clicking on <code>File&gt;Save as...</code>, type <code>RMarkdown</code> in the ‘File name’ box, and click on the Save button.</li>
 </ol>
@@ -515,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Your YAML header should now look at follows:</p>
+<p>Your YAML header should now look as follows:</p>
 <p><img src="images/lab5_yaml-header.png" class="img-fluid" alt="YAML Header with additional key value pairs"><br></p>
 <p><code>subtitle</code> is self-explanatory. What we have done by placing <code>html_document</code> on a new line with <code>:</code> at the end and nested list of further key-value pairs underneath, is we have specified some options for how we want our knitted HTML document to look. <code>toc</code> stands for “table of content”, <code>toc_float</code> places the table of contents on left-hand side of the document rather than at the top, and <code>theme</code> changes the default HTML template used to the “cosmo” theme instead.</p>
 <p>To render the document from Rmd to HTML, we need to <em>Knit</em> it by clicking on the icon shown below. Try it!</p>
@@ -527,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After you knit the document, a window with the output will pop up automatically. As you can see, this document contains the main title and subtitle, followed by your name and the current date, as specified in the YAML. A table of contents appears on the left, showing the headers used in the document, with the header for the section currently in view on the screen highlighted in blue (notice how it will change if you scroll up/down the HTML file).</p>
 <p><img src="images/lab5_cosmo.png" class="img-fluid" alt="Knitted R Markdown document with toc"><br></p>
 <p>You may notice that compared to previous R Markdown files we have knitted, the style of this one may look familiar…</p>
-<p>This is because the “cosmo” theme is the same one that this lab workbook itself uses as its base theme. This is another powerful aspect of using R Markdown. Your document itself remains fairly simple, but with a few simple options you can quickly customise its look and add features like a table of content. There is a lot more <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">options you can use with HTML documents</a> and range of <a href="https://rpubs.com/ranydc/rmarkdown_themes">themes can choose from</a>. As you build your coding skills, you can also write additional custom scripts to further style your documents and add even more features. Importantly, despite the increasing customisation and complexity, the R Markdown files with your narrative and code remain simple and will knit to consistently and neatly formatted HTML files.</p>
+<p>This is because the “cosmo” theme is the same one that this lab workbook itself uses as its base theme. This is another powerful aspect of using R Markdown. Your document itself remains fairly simple, but with a few simple options you can quickly customise its look and add features like a table of content. There is a lot more <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">options you can use with HTML documents</a> and a range of <a href="https://rpubs.com/ranydc/rmarkdown_themes">themes you can choose from</a>. As you build your coding skills, you can also write additional custom scripts to further style your documents and add even more features. Importantly, despite the increasing customisation and complexity, the R Markdown files with your narrative and code remain simple and will knit to consistently and neatly formatted HTML files.</p>
 </section></section><section id="r-markdown-syntax" class="level2"><h2 class="anchored" data-anchor-id="r-markdown-syntax">R Markdown Syntax</h2>
 <p>Back to the R Markdown file. After the YAML header, there is a second-level header which includes the first section of this example document. Also, the word ‘Knit’ is shown in bold, as it was wrapped by double asterisk <code>**</code>. You can also wrap text by a single asterisk <code>*</code> to make it italics.</p>
 <p>These are further examples of R Markdown’s simple, human-readable syntax for formatting text. Whilst different to what you will be used to using WYSIWYG apps, it is easy to learn. This simple transparent syntax makes it simple and quick to format our text, and avoids all the potential issues arising from hiding the syntax from users, as happens with Word document.</p>
@@ -610,7 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <strong>eval</strong> - whether the code is run or not.</li>
 </ul>
-<p>As noted at the second in-person lecture, setting <code>eval=FALSE</code> is useful if wanting to include example code or code that would result in an error message. This makes it incredibly useful when writing your own notes as - for example - you can keep a record of code that resulted in an error message followed by another code chunk that has the working code.</p>
+<p>As noted in the lectures, setting <code>eval=FALSE</code> is useful if wanting to include example code or code that would result in an error message. This makes it incredibly useful when writing your own notes as - for example - you can keep a record of code that resulted in an error message followed by another code chunk that has the working code.</p>
 <p>Importantly, whilst across the labs we have setup our R Markdown files to show the code from our code chunks in our knitted files, we do this so the files and their knitted outputs are useful reference material. When writing academic articles and research reports for public audience, we usually do not want to include our code. As you will see, because of that, the R Markdown files in the project templates for the formative and summative assessments already includes <code>echo=FALSE</code> as a global option in the setup code chunk. That saves you from then needing to manually add <code>echo=FALSE</code> to any additional code chunks you create. If you want to create code chunks to run code in your R Markdown file, but don’t want either the code or its output included in your knitted file, you can add <code>include=FALSE</code> in the code chunk options.</p>
 <section id="exporting-html-files" class="level3"><h3 class="anchored" data-anchor-id="exporting-html-files">Exporting HTML Files</h3>
 <p>When you knitted the document, RStudio actually created a new <code>.html</code> file with the same name as your R Markdown document. You can confirm this by looking in the ‘Files’ tab in bottom-right.</p>
@@ -694,7 +704,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Discuss how each of the edits suggested above modify the output with your neighbour or your tutor.</li>
 </ul>
 <p>Make sure you’ve got the basics of R Markdown, including exporting your knitted HTML files, since this what you will use to write your formative and summative assessments.</p>
-<p>As a final activity for this lab, use the time remaining to <a href="./assessments/creating-assessment-projects.html">create an RStudio project for the formative assessment</a> and make a start.</p>
+<p>As a final activity for this lab, use the time remaining to <a href="./assessments/creating-assessment-projects.html">create an RStudio project for the formative assessment</a> and make a start. The formative deadline is 12 noon, Friday 30th October 2026. Note that the formative template project does not include the <code>vtable</code> package, so run <code>install.packages("vtable")</code> in the Console of your new project and add <code><a href="https://nickch-k.github.io/vtable/">library(vtable)</a></code> to its preamble code chunk before creating your table of descriptive statistics.</p>
 <p>If there is something not very clear, or you are curious about, feel free to ask your tutor. They will be happy to answer your questions.</p>
 <hr>
 <section id="moving-files" class="level3"><h3 class="anchored" data-anchor-id="moving-files">Moving Files</h3>
@@ -710,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/lab5_move.png" class="img-fluid"></p>
 <p>This will open a ‘Choose Folder’ dialogue -</p>
 <ol start="4" type="1">
-<li>Click ‘project’ within the “cloud &gt; project &gt; data” folder hierachy.</li>
+<li>Click ‘project’ within the “cloud &gt; project &gt; data” folder hierarchy.</li>
 <li>Click ‘Choose’ to confirm.</li>
 </ol>
 <p><img src="images/lab5_move2.png" class="img-fluid"></p>
@@ -718,7 +728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can then navigate back to the top-level folder by clicking ‘project’. Any new files you create will then be created in the top-level folder.</p>
 
 
-</section></section></section></main><!-- /main --><script>
+</section></section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;

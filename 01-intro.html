@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>intro – Lab Workbook</title>
+<title>Introduction to R – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -340,7 +340,7 @@ div.csl-indent {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Introduction to R</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -441,10 +441,7 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#introduction-to-r" id="toc-introduction-to-r" class="nav-link active" data-scroll-target="#introduction-to-r">Introduction to R</a>
-  <ul class="collapse">
-<li><a href="#tools-we-are-using" id="toc-tools-we-are-using" class="nav-link" data-scroll-target="#tools-we-are-using">Tools We Are Using</a></li>
+<li><a href="#tools-we-are-using" id="toc-tools-we-are-using" class="nav-link active" data-scroll-target="#tools-we-are-using">Tools We Are Using</a></li>
   <li>
 <a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a>
   <ul class="collapse">
@@ -469,13 +466,25 @@ div.csl-indent {
   </ul>
 </li>
   <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="introduction-to-r" class="level1"><h1>Introduction to R</h1>
-<div class="callout callout-style-simple callout-note callout-titled" title="Overview">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Introduction to R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><div class="callout callout-style-simple callout-note callout-titled" title="Overview">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -496,7 +505,7 @@ div.csl-indent {
 </div>
 <section id="tools-we-are-using" class="level2"><h2 class="anchored" data-anchor-id="tools-we-are-using">Tools We Are Using</h2>
 <p>For this course we will be using <a href="https://www.r-project.org/">R</a> <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span> and <a href="https://rstudio.com/">RStudio</a> as the main tools for conducting quantitative analysis.</p>
-<p><code>R</code> and the basic versions of <code>RStudio</code> are free and open-source software. There are ‘free’ as in cost, but - more importantly - they are free software that guarantee users four foundamental freedoms. As explained on the FSFE’s <a href="https://fsfe.org/freesoftware/index.en.html">What is Free Software?</a> page, these are:</p>
+<p><code>R</code> and the basic versions of <code>RStudio</code> are free and open-source software. They are ‘free’ as in cost, but - more importantly - they are free software that guarantee users four fundamental freedoms. As explained on the FSFE’s <a href="https://fsfe.org/freesoftware/index.en.html">What is Free Software?</a> page, these are:</p>
 <blockquote class="blockquote">
 <ul>
 <li>
@@ -541,7 +550,7 @@ div.csl-indent {
 <p>R can be applied in a wide variety of fields and subjects, including not only those in the social sciences (e.g.&nbsp;sociology, politics, or policy research), but also in the humanities (e.g.&nbsp;history, digital humanities), natural and physical sciences (e.g.&nbsp;biology, chemistry, or geography), health (e.g.&nbsp;medical studies, public health, epidemiology), business and management (e.g.&nbsp;finance, economics, marketing), among many others.</p>
 <p>The broad application of R is due to its flexibility which allows it to perform a range of tasks related to data. These cover tasks at initial stages, such as downloading, mining, or importing data. But it is also useful to manipulate, edit, transform, and organise information. Furthermore, and most important for us, there are a set of tools that allow us to analyse data using a range of statistical techniques. These are useful to understand, summarize, and draw conclusions about samples, e.g.&nbsp;people.</p>
 <p>Lastly, <code>R</code> is powerful to communicate and share information and documents. There are several extensions (called <em><strong>packages</strong></em> in R) that can help to produce static and interactive plots/charts, maps, written reports, interactive applications or even entire books! In fact this workbook was written from RStudio.</p>
-<p><code>R</code> works in a command-based <code>Console</code> environment. This means that you need to call the commands (or <em><strong>functions</strong></em>, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexible. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.</p>
+<p><code>R</code> works in a command-based <code>Console</code> environment. This means that you need to call the commands (or <em><strong>functions</strong></em>, as they are called in R) through writing text. This can look intimidating at first glance. But do not worry, we will guide you step by step. Importantly, that these commands can be used and combined in multiple ways is what gives R its incredible flexibility. Once you get the hang of these you will find that they are faster and more powerful than using a button and menu based interface. RStudio also helps make working with R more accessible.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="New terms">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -592,7 +601,7 @@ div.csl-indent {
 </ol>
 <p><img src="images/sso_login.png" class="img-fluid" alt="Posit SSO Login Page"><br></p>
 <ol start="4" type="1">
-<li>Done! After logging in with your University of Glasgow account, you will be taken to your personal RStudio Cloud workspace;</li>
+<li>Done! After logging in with your University of Glasgow account, you will be taken to your personal Posit Cloud workspace;</li>
 </ol></section><section id="part-2-join-your-lab-group" class="level4"><h4 class="anchored" data-anchor-id="part-2-join-your-lab-group">
 <strong>Part 2</strong> Join your lab group</h4>
 <p>You will have received a link via email to join your lab group on Posit Cloud (the link will be available within your Lab Group forum on Moodle too). Note, you must use this specific link to join and access your lab group workspace, as each link is unique to your group. So, only use your group’s specific link.</p>
@@ -605,7 +614,7 @@ div.csl-indent {
 </ol></section><section id="part-3-create-a-new-project" class="level4"><h4 class="anchored" data-anchor-id="part-3-create-a-new-project">
 <strong>Part 3</strong> Create a New Project</h4>
 <ol type="1">
-<li>Open the shared space form the left-hand side pane called ‘Lab Group …’ (where … is your Lab Group number).</li>
+<li>Open the shared space from the left-hand side pane called ‘Lab Group …’ (where … is your Lab Group number).</li>
 <li>Click the blue ‘New Project’ button on the right of the screen.</li>
 <li>From the menu list that opens select ‘New Project from Git Repository’.</li>
 </ol>
@@ -625,8 +634,8 @@ div.csl-indent {
 <!-- For detailed instructions on how to set up R and RStudio Desktop version, watch [Video 2, Chapter 2](https://study.sagepub.com/fogarty/student-resources/r-screencast-tutorials/chapter-2-introduction-to-r-and-r-studio) [@Fogarty2019]. Remember this is only optional for now. -->
 </section></section><section id="rstudio-environment" class="level3"><h3 class="anchored" data-anchor-id="rstudio-environment">RStudio environment</h3>
 <section id="getting-started-1" class="level4"><h4 class="anchored" data-anchor-id="getting-started-1">Getting started</h4>
-<p>After your new ‘Labs 1-2’ project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:</p>
-<p><img src="images/posit_cloud_lab1_start.png" class="img-fluid" alt="Screen after creating ‘Labs 1-2’ project"><br></p>
+<p>After your new ‘Labs-1-2’ project is created Posit Cloud will automatically open it in RStudio and you will see the screen below:</p>
+<p><img src="images/posit_cloud_lab1_start.png" class="img-fluid" alt="Screen after creating ‘Labs-1-2’ project"><br></p>
 <ol type="1">
 <li>In the bottom-right ‘Files’ pane, click “Lab-01.Rmd”.</li>
 <li>That will open a new pane in the top-left, within the yellow banner in it click ‘Install’.</li>
@@ -674,8 +683,8 @@ div.csl-indent {
 <ul>
 <li>Finally, in <strong>Pane 4</strong> (yellow) you have multiple useful tabs.</li>
 </ul>
-<p>In the <code>File</code> tab you can see the files and directories that you have in your R project.</p>
-<p>In the <code>Plot</code> tab you will see a preview of the static plots/charts you will be producing from your script.</p>
+<p>In the <code>Files</code> tab you can see the files and directories that you have in your R project.</p>
+<p>In the <code>Plots</code> tab you will see a preview of the static plots/charts you will be producing from your script.</p>
 <p>In <code>Packages</code>, you have a list of the extensions or plug-ins (called ‘packages’ in R) that are installed in your working environment.</p>
 <p>The <code>Help</code> contains some resources that clarify or expand what each of the functions does. Again, probably this will make more sense once you get started. We will come back to this later.</p>
 <p>Finally, the <code>Viewer</code> displays interactive outputs.</p>
@@ -697,7 +706,7 @@ div.csl-indent {
 <p>What does the <code>[1]</code> mean? It’s a label R adds to printed results, where <code>[1]</code> just means “this line starts at item 1”. If there were lots of items, the next line might start <code>[7]</code> or <code>[15]</code>.</p>
 <p>Of course, you can also go to the <strong>Console</strong>, write a simple calculation, and run it by typing ‘Enter’, as shown below:</p>
 <p><img src="./images/rstudio_console_calc.png" class="img-fluid" alt="Running simple calculations in the Console"><br></p>
-<p>It’s also possible to run multiple calculations in a single chunk. Add a line for <code>5 * 5</code> and <code>21 -4</code> in the empty “sum-2” chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)</p>
+<p>It’s also possible to run multiple calculations in a single chunk. Add a line for <code>5 * 5</code> and <code>21 - 4</code> in the empty “sum-2” chunk and then run it. (Hint: Use the green triangle top-right of the code-chunk to run it.)</p>
 <p><img src="./images/rstudio_lab1_sum-2.png" class="img-fluid" alt="Adding simple calculations to sum-2 code chunk"><br></p>
 <p>Try different operations such as <code>50 / 20</code> or <code>3 * 5</code>, whether adding to the code chunk or directly in the Console.</p>
 <p>Fairly simple, right? And don’t forget, it is normal to copy and tweak existing code. A lot of learning to code involves going through working examples and tweaking it to work with what you are trying to achieve. Unlike writing an essay or an exam, you don’t actually need to know and write code “off the cuff” or have all necessary code syntax and functions memorised. So, don’t worry if you feel like you are just making minor changes to existing code, that’s how it’s supposed to work. The crucial thing is learning how the code works, so you know what to tweak for your analysis. And, the first few weeks is all about getting comfortable in using R, then the level of challenge will go up.</p>
@@ -714,10 +723,10 @@ div.csl-indent {
 <li><code>'this' == 'that'</code></li>
 <li><code>'this' != 'that'</code></li>
 </ul>
-<p>(Note, if you receive an “Error: object ‘this’ not found’” message, check you are using single quotes and have <code>'this'</code> rather than <code>this</code>.)</p>
+<p>(Note, if you receive an “Error: object ‘this’ not found” message, check you are using single quotes and have <code>'this'</code> rather than <code>this</code>.)</p>
 <p>What do you see running the code chunks? Why is R outputting these results? …</p>
 <p>When you use the double equal sign <code>==</code> you are <em>asking</em> R whether the value on the left hand-side of the operator is equal to the one on the right hand-side. Likewise, when you combine the exclamation mark <code>!</code> with another operator, you get the reversed result. For example, <code>!=</code> is interpreted as “is not equal to”, that is why <code>10 != 10</code> returns <code>FALSE</code>, but <code>10 == 10</code> returns <code>TRUE</code>.</p>
-<p><code>R</code> can process different classes of inputs. In this case we used a letters and we <em>asked</em> R whether ‘this’ was equal to ‘this’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <code>character</code> values in R), you need quotation marks, <code>'text'</code>. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as <code>numeric</code> ‘class’ values.</p>
+<p><code>R</code> can process different classes of inputs. In this case we used letters and we <em>asked</em> R whether ‘this’ was equal to ‘this’, and of course the result is <code>TRUE</code>. Note that when you want to input text (referred as <code>character</code> values in R), you need quotation marks, <code>'text'</code>. If you want to enter numeric values, you simply input the raw number without quotation marks. These are then treated as <code>numeric</code> ‘class’ values.</p>
 <p>You can use the <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function to check what something is in R. For example, try running <code>class(42)</code>, <code>class('42')</code>, and <code>class(TRUE)</code> in the Console.</p>
 <p>Perhaps logical operators do not make much sense at this point, but you will find out later that they are useful to manipulate data. For example, these are essential to filter a data set based on specific <em>rules</em> or patterns.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="New Terms">
@@ -773,7 +782,7 @@ div.csl-indent {
 <p><img src="./images/rstudio_lab1_restore-order.png" class="img-fluid" alt="‘Run All Chunks Above’ (purple) and ‘Run Current Chunk’ (blue)"><br></p>
 <p>It is also possible to use an object in a calculation and assign the result of that calculation back to the object. For example, <code>a &lt;- a + 5</code> is equivalent to <code>a &lt;- 10 + 5</code>. Whilst that can be perfectly valid to do, care needs to be taken as now <code>a</code> is <code>15</code>. What do you think would happen if you keep running the same <code>a &lt;- a + 5</code> line of code?</p>
 <p>Go to the “order-2” code chunk and run it multiple times, looking at the result underneath the chunk and the value for <code>a</code> in the Environment pane.</p>
-<p><img src="./images/rstudio_lab1_order-2.png" class="img-fluid" alt="’Increased value of a after running “order-2” chunk multiple times"><br></p>
+<p><img src="./images/rstudio_lab1_order-2.png" class="img-fluid" alt="Increased value of a after running “order-2” chunk multiple times"><br></p>
 <p>Again, you can ‘Run All Chunks Above’ (downwards grey arrow/triangle, green line) and ‘Run Current Chunk’ (green arrow/triangle) to restore <code>a</code> to value it would be if only ran each code chunk once top to bottom.</p>
 <!-- ### Load your first file -->
 <!-- You are now done with the basics, it is time to get serious. We will use R to download a real data set and then we will load it as an object in our working session. The data we will use for this exercise is the [Scottish Hill Races](https://dasl.datadescription.com/datafile/scottish-hill-races/). -->
@@ -805,7 +814,7 @@ div.csl-indent {
 <!-- <br> -->
 <!-- Here, you can scroll down or visualize your columns to your right in a table-style format. You can sort the contents of the variables by clicking on the header. But note that you cannot make any changes from here. Once you finished checking your data, simply click on the cross mark and you will be back to your script tab. -->
 <p>This is a good start, great job!</p>
-<p>Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterisk at the end, <code>Lab-01.Rmd*</code>. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the RStudio Cloud tab in your browser.</p>
+<p>Note that the changes made in your R Markdown file are saved automatically within RStudio when using Posit Cloud. To verify this, have a look at the name of your file in the top-left of pane 1. If changes are due to be saved, the name will be written in red with an asterisk at the end, <code>Lab-01.Rmd*</code>. If it is in red, save changes manually by clicking on the disk icon. After you have made sure your changes are saved, you are safe to end your session by closing the Posit Cloud tab in your browser.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="New Terms">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -830,11 +839,11 @@ div.csl-indent {
 <p>Discuss the following questions with your neighbour or tutor, and write notes from your discussion in your R Markdown file:</p>
 <ol type="1">
 <li>What are the main differences between working in a <code>R Markdown</code> file (pane 1) and directly on the console (pane 3)?</li>
-<li>Can you describe what happens when your run the following code? (tip: look at the environment tab in pane 2)</li>
+<li>Can you describe what happens when you run the following code? (tip: look at the environment tab in pane 2)</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">object1</span> <span class="op">&lt;-</span> <span class="fl">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">object2</span> <span class="op">&lt;-</span> <span class="fl">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="3" type="1">
 <li>Click the ‘Knit’ button in the bar at the top of the R Markdown file (pane 1). This will turn your R Markdown file into an HTML document.</li>
@@ -846,7 +855,7 @@ div.csl-indent {
 
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-R-base" class="csl-entry" role="listitem">
 R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>

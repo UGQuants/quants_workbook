@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>lab8 – Lab Workbook</title>
+<title>Simple Linear Regression – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -347,7 +347,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Simple Linear Regression</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -448,10 +448,7 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link active" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a>
-  <ul class="collapse">
-<li><a href="#welcome" id="toc-welcome" class="nav-link" data-scroll-target="#welcome">Welcome</a></li>
+<li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
   <li>
 <a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
   <ul class="collapse">
@@ -485,13 +482,25 @@ window.Quarto = {
   </ul>
 </li>
   <li><a href="#lab-activities" id="toc-lab-activities" class="nav-link" data-scroll-target="#lab-activities">Lab activities</a></li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="simple-linear-regression" class="level1"><h1>Simple Linear Regression</h1>
-<section id="welcome" class="level2"><h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Simple Linear Regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="welcome" class="level2"><h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
 <p>In the previous lab we learned about correlation. We visualised the relationship of different types of variables. We also computed one correlation measure for two numeric variables, <em>Pearson’s</em> correlation. We used Pearson’s correlation to summarise the strength and direction of a linear association between two numeric variables. However, it presents some limitations. It can only be used for numeric variables, it allows only one pair of variables at a time, and it is only appropriate to describe a linear relationship.</p>
 <p>Linear regression can overcome some of these limitations and it can be extended to achieve further purposes, such as using multiple variables or to make predictions for new scenarios. This technique is in fact common and one of the most popular in quantitative research in social sciences. Therefore, getting familiar with it will be important for you not only to perform your own analyses, but also to interpret and critically read the academic literature.</p>
 <div class="callout callout-style-simple callout-important">
@@ -517,7 +526,6 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>We will be covering linear regression over three weeks. Do not worry if everything this week doesn’t immediately make sense. We will revisit and build upon key ideas over labs 9 and 10 as well.</p>
 <p>Please also do let us know where anything is unclear or is confusing. We update the lab content each year based on student feedback and value any feedback on the newest version so we can continue to make improvements.</p>
-<p>As they cover some key concepts relevant for the summative assignment, we will aim to make further updates to Labs 8 - 10 based on any initial feedback.</p>
 </div>
 </div>
 </section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
@@ -633,12 +641,12 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>As noted in the comment in the code above, we are drawing this line at the moment as a ‘guesstimate’ a by-eye guess - that assumes the age of the spouse/partner is exactly the same as the respondent’s.</p>
+<p>As noted in the comment in the code above, we are drawing this line at the moment as a ‘guesstimate’ - a by-eye guess - that assumes the age of the spouse/partner is exactly the same as the respondent’s.</p>
 </div>
 </div>
 </div>
 <p>To draw a line like this, we used 0 as the starting value in the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline()</a></code> function. In statistics, this is known as the <em>intercept</em> and it is often represented with a Greek letter and a zero sub-index as <span class="math inline">\(\beta_0\)</span> (beta-naught) or with <span class="math inline">\(\alpha\)</span> (alpha). The location of the intercept can be found along the vertical axis (in this case it is not visible due to ages of respondents and their spouses/partners being 20+).</p>
-<p>The second value we passed to describe the line is the <em>slope</em>, which uses the X axis as the reference. The slope value is multiplied by the value of the X axis. Therefore, a slope of 0 is completely horizontal. In this example, a slope of 1 produces a line at 45º. The slope is often represented with the Greek letter beta and a sequential numeric sub-index like this: <span class="math inline">\(\beta_1\)</span> (b.</p>
+<p>The second value we passed to describe the line is the <em>slope</em>, which uses the X axis as the reference. The slope value is multiplied by the value of the X axis. Therefore, a slope of 0 is completely horizontal. In this example, a slope of 1 produces a line at 45º. The slope is often represented with the Greek letter beta and a sequential numeric sub-index like this: <span class="math inline">\(\beta_1\)</span> (beta-one).</p>
 </section><section id="was-this-a-good-guess" class="level3"><h3 class="anchored" data-anchor-id="was-this-a-good-guess">Was this a good guess?</h3>
 <p>Having drawn a line assuming respondents and their spouses/partners have the same age, how does that compare to our actual data?</p>
 <p>First, let’s create a variable in our dataframe that matches our guess. We can do this by taking the starting point - the ‘intercept’ - and adding the steepness factor - the ‘slope’. We will store the results in a column called <code>line1</code>. After that, we can print the ‘head’ of our dataframe using the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function to see the first few rows.</p>
@@ -685,7 +693,7 @@ window.Quarto = {
 </section><section id="residuals" class="level3"><h3 class="anchored" data-anchor-id="residuals">Residuals</h3>
 <p>This distance between the observation and the line is known as the residual or the error and it is often expressed with the Greek letter <span class="math inline">\(\epsilon\)</span> (epsilon). Numerically, we can calculate this by computing the difference between the known value (the observed) and the <strong>guessed</strong> value.</p>
 <p>Formally, the guessed number is called the expected value (also known as predicted/estimated value). Normally, the expected values in statistics are represented by putting a hat like this <span class="math inline">\(\hat{}\)</span> on the letters.</p>
-<p>Since the independent variable is usually located on the X axis and the dependent variable on the Y axis. We write write the expected (predicated) value with a hat on the Y like this: <span class="math inline">\(\hat{y}\)</span> (y-hat).</p>
+<p>Since the independent variable is usually located on the X axis and the dependent variable on the Y axis. We write the expected (predicted) value with a hat on the Y like this: <span class="math inline">\(\hat{y}\)</span> (y-hat).</p>
 <p>Let’s estimate the residuals for each of the observations by subtracting <span class="math inline">\(\hat{y}_i\)</span> from <span class="math inline">\(y_i\)</span> (<code>spage</code> - <code>line1</code>) and store it in a column called <code>residuals</code>. Again we can use the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function to see the first few lines of our dataframe.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># estimate residuals</span></span>
@@ -705,7 +713,7 @@ window.Quarto = {
 6    67    57    67       -10</code></pre>
 </div>
 </div>
-<p>Coming back once again to the question, is my line good enough?</p>
+<p>Coming back once again to the question, is our line good enough?</p>
 <p>We could sum all these residuals as an overall measure to know how good our line is. From the previous plot, we see that some of the expected ages are higher than the actual values, whilst others are below. This produces negative and positive residuals. If we simply sum them, they would compensate each other and this would not tell us much about the overall magnitude of the difference.</p>
 <p>To overcome this problem, we square each residual - multiply the residual by itself. This will make all of our values positive - “-3 x -3 = 9” - making it possible to sum them all together.</p>
 <p>This is known as the <em>sum of squared residuals</em> (SSR) and we can use this as the criterion to measure how good our line is with respect to the overall trend of the points.</p>
@@ -803,11 +811,11 @@ Coefficients:
 </div>
 </div>
 <p>The output first displays the formula employed to estimate the model - under <code>Call:</code>. Then, it shows us the estimated values for the intercept and the slope for the age of the respondent, these estimated values are called coefficients.</p>
-<p>In this model, the coefficients differ from the ones in the example above (m1). This is because as we are now using the full <code>nilt</code> dataframe we have more information to fit the line. Despite the difference, we see that the relationship is still in the same direction (positive). In fact, the value of the slope <span class="math inline">\(\beta_1\)</span> did not change much if you look at it carefully (0.87 vs 0.92).</p>
+<p>In this model, the coefficients differ from the ones in the example above (m1). This is because as we are now using the full <code>nilt</code> dataframe we have more information to fit the line. Despite the difference, we see that the relationship is still in the same direction (positive). In fact, the value of the slope <span class="math inline">\(\beta_1\)</span> did not change much if you look at it carefully (0.87 vs 0.93).</p>
 </section><section id="interpreting-results" class="level3"><h3 class="anchored" data-anchor-id="interpreting-results">Interpreting results</h3>
 <p>But what are the slope and intercept telling us? The first thing to note is that the slope is positive, which means that the relationship between the respondent age and their spouse/partner age are in the same direction. When the age of the respondent goes up, the age of their spouse/partner is expected to go up as well.</p>
 <p>In our model, the intercept does not have a meaningful interpretation on its own. What we mean by saying it is not meaningful is that it would not be logical to say that when the respondent’s age is 0 their partner would be expected to be 3.70 years old. Instead, the interpretations should be made only within the range of the values used to fit the model (the youngest age in this data set is 18).</p>
-<p>The slope can be interpreted as follows: For every year older the respondent is, the partner’s age is expected to change by 0.92. In other words, the respondents are expected to have a partner who is 0.92 times years older than themselves. Or, to put it in more simple terms, for each 1-year increase in the respondent’s age, the expected spouse/partner age increases by 0.92 years. On average then, partners are slightly younger than respondents.</p>
+<p>The slope can be interpreted as follows: For every year older the respondent is, the partner’s age is expected to change by 0.93. In other words, the respondents are expected to have a partner who is 0.93 times years older than themselves. Or, to put it in more simple terms, for each 1-year increase in the respondent’s age, the expected spouse/partner age increases by 0.93 years. On average then, partners are slightly younger than respondents.</p>
 <p>In this case, the units of the dependent variable are the same as the independent (age vs age) which make it easy to interpret. In reality, there might be more factors that potentially affect how people select their partners, such as gender, education, race/ethnicity, etc. For now, we are keeping things ‘simple’ by using only these two variables.</p>
 <p>Let’s practice with another example. What if we are interested in income?</p>
 <p>We can use annual personal income <code>persinc2</code> as the dependent variable and the number of hours worked a week <code>rhourswk</code> as the independent variable. We’ll assign the result to an object called <code>m3</code> (for ‘model 3’).</p>
@@ -873,8 +881,8 @@ F-statistic:  5240 on 1 and 589 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>As a general agreed principle, <strong>if the p-value is equal or less than 0.05 (<span class="math inline">\(p\)</span> ≤ 0.05), we can reject the null hypothesis, and say that the relationship between the dependent variable and the independent is significant.</strong> In our case, the p-value is far lower than 0.05. So, we can say that the relationship between the respondent’s spouse/partner age and the respondent’s age is significant. In fact, R includes codes for each coefficient to help us to identify the significance. In our result, we got three stars/asterisks. This is because the value is less than 0.001. R assigns two stars if the p-value is less than 0.01, and one star if it is lower than 0.05. (P‑values, however, are just one part of the story; always read them alongside effect size, confidence intervals, and substantive meaning.)</p>
 <p>In the fourth area, we have various <strong>goodness-of-fit measures</strong>. Overall, these measures tell us how well the model represents our data. For now, let’s focus on the <em>adjusted R-squared</em>.</p>
 <p>R-squared is the proportion of variation in the outcome explained by the model. It ranges from 0 to 1: 0 means none of the variance is explained; 1 means all variance in the sample is explained by the model. Adjusted R-squared penalises adding variables that do not improve the model. In the social sciences, modest R-squared values are common.</p>
-<p>Adjusted R-squared then can be understood as the proportion (multiply it by 100 to report a percentage) of variance explained by the model, adjusted for the number of independent variables used. In our age-age example, the model explains 89.88% percent of the total variance. This is a good fit, but this is because we are modelling a quite “obvious” relationship. The R-squared describes the model file, it does not judge the quality of our analysis.</p>
-<p>You may wonder why we do not report the sum of squared residuals (SSR), as we covered in our initial example. This is because the scale of the SSR is in the units used to fit the model, which would make it difficult to compare our model with other models that use different units or different variables. Conversely, the adjusted R-squared is expressed in relative terms which makes it a more suitable measure to compare with other models. An important thing to note is that the output is telling us that this model excluded 613 observations which were missing in our dataset. This is because we do not have the age of the respondent’s partner in 613 of the rows. Missing spouse/partner ages can occur for serveral reasons. For example, the respondent may not have a parter, or choose not to answer.</p>
+<p>Adjusted R-squared then can be understood as the proportion (multiply it by 100 to report a percentage) of variance explained by the model, adjusted for the number of independent variables used. In our age-age example, the model explains 89.88% of the total variance. This is a good fit, but this is because we are modelling a quite “obvious” relationship. The R-squared describes the model fit, it does not judge the quality of our analysis.</p>
+<p>You may wonder why we do not report the sum of squared residuals (SSR), as we covered in our initial example. This is because the scale of the SSR is in the units used to fit the model, which would make it difficult to compare our model with other models that use different units or different variables. Conversely, the adjusted R-squared is expressed in relative terms which makes it a more suitable measure to compare with other models. An important thing to note is that the output is telling us that this model excluded 613 observations which were missing in our dataset. This is because we do not have the age of the respondent’s partner in 613 of the rows. Missing spouse/partner ages can occur for several reasons. For example, the respondent may not have a partner, or choose not to answer.</p>
 <p>In academic papers in the social sciences, usually the measures reported are the coefficients, p-values, the adjusted R-squared, and the size of the sample used to fit the model (number of observations).</p>
 </section><section id="further-checks" class="level3"><h3 class="anchored" data-anchor-id="further-checks">Further checks</h3>
 <p>The linear model, as many other techniques in statistics, relies on assumptions. These refer to characteristics of the data that are taken for granted to generate the estimates. It is the task of the modeller/analyst to make sure the data used follows these assumptions. One simple yet important check is to examine the distribution of the residuals, which ought to follow a normal distribution.</p>
@@ -888,7 +896,7 @@ F-statistic:  5240 on 1 and 589 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-<p>Overall, it seems that the residuals follow the normal distribution reasonably well, with the exception of the negative value to the left of the plot. Very often when there is a strange distribution or different to the normal, it is because one of the assumptions is violated. If that is the case we cannot trust the coefficient estimates. In the next lab we will talk more about the assumptions of the linear model. For now, we will leave it here and get some practice.</p>
+<p>Overall, it seems that the residuals follow the normal distribution reasonably well, with the exception of the negative value to the left of the plot. Very often when there is a strange distribution or different to the normal, it is because one of the assumptions is violated. If that is the case we cannot trust the coefficient estimates. In Lab 10 we will talk more about the assumptions of the linear model. For now, we will leave it here and get some practice.</p>
 </section></section><section id="lab-activities" class="level2"><h2 class="anchored" data-anchor-id="lab-activities">Lab activities</h2>
 <p>In your R Markdown file, use the <code>nilt</code> dataset to:</p>
 <ol type="1">
@@ -903,7 +911,7 @@ F-statistic:  5240 on 1 and 589 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ol>
 
 
-</section></section></main><!-- /main --><script>
+</section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;

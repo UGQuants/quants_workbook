@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>r-markdown – Lab Workbook</title>
+<title>R Markdown – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -287,22 +287,31 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#rmarkdown" id="toc-rmarkdown" class="nav-link active" data-scroll-target="#rmarkdown">RMarkdown</a>
-  <ul class="collapse">
-<li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">Formatting</a></li>
+<li><a href="#formatting" id="toc-formatting" class="nav-link active" data-scroll-target="#formatting">Formatting</a></li>
   <li><a href="#line-spacing" id="toc-line-spacing" class="nav-link" data-scroll-target="#line-spacing">Line spacing</a></li>
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code Chunks</a></li>
   <li><a href="#running-code-chunks" id="toc-running-code-chunks" class="nav-link" data-scroll-target="#running-code-chunks">Running Code Chunks</a></li>
   <li><a href="#knitting-rmarkdown-documents" id="toc-knitting-rmarkdown-documents" class="nav-link" data-scroll-target="#knitting-rmarkdown-documents">Knitting RMarkdown Documents</a></li>
   <li><a href="#rmarkdown-cheat-sheet" id="toc-rmarkdown-cheat-sheet" class="nav-link" data-scroll-target="#rmarkdown-cheat-sheet">RMarkdown Cheat Sheet</a></li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="rmarkdown" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="rmarkdown">RMarkdown</h2>
-<p>RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with <a href="#code-chunks">Code Chunks</a> that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">R Markdown</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>RMarkdown allows you to combine your narrative and data analysis in one document, writing plain-text documents with <a href="#code-chunks">Code Chunks</a> that can be converted to multiple file formats, such as HTML or PDF. This makes RMarkdown documents reproducible by embedding the analysis directly into the document. Compared to doing your analysis separately, copying and pasting over your results and graphs to a Word document, it also reduces the risk of error when working on and updating your analysis.</p>
 <p>RMarkdown achieves this by combining the power of R, Markdown, and Pandoc. Markdown is a lightweight markup language with simple, human-readable syntax for formatting text (see the <a href="#formatting">Formatting</a> section below). Pandoc is a tool for converting files from one format to another, such as Markdown to PDF or HTML. RMarkdown builds on these tools. When you ‘knit’ a document, the code chunks are executed to run your analysis and generate your tables and graphs using R. The output from these are then integrated with the Markdown text and passed to Pandoc to convert into a neat and consistently formatted HTML, PDF, or other specified file format.</p>
 <section id="formatting" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="formatting">Formatting</h3>
 <p>R Markdown uses simple, human-readable syntax for basic formatting. Whilst different to how you would write text in a Word document, it is easy to learn. This simple transparent formatting also helps avoid the hidden complexities of Word document, where formatting issues often arise from inconsistent syntax that is hidden from the user.</p>
@@ -496,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-</section></section></main><!-- /main --><script>
+</section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;

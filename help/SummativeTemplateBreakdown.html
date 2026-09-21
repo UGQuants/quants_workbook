@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>summativetemplatebreakdown – Lab Workbook</title>
+<title>Interpretive Report Template – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Interpretive Report Template</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../help/InterpretiveReportStructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RMarkdown &amp; the Interpretive Report Template</span></a>
+ <span class="menu-text">R Markdown &amp; the Interpretive Report Template</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -361,22 +361,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#interpretive-report-template" id="toc-interpretive-report-template" class="nav-link active" data-scroll-target="#interpretive-report-template">Interpretive Report Template</a>
-  <ul class="collapse">
-<li><a href="#yaml-block" id="toc-yaml-block" class="nav-link" data-scroll-target="#yaml-block">YAML Block</a></li>
+<li><a href="#yaml-block" id="toc-yaml-block" class="nav-link active" data-scroll-target="#yaml-block">YAML Block</a></li>
   <li><a href="#setup-code-chunk" id="toc-setup-code-chunk" class="nav-link" data-scroll-target="#setup-code-chunk">Setup Code Chunk</a></li>
   <li><a href="#preamble-code-chunk" id="toc-preamble-code-chunk" class="nav-link" data-scroll-target="#preamble-code-chunk">Preamble Code Chunk</a></li>
   <li><a href="#word-count-code" id="toc-word-count-code" class="nav-link" data-scroll-target="#word-count-code">Word Count Code</a></li>
   <li><a href="#template-outline" id="toc-template-outline" class="nav-link" data-scroll-target="#template-outline">Template Outline</a></li>
   <li><a href="#regression-results-code-chunk" id="toc-regression-results-code-chunk" class="nav-link" data-scroll-target="#regression-results-code-chunk">Regression Results Code Chunk</a></li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="interpretive-report-template" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="interpretive-report-template">Interpretive Report Template</h2>
-<section id="yaml-block" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="yaml-block">YAML Block</h3>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Interpretive Report Template</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="yaml-block" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="yaml-block">YAML Block</h3>
 <p>The top of the RMarkdown document includes a YAML block, enclosed with three dashes, <code>---</code>, at the start and end. The YAML block must be at the very start of the document, so do not add any new lines before it.</p>
 <p>YAML is often used with Markdown as it provides a simple human-readable structure for configuring metadata, such as the document title, author, date, and desired output when knitting:</p>
 <div class="cell">
@@ -454,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"./images/rstudiowordcount.png"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Important</strong>, the ‘- 10’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 183 words then change the code to <code>wordcountaddin::word_count("Assignmet2-template.Rmd") - 193</code>.</p>
+<p><strong>Important</strong>, the ‘- 14’ in the code is so “Word count:” and each of the headers “Introduction”, “Data and method”, etc are also not included in the word count. Ensure to update this number to exclude your bibliography from the word count. For example, if your bibliography is 184 words then change the code to <code>wordcountaddin::word_count("Summative-template.Rmd") - 198</code>.</p>
 </section><section id="template-outline" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="template-outline">Template Outline</h3>
 <p>The RMarkdown document provided in the project template includes headed sections you can use alongside suggested word count for each and brief summary reminder of what to include in each section. The <a href="https://moodle.gla.ac.uk/mod/resource/view.php?id=4853189">Course Handbook</a>, pages 26-30, provide a more detailed breakdown of what to include in each section.</p>
 <p>Screenshot of the outline and commented suggestions:</p>
@@ -498,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If it doesn’t, please see the <a href="../assessments/RFAQ.html">R Issues FAQ</a>.</p>
 
 
-</section></section></main><!-- /main --><script>
+</section></main><!-- /main --><script>
 (function () {
   function installShim() {
     const H = window.Headroom;
@@ -1014,8 +1023,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../help/InterpretiveReportStructure.html" class="pagination-link" aria-label="RMarkdown &amp; the Interpretive Report Template">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">RMarkdown &amp; the Interpretive Report Template</span>
+      <a href="../help/InterpretiveReportStructure.html" class="pagination-link" aria-label="R Markdown &amp; the Interpretive Report Template">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R Markdown &amp; the Interpretive Report Template</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

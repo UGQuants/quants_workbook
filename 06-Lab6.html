@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>lab6 – Lab Workbook</title>
+<title>Visual exploratory analysis – Lab Workbook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -341,7 +341,7 @@ div.csl-indent {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Visual exploratory analysis</h1>
         </a>     
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -442,10 +442,7 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#visual-exploratory-analysis" id="toc-visual-exploratory-analysis" class="nav-link active" data-scroll-target="#visual-exploratory-analysis">Visual exploratory analysis</a>
-  <ul class="collapse">
-<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li>
 <a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a>
   <ul class="collapse">
@@ -469,17 +466,28 @@ div.csl-indent {
   <li><a href="#mixed-data" id="toc-mixed-data" class="nav-link" data-scroll-target="#mixed-data">Mixed data</a></li>
   <li><a href="#r-cheatsheets" id="toc-r-cheatsheets" class="nav-link" data-scroll-target="#r-cheatsheets">R Cheatsheets</a></li>
   <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
-  </ul>
-</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UGQuants/quants_workbook/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><section id="visual-exploratory-analysis" class="level1"><h1>Visual exploratory analysis</h1>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, we will extend your skills to explore data by visualizing it… and <code>R</code> is great for this! It is actually a highly-demand skill in the job market.</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Visual exploratory analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, we will extend your skills to explore data by visualizing it… and <code>R</code> is great for this! It is actually a highly in-demand skill in the job market.</p>
 <p>Visualizing data is an important process in at least two stages in quantitative research: First, for you as a researcher to get familiar with the data; and second, to communicate your findings. <code>R</code> includes two important tools to achieve this: First, the wonderful <code>ggplot2</code> package (included in <code>tidyverse</code>), a powerful tool to explore and plot data. Second, <a href="https://rmarkdown.rstudio.com/">R Markdown</a> which allows you to create integrated quantitative reports. Combining and mastering the two can create very effective results.</p>
 </section><section id="data-visualization" class="level2"><h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
-<p>Visual data exploration with <code>ggplot2</code> (Artwork by @alison_horst).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -489,7 +497,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Visualizations are important for any quantitative analysis. These are helpful to identify overall trends, problems, or extreme values in your data at an initial stage. Additionally, visualizations are key to communicate your results at the final stage of the research process. These two stages are known as <em>exploratory</em> and <em>explanatory</em> visualizations, respectively. Base R includes some functionalities to create basic plots. These are often used to generate quick exploratory visualizations. In addition, <code>ggplot2</code>, which is one of the most popular data visualization tools for R, allows you to extend the base R capabilities and create publishable high-quality plots. In this lab we will focus on <code>ggplot2</code>.</p>
-<p>Different plot types serve different types of data. In the last lab, we introduced some functions to summarise your data and to generate summaries for specific types of variable. This will help you to decide what the most suitable plot is for your data or variable. The table below presents a minimal guide to choose the type of plot as a function of the type of data you intend to visualize. In addition, it splits the type of plot by the number of variables included in the visualization, one for <em>univariate</em>, or two for <em>bivariate</em>. Bivariate plots are useful to explore the relationship between variables.</p>
+<p>Different plot types serve different types of data. In Lab 4, we introduced some functions to summarise your data and to generate summaries for specific types of variable. This will help you to decide what the most suitable plot is for your data or variable. The table below presents a minimal guide to choose the type of plot as a function of the type of data you intend to visualize. In addition, it splits the type of plot by the number of variables included in the visualization, one for <em>univariate</em>, or two for <em>bivariate</em>. Bivariate plots are useful to explore the relationship between variables.</p>
 <table class="caption-top table">
 <thead><tr class="header">
 <th></th>
@@ -518,10 +526,10 @@ div.csl-indent {
 </table>
 <p>Note that it is possible to include more than two variables in one plot. However, as more variables are added, careful considerations are needed on whether they are actually adding more useful information or instead making the graph difficult - or impossible - to interpret.</p>
 <section id="setup-a-new-r-markdown-file" class="level3"><h3 class="anchored" data-anchor-id="setup-a-new-r-markdown-file">Setup a new R Markdown file</h3>
-<p>We will continue working in the same project called <em>NILT</em> in <a href="https://rstudio.cloud/">Posit Cloud</a>.</p>
+<p>We will continue working in the same project called <em>NILT</em> in <a href="https://posit.cloud/">Posit Cloud</a>.</p>
 <p>Set up your session as follows:</p>
 <ol type="1">
-<li>Go to your ‘Lab Group ##’ in <a href="https://rstudio.cloud/">Posit Cloud</a> (log in if necessary);</li>
+<li>Go to your ‘Lab Group ##’ in <a href="https://posit.cloud/">Posit Cloud</a> (log in if necessary);</li>
 <li>Open your own copy of the ‘NILT’ project from the ‘Lab Group’;</li>
 </ol>
 <p>Within your ‘NILT’ project, ensure you are in the top-level project directory. You can tell by checking in the ‘Files’ tab in the bottom-right pane. Near the top of the tab you’ll see “Cloud &gt; project”. If that’s all you see, you are already in the top-level folder. If instead you see “Cloud &gt; project &gt; R” or “Cloud &gt; project &gt; data” then click on the text for “project” to navigate back to the top-level folder.</p>
@@ -627,7 +635,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if I think it is worthwhile visualizing the religion by respondents’ sex. A plot can show us the magnitudes and composition by respondents’ sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable <code>religcat</code> on the <code>x</code> axis and <code>fill</code> with gender <code>rsex</code>.</p>
+<p>This plot is not very informative, since the total size of female and male respondents is different. The type of visualization will also depend on your specific research question or the topic you are interested in. For example, if we think it is worthwhile visualizing the religion by respondents’ sex. A plot can show us the magnitudes and composition by respondents’ sex for each religion. To do this, we need to change the aesthetics, specifying the religion by category variable <code>religcat</code> on the <code>x</code> axis and <code>fill</code> with gender <code>rsex</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">religcat</span>, fill <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -654,6 +662,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>(When you run this chunk you may see messages such as <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">stat_bin()</a></code> using <code>bins = 30</code> and ‘Removed 3 rows containing non-finite values’. These are expected: ggplot picks a default number of bins and drops the respondents with a missing age. You will see similar messages for the scatter plot below.)</p>
 <p>From the histogram, we have age (in bins) on the X axis, and the frequency/count on the y axis. This plot is useful to visualize how respondent’s age is distributed in our sample. For instance, we can quickly see the minimum and maximum value, or the most popular age, or a general trend indicating the largest age group.</p>
 <p>A second option to visualize numeric variables is the box plot. Essentially this draws the quartiles of a numeric vector. For this plot, <code>rage</code> is defined in the <code>y</code> axis. This is just a personal preference. The geometry is set by the <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> function.</p>
 <div class="cell">
@@ -667,7 +676,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function. The lower edge of the box represents the 2nd quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.</p>
+<p>What we see from this plot is the first, second and third quartile. The second quartile (or median) is represented by the black line in the middle of the box. As you can see this is close to 50 years old, as we computed using the <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function. The lower edge of the box represents the 1st quartile, which is somewhere around 35 years old. Similarly the 3rd quartile is represented by the upper edge of the box. We can confirm this by computing the quantiles for this variable.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">nilt_subset</span><span class="op">$</span><span class="va">rage</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -678,7 +687,7 @@ div.csl-indent {
 </section><section id="bivariate-numeric" class="level3"><h3 class="anchored" data-anchor-id="bivariate-numeric">Bivariate numeric</h3>
 <p>A useful plot to explore the relationship between two numeric variables is the scatter plot. This plot locates a dot for each observation according to their respective numeric values. In the example below, we use age <code>rage</code> on the X axis (horizontal), and personal income <code>persinc2</code> on the Y axis (vertical). This type of plot is useful to explore a relationship between variables.</p>
 <!-- Let's imagine we are interested in personal income, we may therefore try to find the personal aspects related to personal income as an outcome. One reasonable characteristic can be age. We can hypothesize that personal income increases with time as they age (because an individual can have more experience or simply because of possible growing work-related benefits). Therefore we can suspect there is a relationship between these two variables.  -->
-<p>To generate a scatter plot, we need to define <code>x</code> and <code>y</code> in aesthetics <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. The geometry is a point, that we can specify using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function. Note that we are specifying some further optional arguments within <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. First, <code>alpha</code> regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, in we defined <code>position</code> as <code>jitter</code>. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly ontop of each other. Adding some transparency and <em>noise</em> to their position with <code>jitter</code> (i.e.&nbsp;shifts dots slightly apart), can make it easier to visualize possible patterns.</p>
+<p>To generate a scatter plot, we need to define <code>x</code> and <code>y</code> in aesthetics <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. The geometry is a point, that we can specify using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function. Note that we are specifying some further optional arguments within <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. First, <code>alpha</code> regulates the opacity of the dots. This goes from 0.0 (completely translucent) to 1.0 (completely solid fill). Second, we defined <code>position</code> as <code>jitter</code>. This arguments slightly moves the point away from their exact location. These two arguments are desired in this plot because the personal income bands overlap - meaning most points will be drawn directly on top of each other. Adding some transparency and <em>noise</em> to their position with <code>jitter</code> (i.e.&nbsp;shifts dots slightly apart), can make it easier to visualize possible patterns.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rage</span>, y <span class="op">=</span> <span class="va">persinc2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span>, position <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -707,7 +716,7 @@ div.csl-indent {
 <p>From this, we can visualize that female participants are slightly younger than their male counterparts in the sample.</p>
 </section><section id="r-cheatsheets" class="level2"><h2 class="anchored" data-anchor-id="r-cheatsheets">R Cheatsheets</h2>
 <p>There are a number of features that you can customize in your plots, including the background, text size, colours, adding more variables. But you don’t have to memorise or remember all this, one thing that is very commonly used by R data scientists are R cheat sheets! They are extremely handy when you try to create a visualisation from scratch, check out the <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Data Visualization with ggplot2 Cheat Sheet</a>. An extra tip is that you can change the overall look of the plot by adding pre-defined themes. You can read more about it <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. Another interesting site is the <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a>, which includes a comprehensive showcase of plot types and their respective code.</p>
-<p>As a quick example of how simply themeing is, let’s take the last graph and apply a minimal theme. All we need to do is add <code>+</code> after <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> followed by <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>.</p>
+<p>As a quick example of how simple theming is, let’s take the last graph and apply a minimal theme. All we need to do is add <code>+</code> after <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> followed by <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nilt_subset</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">rage</span>, x <span class="op">=</span> <span class="va">rsex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -732,7 +741,7 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Important</strong>. If you are interested in applying a theme to your plots please look at the linked resources above. Themeing plots is easy with <code>ggplot</code>, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.</p>
+<p><strong>Important</strong>. If you are interested in applying a theme to your plots please look at the linked resources above. Theming plots is easy with <code>ggplot</code>, with a number of built-in themes available with a single function. Despite that, if you prompt genAI how to write code for a plot, it will often add a theme - even when one was not requested, add arbitrary and needlessly complex customisation, and inconsistently apply these themes/customisations across plots.</p>
 <p>As a general rule of thumb, if genAI responses have code we did not cover in the labs, 99% of the time you can be confident it is spouting out absolute nonsense. As seen above, the built-in <code>ggplot</code> themes can be applied with a single line of code, and more complex customisation - that you will rarely, if ever, need - can be set once globally or used only when absolutely needed for a specific plot. GenAI will mislead you into thinking that creating plots with R requires 20+ lines of code rather than 3-4. It has similar issue with tables, sometimes giving 40+ lines of code to create a table that could instead be created with a single line of code.</p>
 </div>
 </div>
@@ -745,14 +754,14 @@ div.csl-indent {
 <li>Based on the plot above, create a ‘stacked bar plot’ to visualize this affiliation by religion, using the <code>uninatid</code> and <code>religcat</code> variables;</li>
 <li>Create a new first-level header to start a section called “Numeric analysis”;</li>
 <li>Create a scatter plot about the relationship between personal income <code>persinc2</code> on the Y axis and number of hours worked a week <code>rhourswk</code> on the X axis;</li>
-<li>Finally, create a box plot to visualize personal income <code>persinc2</code> on the Y axis and self-reported level of happiness <code>ruhappy</code> on the x axis … Interesting result, Isn’t it? Talk to your lab group-mates and tutors about your results.</li>
+<li>Finally, create a box plot to visualize personal income <code>persinc2</code> on the Y axis and self-reported level of happiness <code>ruhappy</code> on the x axis … Interesting result, isn’t it? Talk to your lab group-mates and tutors about your results.</li>
 <li>Add your own (brief) comments to each of the plots as text in your R Markdown file;</li>
 <li>Knit the .Rmd document as HTML. The knitted file will be saved automatically in your project.</li>
 </ul>
 
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Horst" class="csl-entry" role="listitem">
 Horst, Alison. n.d. <span>“<span>GitHub</span> - Allisonhorst/Stats-Illustrations: <span>R</span> &amp; Stats Illustrations by @Allison_horst.”</span> Accessed July 11, 2022. <a href="https://github.com/allisonhorst/stats-illustrations">https://github.com/allisonhorst/stats-illustrations</a>.
 </div>
